@@ -1,0 +1,2165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Learndigi — Formation IA pour Courtiers en Assurance | DDA & OPCO ATLAS</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Learndigi forme les courtiers en assurance à l'intelligence artificielle. Formation e-learning 100% en ligne, 15h validantes DDA, finançable à 100% via OPCO ATLAS. ChatGPT, Claude, automatisation."/>
+  <meta name="keywords" content="formation IA courtiers assurance, DDA intelligence artificielle, OPCO ATLAS formation, e-learning assurance, ChatGPT courtier, formation digitale assurance"/>
+  <meta name="author" content="Learndigi — Matthieu Brubach & Hugo Salembier"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://www.learndigi.fr/"/>
+
+  <!-- Open Graph (LinkedIn, WhatsApp, Facebook) -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://www.learndigi.fr/"/>
+  <meta property="og:title" content="Learndigi — Formation IA pour Courtiers en Assurance"/>
+  <meta property="og:description" content="Formation e-learning 15h validantes DDA, 100% finançable OPCO ATLAS. Maîtrisez l'IA dans votre cabinet dès la première semaine."/>
+  <meta property="og:image" content="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80"/>
+  <meta property="og:locale" content="fr_FR"/>
+  <meta property="og:site_name" content="Learndigi"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Learndigi — Formation IA pour Courtiers en Assurance"/>
+  <meta name="twitter:description" content="Formation e-learning 15h validantes DDA, 100% finançable OPCO ATLAS."/>
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#1B2C6B;
+      --navy-dark:#152259;
+      --red:#C0392B;
+      --red2:#a93226;
+      --grey:#F2F2F2;
+      --card:#EBEBEB;
+      --white:#fff;
+      --txt:#444;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Open Sans',sans-serif;color:var(--navy);background:#fff;overflow-x:hidden}
+
+    /* ═══ NAV ═══════════════════════════════════════════════════ */
+    nav{
+      position:sticky;top:0;z-index:999;
+      background:#fff;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 60px;height:92px;
+      box-shadow:0 1px 10px rgba(0,0,0,0.09);
+    }
+
+    /* LOGO */
+    .logo-wrap{
+      display:flex;align-items:flex-end;
+      text-decoration:none;
+      gap:8px;
+      flex-shrink:0;
+      padding:4px 0;
+    }
+    .logo-block{display:flex;flex-direction:column;align-items:flex-start}
+    .logo-name{
+      font-family:'Raleway',sans-serif;
+      font-size:32px;font-weight:900;
+      line-height:1;letter-spacing:-1px;
+    }
+    .logo-name .ln{color:#1A2340}
+    .logo-name .ld{color:#4A7FD4}
+    .logo-sub{
+      margin-top:6px;
+    }
+    .logo-sub span{
+      font-family:'Raleway',sans-serif;
+      font-size:9px;font-weight:600;
+      letter-spacing:3px;text-transform:uppercase;
+      color:#999;
+    }
+    /* orange vertical accent bar */
+    .logo-bar{
+      display:inline-block;
+      width:2px;height:28px;
+      background:#E8921A;
+      flex-shrink:0;
+      margin-bottom:6px;
+    }
+
+    /* NAV LINKS */
+    .nav-links{display:flex;gap:55px;list-style:none}
+    .nav-links a{
+      font-family:'Raleway',sans-serif;
+      font-size:15px;font-weight:600;
+      color:var(--navy);text-decoration:none;
+      transition:color .2s;
+    }
+    .nav-links a:hover,.nav-links a.active{color:var(--red)}
+
+    /* in italic */
+    .nav-in{
+      font-family:'Times New Roman',serif;
+      font-size:19px;font-weight:700;font-style:italic;
+      color:var(--navy);text-decoration:none;
+    }
+
+    /* ═══ CHAT ══════════════════════════════════════════════════ */
+    .chat{
+      position:fixed;bottom:28px;right:28px;z-index:1000;
+      width:54px;height:54px;
+      background:var(--navy);border-radius:6px;
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;box-shadow:0 4px 16px rgba(27,44,107,.4);
+    }
+    .chat svg{width:24px;height:24px;fill:#fff}
+
+    /* ═══ HERO ════════════════════════════════════════════════════ */
+    .hero{
+      position:relative;width:100%;height:620px;overflow:hidden;
+    }
+    .hero img{
+      width:100%;height:100%;object-fit:cover;
+      object-position:62% 28%;display:block;
+      filter:saturate(.45) brightness(.75);
+    }
+    /* two-layer overlay: dark left panel + global warm tint */
+    .hero-ov{
+      position:absolute;inset:0;
+      background:
+        linear-gradient(95deg,
+          rgba(6,12,40,.92) 0%,
+          rgba(10,18,56,.84) 30%,
+          rgba(20,34,80,.55) 55%,
+          rgba(27,44,107,.15) 75%,
+          transparent 100%);
+    }
+    .hero-stripe{
+      position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--navy);
+    }
+    .hero-stripe::before{
+      content:'';position:absolute;left:0;top:0;width:80px;height:3px;background:#E8921A;
+    }
+    /* layout */
+    .hero-content{
+      position:absolute;inset:0;
+      display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+      padding:0 6% 40px 9%;
+      z-index:2;max-width:660px;
+    }
+    /* label */
+    .hero-label{
+      font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;
+      letter-spacing:4px;text-transform:uppercase;
+      color:rgba(255,255,255,.45);
+      margin-bottom:26px;
+    }
+    /* big title — single weight, single color */
+    .hero-title{
+      font-family:'Raleway',sans-serif;
+      font-size:58px;font-weight:900;line-height:1.04;
+      color:#fff;letter-spacing:-2px;
+      margin-bottom:20px;
+    }
+    /* orange bar — sole accent in the title zone */
+    .hero-bar{
+      width:44px;height:3px;background:#E8921A;
+      margin-bottom:22px;
+    }
+    /* subtitle */
+    .hero-sub{
+      font-family:'Open Sans',sans-serif;
+      font-size:15.5px;font-weight:300;line-height:1.8;
+      color:rgba(255,255,255,.65);
+      margin-bottom:44px;
+    }
+    /* CTAs */
+    .hero-cta{display:flex;align-items:center;gap:16px;}
+    .hero-btn-primary{
+      font-family:'Raleway',sans-serif;font-size:12.5px;font-weight:700;
+      letter-spacing:1px;text-transform:uppercase;
+      background:var(--red);color:#fff;
+      border:none;border-radius:1px;
+      padding:15px 36px;
+      cursor:pointer;text-decoration:none;
+      transition:background .18s,transform .15s,box-shadow .18s;
+      box-shadow:0 6px 24px rgba(192,57,43,.5);
+    }
+    .hero-btn-primary:hover{
+      background:var(--red2);
+      transform:translateY(-2px);
+      box-shadow:0 10px 32px rgba(192,57,43,.55);
+    }
+    .hero-btn-link{
+      font-family:'Raleway',sans-serif;font-size:13px;font-weight:600;
+      letter-spacing:.3px;
+      color:rgba(255,255,255,.6);text-decoration:none;
+      display:inline-flex;align-items:center;gap:7px;
+      transition:color .18s,gap .18s;
+    }
+    .hero-btn-link:hover{color:#fff;gap:11px;}
+    .hero-btn-link svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;}
+
+    /* ═══ INTRO ════════════════════════════════════════════════════ */
+    .intro{
+      background:#fff;
+      padding:80px 130px;
+      max-width:860px;
+    }
+    .intro p{
+      font-size:15px;line-height:1.85;color:var(--txt);
+      margin-bottom:30px;
+    }
+
+    /* BUTTON DUO */
+    .btn-duo{
+      display:inline-flex;align-items:stretch;
+      text-decoration:none;border:none;cursor:pointer;
+    }
+    .btn-plus{
+      background:var(--navy);color:#fff;
+      width:44px;display:flex;align-items:center;justify-content:center;
+      font-size:24px;font-weight:300;
+    }
+    .btn-label{
+      background:var(--red);color:#fff;
+      padding:12px 28px;
+      font-family:'Raleway',sans-serif;
+      font-size:13px;font-weight:700;letter-spacing:.6px;
+    }
+    .btn-duo:hover .btn-label{background:var(--red2)}
+
+    /* ═══ FORMATIONS ═══════════════════════════════════════════════ */
+    .formations{background:var(--navy);padding:80px 80px 100px}
+    .formations h2{
+      font-family:'Raleway',sans-serif;
+      font-size:54px;font-weight:700;color:#fff;
+      margin-bottom:18px;
+    }
+    .formations>p{
+      font-size:15px;color:rgba(255,255,255,.8);
+      max-width:680px;line-height:1.8;
+      margin-bottom:52px;
+    }
+    .card-lnk{
+      font-size:11.5px;font-weight:700;
+      color:var(--red);text-decoration:none;letter-spacing:.5px;
+    }
+    .card-lnk:hover{text-decoration:underline}
+
+    /* ── Stats row ─────────────────────────────────────────────── */
+    .stats-row{
+      display:flex;align-items:center;justify-content:center;
+      gap:0;margin-bottom:60px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:2px;padding:36px 40px;
+    }
+    .stat-item{flex:1;text-align:center;padding:0 20px}
+    .stat-num{
+      font-family:'Raleway',sans-serif;
+      font-size:46px;font-weight:900;
+      color:#fff;line-height:1;margin-bottom:10px;
+    }
+    .stat-lbl{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6}
+    .stat-sep{width:1px;height:70px;background:rgba(255,255,255,.18);flex-shrink:0}
+
+    /* ── Parcours cards ─────────────────────────────────────────── */
+    .parcours-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:22px;margin-bottom:52px;
+    }
+    .parcours-card{
+      background:var(--card);border-radius:2px;
+      overflow:hidden;display:flex;flex-direction:column;
+      transition:transform .2s,box-shadow .2s;
+    }
+    .parcours-card:hover{transform:translateY(-5px);box-shadow:0 14px 36px rgba(0,0,0,.3)}
+    .parcours-img-wrap{position:relative;height:220px;overflow:hidden}
+    .parcours-img-wrap img{
+      width:100%;height:100%;object-fit:cover;
+      display:block;filter:saturate(.8);
+      transition:transform .4s ease;
+    }
+    .parcours-card:hover .parcours-img-wrap img{transform:scale(1.04)}
+    .parcours-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(180deg,rgba(27,44,107,.25) 0%,rgba(27,44,107,.55) 100%);
+    }
+    .parcours-label{
+      position:absolute;top:16px;left:16px;
+      font-family:'Raleway',sans-serif;
+      font-size:10px;font-weight:800;
+      letter-spacing:2px;color:rgba(255,255,255,.9);
+      background:var(--red);
+      padding:4px 10px;
+    }
+    .parcours-body{padding:28px 24px 32px;flex:1;display:flex;flex-direction:column;gap:12px}
+    .parcours-body h3{
+      font-family:'Raleway',sans-serif;
+      font-size:18px;font-weight:700;color:var(--navy);
+    }
+    .parcours-body p{font-size:13px;color:var(--txt);line-height:1.7;flex:1}
+    .parcours-body .card-lnk{margin-top:8px;align-self:flex-start}
+
+    /* ── Formations CTA ─────────────────────────────────────────── */
+    .formations-cta{
+      display:flex;align-items:center;justify-content:center;
+      flex-direction:column;gap:20px;
+      padding:40px;
+      border:1px solid rgba(255,255,255,.15);
+      background:rgba(255,255,255,.05);
+    }
+    .formations-cta p{
+      font-family:'Raleway',sans-serif;
+      font-size:17px;font-weight:500;
+      color:rgba(255,255,255,.85);
+    }
+
+    /* ═══ ENGAGEMENTS ══════════════════════════════════════════════ */
+    .engagements{background:var(--grey);padding:80px 80px 90px}
+    .eng-header{text-align:center;margin-bottom:60px}
+    .eng-eyebrow{
+      display:inline-block;
+      font-family:'Raleway',sans-serif;
+      font-size:10px;font-weight:800;letter-spacing:2.5px;
+      text-transform:uppercase;color:var(--red);
+      margin-bottom:14px;
+    }
+    .eng-header h2{
+      font-family:'Raleway',sans-serif;
+      font-size:36px;font-weight:800;color:var(--navy);
+      margin-bottom:14px;letter-spacing:-0.5px;
+    }
+    .eng-header p{
+      font-size:14px;color:var(--txt);max-width:480px;
+      margin:0 auto;line-height:1.8;
+    }
+    .eng-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:2px;
+    }
+    .eng-card{
+      background:#fff;
+      padding:36px 32px 40px;
+      position:relative;
+      transition:transform .2s,box-shadow .2s;
+    }
+    .eng-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(27,44,107,.1)}
+    .eng-card::before{
+      content:'';
+      position:absolute;top:0;left:0;right:0;
+      height:3px;background:transparent;
+      transition:background .25s;
+    }
+    .eng-card:hover::before{background:var(--red)}
+    .eng-icon{
+      width:44px;height:44px;border-radius:2px;
+      background:var(--navy);
+      display:flex;align-items:center;justify-content:center;
+      margin-bottom:22px;
+      transition:background .25s;
+    }
+    .eng-card:hover .eng-icon{background:var(--red)}
+    .eng-icon svg{width:20px;height:20px;fill:#fff}
+    .eng-card h3{
+      font-family:'Raleway',sans-serif;
+      font-size:16px;font-weight:700;color:var(--navy);
+      margin-bottom:10px;line-height:1.3;
+    }
+    .eng-card p{font-size:13px;color:var(--txt);line-height:1.75}
+
+    /* ═══ OPCO ════════════════════════════════════════════════════ */
+    .opco-wrap{background:#fff;padding:60px 100px 80px}
+    .opco-card{
+      background:var(--grey);
+      padding:60px 70px;
+      max-width:920px;margin:0 auto;
+    }
+    .opco-card h2{
+      font-family:'Raleway',sans-serif;
+      font-size:42px;font-weight:700;color:var(--navy);
+      line-height:1.2;margin-bottom:28px;max-width:540px;
+    }
+    .opco-row{display:flex;align-items:flex-start;gap:28px;margin-bottom:40px}
+    .opco-line{width:58px;height:2px;background:var(--navy);margin-top:11px;flex-shrink:0}
+    .opco-card p{font-size:15px;line-height:1.8;color:var(--txt)}
+    .opco-btn{display:flex;justify-content:flex-end}
+
+    /* ═══ NOUS CHOISIR ═════════════════════════════════════════════ */
+    .navy-bar{height:8px;background:var(--navy)}
+    .choisir{background:#fff;padding:80px 130px}
+    .choisir-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .choisir-text h2{
+      font-family:'Raleway',sans-serif;
+      font-size:36px;font-weight:700;color:var(--navy);
+      margin-bottom:20px;line-height:1.2;
+    }
+    .choisir-text p{font-size:15px;color:var(--txt);line-height:1.8;margin-bottom:16px}
+    .choisir-list{list-style:none;margin-bottom:34px}
+    .choisir-list li{
+      display:flex;align-items:flex-start;gap:14px;
+      margin-bottom:14px;font-size:14px;color:var(--txt);line-height:1.6;
+    }
+    .choisir-list li::before{
+      content:'';width:3px;height:20px;
+      background:var(--red);flex-shrink:0;margin-top:2px;
+    }
+    .choisir-img{width:100%;height:420px;object-fit:cover;filter:saturate(.75)}
+
+    /* ═══ SECOND HERO BANNER ═══════════════════════════════════════ */
+    .hero2{position:relative;width:100%;height:440px;overflow:hidden}
+    .hero2 img{
+      width:100%;height:100%;object-fit:cover;
+      object-position:center 35%;display:block;
+      filter:saturate(.6) brightness(.88);
+    }
+    .hero2-ov{
+      position:absolute;inset:0;
+      background:linear-gradient(140deg,rgba(27,44,107,.55) 0%,rgba(43,127,212,.2) 100%);
+    }
+    .hero2-stripe{position:absolute;bottom:0;left:0;right:0;height:7px;background:var(--navy)}
+
+    /* ═══ ÉQUIPE (dans contact) ════════════════════════════════════ */
+    .team-row{
+      display:flex;justify-content:flex-start;gap:40px;
+      flex-wrap:wrap;
+    }
+    .team-card{
+      display:flex;flex-direction:column;align-items:center;
+      gap:12px;
+    }
+    .team-photo-wrap{
+      width:160px;height:160px;border-radius:50%;
+      overflow:hidden;
+      border:4px solid var(--white);
+      box-shadow:0 6px 24px rgba(27,44,107,.18);
+      flex-shrink:0;
+    }
+    .team-photo{
+      width:100%;height:100%;
+      object-fit:cover;object-position:top center;
+      display:block;
+      transition:transform .4s ease;
+    }
+    .team-card:hover .team-photo{transform:scale(1.05)}
+    .team-grey{filter:grayscale(100%)}
+    .team-name{
+      font-family:'Raleway',sans-serif;
+      font-size:17px;font-weight:700;
+      color:#fff;margin-top:4px;
+    }
+    .team-role{
+      font-size:12px;font-weight:600;
+      letter-spacing:1px;text-transform:uppercase;
+      color:#E8921A;
+    }
+    .team-contact{
+      font-size:13px;color:rgba(255,255,255,.75);
+      text-decoration:none;
+      transition:color .2s;
+      display:block;
+    }
+    .team-contact:hover{color:#fff}
+
+    /* ═══ CONTACT ══════════════════════════════════════════════════ */
+    .contact{background:var(--navy);padding:80px 80px 72px}
+    .contact-inner{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:80px;align-items:start;
+      max-width:1100px;margin:0 auto;
+    }
+    .contact-eyebrow{
+      display:block;
+      font-family:'Raleway',sans-serif;
+      font-size:10px;font-weight:800;letter-spacing:2.5px;
+      text-transform:uppercase;color:#E8921A;
+      margin-bottom:16px;
+    }
+    .contact-team h2{
+      font-family:'Raleway',sans-serif;
+      font-size:32px;font-weight:800;color:#fff;
+      margin-bottom:14px;line-height:1.2;letter-spacing:-0.5px;
+    }
+    .contact-team>p{
+      font-size:14px;color:rgba(255,255,255,.55);
+      line-height:1.8;margin-bottom:44px;
+    }
+    .contact-linkedin{
+      display:inline-flex;align-items:center;gap:8px;
+      margin-top:28px;
+      font-family:'Raleway',sans-serif;font-size:12px;font-weight:700;
+      letter-spacing:.5px;color:rgba(255,255,255,.5);
+      text-decoration:none;transition:color .2s;
+    }
+    .contact-linkedin svg{width:18px;height:18px;fill:rgba(255,255,255,.5);transition:fill .2s}
+    .contact-linkedin:hover{color:#fff}
+    .contact-linkedin:hover svg{fill:#fff}
+    .contact-form-wrap{padding-top:8px}
+    .cform{max-width:900px;margin:0 auto}
+    .crow{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:36px}
+    .cfield label{
+      display:block;
+      font-family:'Raleway',sans-serif;
+      font-size:14px;font-weight:600;
+      color:rgba(255,255,255,.9);margin-bottom:12px;
+    }
+    .cfield input,.cfield textarea{
+      width:100%;background:transparent;border:none;
+      border-bottom:1px solid rgba(255,255,255,.35);
+      color:#fff;font-family:'Open Sans',sans-serif;
+      font-size:14px;padding:10px 0;outline:none;
+      transition:border-color .2s;
+    }
+    .cfield input::placeholder,.cfield textarea::placeholder{color:rgba(255,255,255,.35)}
+    .cfield input:focus,.cfield textarea:focus{border-bottom-color:#fff}
+    .cmsg{margin-bottom:38px}
+    .cmsg textarea{min-height:80px;resize:none}
+    .cdiv{width:100%;height:1px;background:rgba(255,255,255,.22);margin-bottom:28px}
+    .csub{
+      display:block;width:100%;text-align:center;
+      font-family:'Raleway',sans-serif;
+      font-size:18px;font-weight:500;color:#fff;
+      letter-spacing:2px;background:none;border:none;
+      cursor:pointer;padding:16px;transition:letter-spacing .2s;
+    }
+    .csub:hover{letter-spacing:4px}
+
+    /* ═══ NEWSLETTER ═══════════════════════════════════════════════ */
+    .newsletter{
+      background:linear-gradient(105deg,#0C1535 0%,#152259 50%,#0C1535 100%);
+      border-top:1px solid rgba(255,255,255,.06);
+      padding:64px 80px;
+      position:relative;overflow:hidden;
+    }
+    .newsletter::before{
+      content:'NL';position:absolute;right:6%;top:50%;transform:translateY(-50%);
+      font-family:'Raleway',sans-serif;font-size:160px;font-weight:900;
+      color:rgba(255,255,255,.025);line-height:1;pointer-events:none;
+      letter-spacing:-8px;
+    }
+    .newsletter-inner{
+      max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:1;
+    }
+    .newsletter-eyebrow{
+      display:inline-block;
+      font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;
+      letter-spacing:3px;text-transform:uppercase;
+      color:#E8921A;margin-bottom:18px;
+    }
+    .newsletter h3{
+      font-family:'Raleway',sans-serif;
+      font-size:28px;font-weight:800;line-height:1.2;
+      color:#fff;letter-spacing:-.5px;
+      margin-bottom:10px;
+    }
+    .newsletter-sub{
+      font-family:'Open Sans',sans-serif;
+      font-size:14px;font-weight:300;line-height:1.7;
+      color:rgba(255,255,255,.5);
+      margin-bottom:36px;
+    }
+    .nl-form{
+      display:flex;gap:0;max-width:480px;margin:0 auto 16px;
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:2px;overflow:hidden;
+      transition:border-color .2s;
+    }
+    .nl-form:focus-within{border-color:rgba(255,255,255,.5);}
+    .nl-form input{
+      flex:1;background:rgba(255,255,255,.06);
+      border:none;outline:none;
+      font-family:'Open Sans',sans-serif;font-size:14px;
+      color:#fff;padding:14px 18px;
+    }
+    .nl-form input::placeholder{color:rgba(255,255,255,.35)}
+    .nl-btn{
+      font-family:'Raleway',sans-serif;font-size:12px;font-weight:700;
+      letter-spacing:.8px;text-transform:uppercase;
+      background:var(--red);color:#fff;
+      border:none;cursor:pointer;padding:14px 24px;
+      transition:background .18s;white-space:nowrap;
+      flex-shrink:0;
+    }
+    .nl-btn:hover{background:var(--red2);}
+    .nl-btn:disabled{opacity:.6;cursor:default;}
+    .nl-msg{
+      font-family:'Open Sans',sans-serif;font-size:12.5px;
+      min-height:18px;color:rgba(255,255,255,.5);
+    }
+    .nl-legal{
+      font-size:11px;color:rgba(255,255,255,.25);
+      margin-top:12px;line-height:1.6;
+    }
+
+    /* ═══ FOOTER ═══════════════════════════════════════════════════ */
+    footer{background:var(--navy-dark);padding:50px 130px 28px}
+    .finfo{display:flex;justify-content:space-between;margin-bottom:36px}
+    .fadr{font-size:14px;color:rgba(255,255,255,.72);line-height:2.1}
+    .fcontact p{font-size:14px;color:rgba(255,255,255,.72);margin-bottom:12px;text-align:right}
+    .flinks{display:flex;gap:36px;margin-bottom:24px;flex-wrap:wrap}
+    .flinks a{font-size:12px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
+    .flinks a:hover{color:#fff}
+    .fbot{
+      display:flex;justify-content:space-between;align-items:center;
+      border-top:1px solid rgba(255,255,255,.1);padding-top:18px;
+    }
+    .fcopy{font-size:12px;color:rgba(255,255,255,.45)}
+    .fup{color:rgba(255,255,255,.45);font-size:18px;text-decoration:none;transition:color .2s}
+    .fup:hover{color:#fff}
+
+    /* ═══ MODALES LÉGALES ══════════════════════════════════════════ */
+    .modal-overlay{
+      display:none;position:fixed;inset:0;z-index:2000;
+      background:rgba(10,14,30,.7);backdrop-filter:blur(4px);
+      align-items:center;justify-content:center;padding:20px;
+    }
+    .modal-overlay.open{display:flex}
+    .modal-box{
+      background:#fff;max-width:680px;width:100%;
+      max-height:80vh;overflow-y:auto;
+      border-radius:2px;
+      padding:48px 52px 44px;
+      position:relative;
+    }
+    .modal-close{
+      position:absolute;top:18px;right:22px;
+      background:none;border:none;cursor:pointer;
+      font-size:22px;color:#999;line-height:1;
+    }
+    .modal-close:hover{color:#333}
+    .modal-box h3{
+      font-family:'Raleway',sans-serif;
+      font-size:22px;font-weight:700;color:var(--navy);
+      margin-bottom:24px;
+    }
+    .modal-box h4{
+      font-family:'Raleway',sans-serif;
+      font-size:15px;font-weight:700;color:var(--navy);
+      margin:20px 0 8px;
+    }
+    .modal-box p,.modal-box li{
+      font-size:13.5px;color:#555;line-height:1.8;margin-bottom:10px;
+    }
+    .modal-box ul{padding-left:18px;margin-bottom:10px}
+
+    /* ── Nav RDV button ──────────────────────────────────────────── */
+    .nav-rdv{
+      display:inline-flex;align-items:center;gap:9px;
+      background:var(--red);color:#fff;
+      font-family:'Raleway',sans-serif;font-size:13px;font-weight:700;
+      letter-spacing:.5px;text-decoration:none;
+      padding:10px 20px;border-radius:2px;
+      transition:background .2s,transform .15s;
+      flex-shrink:0;
+    }
+    .nav-rdv:hover{background:var(--red2);transform:translateY(-1px)}
+    .nav-rdv svg{width:15px;height:15px;fill:#fff;flex-shrink:0}
+
+    /* ═══ TRUST BAR ════════════════════════════════════════════════ */
+    .trust-bar{
+      background:var(--navy);
+      display:flex;align-items:center;justify-content:center;
+      gap:0;padding:0;
+      border-top:3px solid #E8921A;
+    }
+    .trust-item{
+      flex:1;display:flex;align-items:center;justify-content:center;gap:12px;
+      padding:20px 16px;border-right:1px solid rgba(255,255,255,.1);
+    }
+    .trust-item:last-child{border-right:none}
+    .trust-icon{
+      width:36px;height:36px;border-radius:50%;
+      background:rgba(255,255,255,.1);
+      display:flex;align-items:center;justify-content:center;
+      flex-shrink:0;
+    }
+    .trust-icon svg{width:17px;height:17px;fill:#E8921A}
+    .trust-text strong{
+      display:block;
+      font-family:'Raleway',sans-serif;font-size:13px;font-weight:700;
+      color:#fff;
+    }
+    .trust-text span{font-size:11px;color:rgba(255,255,255,.6)}
+
+    /* ═══ RDV SECTION ══════════════════════════════════════════════ */
+    .rdv-section{background:var(--grey);padding:80px 80px 90px}
+    .rdv-header{text-align:center;margin-bottom:56px}
+    .rdv-header h2{
+      font-family:'Raleway',sans-serif;
+      font-size:36px;font-weight:700;color:var(--navy);
+      margin-bottom:14px;
+    }
+    .rdv-header p{font-size:15px;color:var(--txt);max-width:560px;margin:0 auto;line-height:1.8}
+    .rdv-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
+    .rdv-info h3{
+      font-family:'Raleway',sans-serif;
+      font-size:20px;font-weight:700;color:var(--navy);
+      margin-bottom:24px;
+    }
+    .rdv-steps{list-style:none;margin-bottom:36px}
+    .rdv-steps li{
+      display:flex;align-items:flex-start;gap:16px;
+      margin-bottom:20px;font-size:14px;color:var(--txt);line-height:1.6;
+    }
+    .rdv-num{
+      width:30px;height:30px;border-radius:50%;
+      background:var(--navy);color:#fff;
+      font-family:'Raleway',sans-serif;font-size:13px;font-weight:700;
+      display:flex;align-items:center;justify-content:center;
+      flex-shrink:0;margin-top:1px;
+    }
+    .rdv-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+    .rdv-tag{
+      background:#fff;border:1px solid #D8D8D8;
+      padding:7px 14px;border-radius:2px;
+      font-size:12px;font-weight:600;color:var(--navy);
+      display:flex;align-items:center;gap:6px;
+    }
+    .rdv-tag svg{width:13px;height:13px;fill:var(--red)}
+    .rdv-widget{
+      background:#fff;border-radius:2px;
+      box-shadow:0 4px 24px rgba(27,44,107,.1);
+      overflow:hidden;
+      min-height:580px;
+    }
+    /* booking widget */
+    .booking-widget{padding:28px 28px 32px;min-height:520px;display:flex;flex-direction:column;gap:20px}
+    .booking-header{
+      display:flex;align-items:center;gap:14px;
+      padding-bottom:18px;border-bottom:1px solid #EBEBEB;
+    }
+    .booking-header svg{width:22px;height:22px;fill:var(--navy);flex-shrink:0}
+    .booking-header div:nth-child(2){flex:1}
+    .booking-header strong{display:block;font-family:'Raleway',sans-serif;font-size:15px;font-weight:700;color:var(--navy)}
+    .booking-header span{font-size:12px;color:#999}
+    .booking-nav{display:flex;gap:6px}
+    .booking-nav button{
+      width:30px;height:30px;border-radius:50%;
+      border:1px solid #E0E0E0;background:#fff;
+      cursor:pointer;font-size:18px;color:var(--navy);
+      display:flex;align-items:center;justify-content:center;
+      transition:background .15s,border-color .15s;
+    }
+    .booking-nav button:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .booking-days{display:flex;flex-direction:column;gap:14px;flex:1}
+    .booking-day-row{display:flex;align-items:center;gap:12px}
+    .booking-day-label{
+      font-family:'Raleway',sans-serif;font-size:12px;font-weight:700;
+      color:var(--navy);text-transform:uppercase;letter-spacing:.8px;
+      min-width:80px;
+    }
+    .booking-slots{display:flex;flex-wrap:wrap;gap:8px}
+    .slot-btn{
+      padding:7px 14px;border:1.5px solid #D8D8D8;
+      background:#fff;border-radius:2px;
+      font-family:'Raleway',sans-serif;font-size:12px;font-weight:600;color:var(--navy);
+      cursor:pointer;transition:all .15s;
+    }
+    .slot-btn:hover{border-color:var(--navy);background:var(--navy);color:#fff}
+    .slot-btn.selected{border-color:var(--red);background:var(--red);color:#fff}
+    .booking-confirm{display:flex;flex-direction:column;gap:14px}
+    .booking-selected-info{
+      background:var(--grey);padding:16px 18px;border-radius:2px;
+      font-family:'Raleway',sans-serif;font-size:14px;font-weight:600;color:var(--navy);
+    }
+    .booking-name-input{
+      width:100%;border:none;border-bottom:1.5px solid #D0D0D0;
+      padding:10px 0;font-family:'Open Sans',sans-serif;font-size:14px;color:var(--navy);
+      outline:none;background:transparent;transition:border-color .2s;
+    }
+    .booking-name-input:focus{border-bottom-color:var(--navy)}
+    .booking-name-input::placeholder{color:#aaa}
+    .booking-send-btn{
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      background:var(--navy);color:#fff;border:none;cursor:pointer;
+      font-family:'Raleway',sans-serif;font-size:14px;font-weight:700;
+      padding:14px 24px;transition:background .2s;margin-top:6px;
+    }
+    .booking-send-btn svg{width:16px;height:16px;fill:#fff}
+    .booking-send-btn:hover{background:var(--navy-dark)}
+    .booking-cancel-btn{
+      background:none;border:none;cursor:pointer;
+      font-size:12px;color:#999;text-align:left;
+      transition:color .2s;
+    }
+    .booking-cancel-btn:hover{color:var(--navy)}
+
+    /* ═══ FAQ ══════════════════════════════════════════════════════ */
+    .faq-section{background:#fff;padding:80px 130px}
+    .faq-header{text-align:center;margin-bottom:52px}
+    .faq-header h2{
+      font-family:'Raleway',sans-serif;
+      font-size:36px;font-weight:700;color:var(--navy);
+      margin-bottom:12px;
+    }
+    .faq-header p{font-size:15px;color:var(--txt);max-width:520px;margin:0 auto}
+    .faq-list{max-width:820px;margin:0 auto}
+    .faq-item{border-bottom:1px solid #E0E0E0}
+    .faq-q{
+      width:100%;background:none;border:none;cursor:pointer;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:22px 0;gap:20px;
+      font-family:'Raleway',sans-serif;font-size:16px;font-weight:600;
+      color:var(--navy);text-align:left;
+      transition:color .2s;
+    }
+    .faq-q:hover{color:var(--red)}
+    .faq-q.open{color:var(--red)}
+    .faq-arrow{
+      width:24px;height:24px;border-radius:50%;
+      background:var(--grey);
+      display:flex;align-items:center;justify-content:center;
+      flex-shrink:0;transition:transform .3s,background .2s;
+    }
+    .faq-q.open .faq-arrow{transform:rotate(180deg);background:var(--red)}
+    .faq-arrow svg{width:10px;height:10px;fill:none;stroke:var(--navy);transition:stroke .2s}
+    .faq-q.open .faq-arrow svg{stroke:#fff}
+    .faq-a{
+      max-height:0;overflow:hidden;
+      transition:max-height .35s ease, padding .35s ease;
+    }
+    .faq-a.open{max-height:400px;padding-bottom:20px}
+    .faq-a p{font-size:14px;color:var(--txt);line-height:1.8}
+    .faq-a strong{color:var(--navy)}
+
+    /* ═══ COMMENT ÇA MARCHE ════════════════════════════════════════ */
+    .howto{
+      background:linear-gradient(160deg,#0D1530 0%,#1B2C6B 60%,#0D1530 100%);
+      padding:90px 80px 96px;
+      position:relative;overflow:hidden;
+    }
+    /* subtle grid overlay */
+    .howto::before{
+      content:'';position:absolute;inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+      background-size:80px 80px;pointer-events:none;
+    }
+    .howto-top{
+      position:relative;z-index:1;
+      display:flex;align-items:flex-end;justify-content:space-between;
+      margin-bottom:64px;padding-bottom:40px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .howto-top h2{
+      font-family:'Raleway',sans-serif;
+      font-size:42px;font-weight:900;color:#fff;
+      line-height:1.1;max-width:320px;letter-spacing:-1px;
+    }
+    .howto-top p{
+      font-size:14px;color:rgba(255,255,255,.45);
+      max-width:320px;line-height:1.8;text-align:right;
+    }
+    .howto-steps{
+      position:relative;z-index:1;
+      display:grid;grid-template-columns:repeat(4,1fr);
+      gap:0;
+    }
+    .howto-step{
+      position:relative;
+      padding:36px 40px 36px 0;
+      border-right:1px solid rgba(255,255,255,.07);
+    }
+    .howto-step:last-child{border-right:none;padding-right:0}
+    .howto-step:not(:first-child){padding-left:40px}
+    /* giant ghost number */
+    .howto-ghost{
+      position:absolute;top:-10px;right:20px;
+      font-family:'Raleway',sans-serif;
+      font-size:120px;font-weight:900;line-height:1;
+      color:rgba(255,255,255,.04);
+      pointer-events:none;user-select:none;
+      letter-spacing:-4px;
+    }
+    .howto-step:last-child .howto-ghost{right:0}
+    /* orange top bar */
+    .howto-step-bar{
+      width:36px;height:3px;background:#E8921A;
+      margin-bottom:28px;
+      transition:width .3s ease;
+    }
+    .howto-step:hover .howto-step-bar{width:56px}
+    .howto-tag{
+      font-family:'Raleway',sans-serif;
+      font-size:9.5px;font-weight:800;letter-spacing:2.5px;
+      color:rgba(232,146,26,.7);text-transform:uppercase;
+      margin-bottom:14px;display:block;
+    }
+    .howto-step h3{
+      font-family:'Raleway',sans-serif;
+      font-size:18px;font-weight:700;color:#fff;
+      margin-bottom:14px;line-height:1.25;
+    }
+    .howto-step p{
+      font-size:13px;color:rgba(255,255,255,.45);
+      line-height:1.8;
+    }
+
+    /* ═══ PARTENAIRES ══════════════════════════════════════════════ */
+    .partners{
+      background:#fff;
+      padding:56px 80px;
+      border-bottom:1px solid #EBEBEB;
+    }
+    .partners-label{
+      text-align:center;
+      font-family:'Raleway',sans-serif;
+      font-size:10px;font-weight:700;letter-spacing:2.5px;
+      text-transform:uppercase;color:#BBBBBB;
+      margin-bottom:44px;
+    }
+    .partners-row{
+      display:flex;align-items:center;justify-content:center;
+      gap:0;flex-wrap:wrap;
+    }
+    .partner-item{
+      flex:1;min-width:180px;max-width:240px;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      padding:24px 32px;
+      border-right:1px solid #EBEBEB;
+      gap:10px;
+      transition:background .25s;
+      cursor:default;
+    }
+    .partner-item:last-child{border-right:none}
+    .partner-item:hover{background:#FAFAFA}
+    .partner-logo-text{
+      font-family:'Raleway',sans-serif;
+      font-size:22px;font-weight:900;
+      letter-spacing:-0.5px;
+      color:#C0C0C0;
+      transition:color .25s;
+      line-height:1;
+    }
+    .partner-logo-text .accent{color:#D0D0D0}
+    .partner-item:hover .partner-logo-text{color:var(--navy)}
+    .partner-item:hover .partner-logo-text .accent{color:var(--red)}
+    .partner-sub{
+      font-size:9.5px;font-weight:600;letter-spacing:1.8px;
+      text-transform:uppercase;color:#CCCCCC;
+      transition:color .25s;
+    }
+    .partner-item:hover .partner-sub{color:#999}
+    .partner-badge{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:44px;height:44px;border-radius:50%;
+      background:#F2F2F2;
+      transition:background .25s;
+    }
+    .partner-item:hover .partner-badge{background:var(--navy)}
+    .partner-badge svg{width:20px;height:20px;fill:#AAAAAA;transition:fill .25s}
+    .partner-item:hover .partner-badge svg{fill:#fff}
+
+    /* ═══ VIDÉO ════════════════════════════════════════════════════ */
+    .video-section{
+      position:relative;
+      background:#0B0F1A;
+      overflow:hidden;
+    }
+    .video-bg{
+      position:absolute;inset:0;
+      background:linear-gradient(135deg,#0D1229 0%,#1B2C6B 50%,#0D1229 100%);
+    }
+    /* animated grid lines */
+    .video-bg::before{
+      content:'';
+      position:absolute;inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+      background-size:60px 60px;
+    }
+    .video-inner{
+      position:relative;z-index:1;
+      padding:90px 80px;
+      display:flex;align-items:center;gap:80px;
+    }
+    .video-text{flex:1;min-width:280px}
+    .video-eyebrow{
+      font-family:'Raleway',sans-serif;
+      font-size:10px;font-weight:800;letter-spacing:3px;
+      text-transform:uppercase;color:#E8921A;
+      margin-bottom:20px;display:block;
+    }
+    .video-text h2{
+      font-family:'Raleway',sans-serif;
+      font-size:40px;font-weight:800;color:#fff;
+      line-height:1.15;margin-bottom:20px;
+      letter-spacing:-0.5px;
+    }
+    .video-text h2 em{
+      font-style:normal;color:#E8921A;
+    }
+    .video-text p{
+      font-size:15px;color:rgba(255,255,255,.65);
+      line-height:1.8;margin-bottom:36px;max-width:400px;
+    }
+    .video-stats{display:flex;gap:36px;margin-bottom:40px}
+    .vstat strong{
+      display:block;font-family:'Raleway',sans-serif;
+      font-size:32px;font-weight:900;color:#fff;line-height:1;
+    }
+    .vstat span{font-size:12px;color:rgba(255,255,255,.5);margin-top:4px;display:block}
+    .video-cta-row{display:flex;align-items:center;gap:20px}
+    .video-link{
+      font-family:'Raleway',sans-serif;font-size:13px;font-weight:700;
+      color:rgba(255,255,255,.5);text-decoration:none;
+      letter-spacing:.5px;transition:color .2s;
+    }
+    .video-link:hover{color:#fff}
+
+    /* ── AI Chat Mockup ─────────────────────────────────────────── */
+    .ai-mockup{
+      flex:1.2;max-width:580px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:8px;
+      overflow:hidden;
+      box-shadow:0 30px 80px rgba(0,0,0,.4);
+    }
+    .ai-mockup-bar{
+      background:rgba(255,255,255,.06);
+      padding:12px 16px;
+      display:flex;align-items:center;gap:10px;
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
+    .ai-mockup-dots{display:flex;gap:6px}
+    .ai-mockup-dots span{
+      width:10px;height:10px;border-radius:50%;display:block;
+    }
+    .ai-mockup-dots span:nth-child(1){background:rgba(255,90,90,.6)}
+    .ai-mockup-dots span:nth-child(2){background:rgba(255,180,50,.6)}
+    .ai-mockup-dots span:nth-child(3){background:rgba(80,200,120,.6)}
+    .ai-mockup-title{
+      font-family:'Raleway',sans-serif;font-size:11px;font-weight:600;
+      color:rgba(255,255,255,.4);letter-spacing:.5px;
+    }
+    .ai-mockup-body{padding:24px 20px;min-height:340px;display:flex;flex-direction:column;gap:16px}
+    .ai-tag{
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(232,146,26,.15);border:1px solid rgba(232,146,26,.25);
+      padding:4px 10px;border-radius:20px;
+      font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;
+      color:#E8921A;letter-spacing:.5px;align-self:flex-start;
+      margin-bottom:4px;
+    }
+    .ai-tag svg{width:10px;height:10px;fill:#E8921A}
+    .msg-user{
+      align-self:flex-end;max-width:85%;
+      background:rgba(27,44,107,.6);border:1px solid rgba(255,255,255,.1);
+      border-radius:12px 12px 2px 12px;
+      padding:12px 16px;
+      font-size:13px;color:rgba(255,255,255,.9);line-height:1.55;
+    }
+    .msg-ai{
+      align-self:flex-start;max-width:92%;
+      background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);
+      border-radius:2px 12px 12px 12px;
+      padding:14px 16px;
+      font-size:13px;color:rgba(255,255,255,.8);line-height:1.65;
+    }
+    .msg-ai-header{
+      display:flex;align-items:center;gap:8px;margin-bottom:8px;
+    }
+    .msg-ai-avatar{
+      width:22px;height:22px;border-radius:4px;
+      background:linear-gradient(135deg,#4A7FD4,#E8921A);
+      display:flex;align-items:center;justify-content:center;
+      flex-shrink:0;
+    }
+    .msg-ai-avatar svg{width:12px;height:12px;fill:#fff}
+    .msg-ai-name{font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.5px}
+    .cursor{
+      display:inline-block;width:2px;height:13px;
+      background:#E8921A;margin-left:2px;vertical-align:middle;
+      animation:blink .7s steps(1) infinite;
+    }
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+    .msg-hidden{display:none}
+    .ai-mockup-footer{
+      padding:12px 20px;border-top:1px solid rgba(255,255,255,.07);
+      display:flex;align-items:center;gap:10px;
+    }
+    .ai-input-mock{
+      flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+      border-radius:6px;padding:9px 14px;
+      font-size:12px;color:rgba(255,255,255,.3);font-family:'Open Sans',sans-serif;
+    }
+    .ai-send-btn{
+      width:32px;height:32px;border-radius:6px;background:#E8921A;
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    }
+    .ai-send-btn svg{width:14px;height:14px;fill:#fff}
+
+    /* ═══ COOKIE BANNER ════════════════════════════════════════════ */
+    .cookie-banner{
+      position:fixed;bottom:0;left:0;right:0;z-index:3000;
+      background:#1A1F2E;
+      border-top:3px solid #E8921A;
+      padding:20px 60px;
+      display:flex;align-items:center;justify-content:space-between;
+      gap:30px;
+      transform:translateY(100%);
+      transition:transform .4s ease;
+      box-shadow:0 -4px 30px rgba(0,0,0,.3);
+    }
+    .cookie-banner.visible{transform:translateY(0)}
+    .cookie-text{flex:1}
+    .cookie-text strong{
+      display:block;
+      font-family:'Raleway',sans-serif;font-size:14px;font-weight:700;
+      color:#fff;margin-bottom:5px;
+    }
+    .cookie-text p{font-size:12px;color:rgba(255,255,255,.6);line-height:1.6}
+    .cookie-text a{color:#E8921A;text-decoration:none}
+    .cookie-text a:hover{text-decoration:underline}
+    .cookie-btns{display:flex;gap:10px;flex-shrink:0}
+    .cookie-accept{
+      background:#E8921A;color:#fff;border:none;cursor:pointer;
+      font-family:'Raleway',sans-serif;font-size:13px;font-weight:700;
+      padding:10px 22px;transition:background .2s;
+    }
+    .cookie-accept:hover{background:#d4821a}
+    .cookie-refuse{
+      background:transparent;color:rgba(255,255,255,.6);
+      border:1px solid rgba(255,255,255,.2);cursor:pointer;
+      font-family:'Raleway',sans-serif;font-size:13px;font-weight:600;
+      padding:10px 22px;transition:all .2s;
+    }
+    .cookie-refuse:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+
+    /* ═══ RESPONSIVE ═══════════════════════════════════════════════ */
+    @media(max-width:900px){
+      nav{padding:0 20px}
+      .nav-links{gap:20px}
+      .intro,.choisir,.contact,footer{padding-left:20px;padding-right:20px}
+      .contact-inner{grid-template-columns:1fr;gap:48px}
+      .eng-grid{grid-template-columns:1fr}
+      .formations{padding:50px 20px 70px}
+      .cards-grid{grid-template-columns:1fr}
+      .parcours-grid{grid-template-columns:1fr}
+      .stats-row{flex-wrap:wrap;gap:20px}
+      .stat-sep{display:none}
+      .choisir-grid{grid-template-columns:1fr}
+      .crow{grid-template-columns:1fr;gap:20px}
+      .engagements{padding:50px 20px}
+      .eng-grid{grid-template-columns:1fr}
+      .opco-wrap{padding:40px 20px 60px}
+      .opco-card{padding:36px 28px}
+      .finfo{flex-direction:column;gap:20px}
+      .fcontact p{text-align:left}
+      .trust-bar{flex-wrap:wrap}
+      .trust-item{min-width:50%;border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
+      .rdv-section{padding:50px 20px 60px}
+      .rdv-grid{grid-template-columns:1fr}
+      .faq-section{padding:50px 20px}
+      .nav-rdv{display:none}
+      .howto{padding:50px 20px 60px}
+      .howto-top{flex-direction:column;align-items:flex-start;gap:16px}
+      .howto-top p{text-align:left}
+      .howto-steps{grid-template-columns:1fr 1fr}
+      .howto-step{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);padding:24px 0}
+      .howto-step:last-child{border-bottom:none}
+      .partners{padding:40px 20px}
+      .partner-item{min-width:140px;padding:18px 16px}
+      .video-inner{flex-direction:column;padding:50px 20px}
+      .video-text h2{font-size:28px}
+      .cookie-banner{flex-direction:column;padding:20px;gap:16px}
+      .cookie-btns{width:100%;justify-content:flex-end}
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- ── NAV ────────────────────────────────────────────────────── -->
+<nav>
+  <a href="#accueil" class="logo-wrap">
+    <div class="logo-block">
+      <div class="logo-name">
+        <span class="ln">Learn</span><span class="ld">digi</span>
+      </div>
+      <div class="logo-sub">
+        <span>Formation Digitale</span>
+      </div>
+    </div>
+    <span class="logo-bar"></span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#accueil" class="active" onclick="setNav(this)">Accueil</a></li>
+    <li><a href="#choisir" onclick="setNav(this)">Nous choisir</a></li>
+    <li><a href="#formations" onclick="setNav(this)">Nos services</a></li>
+    <li><a href="#contact" onclick="setNav(this)">Contact</a></li>
+  </ul>
+
+</nav>
+
+<!-- ── HERO 1 ──────────────────────────────────────────────────── -->
+<section class="hero" id="accueil">
+  <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1600&q=80&fit=crop" alt="Professionnel formation digitale IA"/>
+  <div class="hero-ov"></div>
+  <div class="hero-content">
+    <p class="hero-label">Formation digitale &nbsp;·&nbsp; Courtiers en assurance</p>
+    <h1 class="hero-title">Formez votre cabinet<br>à l'Intelligence<br>Artificielle</h1>
+    <div class="hero-bar"></div>
+    <p class="hero-sub">15h validantes DDA · Finançable OPCO ATLAS<br>100 % en ligne · Résultats dès la première semaine</p>
+    <div class="hero-cta">
+      <a href="#rdv" class="hero-btn-primary">Réserver une démo gratuite</a>
+      <a href="#formations" class="hero-btn-link">
+        Voir les formations
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="hero-stripe"></div>
+</section>
+
+<!-- ── TRUST BAR ──────────────────────────────────────────────── -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+    </div>
+    <div class="trust-text">
+      <strong>Adossé à l'ESSCA</strong>
+      <span>École de commerce reconnue</span>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+    </div>
+    <div class="trust-text">
+      <strong>15h validantes DDA</strong>
+      <span>Renouvellement ORIAS garanti</span>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+    </div>
+    <div class="trust-text">
+      <strong>100% finançable OPCO ATLAS</strong>
+      <span>Pour les cabinets du secteur assurance</span>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+    </div>
+    <div class="trust-text">
+      <strong>100% en ligne</strong>
+      <span>À votre rythme, sur tous supports</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── INTRO ──────────────────────────────────────────────────── -->
+<section class="intro">
+  <p>
+    Learndigi accompagne les courtiers en assurance dans leur montée en compétences sur l'intelligence artificielle.
+    Nos formations e-learning sont conçues exclusivement pour les professionnels de la distribution d'assurance —
+    contenus métier, outils concrets, validants DDA (15h/an), finançables à 100 % via l'OPCO ATLAS.
+  </p>
+  <p>
+    Maîtrisez ChatGPT, Claude, Make et les automatisations directement applicables dans votre cabinet dès la première semaine.
+  </p>
+  <a href="#formations" class="btn-duo">
+    <span class="btn-plus">+</span>
+    <span class="btn-label">En savoir plus</span>
+  </a>
+</section>
+
+<!-- ── COMMENT ÇA MARCHE ──────────────────────────────────────── -->
+<section class="howto">
+  <div class="howto-top">
+    <h2>Comment<br/>ça marche ?</h2>
+    <p>De votre première prise de contact à votre attestation DDA — un processus simple, guidé, sans friction.</p>
+  </div>
+  <div class="howto-steps">
+
+    <div class="howto-step">
+      <span class="howto-ghost">01</span>
+      <div class="howto-step-bar"></div>
+      <span class="howto-tag">Étape 01</span>
+      <h3>Demandez votre programme</h3>
+      <p>Contactez-nous ou prenez RDV. On identifie ensemble le parcours adapté à votre cabinet en 30 minutes.</p>
+    </div>
+
+    <div class="howto-step">
+      <span class="howto-ghost">02</span>
+      <div class="howto-step-bar"></div>
+      <span class="howto-tag">Étape 02</span>
+      <h3>Financez via OPCO ATLAS</h3>
+      <p>Nous vous guidons dans le montage du dossier. Pour la plupart des cabinets : 0 € à avancer.</p>
+    </div>
+
+    <div class="howto-step">
+      <span class="howto-ghost">03</span>
+      <div class="howto-step-bar"></div>
+      <span class="howto-tag">Étape 03</span>
+      <h3>Formez-vous à votre rythme</h3>
+      <p>Accès immédiat à la plateforme. Vidéos, exercices pratiques et cas métier disponibles 24h/24.</p>
+    </div>
+
+    <div class="howto-step">
+      <span class="howto-ghost">04</span>
+      <div class="howto-step-bar"></div>
+      <span class="howto-tag">Étape 04</span>
+      <h3>Obtenez votre attestation DDA</h3>
+      <p>À l'issue du parcours, recevez votre attestation de 15h validantes pour votre renouvellement ORIAS.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── NOS FORMATIONS ─────────────────────────────────────────── -->
+<section class="formations" id="formations">
+  <h2>Nos formations</h2>
+  <p>
+    Une formation e-learning 100 % dédiée aux courtiers en assurance. 15 heures validantes DDA,
+    finançables à 100 % via l'OPCO ATLAS — avec des outils IA directement applicables dans votre cabinet.
+  </p>
+
+  <!-- 3 parcours -->
+  <div class="parcours-grid">
+    <div class="parcours-card">
+      <div class="parcours-img-wrap">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&fit=crop" alt="Courtier indépendant"/>
+        <div class="parcours-overlay"></div>
+        <div class="parcours-label">PARCOURS 01</div>
+      </div>
+      <div class="parcours-body">
+        <h3>Courtier indépendant</h3>
+        <p>Vous exercez seul ou en micro-structure. Ce parcours vous donne les outils IA essentiels pour gagner du temps sur les tâches répétitives et renforcer votre relation client.</p>
+        <a href="#contact" class="card-lnk">RECEVOIR LE PROGRAMME →</a>
+      </div>
+    </div>
+
+    <div class="parcours-card">
+      <div class="parcours-img-wrap">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80&fit=crop" alt="Cabinet PME"/>
+        <div class="parcours-overlay"></div>
+        <div class="parcours-label">PARCOURS 02</div>
+      </div>
+      <div class="parcours-body">
+        <h3>Cabinet PME (2–20 pers.)</h3>
+        <p>Pour les cabinets avec une équipe. Automatisez vos processus, structurez votre CRM avec l'IA et uniformisez les pratiques de vos collaborateurs.</p>
+        <a href="#contact" class="card-lnk">RECEVOIR LE PROGRAMME →</a>
+      </div>
+    </div>
+
+    <div class="parcours-card">
+      <div class="parcours-img-wrap">
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80&fit=crop" alt="Grand cabinet"/>
+        <div class="parcours-overlay"></div>
+        <div class="parcours-label">PARCOURS 03</div>
+      </div>
+      <div class="parcours-body">
+        <h3>Grand cabinet (20+ pers.)</h3>
+        <p>Pour les structures importantes. Déployez l'IA à l'échelle, gérez la conformité AI Act, pilotez la montée en compétences de toute votre organisation.</p>
+        <a href="#contact" class="card-lnk">RECEVOIR LE PROGRAMME →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA central -->
+  <div class="formations-cta">
+    <p>Vous souhaitez voir le contenu détaillé des modules ?</p>
+    <a href="#contact" class="btn-duo">
+      <span class="btn-plus">+</span>
+      <span class="btn-label">Demander le programme complet</span>
+    </a>
+  </div>
+</section>
+
+<!-- ── ENGAGEMENTS ──────────────────────────────────────────────── -->
+<section class="engagements">
+  <div class="eng-header">
+    <span class="eng-eyebrow">Ce que nous garantissons</span>
+    <h2>Nos engagements</h2>
+    <p>Learndigi est une formation pensée par des praticiens pour des praticiens. Voici ce sur quoi vous pouvez compter.</p>
+  </div>
+  <div class="eng-grid">
+
+    <div class="eng-card">
+      <div class="eng-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+      </div>
+      <h3>Contenu 100 % métier</h3>
+      <p>Chaque module est construit sur des cas réels de cabinet. Aucun contenu générique — tout est calibré pour les courtiers en assurance.</p>
+    </div>
+
+    <div class="eng-card">
+      <div class="eng-icon">
+        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+      </div>
+      <h3>Applicable dès la semaine 1</h3>
+      <p>Pas de théorie inutile. Chaque outil présenté est immédiatement utilisable dans votre quotidien, avec des templates prêts à l'emploi.</p>
+    </div>
+
+    <div class="eng-card">
+      <div class="eng-icon">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+      </div>
+      <h3>15h validantes DDA garanties</h3>
+      <p>Le programme est conçu pour valider intégralement vos 15h annuelles de formation DDA. Attestation remise à l'issue du parcours.</p>
+    </div>
+
+    <div class="eng-card">
+      <div class="eng-icon">
+        <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+      </div>
+      <h3>Financement 0 € à avancer</h3>
+      <p>Nous montons le dossier OPCO ATLAS avec vous. Pour les cabinets éligibles, la formation est intégralement prise en charge.</p>
+    </div>
+
+    <div class="eng-card">
+      <div class="eng-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+      </div>
+      <h3>Accompagnement inclus</h3>
+      <p>Vous n'êtes pas seuls. Un suivi par e-mail et visio est inclus pendant toute la durée de votre parcours.</p>
+    </div>
+
+    <div class="eng-card">
+      <div class="eng-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 6.5C21 8.43 19.43 10 17.5 10S14 8.43 14 6.5 15.57 3 17.5 3 21 4.57 21 6.5zm-3.5 5c-2.69 0-8 1.34-8 4v2.5h16V15.5c0-2.66-5.31-4-8-4zm-7-5C10.5 8.43 8.93 10 7 10S3.5 8.43 3.5 6.5 5.07 3 7 3s3.5 1.57 3.5 3.5zM7 11.5c-2.69 0-8 1.34-8 4V18h8v-2.5c0-1.04.4-2.66 1.97-3.91C8.55 11.57 7.73 11.5 7 11.5z"/></svg>
+      </div>
+      <h3>Contenu mis à jour en continu</h3>
+      <p>L'IA évolue vite. Nos modules sont mis à jour chaque trimestre pour intégrer les dernières versions des outils et l'évolution de l'AI Act.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── OPCO ────────────────────────────────────────────────────── -->
+<section class="opco-wrap">
+  <div class="opco-card">
+    <h2>Découvrez nos formations éligibles OPCO dès aujourd'hui</h2>
+    <div class="opco-row">
+      <div class="opco-line"></div>
+      <p>Rejoignez-nous dès aujourd'hui et découvrez comment nos formations peuvent vous aider à développer les compétences IA de votre cabinet — finançables à 100 % via l'OPCO ATLAS pour les cabinets de moins de 50 salariés du secteur de l'assurance.</p>
+    </div>
+    <div class="opco-btn">
+      <a href="#contact" class="btn-duo">
+        <span class="btn-plus">+</span>
+        <span class="btn-label">Découvrir le programme</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── NOUS CHOISIR ───────────────────────────────────────────── -->
+<div class="navy-bar"></div>
+
+<section class="choisir" id="choisir">
+  <div class="choisir-grid">
+    <div class="choisir-text">
+      <h2>Pourquoi choisir Learndigi ?</h2>
+      <p>Nous ne sommes pas une plateforme généraliste. Nous formons exclusivement les professionnels de la distribution d'assurance — avec un contenu construit sur les vrais problèmes de terrain.</p>
+      <ul class="choisir-list">
+        <li>Formations 100 % e-learning, accessibles à votre rythme, sur mobile ou ordinateur</li>
+        <li>15 heures validantes DDA — renouvellement ORIAS garanti</li>
+        <li>Financement à 100 % via OPCO ATLAS pour les cabinets du secteur assurance</li>
+        <li>Outils IA testés et applicables dès la semaine 1 dans votre cabinet</li>
+        <li>Parcours adapté à la taille de votre structure (solo, PME, grand cabinet)</li>
+        <li>Contenu mis à jour trimestriellement (AI Act, nouvelles versions ChatGPT, Claude)</li>
+      </ul>
+      <a href="#contact" class="btn-duo">
+        <span class="btn-plus">+</span>
+        <span class="btn-label">Nous contacter</span>
+      </a>
+    </div>
+    <div>
+      <img class="choisir-img" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80&fit=crop" alt="Collaboration conseil"/>
+    </div>
+  </div>
+</section>
+
+<!-- ── HERO 2 ──────────────────────────────────────────────────── -->
+<div class="hero2">
+  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80&fit=crop" alt="Collaboration digitale"/>
+  <div class="hero2-ov"></div>
+  <div class="hero2-stripe"></div>
+</div>
+
+<!-- ── VIDÉO ──────────────────────────────────────────────────── -->
+<section class="video-section">
+  <div class="video-bg"></div>
+  <div class="video-inner">
+
+    <div class="video-text">
+      <span class="video-eyebrow">Présentation</span>
+      <h2>Learndigi en <em>2 minutes</em></h2>
+      <p>Découvrez comment nos formations transforment concrètement le quotidien des courtiers en assurance — de la gestion des relances à la rédaction des contrats.</p>
+      <div class="video-stats">
+        <div class="vstat">
+          <strong>15h</strong>
+          <span>Validantes DDA</span>
+        </div>
+        <div class="vstat">
+          <strong>100%</strong>
+          <span>Finançable</span>
+        </div>
+        <div class="vstat">
+          <strong>J+1</strong>
+          <span>Applicable</span>
+        </div>
+      </div>
+      <div class="video-cta-row">
+        <a href="#contact" class="btn-duo">
+          <span class="btn-plus">+</span>
+          <span class="btn-label">Demander le programme</span>
+        </a>
+        <a href="#rdv" class="video-link">Prendre RDV →</a>
+      </div>
+    </div>
+
+    <!-- AI Chat Mockup animé -->
+    <div class="ai-mockup">
+      <div class="ai-mockup-bar">
+        <div class="ai-mockup-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="ai-mockup-title">Learndigi — Assistant IA Courtage</div>
+      </div>
+      <div class="ai-mockup-body" id="aiChat">
+        <div class="ai-tag">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          Cas d'usage en direct
+        </div>
+      </div>
+      <div class="ai-mockup-footer">
+        <div class="ai-input-mock">Posez une question à votre assistant...</div>
+        <div class="ai-send-btn"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FAQ ────────────────────────────────────────────────────── -->
+<section class="faq-section">
+  <div class="faq-header">
+    <h2>Questions fréquentes</h2>
+    <p>Tout ce que vous devez savoir avant de vous inscrire.</p>
+  </div>
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        La formation est-elle vraiment finançable à 100 % ?
+        <span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span>
+      </button>
+      <div class="faq-a">
+        <p>Oui. Nos formations sont éligibles au financement <strong>OPCO ATLAS</strong>, l'opérateur de compétences du secteur de l'assurance et de la finance. Si votre cabinet compte moins de 50 salariés, vous pouvez financer la totalité du coût pédagogique via votre plan de développement des compétences. Nous vous accompagnons dans les démarches administratives.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Les heures sont-elles validantes pour le renouvellement DDA / ORIAS ?
+        <span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span>
+      </button>
+      <div class="faq-a">
+        <p>Oui. Notre programme représente <strong>15 heures de formation validantes DDA</strong> (Directive sur la Distribution d'Assurances), directement comptabilisables pour votre renouvellement ORIAS annuel. Une attestation de formation vous est remise à l'issue du parcours.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Faut-il des compétences techniques en informatique ?
+        <span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span>
+      </button>
+      <div class="faq-a">
+        <p>Aucune compétence technique n'est requise. Nos formations sont conçues <strong>pour des professionnels de l'assurance</strong>, pas pour des informaticiens. Vous apprenez à utiliser ChatGPT, Claude et les outils d'automatisation directement dans votre quotidien de courtier, avec des cas pratiques métier dès le premier module.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Comment se déroule la formation en ligne ?
+        <span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span>
+      </button>
+      <div class="faq-a">
+        <p>La formation est <strong>100 % en ligne, en accès libre</strong>. Vous progressez à votre rythme, depuis votre ordinateur, tablette ou smartphone. Chaque module contient des vidéos, des exercices pratiques et des ressources téléchargeables. Vous avez accès à la plateforme pendant toute la durée de votre parcours.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Puis-je tester avant de m'engager ?
+        <span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span>
+      </button>
+      <div class="faq-a">
+        <p>Oui. Nous proposons un <strong>rendez-vous découverte gratuit de 30 minutes</strong> en visioconférence Teams. C'est l'occasion de présenter le programme, de comprendre vos besoins et de vérifier que la formation correspond à votre situation. Réservez directement via le bouton ci-dessus.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        La formation est-elle adaptée à mon cabinet (taille, spécialité) ?
+        <span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></span>
+      </button>
+      <div class="faq-a">
+        <p>Nous proposons <strong>3 parcours selon la taille de votre structure</strong> : courtier indépendant, cabinet PME (2–20 pers.), grand cabinet (20+ pers.). Chaque parcours est calibré sur les problématiques spécifiques à votre profil. Lors du RDV découverte, nous validons ensemble le parcours le plus adapté.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── RDV TEAMS ───────────────────────────────────────────────── -->
+<section class="rdv-section" id="rdv">
+  <div class="rdv-header">
+    <h2>Prenez rendez-vous avec nous</h2>
+    <p>Un échange de 30 minutes en visioconférence Teams pour découvrir nos formations, poser vos questions et trouver le parcours adapté à votre cabinet.</p>
+  </div>
+  <div class="rdv-grid">
+    <div class="rdv-info">
+      <h3>Comment ça se passe ?</h3>
+      <ul class="rdv-steps">
+        <li>
+          <span class="rdv-num">1</span>
+          <div><strong style="color:var(--navy);display:block;margin-bottom:4px">Choisissez un créneau</strong>Sélectionnez le jour et l'heure qui vous convient parmi nos disponibilités.</div>
+        </li>
+        <li>
+          <span class="rdv-num">2</span>
+          <div><strong style="color:var(--navy);display:block;margin-bottom:4px">Recevez le lien Teams</strong>Un e-mail de confirmation avec le lien de réunion Microsoft Teams vous est envoyé immédiatement.</div>
+        </li>
+        <li>
+          <span class="rdv-num">3</span>
+          <div><strong style="color:var(--navy);display:block;margin-bottom:4px">On se retrouve en ligne</strong>30 minutes pour présenter le programme, répondre à vos questions et valider votre parcours.</div>
+        </li>
+      </ul>
+      <div class="rdv-tags">
+        <span class="rdv-tag"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg> Via Microsoft Teams</span>
+        <span class="rdv-tag"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg> 30 min — Gratuit</span>
+        <span class="rdv-tag"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> Sans engagement</span>
+      </div>
+    </div>
+
+    <div class="rdv-widget">
+      <div class="booking-widget">
+        <div class="booking-header">
+          <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+          <div>
+            <strong>Choisissez un créneau</strong>
+            <span>Semaine du <span id="week-label"></span></span>
+          </div>
+          <div class="booking-nav">
+            <button onclick="changeWeek(-1)">&#8249;</button>
+            <button onclick="changeWeek(1)">&#8250;</button>
+          </div>
+        </div>
+        <div class="booking-days" id="booking-days"></div>
+        <div class="booking-confirm" id="booking-confirm" style="display:none">
+          <div class="booking-selected-info" id="booking-selected-info"></div>
+          <input class="booking-name-input" id="booking-name" type="text" placeholder="Votre nom et prénom *" required/>
+          <input class="booking-name-input" id="booking-email" type="email" placeholder="Votre adresse e-mail *" required/>
+          <button class="booking-send-btn" onclick="sendBooking()">
+            <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            Confirmer le rendez-vous
+          </button>
+          <button class="booking-cancel-btn" onclick="cancelBooking()">← Choisir un autre créneau</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ────────────────────────────────────────────────── -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+
+    <!-- Gauche : équipe -->
+    <div class="contact-team">
+      <span class="contact-eyebrow">Nous contacter</span>
+      <h2>Parlons de votre cabinet</h2>
+      <p>Une question sur nos formations, un devis, ou simplement en savoir plus ? Écrivez-nous ou contactez directement l'un des fondateurs.</p>
+
+      <div class="team-row">
+        <div class="team-card">
+          <div class="team-photo-wrap">
+            <img src="matthieu.jpg" alt="Matthieu Brubach" class="team-photo team-grey"/>
+          </div>
+          <div class="team-name">Matthieu Brubach</div>
+          <div class="team-role">Co-fondateur</div>
+          <a href="mailto:matthieu.brubach@essca.eu" class="team-contact">matthieu.brubach@essca.eu</a>
+          <a href="tel:0667996379" class="team-contact">06 67 99 63 79</a>
+        </div>
+
+        <div class="team-card">
+          <div class="team-photo-wrap">
+            <img src="hugo.jpg" alt="Hugo Salembier" class="team-photo"/>
+          </div>
+          <div class="team-name">Hugo Salembier</div>
+          <div class="team-role">Co-fondateur</div>
+          <a href="mailto:hugo.salembier@essca.eu" class="team-contact">hugo.salembier@essca.eu</a>
+          <a href="tel:0633639605" class="team-contact">06 33 63 96 05</a>
+        </div>
+      </div>
+    </div>
+
+      <a href="https://www.linkedin.com/company/learndigi" target="_blank" rel="noopener" class="contact-linkedin">
+        <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+        Suivez-nous sur LinkedIn
+      </a>
+    </div>
+
+    <!-- Droite : formulaire -->
+    <div class="contact-form-wrap">
+      <form id="contactForm" onsubmit="sendForm(event)">
+        <div class="crow">
+          <div class="cfield">
+            <label for="cnom">Votre nom *</label>
+            <input id="cnom" type="text" placeholder="Prénom et nom" required/>
+          </div>
+          <div class="cfield">
+            <label for="cemail">Votre e-mail *</label>
+            <input id="cemail" type="email" placeholder="adresse@email.com" required/>
+          </div>
+        </div>
+        <div class="cfield cmsg">
+          <label for="cmessage">Votre message *</label>
+          <textarea id="cmessage" placeholder="Décrivez votre cabinet, vos besoins..." required></textarea>
+        </div>
+        <div id="formMsg" style="text-align:center;font-size:13px;color:rgba(255,255,255,.7);margin-bottom:12px;min-height:20px;"></div>
+        <div class="cdiv"></div>
+        <button type="submit" class="csub">Envoyer le message</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── NEWSLETTER ────────────────────────────────────────────── -->
+<section class="newsletter">
+  <div class="newsletter-inner" style="max-width:620px">
+    <span class="newsletter-eyebrow">Newsletter hebdomadaire</span>
+    <h3>L'IA du courtier — chaque semaine</h3>
+    <p class="newsletter-sub">Actualités IA, outils pratiques et conseils pour les courtiers en assurance indépendants.</p>
+    <a href="https://cb6dd451.sibforms.com/serve/MUIFAJdt6Le4DiYo_VOKQB19tcawXtJEFgvbLlN2kHcUHCG10VYgoYKwFllwbR-7X4vUc0GUhp_GPQDpX0Cv2WnOMHBwExzlg7Ho0TtsmFfiFL6jX3PtnQZpRwR5mVUEQp265L6PsBg_2703qrFD6YR9WhlzpGynxWYYOfUn7AIUINHwE4_tsinLzjKU_kYp4kswIaEmgCyRPlB6rg==" target="_blank" rel="noopener" class="hero-btn-primary" style="display:inline-block;margin-top:8px;text-decoration:none;">
+      S'inscrire à la newsletter
+    </a>
+    <p class="nl-legal" style="margin-top:20px">Aucun spam · Désabonnement en un clic · Données traitées par Brevo (RGPD)</p>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer>
+  <div class="finfo">
+    <div class="fadr">
+      88 rue de Champigny<br/>
+      94430 Chennevières-sur-Marne<br/>
+      France
+    </div>
+    <div class="fcontact">
+      <p>E-mail. matthieu.brubach@essca.eu</p>
+      <p>E-mail. hugo.salembier@essca.eu</p>
+      <p>Tél. 06 67 99 63 79</p>
+      <p>Tél. 06 33 63 96 05</p>
+    </div>
+  </div>
+  <div class="flinks">
+    <a href="#" onclick="openModal('modal-mentions');return false;">Mentions légales</a>
+    <a href="#" onclick="openModal('modal-cookies');return false;">Politique en matière de cookies</a>
+    <a href="#" onclick="openModal('modal-confidentialite');return false;">Politique de confidentialité</a>
+    <a href="#" onclick="openModal('modal-cgu');return false;">Conditions d'utilisation</a>
+  </div>
+  <div class="fbot">
+    <span class="fcopy">© 2026 – Learndigi. Tous droits réservés</span>
+    <a href="#accueil" class="fup">∧</a>
+  </div>
+</footer>
+
+<!-- ── COOKIE BANNER ──────────────────────────────────────────── -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-text">
+    <strong>🍪 Ce site utilise des cookies</strong>
+    <p>Nous utilisons des cookies techniques nécessaires au fonctionnement du site et Google Fonts pour l'affichage des polices.
+    Aucun cookie publicitaire n'est déposé. En savoir plus dans notre
+    <a href="#" onclick="openModal('modal-cookies');return false;">politique cookies</a>.</p>
+  </div>
+  <div class="cookie-btns">
+    <button class="cookie-refuse" onclick="handleCookies(false)">Refuser</button>
+    <button class="cookie-accept" onclick="handleCookies(true)">Tout accepter</button>
+  </div>
+</div>
+
+<!-- ── MODALES LÉGALES ─────────────────────────────────────────── -->
+
+<div class="modal-overlay" id="modal-mentions" onclick="closeOnBg(event,this)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-mentions')">✕</button>
+    <h3>Mentions légales</h3>
+    <h4>Éditeur du site</h4>
+    <p>Learndigi — Formation Digitale<br/>
+    88 rue de Champigny, 94430 Chennevières-sur-Marne, France<br/>
+    E-mail : matthieu.brubach@essca.eu</p>
+    <h4>Responsables de la publication</h4>
+    <p>Matthieu Brubach et Hugo Salembier, co-fondateurs de Learndigi.</p>
+    <h4>Hébergement</h4>
+    <p>Ce site est hébergé localement ou sur un serveur tiers. Pour toute question relative à l'hébergement, contactez-nous à l'adresse indiquée ci-dessus.</p>
+    <h4>Propriété intellectuelle</h4>
+    <p>L'ensemble des contenus présents sur ce site (textes, images, logos, structure) est la propriété exclusive de Learndigi et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle. Toute reproduction, même partielle, est strictement interdite sans autorisation préalable écrite.</p>
+    <h4>Responsabilité</h4>
+    <p>Learndigi s'efforce de fournir des informations exactes et à jour. Toutefois, nous ne pouvons garantir l'exactitude, la complétude ou l'actualité des informations diffusées sur ce site.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-cookies" onclick="closeOnBg(event,this)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-cookies')">✕</button>
+    <h3>Politique en matière de cookies</h3>
+    <h4>Qu'est-ce qu'un cookie ?</h4>
+    <p>Un cookie est un petit fichier texte déposé sur votre terminal (ordinateur, tablette, smartphone) lors de la visite d'un site web.</p>
+    <h4>Cookies utilisés sur ce site</h4>
+    <p>Ce site utilise uniquement des cookies techniques strictement nécessaires au bon fonctionnement des pages (navigation, formulaire de contact). Aucun cookie de tracking ou publicitaire n'est déposé.</p>
+    <h4>Google Fonts</h4>
+    <p>Ce site utilise Google Fonts pour l'affichage des polices de caractères. Google peut déposer des cookies liés à ce service. Pour en savoir plus : <a href="https://policies.google.com/privacy" target="_blank" style="color:var(--navy)">politique de confidentialité de Google</a>.</p>
+    <h4>Vos droits</h4>
+    <p>Conformément au RGPD et à la loi Informatique et Libertés, vous pouvez vous opposer au dépôt de cookies en configurant votre navigateur. La désactivation des cookies peut affecter votre expérience de navigation.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-confidentialite" onclick="closeOnBg(event,this)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-confidentialite')">✕</button>
+    <h3>Politique de confidentialité</h3>
+    <h4>Responsable du traitement</h4>
+    <p>Learndigi — Matthieu Brubach &amp; Hugo Salembier<br/>88 rue de Champigny, 94430 Chennevières-sur-Marne</p>
+    <h4>Données collectées</h4>
+    <p>Via le formulaire de contact, nous collectons : votre nom, votre adresse e-mail et votre message. Ces données sont transmises directement par e-mail et ne sont pas stockées sur un serveur tiers.</p>
+    <h4>Finalité du traitement</h4>
+    <p>Les données collectées sont utilisées exclusivement pour répondre à vos demandes de contact et vous fournir des informations sur nos formations.</p>
+    <h4>Durée de conservation</h4>
+    <p>Vos données sont conservées le temps nécessaire au traitement de votre demande, et au maximum 3 ans à compter du dernier contact.</p>
+    <h4>Vos droits (RGPD)</h4>
+    <ul>
+      <li>Droit d'accès à vos données personnelles</li>
+      <li>Droit de rectification ou d'effacement</li>
+      <li>Droit à la portabilité de vos données</li>
+      <li>Droit d'opposition au traitement</li>
+    </ul>
+    <p>Pour exercer vos droits, contactez-nous : matthieu.brubach@essca.eu</p>
+    <h4>Autorité de contrôle</h4>
+    <p>En cas de réclamation, vous pouvez contacter la CNIL : <a href="https://www.cnil.fr" target="_blank" style="color:var(--navy)">www.cnil.fr</a></p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-cgu" onclick="closeOnBg(event,this)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-cgu')">✕</button>
+    <h3>Conditions d'utilisation</h3>
+    <h4>Accès au site</h4>
+    <p>L'accès au site Learndigi est libre et gratuit. Learndigi se réserve le droit de modifier, suspendre ou interrompre l'accès au site à tout moment, sans préavis.</p>
+    <h4>Utilisation du contenu</h4>
+    <p>Le contenu de ce site est fourni à titre informatif. Toute reproduction, distribution ou utilisation commerciale du contenu sans autorisation écrite préalable de Learndigi est interdite.</p>
+    <h4>Formations</h4>
+    <p>Les formations proposées par Learndigi sont soumises à des conditions générales de vente spécifiques, communiquées lors de l'inscription. Le financement via OPCO ATLAS est soumis aux règles en vigueur de cet organisme.</p>
+    <h4>Liens hypertextes</h4>
+    <p>Ce site peut contenir des liens vers des sites tiers. Learndigi n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.</p>
+    <h4>Droit applicable</h4>
+    <p>Les présentes conditions sont régies par le droit français. Tout litige sera soumis à la compétence exclusive des tribunaux français.</p>
+    <h4>Contact</h4>
+    <p>Pour toute question : matthieu.brubach@essca.eu</p>
+  </div>
+</div>
+
+<script>
+  // ── AI Chat animation ────────────────────────────────────────
+  const CONVERSATIONS = [
+    {
+      user: "Rédige un email de relance pour un client dont la prime est impayée depuis 15 jours.",
+      ai: "Objet : Rappel — Règlement de votre prime d'assurance\n\nBonjour [Prénom],\n\nSauf erreur de notre part, votre prime échue le [date] d'un montant de [X]€ n'a pas encore été réglée.\n\nAfin d'éviter toute suspension de garantie, nous vous invitons à procéder au paiement avant le [date limite].\n\nRestant à votre disposition, [Signature]"
+    },
+    {
+      user: "Résume ce contrat MRH en 3 points clés pour mon client.",
+      ai: "Voici les 3 points essentiels à retenir :\n\n1. Garanties incluses : incendie, dégâts des eaux, vol — franchise de 150€.\n\n2. Exclusions principales : dommages causés par vétusté, négligence grave ou sinistres non déclarés sous 5 jours.\n\n3. Plafond d'indemnisation : 250 000€ pour le bâtiment, 80 000€ pour le contenu."
+    },
+    {
+      user: "Quels sont les points de vigilance RGPD si j'utilise ChatGPT avec des données clients ?",
+      ai: "3 règles clés à respecter :\n\n1. Ne jamais saisir de données personnelles identifiables (nom, IBAN, n° contrat) dans un outil IA public.\n\n2. Utiliser des versions enterprise (ChatGPT Teams, Claude Pro) qui ne réentraînent pas sur vos données.\n\n3. Documenter l'usage dans votre registre de traitement RGPD — c'est une obligation légale."
+    }
+  ];
+
+  let convIndex = 0;
+  let chatRunning = false;
+
+  function typeText(el, text, speed, cb){
+    let i = 0;
+    el.textContent = '';
+    const cursor = document.createElement('span');
+    cursor.className = 'cursor';
+    el.appendChild(cursor);
+    const iv = setInterval(()=>{
+      if(i < text.length){
+        el.insertBefore(document.createTextNode(text[i]), cursor);
+        i++;
+      } else {
+        clearInterval(iv);
+        cursor.remove();
+        if(cb) setTimeout(cb, 800);
+      }
+    }, speed);
+  }
+
+  function runConversation(){
+    if(chatRunning) return;
+    chatRunning = true;
+    const chat = document.getElementById('aiChat');
+    const conv = CONVERSATIONS[convIndex % CONVERSATIONS.length];
+    convIndex++;
+
+    // Reset — keep only the tag
+    chat.innerHTML = `<div class="ai-tag"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>Cas d'usage en direct</div>`;
+
+    // User message
+    setTimeout(()=>{
+      const userMsg = document.createElement('div');
+      userMsg.className = 'msg-user';
+      chat.appendChild(userMsg);
+      typeText(userMsg, conv.user, 28, ()=>{
+
+        // AI response
+        const aiMsg = document.createElement('div');
+        aiMsg.className = 'msg-ai';
+        aiMsg.innerHTML = `<div class="msg-ai-header"><div class="msg-ai-avatar"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div><span class="msg-ai-name">LEARNDIGI AI</span></div>`;
+        const aiText = document.createElement('div');
+        aiMsg.appendChild(aiText);
+        chat.appendChild(aiMsg);
+        chat.scrollTop = chat.scrollHeight;
+        typeText(aiText, conv.ai, 14, ()=>{
+          chatRunning = false;
+          setTimeout(runConversation, 3500);
+        });
+      });
+    }, 400);
+  }
+
+  // Start after page load
+  setTimeout(runConversation, 1200);
+
+  // ── Cookie banner ───────────────────────────────────────────
+  (function(){
+    if(!localStorage.getItem('ld_cookies')){
+      setTimeout(()=>document.getElementById('cookieBanner').classList.add('visible'), 800);
+    }
+  })();
+  function handleCookies(accepted){
+    localStorage.setItem('ld_cookies', accepted ? 'accepted' : 'refused');
+    const banner = document.getElementById('cookieBanner');
+    banner.classList.remove('visible');
+    setTimeout(()=>banner.style.display='none', 400);
+  }
+
+  // ── Booking widget ──────────────────────────────────────────
+  const SLOTS = {
+    'Lundi':    ['09:00','10:00','14:00','15:00','16:00'],
+    'Mardi':    ['09:00','10:00','11:00','14:00','15:00'],
+    'Mercredi': ['10:00','11:00','14:00','16:00'],
+    'Jeudi':    ['09:00','10:00','14:00','15:00','16:00'],
+    'Vendredi': ['09:00','10:00','11:00','14:00'],
+  };
+  const DAY_NAMES = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi'];
+  let weekOffset = 0;
+  let selectedSlot = null;
+
+  function getMonday(offset){
+    const d = new Date();
+    const day = d.getDay();
+    const diff = d.getDate() - day + (day===0?-6:1) + offset*7;
+    d.setDate(diff);
+    d.setHours(0,0,0,0);
+    return d;
+  }
+
+  function formatDate(d){
+    return d.toLocaleDateString('fr-FR',{day:'numeric',month:'long'});
+  }
+
+  function renderBooking(){
+    const monday = getMonday(weekOffset);
+    const friday = new Date(monday); friday.setDate(monday.getDate()+4);
+    document.getElementById('week-label').textContent =
+      formatDate(monday) + ' – ' + formatDate(friday);
+
+    const container = document.getElementById('booking-days');
+    container.innerHTML = '';
+
+    DAY_NAMES.forEach((name, i) => {
+      const date = new Date(monday); date.setDate(monday.getDate()+i);
+      const isPast = date < new Date(new Date().setHours(0,0,0,0));
+      const row = document.createElement('div');
+      row.className = 'booking-day-row';
+      const label = document.createElement('div');
+      label.className = 'booking-day-label';
+      label.textContent = name + ' ' + date.getDate();
+      row.appendChild(label);
+      const slotsDiv = document.createElement('div');
+      slotsDiv.className = 'booking-slots';
+      if(isPast){
+        slotsDiv.innerHTML = '<span style="font-size:12px;color:#ccc;font-style:italic">Passé</span>';
+      } else {
+        SLOTS[name].forEach(time => {
+          const btn = document.createElement('button');
+          btn.className = 'slot-btn';
+          btn.textContent = time;
+          btn.onclick = () => selectSlot(date, name, time, btn);
+          slotsDiv.appendChild(btn);
+        });
+      }
+      row.appendChild(slotsDiv);
+      container.appendChild(row);
+    });
+  }
+
+  function selectSlot(date, dayName, time, btn){
+    document.querySelectorAll('.slot-btn').forEach(b=>b.classList.remove('selected'));
+    btn.classList.add('selected');
+    const dateStr = date.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    selectedSlot = { dateStr, time };
+    document.getElementById('booking-selected-info').innerHTML =
+      '📅 <strong>' + dateStr.charAt(0).toUpperCase()+dateStr.slice(1) + '</strong> à <strong>' + time + '</strong> — Visioconférence Teams (30 min)';
+    document.getElementById('booking-days').style.display='none';
+    const confirm = document.getElementById('booking-confirm');
+    confirm.style.display='flex';
+    confirm.style.flexDirection='column';
+  }
+
+  function cancelBooking(){
+    selectedSlot = null;
+    const days = document.getElementById('booking-days');
+    days.style.display='flex';
+    days.style.flexDirection='column';
+    document.getElementById('booking-confirm').style.display='none';
+    document.querySelectorAll('.slot-btn').forEach(b=>b.classList.remove('selected'));
+  }
+
+  function sendBooking(){
+    const name  = document.getElementById('booking-name').value.trim();
+    const email = document.getElementById('booking-email').value.trim();
+    if(!name || !email){ alert('Veuillez remplir votre nom et votre e-mail.'); return; }
+    const subject = encodeURIComponent('Demande de RDV Learndigi — ' + selectedSlot.dateStr + ' à ' + selectedSlot.time);
+    const body = encodeURIComponent(
+      'Bonjour,\n\nJe souhaite réserver le créneau suivant :\n' +
+      '📅 ' + selectedSlot.dateStr + ' à ' + selectedSlot.time + '\n\n' +
+      'Nom : ' + name + '\nE-mail : ' + email + '\n\n' +
+      'Merci de confirmer ce rendez-vous Teams.\n\nCordialement,\n' + name
+    );
+    window.location.href = 'mailto:matthieu.brubach@essca.eu,hugo.salembier@essca.eu?subject='+subject+'&body='+body;
+    document.getElementById('booking-confirm').innerHTML =
+      '<div style="text-align:center;padding:30px 0;color:var(--navy)">' +
+      '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" style="margin-bottom:12px"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#1B2C6B" stroke-width="1.5" stroke-linecap="round"/></svg>' +
+      '<div style="font-family:Raleway,sans-serif;font-size:17px;font-weight:700;margin-bottom:8px">Demande envoyée !</div>' +
+      '<div style="font-size:13px;color:#888">Votre messagerie va s\'ouvrir. Nous confirmons sous 24h.</div></div>';
+  }
+
+  function changeWeek(dir){
+    const newOffset = weekOffset + dir;
+    if(newOffset < 0) return;
+    weekOffset = newOffset;
+    renderBooking();
+    cancelBooking();
+  }
+
+  renderBooking();
+
+  // ── FAQ accordion ───────────────────────────────────────────
+  function toggleFaq(btn){
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    // Ferme tous
+    document.querySelectorAll('.faq-q.open').forEach(b=>{
+      b.classList.remove('open');
+      b.nextElementSibling.classList.remove('open');
+    });
+    // Ouvre celui-ci si pas déjà ouvert
+    if(!isOpen){
+      btn.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
+
+  // ── Modales légales ─────────────────────────────────────────
+  function openModal(id){
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeModal(id){
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow='';
+  }
+  function closeOnBg(e,overlay){
+    if(e.target===overlay) closeModal(overlay.id);
+  }
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){
+      document.querySelectorAll('.modal-overlay.open').forEach(m=>{
+        m.classList.remove('open');
+        document.body.style.overflow='';
+      });
+    }
+  });
+
+  // ── Nav active on click ─────────────────────────────────────
+  function setNav(el){
+    document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+
+  // ── Nav scroll highlight ─────────────────────────────────────
+  // Page order: accueil(0) → formations(1) → choisir(2) → rdv(3) → contact(4)
+  // Nav order:  Accueil(0) | Nous choisir(1) | Nos services(2) | Contact(3)
+  window.addEventListener('scroll',()=>{
+    const sc = window.scrollY + 130;
+    const links = document.querySelectorAll('.nav-links a');
+    const map = {accueil:0, formations:2, choisir:1, rdv:3, contact:3};
+    let act = 0;
+    Object.entries(map).forEach(([id, navIdx])=>{
+      const el = document.getElementById(id);
+      if(el && el.offsetTop <= sc) act = navIdx;
+    });
+    links.forEach((l,i)=>l.classList.toggle('active', i===act));
+  });
+
+  // ── Contact form → mailto ────────────────────────────────────
+  function sendForm(e){
+    e.preventDefault();
+    const nom     = document.getElementById('cnom').value.trim();
+    const email   = document.getElementById('cemail').value.trim();
+    const message = document.getElementById('cmessage').value.trim();
+    const msg     = document.getElementById('formMsg');
+
+    if(!nom || !email || !message){
+      msg.style.color='#ffaaaa';
+      msg.textContent='Veuillez remplir tous les champs.';
+      return;
+    }
+
+    const subject = encodeURIComponent('Demande de contact — Learndigi');
+    const body    = encodeURIComponent(
+      'Nom : ' + nom + '\n' +
+      'Email : ' + email + '\n\n' +
+      message
+    );
+    const mailto  = 'mailto:matthieu.brubach@essca.eu,hugo.salembier@essca.eu'
+                  + '?subject=' + subject
+                  + '&body=' + body;
+
+    window.location.href = mailto;
+
+    msg.style.color='rgba(255,255,255,.75)';
+    msg.textContent='Votre messagerie va s\'ouvrir. Merci !';
+    document.getElementById('contactForm').reset();
+  }
+
+  // Newsletter : gérée via le formulaire Brevo intégré (iframe)
+</script>
+</body>
+</html>
