@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Le programme — Learndigi | Formation IA pour Courtiers en Assurance</title>
+  <meta name="description" content="Le programme détaillé de la formation IA Learndigi pour courtiers en assurance : 8 modules, 7h validantes DDA, finançable OPCO ATLAS."/>
+  <link rel="canonical" href="https://www.learndigi.fr/programme.html"/>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#1B2C6B;--navy-dark:#152259;--red:#C0392B;--red2:#a93226;
+      --grey:#F2F2F2;--card:#EBEBEB;--white:#fff;--txt:#444;
+      --ink:#0A0E24;--gold:#E8921A;--gold-dim:rgba(232,146,26,.7);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Open Sans',sans-serif;color:var(--navy);background:#fff;overflow-x:hidden}
+
+    /* ANIMATIONS */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1)}
+    .reveal.in{opacity:1;transform:none}
+    @media(prefers-reduced-motion:reduce){
+      .reveal{transition:none!important;opacity:1!important;transform:none!important}
+    }
+
+    /* NAV */
+    nav{position:sticky;top:0;z-index:999;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:92px;box-shadow:0 1px 10px rgba(0,0,0,0.09);transition:height .25s ease,box-shadow .25s ease}
+    nav.scrolled{height:72px;box-shadow:0 6px 28px rgba(10,14,36,.12)}
+    .logo-wrap{display:flex;align-items:flex-end;text-decoration:none;gap:8px;flex-shrink:0;padding:4px 0}
+    .logo-block{display:flex;flex-direction:column;align-items:flex-start}
+    .logo-name{font-family:'Raleway',sans-serif;font-size:32px;font-weight:900;line-height:1;letter-spacing:-1px}
+    .logo-name .ln{color:#1A2340}
+    .logo-name .ld{color:#4A7FD4}
+    .logo-sub{margin-top:6px}
+    .logo-sub span{font-family:'Raleway',sans-serif;font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#999}
+    .logo-bar{display:inline-block;width:2px;height:28px;background:#E8921A;flex-shrink:0;margin-bottom:6px}
+    .nav-links{display:flex;gap:55px;list-style:none}
+    .nav-links a{position:relative;font-family:'Raleway',sans-serif;font-size:15px;font-weight:600;color:var(--navy);text-decoration:none;padding-bottom:8px;transition:color .2s}
+    .nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:center;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+    .nav-links a:hover,.nav-links a.active{color:var(--red)}
+    .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+
+    /* BTN */
+    .btn-duo{display:inline-flex;align-items:stretch;text-decoration:none;border:none;cursor:pointer}
+    .btn-plus{background:var(--navy);color:#fff;width:44px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:300}
+    .btn-label{background:var(--red);color:#fff;padding:12px 28px;font-family:'Raleway',sans-serif;font-size:13px;font-weight:700;letter-spacing:.6px}
+    .btn-duo:hover .btn-label{background:var(--red2)}
+
+    /* PROGRAMME */
+    .programme{background:var(--grey);padding:80px 80px 90px}
+    .prog-banner{position:relative;height:340px;overflow:hidden;margin:-80px -80px 50px}
+    .prog-banner img{width:100%;height:100%;object-fit:cover;filter:saturate(.85);display:block}
+    .prog-banner-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,44,107,.74),rgba(21,34,89,.92))}
+    .prog-banner-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px}
+    .prog-banner-c .eb{font-family:'Raleway',sans-serif;font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:14px}
+    .prog-banner-c h1{font-family:'Raleway',sans-serif;font-size:44px;font-weight:800;color:#fff;margin-bottom:14px;letter-spacing:-.5px}
+    .prog-banner-c p{font-size:14.5px;color:rgba(255,255,255,.85);max-width:640px;line-height:1.8}
+    .prog-highlights{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:46px}
+    .prog-hl{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(27,44,107,.12);padding:10px 18px;font-family:'Raleway',sans-serif;font-size:13px;font-weight:600;color:var(--navy)}
+    .prog-hl svg{width:16px;height:16px;fill:var(--red);flex-shrink:0}
+    .prog-modules{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+    .prog-mod{background:#fff;display:flex;gap:24px;padding:26px 30px;position:relative;transition:transform .2s,box-shadow .2s}
+    .prog-mod:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(27,44,107,.1)}
+    .prog-mod::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:transparent;transition:background .25s}
+    .prog-mod:hover::before{background:var(--red)}
+    .prog-num{flex-shrink:0;width:54px;height:54px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Raleway',sans-serif;font-size:20px;font-weight:800;transition:background .25s}
+    .prog-num svg{width:24px;height:24px;fill:#fff}
+    .prog-mod:hover .prog-num{background:var(--red)}
+    .prog-mod::after{
+      content:'';position:absolute;inset:14px;pointer-events:none;
+      opacity:0;transition:opacity .3s ease,inset .3s cubic-bezier(.16,1,.3,1);
+      background-image:
+        linear-gradient(var(--gold),var(--gold)),linear-gradient(var(--gold),var(--gold)),
+        linear-gradient(var(--gold),var(--gold)),linear-gradient(var(--gold),var(--gold)),
+        linear-gradient(var(--gold),var(--gold)),linear-gradient(var(--gold),var(--gold)),
+        linear-gradient(var(--gold),var(--gold)),linear-gradient(var(--gold),var(--gold));
+      background-repeat:no-repeat;
+      background-size:14px 2px,2px 14px,14px 2px,2px 14px,14px 2px,2px 14px,14px 2px,2px 14px;
+      background-position:top left,top left,top right,top right,bottom left,bottom left,bottom right,bottom right;
+    }
+    .prog-mod:hover::after{opacity:1;inset:8px}
+    .prog-content{flex:1;min-width:0}
+    .prog-content h3{font-family:'Raleway',sans-serif;font-size:19px;font-weight:700;color:var(--navy);margin-bottom:8px}
+    .prog-content>p{font-size:13.5px;color:var(--txt);line-height:1.7;margin-bottom:13px}
+    .prog-points{display:flex;flex-wrap:wrap;gap:8px 20px}
+    .prog-pt{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--navy);font-weight:600}
+    .prog-pt svg{width:14px;height:14px;fill:var(--red);flex-shrink:0}
+    .prog-cta{position:relative;overflow:hidden;margin:64px -80px -90px;padding:78px 40px 84px;display:flex;justify-content:center;text-align:center}
+    .prog-cta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.65) brightness(.85);transition:transform 1s cubic-bezier(.16,1,.3,1)}
+    .prog-cta:hover img{transform:scale(1.05)}
+    .prog-cta::after{content:'';position:absolute;inset:0;background:linear-gradient(150deg,rgba(10,14,36,.93) 0%,rgba(27,44,107,.84) 100%)}
+    .prog-cta-c{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:20px;max-width:620px}
+    .prog-cta-c .eb{font-family:'Raleway',sans-serif;font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold)}
+    .prog-cta-c h2{font-family:'Raleway',sans-serif;font-size:34px;font-weight:800;color:#fff;line-height:1.2;letter-spacing:-.5px}
+    .prog-cta-c p{font-family:'Open Sans',sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,.82);line-height:1.8}
+    .prog-cta-c .btn-plus{background:var(--gold);color:var(--navy)}
+
+    /* FOOTER */
+    footer{background:var(--navy-dark);padding:50px 130px 28px}
+    .finfo{display:flex;justify-content:space-between;margin-bottom:36px}
+    .fadr{font-size:14px;color:rgba(255,255,255,.72);line-height:2.1}
+    .fcontact p{font-size:14px;color:rgba(255,255,255,.72);margin-bottom:12px;text-align:right}
+    .flinks{display:flex;gap:36px;margin-bottom:24px;flex-wrap:wrap}
+    .flinks a{font-size:12px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
+    .flinks a:hover{color:#fff}
+    .fbot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.1);padding-top:18px}
+    .fcopy{font-size:12px;color:rgba(255,255,255,.45)}
+    .fup{color:rgba(255,255,255,.45);font-size:18px;text-decoration:none;transition:color .2s}
+    .fup:hover{color:#fff}
+
+    @media(max-width:880px){
+      nav{padding:0 22px;height:74px}
+      .logo-name{font-size:26px}
+      .nav-links{gap:22px}
+      .nav-links a{font-size:13px}
+      .programme{padding:50px 20px}
+      .prog-mod{flex-direction:column;gap:16px;padding:22px}
+      .prog-banner{margin:-50px -20px 34px;height:240px}
+      .prog-banner-c h1{font-size:28px}
+      .prog-cta{margin:48px -20px -50px;padding:56px 24px 60px}
+      .prog-cta-c h2{font-size:26px}
+      footer{padding:40px 22px 24px}
+      .finfo{flex-direction:column;gap:24px}
+      .fcontact p{text-align:left}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ────────────────────────────────────────────────────── -->
+<nav>
+  <a href="index.html" class="logo-wrap">
+    <div class="logo-block">
+      <div class="logo-name"><span class="ln">Learn</span><span class="ld">digi</span></div>
+      <div class="logo-sub"><span>Formation Digitale</span></div>
+    </div>
+    <span class="logo-bar"></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#choisir">Nous choisir</a></li>
+    <li><a href="index.html#formations">Nos services</a></li>
+    <li><a href="programme.html" class="active">Programme</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── PROGRAMME ──────────────────────────────────────────────── -->
+<section class="programme">
+  <div class="prog-banner">
+    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80&fit=crop" alt="Formation IA pour courtiers en assurance"/>
+    <div class="prog-banner-ov"></div>
+    <div class="prog-banner-c">
+      <span class="eb">Le programme détaillé</span>
+      <h1>Votre parcours, module par module</h1>
+      <p>Un parcours progressif et 100 % métier : on apprend d'abord à dialoguer avec l'IA, puis on l'applique à chaque temps fort du quotidien d'un cabinet — avant de poser les garde-fous de conformité.</p>
+    </div>
+  </div>
+
+  <div class="prog-highlights">
+    <span class="prog-hl"><svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg> 100 % e-learning</span>
+    <span class="prog-hl"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg> 7 h validantes DDA</span>
+    <span class="prog-hl"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg> Finançable OPCO ATLAS</span>
+    <span class="prog-hl"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 13L2 10v7l10 5 10-5v-7l-10 5z"/></svg> 8 modules métier</span>
+  </div>
+
+  <div class="prog-modules">
+
+    <div class="prog-mod"><div class="prog-num"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><div class="prog-content">
+      <h3>Introduction — L'IA dans l'assurance</h3>
+      <p>Comprendre ce qu'est vraiment l'IA, pourquoi elle transforme le métier de courtier, et acquérir le vocabulaire essentiel pour suivre le parcours.</p>
+      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Enjeux &amp; opportunités</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Vocabulaire clé</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Chiffres à retenir</span></div>
+    </div></div>
+
+    <div class="prog-mod"><div class="prog-num">01</div><div class="prog-content">
+      <h3>Socle IA &amp; prompting</h3>
+      <p>Apprendre à dialoguer efficacement avec l'IA et créer son « Projet Cabinet » — la mémoire de votre cabinet, réutilisée tout au long du parcours.</p>
+      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>La méthode du bon prompt</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Bons &amp; mauvais usages</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Le Projet Cabinet</span></div>
+    </div></div>
+
+    <div class="prog-mod"><div class="prog-num">02</div><div class="prog-content">
+      <h3>Claude, l'assistant du courtier</h3>
+      <p>Prendre Claude en main et découvrir ce qu'il change concrètement au quotidien d'un cabinet — un assistant fiable, pensé pour le conseil.</p>
+      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Prise en main</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Les fonctions clés</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Sécurité des données</span></div>
+    </div></div>
+
+    <div class="prog-mod"><div class="prog-num">03</div><div class="prog-content">
+      <h3>Claude dans Microsoft 365</h3>
+      <p>Installer et utiliser Claude directement dans Excel, Word, PowerPoint et Outlook, sans jamais changer de fenêtre.</p>
+      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Excel : analyse de portefeuille</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Word &amp; PowerPoint</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Installation pas à pas</span></div>
+    </div></div>
+
+    <div class="prog-mod"><div class="prog-num">04</div><div class="prog-content">
+      <h3>Gestion des mails &amp; messagerie</h3>
+      <p>Reprendre le contrôle de sa boîte mail : trier, répondre, résumer et relancer — sans y passer ses journées.</p>
+      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Réponses en quelques secondes</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Bibliothèque de modèles</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Relances automatisées</span></div>
+    </div></div>
+
+    <div class="prog-mod"><div class="prog-num">05</div><div class="prog-content">
+      <h3>Prospection</h3>
+      <p>Cibler, contacter et convaincre de nouveaux prospects, et faire connaître son cabinet grâce à un contenu de qualité.</p>
+      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Qualifier une liste</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Messages personnalisés</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Contenu &amp; visibilité</span></div>
+    </div></div>
+
+    <div class="prog-mod"><div class="prog-num">06</div><div class="prog-content">
+      <h3>Fidélisation du portefeuille</h3>
+      <p>Surveiller, comprendre et développer son portefeuille — segmenter, anticiper, fidéliser et automatiser le suivi avec des routines.</p>
+      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Revues annuelles</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Analyse de portefeuille</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Routines automatisées</span></div>
+    </div></div>
+
+    <div class="prog-mod"><div class="prog-num">07</div><div class="prog-content">
+      <h3>AI Act &amp; sécurité des données</h3>
+      <p>Maîtriser le cadre légal et sécuriser durablement l'usage de l'IA dans le cabinet, données clients comprises.</p>
+      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>RGPD &amp; données sensibles</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Charte IA interne</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Cybersécurité (alerte ACPR)</span></div>
+    </div></div>
+
+    <div class="prog-mod"><div class="prog-num">08</div><div class="prog-content">
+      <h3>IA responsable &amp; RSE</h3>
+      <p>Maîtriser l'empreinte de l'IA et en faire un argument de différenciation auprès de vos clients et de vos compagnies.</p>
+      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Sobriété numérique</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Gouvernance</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Avantage concurrentiel</span></div>
+    </div></div>
+
+    <div class="prog-mod"><div class="prog-num"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><div class="prog-content">
+      <h3>Conclusion — Mesurer &amp; aller plus loin</h3>
+      <p>Mesurer les résultats, ancrer les réflexes acquis et bâtir son plan d'action pour les semaines à venir.</p>
+      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Indicateurs clés</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Synthèse</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Prochaines étapes</span></div>
+    </div></div>
+
+  </div>
+
+  <div class="prog-cta">
+    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1600&q=80&fit=crop" alt="Équipe de cabinet en formation" loading="lazy" decoding="async"/>
+    <div class="prog-cta-c">
+      <span class="eb">Passez à l'action</span>
+      <h2>Prêt à intégrer l'IA à votre cabinet ?</h2>
+      <p>30 minutes en visioconférence pour découvrir le programme, valider votre éligibilité OPCO ATLAS et définir le parcours adapté à votre structure.</p>
+      <a href="index.html#rdv" class="btn-duo">
+        <span class="btn-plus">+</span>
+        <span class="btn-label">Réserver un rendez-vous découverte</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer>
+  <div class="finfo">
+    <div class="fadr">88 rue de Champigny<br/>94430 Chennevières-sur-Marne<br/>France</div>
+    <div class="fcontact">
+      <p>E-mail. matthieu.brubach@learndigi.fr</p>
+      <p>E-mail. hugo.salembier@learndigi.fr</p>
+      <p>Tél. 06 67 99 63 79</p>
+      <p>Tél. 06 33 63 96 05</p>
+    </div>
+  </div>
+  <div class="flinks">
+    <a href="index.html">Mentions légales</a>
+    <a href="index.html">Politique en matière de cookies</a>
+    <a href="index.html">Politique de confidentialité</a>
+    <a href="index.html">Conditions d'utilisation</a>
+  </div>
+  <div class="fbot">
+    <span class="fcopy">© 2026 – Learndigi. Tous droits réservés</span>
+    <a href="#" class="fup">∧</a>
+  </div>
+</footer>
+
+<script>
+  // ── Nav : rétrécissement au scroll ────────────────────────────
+  (function(){
+    var navEl = document.querySelector('nav');
+    var onScroll = function(){ navEl.classList.toggle('scrolled', window.scrollY > 40); };
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+  })();
+
+  // ── Reveal au scroll (animations d'apparition) ────────────────
+  (function(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var sel = '.prog-highlights, .prog-mod, .prog-cta';
+    var els = [].slice.call(document.querySelectorAll(sel));
+    els.forEach(function(el){ el.classList.add('reveal'); });
+    document.querySelectorAll('.prog-modules').forEach(function(grid){
+      [].slice.call(grid.children).forEach(function(c,i){ c.style.transitionDelay = (i*0.05)+'s'; });
+    });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    },{threshold:0.12, rootMargin:'0px 0px -7% 0px'});
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
+</body>
+</html>
