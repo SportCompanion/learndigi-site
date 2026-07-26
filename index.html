@@ -11,6 +11,8 @@
   <meta name="author" content="Learndigi — Matthieu Brubach & Hugo Salembier"/>
   <meta name="robots" content="index, follow"/>
   <link rel="canonical" href="https://www.learndigi.fr/"/>
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
 
   <!-- Open Graph (LinkedIn, WhatsApp, Facebook) -->
   <meta property="og:type" content="website"/>
@@ -83,37 +85,15 @@
 
     /* LOGO */
     .logo-wrap{
-      display:flex;align-items:flex-end;
+      display:flex;align-items:center;
       text-decoration:none;
-      gap:8px;
       flex-shrink:0;
-      padding:4px 0;
     }
-    .logo-block{display:flex;flex-direction:column;align-items:flex-start}
-    .logo-name{
-      font-family:'Raleway',sans-serif;
-      font-size:32px;font-weight:900;
-      line-height:1;letter-spacing:-1px;
+    .logo-img{
+      height:54px;width:auto;display:block;
+      transition:height .25s ease;
     }
-    .logo-name .ln{color:#1A2340}
-    .logo-name .ld{color:#4A7FD4}
-    .logo-sub{
-      margin-top:6px;
-    }
-    .logo-sub span{
-      font-family:'Raleway',sans-serif;
-      font-size:9px;font-weight:600;
-      letter-spacing:3px;text-transform:uppercase;
-      color:#999;
-    }
-    /* orange vertical accent bar */
-    .logo-bar{
-      display:inline-block;
-      width:2px;height:28px;
-      background:#E8921A;
-      flex-shrink:0;
-      margin-bottom:6px;
-    }
+    nav.scrolled .logo-img{height:44px}
 
     /* NAV LINKS */
     .nav-links{display:flex;gap:55px;list-style:none}
@@ -1216,6 +1196,8 @@
     /* ═══ RESPONSIVE ═══════════════════════════════════════════════ */
     @media(max-width:900px){
       nav{padding:0 20px}
+      .logo-img{height:40px}
+      nav.scrolled .logo-img{height:36px}
       .nav-links{gap:20px}
       .intro,.choisir,.contact,footer{padding-left:20px;padding-right:20px}
       .contact-inner{grid-template-columns:1fr;gap:48px}
@@ -1264,15 +1246,7 @@
 <!-- ── NAV ────────────────────────────────────────────────────── -->
 <nav>
   <a href="#accueil" class="logo-wrap">
-    <div class="logo-block">
-      <div class="logo-name">
-        <span class="ln">Learn</span><span class="ld">digi</span>
-      </div>
-      <div class="logo-sub">
-        <span>Formation Digitale</span>
-      </div>
-    </div>
-    <span class="logo-bar"></span>
+    <img src="logo.png" class="logo-img" alt="Learndigi — Formation Digitale"/>
   </a>
 
   <ul class="nav-links">

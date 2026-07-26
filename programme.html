@@ -6,6 +6,8 @@
   <title>Le programme — Learndigi | Formation IA pour Courtiers en Assurance</title>
   <meta name="description" content="Le programme détaillé de la formation IA Learndigi pour courtiers en assurance : 8 modules, 7h validantes DDA, finançable OPCO ATLAS."/>
   <link rel="canonical" href="https://www.learndigi.fr/programme.html"/>
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -27,14 +29,9 @@
     /* NAV */
     nav{position:sticky;top:0;z-index:999;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:92px;box-shadow:0 1px 10px rgba(0,0,0,0.09);transition:height .25s ease,box-shadow .25s ease}
     nav.scrolled{height:72px;box-shadow:0 6px 28px rgba(10,14,36,.12)}
-    .logo-wrap{display:flex;align-items:flex-end;text-decoration:none;gap:8px;flex-shrink:0;padding:4px 0}
-    .logo-block{display:flex;flex-direction:column;align-items:flex-start}
-    .logo-name{font-family:'Raleway',sans-serif;font-size:32px;font-weight:900;line-height:1;letter-spacing:-1px}
-    .logo-name .ln{color:#1A2340}
-    .logo-name .ld{color:#4A7FD4}
-    .logo-sub{margin-top:6px}
-    .logo-sub span{font-family:'Raleway',sans-serif;font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#999}
-    .logo-bar{display:inline-block;width:2px;height:28px;background:#E8921A;flex-shrink:0;margin-bottom:6px}
+    .logo-wrap{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
+    .logo-img{height:54px;width:auto;display:block;transition:height .25s ease}
+    nav.scrolled .logo-img{height:44px}
     .nav-links{display:flex;gap:55px;list-style:none}
     .nav-links a{position:relative;font-family:'Raleway',sans-serif;font-size:15px;font-weight:600;color:var(--navy);text-decoration:none;padding-bottom:8px;transition:color .2s}
     .nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:center;transition:transform .3s cubic-bezier(.16,1,.3,1)}
@@ -111,7 +108,8 @@
 
     @media(max-width:880px){
       nav{padding:0 22px;height:74px}
-      .logo-name{font-size:26px}
+      .logo-img{height:40px}
+      nav.scrolled .logo-img{height:36px}
       .nav-links{gap:22px}
       .nav-links a{font-size:13px}
       .programme{padding:50px 20px}
@@ -131,11 +129,7 @@
 <!-- ── NAV ────────────────────────────────────────────────────── -->
 <nav>
   <a href="index.html" class="logo-wrap">
-    <div class="logo-block">
-      <div class="logo-name"><span class="ln">Learn</span><span class="ld">digi</span></div>
-      <div class="logo-sub"><span>Formation Digitale</span></div>
-    </div>
-    <span class="logo-bar"></span>
+    <img src="logo.png" class="logo-img" alt="Learndigi — Formation Digitale"/>
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Accueil</a></li>
