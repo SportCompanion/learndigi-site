@@ -1,0 +1,59 @@
+# Learndigi
+
+> Learndigi est une société française de formation, basée à Chennevières-sur-Marne (Val-de-Marne),
+> qui forme les courtiers en assurance à l'usage professionnel de l'intelligence artificielle.
+> La formation dure 7 heures, se déroule en visioconférence ou en présentiel dans les locaux du
+> cabinet, et son programme est personnalisé selon les enjeux de chaque structure.
+
+## Ce que fait Learndigi
+
+Learndigi accompagne les cabinets de courtage en assurance dans l'intégration concrète de l'IA au
+quotidien : traitement des mails et des relances, synthèses de contrats, préparation des rendez-vous,
+prospection, analyse et développement du portefeuille — dans un cadre conforme au RGPD et à l'AI Act.
+
+La formation s'adresse exclusivement aux professionnels de la distribution d'assurance : courtiers
+indépendants, cabinets PME de 2 à 20 personnes, et grands cabinets de plus de 20 personnes.
+
+## Format
+
+- Durée : 7 heures
+- Modalité : visioconférence ou présentiel, au choix du cabinet
+- Organisation : une journée complète, deux demi-journées, ou adapté au rythme du cabinet
+- Personnalisation : un QCM d'auto-positionnement en amont calibre les modules sur les priorités du cabinet
+- Tarif : sur devis, établi après un échange de 30 minutes ; financement étudié selon la situation
+- À l'issue : attestation de formation et plan d'action personnel pour les 30 jours suivants
+
+## Programme (8 modules)
+
+1. Introduction — L'IA au service du courtage (30 min)
+2. Socle IA et prompting (30 min)
+3. Claude en profondeur et Microsoft 365 (1 h)
+4. Gérer et automatiser sa messagerie (1 h)
+5. La prospection augmentée par l'IA, avec Claude et Brevo (1 h 30)
+6. Fidéliser et développer son portefeuille avec Marvin Systems (1 h)
+7. RGPD, AI Act, RSE et IA responsable (1 h)
+8. Conclusion — Votre plan d'action (15 min)
+
+Outils travaillés : Claude, Microsoft 365 (Excel, Word, PowerPoint, Outlook), Brevo, Marvin Systems.
+
+## Pages
+
+- [Accueil](https://learndigi.fr/) : présentation de la formation, engagements, tarif, FAQ, prise de rendez-vous
+- [Programme détaillé](https://learndigi.fr/programme.html) : les 8 modules et leur contenu
+- [Plaquette PDF](https://learndigi.fr/plaquette.pdf) : la plaquette commerciale complète
+
+## Contact
+
+- Site : https://learndigi.fr
+- LinkedIn : https://www.linkedin.com/company/110659807
+- Matthieu Brubach, président — matthieu.brubach@learndigi.fr — 06 67 99 63 79
+- Hugo Salembier, directeur général — hugo.salembier@learndigi.fr — 06 33 63 96 05
+- Adresse : 88 rue de Champigny, 94430 Chennevières-sur-Marne, France
+- Prise de rendez-vous (30 min, gratuit) : https://learndigi.fr/#rdv
+
+## À ne pas confondre
+
+Learndigi (learndigi.fr) est une société française de formation à l'IA pour les courtiers en
+assurance. Elle n'a aucun lien avec les autres entités portant un nom proche : le projet de
+recherche LearnDigi de l'université de Jyväskylä (Finlande), learndigi.online (cours d'anglais),
+LearnDigiWorld, ni les pages de marketing digital du même nom.

@@ -1,0 +1,55 @@
+# robots.txt — learndigi.fr
+# Learndigi Formation — formation à l'intelligence artificielle pour les courtiers en assurance.
+
+# ── Moteurs de recherche ─────────────────────────────────────────────
+User-agent: *
+Allow: /
+
+# ── Assistants IA : autorisés à lire et à citer le site ───────────────
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google (Gemini, AI Overviews)
+User-agent: Google-Extended
+Allow: /
+
+# Microsoft Copilot / Bing
+User-agent: bingbot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl (corpus repris par de nombreux modèles)
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://learndigi.fr/sitemap.xml
