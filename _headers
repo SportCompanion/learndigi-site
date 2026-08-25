@@ -1,0 +1,27 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# Les pages doivent toujours être revalidées : le contenu change.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Les images et la plaquette ne changent pas de nom : cache long.
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+/*.pdf
+  Cache-Control: public, max-age=86400
+
+# Fichiers lus par les robots : cache court pour que les corrections passent vite.
+/robots.txt
+  Cache-Control: public, max-age=3600
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+/llms.txt
+  Cache-Control: public, max-age=3600

@@ -1,0 +1,5 @@
+# www vers le domaine racine, en 301.
+# C'est ce que fait Netlify aujourd'hui, et c'est ce que déclare la balise
+# canonical des deux pages : à conserver impérativement après la migration.
+https://www.learndigi.fr/*  https://learndigi.fr/:splat  301!
+http://www.learndigi.fr/*   https://learndigi.fr/:splat  301!
