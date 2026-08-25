@@ -592,6 +592,41 @@
       color:rgba(255,255,255,.85);
     }
 
+    /* ═══ OUTILS ENSEIGNÉS ═════════════════════════════════════════ */
+    .outils{background:#fff;padding:76px 60px 80px;text-align:center}
+    .outils-eb{
+      display:block;font-family:'Raleway',sans-serif;
+      font-size:11px;font-weight:800;letter-spacing:3.2px;text-transform:uppercase;
+      color:var(--navy);margin-bottom:38px;
+    }
+    .outils-row{
+      display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;
+      max-width:1140px;margin:0 auto;
+      border-top:1px solid rgba(27,44,107,.14);
+      border-bottom:1px solid rgba(27,44,107,.14);
+    }
+    .outil{
+      flex:1 1 0;min-width:158px;
+      display:flex;align-items:center;justify-content:center;gap:13px;
+      padding:30px 14px;
+      border-right:1px solid rgba(27,44,107,.1);
+      transition:transform .3s cubic-bezier(.16,1,.3,1);
+    }
+    .outil:last-child{border-right:none}
+    .outil:hover{transform:translateY(-4px)}
+    .outil img{
+      width:38px;height:38px;object-fit:contain;flex-shrink:0;
+      mix-blend-mode:multiply;
+    }
+    .outil b{
+      font-family:'Raleway',sans-serif;font-size:15px;font-weight:700;
+      color:var(--navy);white-space:nowrap;
+    }
+    .outils-note{
+      font-size:13.5px;color:var(--txt);opacity:.85;
+      margin-top:30px;line-height:1.75;
+    }
+
     /* ═══ ENGAGEMENTS ══════════════════════════════════════════════ */
     .engagements{background:var(--grey);padding:80px 80px 90px}
     .eng-header{text-align:center;margin-bottom:60px}
@@ -1537,6 +1572,12 @@
       .stat-sep{display:none}
       .choisir-grid{grid-template-columns:1fr}
       .crow{grid-template-columns:1fr;gap:20px}
+      .outils{padding:52px 20px 56px}
+      .outil{flex:1 1 50%;min-width:0;padding:22px 8px;gap:10px}
+      .outil:nth-child(2n){border-right:none}
+      .outil:not(:nth-last-child(-n+2)){border-bottom:1px solid rgba(27,44,107,.1)}
+      .outil img{width:32px;height:32px}
+      .outil b{font-size:13.5px;white-space:normal}
       .engagements{padding:50px 20px}
       .eng-grid{grid-template-columns:1fr}
       .tarif-wrap{padding:40px 20px 60px}
@@ -1776,6 +1817,20 @@
       <span class="btn-label">Voir le programme détaillé</span>
     </a>
   </div>
+</section>
+
+<!-- ── OUTILS ENSEIGNÉS ─────────────────────────────────────────── -->
+<section class="outils">
+  <span class="outils-eb">Outils enseignés pendant la formation</span>
+  <div class="outils-row">
+    <div class="outil"><img src="logo-claude.png" alt="Claude" width="220" height="220" loading="lazy" decoding="async"/><b>Claude</b></div>
+    <div class="outil"><img src="logo-chatgpt.png" alt="ChatGPT" width="220" height="220" loading="lazy" decoding="async"/><b>ChatGPT</b></div>
+    <div class="outil"><img src="logo-copilot.png" alt="Microsoft Copilot" width="220" height="220" loading="lazy" decoding="async"/><b>Copilot</b></div>
+    <div class="outil"><img src="logo-mistral.png" alt="Mistral AI" width="220" height="220" loading="lazy" decoding="async"/><b>Mistral AI</b></div>
+    <div class="outil"><img src="logo-brevo.png" alt="Brevo" width="220" height="220" loading="lazy" decoding="async"/><b>Brevo</b></div>
+    <div class="outil"><img src="logo-marvin.png" alt="Marvin Systems" width="220" height="220" loading="lazy" decoding="async"/><b>Marvin Systems</b></div>
+  </div>
+  <p class="outils-note">Et les outils déjà en place dans votre cabinet, selon vos usages et vos licences.</p>
 </section>
 
 <!-- ── ENGAGEMENTS ──────────────────────────────────────────────── -->
@@ -2483,11 +2538,15 @@
   // ── Reveal au scroll (animations d'apparition) ───────────────
   (function(){
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var sel='.intro, .howto, .parcours-card, .eng-header, .eng-card, .tarif-card, .choisir-text, .choisir-img, .choisir-list, .video-text, .faq-item, .trust-item';
+    var sel='.intro, .howto, .parcours-card, .eng-header, .eng-card, .tarif-card, .choisir-text, .choisir-img, .choisir-list, .video-text, .faq-item, .trust-item, .outils-eb, .outil, .outils-note';
     var els=[].slice.call(document.querySelectorAll(sel));
     els.forEach(function(el){ el.classList.add('reveal'); });
     document.querySelectorAll('.parcours-grid, .eng-grid').forEach(function(grid){
       [].slice.call(grid.children).forEach(function(c,i){ c.style.transitionDelay=(i*0.08)+'s'; });
+    });
+    // les logos d'outils apparaissent l'un après l'autre au défilement
+    document.querySelectorAll('.outils-row').forEach(function(row){
+      [].slice.call(row.children).forEach(function(c,i){ c.style.transitionDelay=(i*0.11)+'s'; });
     });
     var io=new IntersectionObserver(function(entries){
       entries.forEach(function(en){
