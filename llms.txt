@@ -9,7 +9,7 @@
 
 Learndigi accompagne les cabinets de courtage en assurance dans l'intégration concrète de l'IA au
 quotidien : traitement des mails et des relances, synthèses de contrats, préparation des rendez-vous,
-prospection, analyse et développement du portefeuille — dans un cadre conforme au RGPD et à l'AI Act.
+prospection, analyse et développement du portefeuille, dans un cadre conforme au RGPD et à l'AI Act.
 
 La formation s'adresse exclusivement aux professionnels de la distribution d'assurance : courtiers
 indépendants, cabinets PME de 2 à 20 personnes, et grands cabinets de plus de 20 personnes.
@@ -25,14 +25,14 @@ indépendants, cabinets PME de 2 à 20 personnes, et grands cabinets de plus de 
 
 ## Programme (8 modules)
 
-1. Introduction — L'IA au service du courtage (30 min)
+1. Introduction : l'IA au service du courtage (30 min)
 2. Socle IA et prompting (30 min)
 3. Claude en profondeur et Microsoft 365 (1 h)
 4. Gérer et automatiser sa messagerie (1 h)
 5. La prospection augmentée par l'IA, avec Claude et Brevo (1 h 30)
 6. Fidéliser et développer son portefeuille avec Marvin Systems (1 h)
 7. RGPD, AI Act, RSE et IA responsable (1 h)
-8. Conclusion — Votre plan d'action (15 min)
+8. Conclusion : votre plan d'action (15 min)
 
 Outils travaillés : Claude, Microsoft 365 (Excel, Word, PowerPoint, Outlook), Brevo, Marvin Systems.
 
@@ -46,8 +46,8 @@ Outils travaillés : Claude, Microsoft 365 (Excel, Word, PowerPoint, Outlook), B
 
 - Site : https://learndigi.fr
 - LinkedIn : https://www.linkedin.com/company/110659807
-- Matthieu Brubach, président — matthieu.brubach@learndigi.fr — 06 67 99 63 79
-- Hugo Salembier, directeur général — hugo.salembier@learndigi.fr — 06 33 63 96 05
+- Matthieu Brubach, président. matthieu.brubach@learndigi.fr, 06 67 99 63 79
+- Hugo Salembier, directeur général. hugo.salembier@learndigi.fr, 06 33 63 96 05
 - Adresse : 88 rue de Champigny, 94430 Chennevières-sur-Marne, France
 - Prise de rendez-vous (30 min, gratuit) : https://learndigi.fr/#rdv
 
