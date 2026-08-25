@@ -1,0 +1,10 @@
+{
+  // Site statique servi par Cloudflare Workers (Static Assets).
+  // Aucun code à exécuter : le dossier est publié tel quel.
+  "name": "learndigi-site",
+  "compatibility_date": "2026-08-01",
+  "assets": {
+    "directory": "./",
+    "not_found_handling": "none"
+  }
+}

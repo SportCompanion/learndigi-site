@@ -1,0 +1,12 @@
+# Fichiers présents dans le dépôt mais qui n'ont rien à faire en ligne.
+# _headers et _redirects ne doivent PAS figurer ici : ils sont lus par
+# Cloudflare puis retirés automatiquement des fichiers servis.
+.git
+.git/**
+.claude
+.claude/**
+.gitignore
+.assetsignore
+wrangler.jsonc
+*.md
+.DS_Store
