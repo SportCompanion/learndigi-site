@@ -1,2 +1,6 @@
 .DS_Store
 .claude/
+
+# Maquettes et images brutes déposées dans le dossier : à ne jamais publier.
+# Les fichiers du site portent un nom explicite (hero-fond.jpg, logo-claude.png...).
+[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*.png
