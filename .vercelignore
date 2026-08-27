@@ -1,0 +1,9 @@
+# Fichiers présents dans le dépôt mais qui n'ont rien à faire en ligne.
+# Vercel sert tout ce qu'il reçoit : sans cette liste, la configuration
+# de l'ancien hébergeur serait publiée à la racine du site.
+wrangler.jsonc
+.assetsignore
+_headers
+.gitignore
+IMG_9070.jpg
+*.md
