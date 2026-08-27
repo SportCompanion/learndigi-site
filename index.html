@@ -413,6 +413,22 @@
       color:rgba(203,218,247,.76);
       margin-bottom:44px;
     }
+    /* ce que contient la formation, annoncé dès le premier écran */
+    .hero-list{
+      list-style:none;margin:0 0 40px;padding:0;
+      display:flex;flex-direction:column;gap:11px;
+      animation:fadeUp .7s ease-out .7s both;
+    }
+    .hero-list li{
+      display:flex;align-items:flex-start;gap:12px;
+      font-size:14.5px;line-height:1.55;
+      color:rgba(214,228,252,.86);
+    }
+    .hero-list svg{
+      width:15px;height:15px;flex-shrink:0;margin-top:4px;
+      stroke:var(--gold);fill:none;stroke-width:1.6;
+    }
+
     /* CTAs */
     .hero-cta{display:flex;align-items:center;gap:16px;}
     .hero-btn-primary{
@@ -503,6 +519,30 @@
     }
     .stat-lbl{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6}
     .stat-sep{width:1px;height:70px;background:rgba(255,255,255,.18);flex-shrink:0}
+
+    /* ── Fiche technique : les faits, sans détour ───────────────── */
+    .fiche{
+      display:grid;grid-template-columns:repeat(4,1fr);
+      gap:1px;background:rgba(255,255,255,.13);
+      border:1px solid rgba(255,255,255,.13);
+      margin-bottom:52px;
+    }
+    .fiche-cell{background:var(--navy);padding:26px 26px 28px}
+    .fiche-cell dt{
+      font-family:'Raleway',sans-serif;font-size:10.5px;font-weight:800;
+      letter-spacing:2.2px;text-transform:uppercase;
+      color:var(--gold);margin-bottom:12px;
+    }
+    .fiche-cell dd{
+      margin:0;font-family:'Raleway',sans-serif;
+      font-size:clamp(19px,1.9vw,26px);font-weight:800;
+      color:#fff;line-height:1.2;letter-spacing:-.4px;
+    }
+    .fiche-cell dd small{
+      display:block;margin-top:8px;
+      font-family:'Open Sans',sans-serif;font-size:12.5px;font-weight:400;
+      letter-spacing:0;color:rgba(255,255,255,.6);line-height:1.6;
+    }
 
     /* ── Parcours cards ─────────────────────────────────────────── */
     .parcours-grid{
@@ -1607,6 +1647,8 @@
       .contact-inner{grid-template-columns:1fr;gap:48px}
       .eng-grid{grid-template-columns:1fr}
       .formations{padding:50px 20px 70px}
+      .fiche{grid-template-columns:1fr 1fr;margin-bottom:36px}
+      .fiche-cell{padding:20px 18px 22px}
       .cards-grid{grid-template-columns:1fr}
       .parcours-grid{grid-template-columns:1fr}
       .stats-row{flex-wrap:wrap;gap:20px}
@@ -1683,7 +1725,13 @@
       <p class="hero-label">Formation digitale &nbsp;·&nbsp; Courtiers en assurance</p>
       <h1 class="hero-title">Formez votre cabinet<br>à l'Intelligence<br>Artificielle</h1>
       <div class="hero-bar"></div>
-      <p class="hero-sub">7 heures · En visio ou en présentiel<br>Programme sur mesure · Applicable dès le lendemain</p>
+      <p class="hero-sub">7 heures animées par nos formateurs, en visioconférence ou dans vos locaux.</p>
+      <ul class="hero-list">
+        <li><svg viewBox="0 0 20 20"><path d="M11.45 5L17 10M17 10H2M17 10l-5.55 5"/></svg>Programme calibré sur vos enjeux grâce à un QCM en amont</li>
+        <li><svg viewBox="0 0 20 20"><path d="M11.45 5L17 10M17 10H2M17 10l-5.55 5"/></svg>Cas d'usage réels de courtage, jamais d'exemples génériques</li>
+        <li><svg viewBox="0 0 20 20"><path d="M11.45 5L17 10M17 10H2M17 10l-5.55 5"/></svg>Vos propres dossiers travaillés pendant la séance</li>
+        <li><svg viewBox="0 0 20 20"><path d="M11.45 5L17 10M17 10H2M17 10l-5.55 5"/></svg>Attestation et plan d'action à l'issue de la journée</li>
+      </ul>
       <div class="hero-cta">
         <a href="#rdv" class="hero-btn-primary">Réserver un échange de 30 min</a>
         <a href="#formations" class="hero-btn-link">
@@ -1796,6 +1844,25 @@
     Une formation de 7 heures 100 % dédiée aux courtiers en assurance, animée en visio ou en présentiel.
     8 modules progressifs, calibrés sur les enjeux de votre structure, et des outils IA applicables dès le lendemain.
   </p>
+
+  <dl class="fiche">
+    <div class="fiche-cell">
+      <dt>Durée</dt>
+      <dd>7 heures<small>8 modules progressifs</small></dd>
+    </div>
+    <div class="fiche-cell">
+      <dt>Modalité</dt>
+      <dd>Visio ou présentiel<small>Dans vos locaux, au choix</small></dd>
+    </div>
+    <div class="fiche-cell">
+      <dt>Organisation</dt>
+      <dd>1 journée<small>Ou deux demi-journées, ou au rythme du cabinet</small></dd>
+    </div>
+    <div class="fiche-cell">
+      <dt>Tarif</dt>
+      <dd>Sur devis<small>Après un échange de 30 minutes</small></dd>
+    </div>
+  </dl>
 
   <!-- 3 parcours -->
   <div class="parcours-grid">
