@@ -10,7 +10,7 @@
   <meta name="keywords" content="formation IA courtiers assurance, formation intelligence artificielle courtage, Claude courtier assurance, prospection IA assurance, formation IA présentiel visio, RGPD AI Act courtage"/>
   <meta name="author" content="Learndigi, Matthieu Brubach et Hugo Salembier"/>
   <meta name="robots" content="index, follow"/>
-  <meta name="theme-color" content="#1B2C6B"/>
+  <meta name="theme-color" content="#ffffff"/>
   <meta name="format-detection" content="telephone=yes"/>
   <meta name="color-scheme" content="light"/>
   <link rel="canonical" href="https://learndigi.fr/"/>
@@ -22,7 +22,7 @@
   <meta property="og:url" content="https://learndigi.fr/"/>
   <meta property="og:title" content="Learndigi | Formation IA pour courtiers en assurance"/>
   <meta property="og:description" content="7 heures de formation IA en visio ou en présentiel, 100 % métier, sur mesure. Applicable dans votre cabinet dès le lendemain."/>
-  <meta property="og:image" content="https://learndigi.fr/logo.png"/>
+  <meta property="og:image" content="https://learndigi.fr/og-image.jpg"/>
   <meta property="og:image:alt" content="Learndigi, formation digitale"/>
   <meta property="og:locale" content="fr_FR"/>
   <meta property="og:site_name" content="Learndigi"/>
@@ -31,7 +31,7 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Learndigi | Formation IA pour courtiers en assurance"/>
   <meta name="twitter:description" content="7 heures de formation IA pour courtiers, en visio ou en présentiel. Programme sur mesure."/>
-  <meta name="twitter:image" content="https://learndigi.fr/logo.png"/>
+  <meta name="twitter:image" content="https://learndigi.fr/og-image.jpg"/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -54,10 +54,10 @@
         "url": "https://learndigi.fr/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://learndigi.fr/logo.png",
+          "url": "https://learndigi.fr/og-image.jpg",
           "caption": "Learndigi, formation digitale"
         },
-        "image": "https://learndigi.fr/logo.png",
+        "image": "https://learndigi.fr/og-image.jpg",
         "slogan": "Efficacité · Adaptabilité · Conformité",
         "description": "Learndigi est une société française de formation qui forme les courtiers en assurance à l'usage professionnel de l'intelligence artificielle. Formation de 7 heures, en visioconférence ou en présentiel, au programme personnalisé selon les enjeux du cabinet.",
         "foundingDate": "2026-06-05",
@@ -134,7 +134,7 @@
         "name": "Learndigi, formation IA pour courtiers en assurance",
         "isPartOf": { "@id": "https://learndigi.fr/#website" },
         "about": { "@id": "https://learndigi.fr/#organization" },
-        "primaryImageOfPage": "https://learndigi.fr/logo.png",
+        "primaryImageOfPage": "https://learndigi.fr/og-image.jpg",
         "inLanguage": "fr-FR",
         "mainEntity": [
           {
@@ -254,7 +254,7 @@
     body{font-family:'Open Sans',sans-serif;color:var(--navy);background:#fff;overflow-x:hidden}
 
     /* ═══ ANIMATIONS ══════════════════════════════════════════════ */
-    .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1)}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s cubic-bezier(.16,1,.3,1)}
     .reveal.in{opacity:1;transform:none}
     @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
     @keyframes bounceDown{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
@@ -343,16 +343,6 @@
       font-size:19px;font-weight:700;font-style:italic;
       color:var(--navy);text-decoration:none;
     }
-
-    /* ═══ CHAT ══════════════════════════════════════════════════ */
-    .chat{
-      position:fixed;bottom:28px;right:28px;z-index:1000;
-      width:54px;height:54px;
-      background:var(--navy);border-radius:6px;
-      display:flex;align-items:center;justify-content:center;
-      cursor:pointer;box-shadow:0 4px 16px rgba(27,44,107,.4);
-    }
-    .chat svg{width:24px;height:24px;fill:#fff}
 
     /* ═══ HERO ════════════════════════════════════════════════════ */
     .hero{
@@ -569,41 +559,6 @@
       font-family:'Raleway',sans-serif;
       font-size:17px;font-weight:500;
       color:rgba(255,255,255,.85);
-    }
-
-    /* ═══ OUTILS ENSEIGNÉS ═════════════════════════════════════════ */
-    .outils{background:#fff;padding:76px 60px 80px;text-align:center}
-    .outils-eb{
-      display:block;font-family:'Raleway',sans-serif;
-      font-size:11px;font-weight:800;letter-spacing:3.2px;text-transform:uppercase;
-      color:var(--navy);margin-bottom:38px;
-    }
-    .outils-row{
-      display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;
-      max-width:1140px;margin:0 auto;
-      border-top:1px solid rgba(27,44,107,.14);
-      border-bottom:1px solid rgba(27,44,107,.14);
-    }
-    .outil{
-      flex:1 1 0;min-width:158px;
-      display:flex;align-items:center;justify-content:center;gap:13px;
-      padding:30px 14px;
-      border-right:1px solid rgba(27,44,107,.1);
-      transition:transform .3s cubic-bezier(.16,1,.3,1);
-    }
-    .outil:last-child{border-right:none}
-    .outil:hover{transform:translateY(-4px)}
-    .outil img{
-      width:38px;height:38px;object-fit:contain;flex-shrink:0;
-      mix-blend-mode:multiply;
-    }
-    .outil b{
-      font-family:'Raleway',sans-serif;font-size:15px;font-weight:700;
-      color:var(--navy);white-space:nowrap;
-    }
-    .outils-note{
-      font-size:13.5px;color:var(--txt);opacity:.85;
-      margin-top:30px;line-height:1.75;
     }
 
     /* ═══ ENGAGEMENTS ══════════════════════════════════════════════ */
@@ -1364,12 +1319,6 @@
       .stats-row{flex-wrap:wrap;gap:20px}
       .stat-sep{display:none}
       .crow{grid-template-columns:1fr;gap:20px}
-      .outils{padding:52px 20px 56px}
-      .outil{flex:1 1 50%;min-width:0;padding:22px 8px;gap:10px}
-      .outil:nth-child(2n){border-right:none}
-      .outil:not(:nth-last-child(-n+2)){border-bottom:1px solid rgba(27,44,107,.1)}
-      .outil img{width:32px;height:32px}
-      .outil b{font-size:13.5px;white-space:normal}
       .engagements{padding:50px 20px}
       .eng-grid{grid-template-columns:1fr}
       .tarif-wrap{padding:40px 20px 60px}
@@ -1400,44 +1349,41 @@
       .cookie-btns{width:100%;justify-content:flex-end}
     }
 
-    /* ═══ REFONTE ÉDITORIALE 2026 ════════════════════════════════ */
+    /* ═══ DIRECTION ÉDITORIALE CLAIRE 2026 ═══════════════════════ */
     .section-kicker{
       display:block;margin-bottom:18px;
       font-family:'Raleway',sans-serif;font-size:10px;font-weight:800;
       letter-spacing:3px;text-transform:uppercase;color:var(--red);
     }
-    .section-kicker.light{color:#f2a744}
+    .section-kicker.light{color:var(--red)}
 
-    /* Hero sans imagerie artificielle : typographie, rythme et identité */
+    /* Hero volontairement typographique : aucun visuel artificiel */
     .hero{
-      min-height:680px;background:linear-gradient(118deg,#070b1d 0%,#101a46 62%,#1b2c6b 100%);
-      isolation:isolate;
+      min-height:660px;background:#fff;isolation:isolate;
+      border-bottom:1px solid #e3e6ed;
     }
-    .hero::before{
-      content:'';position:absolute;inset:0;z-index:0;opacity:.28;
-      background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
-      background-size:72px 72px;
-      mask-image:linear-gradient(90deg,transparent 0%,#000 50%,#000 100%);
-    }
-    .hero::after{
-      content:'IA';position:absolute;right:5vw;top:50%;z-index:0;
-      transform:translateY(-53%);font-family:'Raleway',sans-serif;
-      font-size:clamp(220px,28vw,440px);font-weight:900;letter-spacing:-.12em;
-      color:rgba(255,255,255,.035);line-height:.8;pointer-events:none;
-    }
-    .hero-ov{
-      background:radial-gradient(circle at 82% 46%,rgba(59,102,214,.28),transparent 33%),linear-gradient(90deg,rgba(7,11,29,.3),transparent 68%);
-    }
-    .hero-inner{max-width:1240px;padding:104px 60px 112px}
-    .hero-content{max-width:720px}
-    .hero-title{font-size:clamp(46px,6vw,78px);line-height:.99;letter-spacing:-2.7px;margin-bottom:28px}
-    .hero-sub{max-width:620px;font-size:17px;line-height:1.7;margin-bottom:34px}
-    .hero-list{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:36px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12)}
-    .hero-list li{font-size:14px}
+    .hero::before,.hero::after{display:none}
+    .hero-ov{display:none}
+    .hero-inner{max-width:1240px;padding:112px 60px 126px}
+    .hero-content{max-width:820px}
+    .hero-label{color:#697084;margin-bottom:28px}
+    .hero-title{font-size:clamp(48px,6.4vw,82px);line-height:.98;letter-spacing:-3px;margin-bottom:30px;color:var(--navy);text-shadow:none}
+    .hero-bar{width:72px;background:var(--red);margin-bottom:26px}
+    .hero-sub{max-width:620px;font-size:17px;line-height:1.75;margin-bottom:34px;color:#555d70;font-weight:400}
+    .hero-list{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:38px;padding-top:24px;border-top:1px solid #dde1e9}
+    .hero-list li{font-size:14px;color:#42495a}
+    .hero-btn-primary{background:var(--navy);box-shadow:none}
+    .hero-btn-primary:hover{background:var(--navy-dark);box-shadow:none;filter:none}
+    .hero-btn-link{color:var(--navy)}
+    .hero-btn-link:hover{color:var(--red)}
+    .hero-scroll{bottom:24px}
+    .hero-scroll span{color:#8a90a0}
+    .hero-scroll svg{stroke:#8a90a0;animation:none}
+    .hero-scroll:hover span,.hero-scroll:hover svg{color:var(--navy);stroke:var(--navy)}
 
     /* Introduction en deux colonnes, comme une page de cabinet conseil */
     .intro{
-      max-width:1180px;margin:0 auto;padding:110px 40px;
+      max-width:1180px;margin:0 auto;padding:116px 40px;
       display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:100px;
       align-items:start;
     }
@@ -1447,46 +1393,69 @@
     }
     .intro p{font-size:15px;line-height:1.9;margin-bottom:24px}
 
-    /* Sections centrées sur une grille commune */
-    .howto{padding:100px max(40px,calc((100vw - 1180px)/2)) 104px}
-    .formations{padding:108px max(40px,calc((100vw - 1180px)/2)) 96px;background:#17296a}
-    .formations h2{font-size:clamp(38px,5vw,58px);line-height:1.08;max-width:760px;letter-spacing:-1.8px}
-    .formations>p{max-width:760px;margin-bottom:48px}
+    /* Parcours : beaucoup d'air et une lecture linéaire */
+    .howto{padding:108px max(40px,calc((100vw - 1180px)/2)) 112px;background:#f6f7f9}
+    .howto::before{display:none}
+    .howto-top{border-bottom:1px solid #dce0e7}
+    .howto-top h2{color:var(--navy)}
+    .howto-top p{color:#646b7b}
+    .howto-step{border-right:1px solid #dde1e8}
+    .howto-ghost{color:rgba(27,44,107,.055)}
+    .howto-tag{color:var(--red)}
+    .howto-step h3{color:var(--navy)}
+    .howto-step p{color:#646b7b}
+    .howto-step-bar{background:var(--red);height:2px}
+
+    /* Programme sur fond blanc, traité comme une fiche de conseil */
+    .formations{padding:116px max(40px,calc((100vw - 1180px)/2)) 108px;background:#fff;border-bottom:1px solid #e2e5eb}
+    .formations h2{font-size:clamp(38px,5vw,58px);line-height:1.08;max-width:760px;letter-spacing:-1.8px;color:var(--navy)}
+    .formations>p{max-width:760px;margin-bottom:48px;color:#555d70}
     .fiche{margin:0 0 74px}
-    .fiche-cell{padding:28px 24px 30px;background:#17296a}
+    .fiche{gap:0;background:#dfe3ea;border:1px solid #dfe3ea}
+    .fiche-cell{padding:28px 24px 30px;background:#fff}
+    .fiche-cell dt{color:var(--red)}
+    .fiche-cell dd{color:var(--navy)}
+    .fiche-cell dd small{color:#747b8b}
 
     .contexts-heading{
       display:grid;grid-template-columns:.7fr 1.3fr;gap:70px;align-items:start;
-      padding:0 0 28px;border-bottom:1px solid rgba(255,255,255,.22);
+      padding:0 0 28px;border-bottom:1px solid #dfe3ea;
     }
     .contexts-heading>span{
       font-family:'Raleway',sans-serif;font-size:13px;font-weight:800;
-      letter-spacing:1.4px;text-transform:uppercase;color:#fff;
+      letter-spacing:1.4px;text-transform:uppercase;color:var(--navy);
     }
-    .contexts-heading p{font-size:14px;line-height:1.8;color:rgba(255,255,255,.68)}
-    .context-grid{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid rgba(255,255,255,.22);margin-bottom:52px}
-    .context-card{padding:38px 34px 42px 0;border-right:1px solid rgba(255,255,255,.18)}
+    .contexts-heading p{font-size:14px;line-height:1.8;color:#666d7d}
+    .context-grid{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid #dfe3ea;margin-bottom:52px}
+    .context-card{padding:38px 34px 42px 0;border-right:1px solid #dfe3ea;transition:transform .28s ease}
+    .context-card:hover{transform:translateY(-4px)}
     .context-card:not(:first-child){padding-left:34px}
     .context-card:last-child{border-right:0;padding-right:0}
     .context-number{
       display:block;margin-bottom:46px;font-family:'Raleway',sans-serif;
-      font-size:13px;font-weight:800;color:#f2a744;letter-spacing:1px;
+      font-size:13px;font-weight:800;color:var(--red);letter-spacing:1px;
     }
-    .context-card h3{font-family:'Raleway',sans-serif;font-size:21px;line-height:1.25;color:#fff;margin-bottom:14px}
-    .context-card p{font-size:13.5px;line-height:1.75;color:rgba(255,255,255,.68)}
+    .context-card h3{font-family:'Raleway',sans-serif;font-size:21px;line-height:1.25;color:var(--navy);margin-bottom:14px}
+    .context-card p{font-size:13.5px;line-height:1.75;color:#666d7d}
     .formations-cta{padding:0;border:0;background:transparent;flex-direction:row;justify-content:space-between}
-    .formations-cta p{font-size:15px}
+    .formations-cta p{font-size:15px;color:#555d70}
 
-    /* Les marques restent identifiables, mais ne dominent plus la page */
-    .outils{padding:72px 40px 78px}
-    .outils-row{max-width:1040px}
-    .outil{padding:24px 12px}
-    .outil img{width:30px;height:30px;filter:grayscale(1);opacity:.72;transition:filter .2s,opacity .2s}
-    .outil:hover img{filter:none;opacity:1}
-    .outil b{font-size:13px;font-weight:600}
+    /* Outils : des noms et des usages, sans rangée de logos */
+    .outils{
+      max-width:none;padding:104px max(40px,calc((100vw - 1180px)/2));
+      background:#f6f7f9;text-align:left;
+      display:grid;grid-template-columns:.8fr 1.2fr;gap:92px;align-items:start;
+    }
+    .outils-heading h2{font-family:'Raleway',sans-serif;font-size:clamp(34px,4vw,48px);line-height:1.1;letter-spacing:-1.4px;color:var(--navy)}
+    .outils-copy>p{font-size:14.5px;line-height:1.85;color:#555d70;margin-bottom:28px;max-width:590px}
+    .outils-list{border-top:1px solid #d8dce4;margin-bottom:24px}
+    .outils-line{display:grid;grid-template-columns:180px 1fr;gap:26px;padding:18px 0;border-bottom:1px solid #d8dce4}
+    .outils-line span{font-family:'Raleway',sans-serif;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--red)}
+    .outils-line strong{font-size:13.5px;line-height:1.7;color:var(--navy)}
+    .outils-note{margin:0;font-size:12.5px;line-height:1.7;color:#747b8b}
 
     /* Engagements : quatre principes, aucun pictogramme décoratif */
-    .engagements{padding:108px max(40px,calc((100vw - 1180px)/2));background:#f4f5f8}
+    .engagements{padding:116px max(40px,calc((100vw - 1180px)/2));background:#fff}
     .eng-header{text-align:left;display:grid;grid-template-columns:.8fr 1.2fr;column-gap:80px;margin-bottom:54px}
     .eng-header .eng-eyebrow{grid-column:1/-1}
     .eng-header h2{font-size:clamp(34px,4vw,48px);line-height:1.12;margin:0}
@@ -1501,6 +1470,20 @@
     .eng-card h3{font-size:20px;margin-bottom:12px}
     .eng-card p{font-size:14px;line-height:1.8;max-width:480px}
 
+    /* Tarif : une proposition sobre, sans grand panneau bleu décoratif */
+    .tarif-wrap{padding:104px 40px;background:#f6f7f9}
+    .tarif-card{background:#fff;border:1px solid #dfe3ea;box-shadow:none}
+    .tarif-content{padding:58px 58px 56px}
+    .tarif-card h2{color:var(--navy)}
+    .tarif-card p{color:#5b6272}
+    .tarif-media{padding:58px 52px 106px;background:#f0f2f6;border-left:1px solid #dfe3ea}
+    .tarif-media::before{display:none}
+    .tarif-panel-eb{color:#6e7585}
+    .tarif-crit li{color:var(--navy);border-bottom:1px solid #d8dce4}
+    .tarif-crit li b{color:var(--red)}
+    .tarif-badge{background:var(--navy);color:#fff;box-shadow:none}
+    .tarif-badge svg{fill:#fff}
+
     /* Preuve humaine : uniquement les photographies fournies par Learndigi */
     .team-proof{
       max-width:1180px;margin:0 auto;padding:116px 40px;
@@ -1512,42 +1495,70 @@
     .text-link:hover span{transform:translateX(4px)}
     .text-link span{transition:transform .2s}
     .team-proof-people{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;align-items:start}
-    .trainer-card{background:#f4f5f8}
+    .trainer-card{background:#f4f5f8;overflow:hidden;transition:transform .35s cubic-bezier(.16,1,.3,1)}
+    .trainer-card:hover{transform:translateY(-6px)}
     .trainer-card:nth-child(2){margin-top:54px}
-    .trainer-card img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;display:block;filter:saturate(.78)}
-    .trainer-card>div{padding:20px 20px 22px;border-top:3px solid var(--gold)}
+    .trainer-card img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center top;display:block;filter:saturate(.78);transition:transform .7s cubic-bezier(.16,1,.3,1)}
+    .trainer-card:first-child img{object-position:62% 10%}
+    .trainer-card:hover img{transform:scale(1.025)}
+    .trainer-card>div{padding:20px 20px 22px;border-top:2px solid var(--red)}
     .trainer-card h3{font-family:'Raleway',sans-serif;font-size:16px;color:var(--navy);margin-bottom:5px}
     .trainer-card p{font-size:12px;color:#6b7280}
 
-    /* Le bloc livrables remplace l'ancienne démonstration de faux assistant */
-    .video-section{background:#0c132f}
+    /* Résultats et livrables sur fond clair */
+    .video-section{background:#f6f7f9;border-top:1px solid #e2e5eb;border-bottom:1px solid #e2e5eb}
+    .video-bg{display:none}
     .video-inner{max-width:1180px;margin:0 auto;padding:100px 40px;gap:76px}
-    .deliverable-card{box-shadow:none;border:0;border-top:4px solid var(--gold)}
+    .video-text h2{color:var(--navy)}
+    .video-text h2 em{color:var(--red)}
+    .video-text p{color:#5d6474}
+    .vstat strong{color:var(--navy)}
+    .vstat>span{color:#747b8b}
+    .video-link{color:var(--navy)}
+    .video-link:hover{color:var(--red)}
+    .deliverable-card{box-shadow:none;border:1px solid #dfe3ea;border-top:3px solid var(--red)}
+
+    /* La prise de rendez-vous reste claire ; le contact devient l'unique grand aplat bleu */
+    .rdv-section{background:#fff;border-top:1px solid #e5e7ed}
+    .rdv-grid{max-width:1180px;margin:0 auto}
+    .newsletter{background:#fff;border-top:1px solid #e0e3e9}
+    .newsletter::before{display:none}
+    .newsletter h3{color:var(--navy)}
+    .newsletter-sub{color:#606777}
+    .nl-legal{color:#8a90a0}
+    .newsletter .hero-btn-primary{background:var(--navy)}
 
     @media(max-width:900px){
       .hero{min-height:0}
-      .hero::after{display:none}
       .hero-inner{padding:72px 24px 84px}
       .hero-title{font-size:clamp(40px,12vw,58px);letter-spacing:-1.8px}
       .hero-label{letter-spacing:2.4px;line-height:1.6}
+      .hero-scroll{display:none}
       .intro{grid-template-columns:1fr;gap:36px;padding:72px 24px}
       .howto,.formations,.engagements{padding-left:24px;padding-right:24px}
       .contexts-heading{grid-template-columns:1fr;gap:16px}
       .context-grid{grid-template-columns:1fr}
-      .context-card,.context-card:not(:first-child){padding:28px 0;border-right:0;border-bottom:1px solid rgba(255,255,255,.16)}
+      .context-card,.context-card:not(:first-child){padding:28px 0;border-right:0;border-bottom:1px solid #dfe3ea}
       .context-card:last-child{border-bottom:0}
       .context-number{margin-bottom:20px}
       .formations-cta{align-items:flex-start;flex-direction:column}
+      .outils{grid-template-columns:1fr;gap:36px;padding:78px 24px}
       .eng-header{grid-template-columns:1fr;gap:18px}
       .eng-grid{grid-template-columns:1fr}
       .eng-card,.eng-card:nth-child(odd),.eng-card:nth-child(even){padding:30px 0;border-right:0}
       .team-proof{grid-template-columns:1fr;gap:54px;padding:78px 24px}
       .trainer-card:nth-child(2){margin-top:30px}
       .video-inner{padding:72px 24px}
+      .tarif-wrap{padding:72px 24px}
+      .tarif-media{border-left:0;border-top:1px solid #dfe3ea}
     }
 
     @media(max-width:560px){
       .fiche{grid-template-columns:1fr}
+      .howto-steps{grid-template-columns:1fr}
+      .howto-step,.howto-step:not(:first-child){padding:28px 0;border-right:0;border-bottom:1px solid #dde1e8}
+      .howto-step:last-child{border-bottom:0}
+      .outils-line{grid-template-columns:1fr;gap:7px}
       .team-proof-people{gap:10px}
       .trainer-card:nth-child(2){margin-top:24px}
       .trainer-card>div{padding:14px 12px 16px}
@@ -1724,18 +1735,26 @@
   </div>
 </section>
 
-<!-- ── OUTILS ENSEIGNÉS ─────────────────────────────────────────── -->
+<!-- ── OUTILS ABORDÉS ───────────────────────────────────────────── -->
 <section class="outils">
-  <span class="outils-eb">Outils mobilisés selon vos besoins</span>
-  <div class="outils-row">
-    <div class="outil"><img src="logo-claude.png" alt="Claude" width="220" height="220" loading="lazy" decoding="async"/><b>Claude</b></div>
-    <div class="outil"><img src="logo-chatgpt.png" alt="ChatGPT" width="220" height="220" loading="lazy" decoding="async"/><b>ChatGPT</b></div>
-    <div class="outil"><img src="logo-copilot.png" alt="Microsoft Copilot" width="220" height="220" loading="lazy" decoding="async"/><b>Copilot</b></div>
-    <div class="outil"><img src="logo-mistral.png" alt="Mistral AI" width="220" height="220" loading="lazy" decoding="async"/><b>Mistral AI</b></div>
-    <div class="outil"><img src="logo-brevo.png" alt="Brevo" width="220" height="220" loading="lazy" decoding="async"/><b>Brevo</b></div>
-    <div class="outil"><img src="logo-marvin.png" alt="Marvin Systems" width="220" height="220" loading="lazy" decoding="async"/><b>Marvin Systems</b></div>
+  <div class="outils-heading">
+    <span class="section-kicker">Outils abordés</span>
+    <h2>Les usages d'abord.<br/>Les outils ensuite.</h2>
   </div>
-  <p class="outils-note">Et les outils déjà en place dans votre cabinet, selon vos usages et vos licences.</p>
+  <div class="outils-copy">
+    <p>Nous travaillons avec les solutions déjà présentes dans votre cabinet et retenons uniquement celles qui servent un objectif concret : mieux rédiger, synthétiser, relancer, prospecter ou analyser.</p>
+    <div class="outils-list">
+      <div class="outils-line">
+        <span>Assistants</span>
+        <strong>Claude, ChatGPT, Microsoft Copilot et Mistral</strong>
+      </div>
+      <div class="outils-line">
+        <span>Environnement métier</span>
+        <strong>Microsoft 365, Brevo, Marvin Systems et vos outils internes</strong>
+      </div>
+    </div>
+    <p class="outils-note">Le choix final dépend de vos licences, de vos règles internes et du niveau de confidentialité requis.</p>
+  </div>
 </section>
 
 <!-- ── ENGAGEMENTS ──────────────────────────────────────────────── -->
@@ -1861,7 +1880,7 @@
       <ul class="deliverable-list">
         <li><span>01</span><div>Une méthode de rédaction pour les courriels, synthèses et relances</div></li>
         <li><span>02</span><div>Des trames d'instructions adaptées à vos cas d'usage prioritaires</div></li>
-        <li><span>03</span><div>Des repères pour choisir ce qui peut — ou non — être confié à une IA</div></li>
+        <li><span>03</span><div>Des repères pour choisir ce qui peut, ou non, être confié à une IA</div></li>
         <li><span>04</span><div>Un plan d'action individuel pour les 30 jours suivants</div></li>
       </ul>
       <p class="deliverable-note">Le contenu exact est ajusté après le questionnaire d'auto-positionnement.</p>
@@ -1965,9 +1984,9 @@
         </li>
       </ul>
       <div class="rdv-tags">
-        <span class="rdv-tag"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg> Via Microsoft Teams</span>
-        <span class="rdv-tag"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg> 30 min, gratuit</span>
-        <span class="rdv-tag"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> Sans engagement</span>
+        <span class="rdv-tag">Via Microsoft Teams</span>
+        <span class="rdv-tag">30 min, gratuit</span>
+        <span class="rdv-tag">Sans engagement</span>
       </div>
     </div>
 
@@ -2317,15 +2336,14 @@
   // ── Reveal au scroll (animations d'apparition) ───────────────
   (function(){
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var sel='.intro-heading, .intro-copy, .howto, .fiche, .context-card, .eng-header, .eng-card, .tarif-card, .team-proof-copy, .trainer-card, .video-text, .deliverable-card, .faq-item, .outils-eb, .outil, .outils-note';
+    var sel='.intro-heading, .intro-copy, .howto-top, .howto-step, .fiche, .contexts-heading, .context-card, .outils-heading, .outils-copy, .eng-header, .eng-card, .tarif-card, .team-proof-copy, .trainer-card, .video-text, .deliverable-card, .faq-item';
     var els=[].slice.call(document.querySelectorAll(sel));
     els.forEach(function(el){ el.classList.add('reveal'); });
     document.querySelectorAll('.context-grid, .eng-grid, .team-proof-people').forEach(function(grid){
       [].slice.call(grid.children).forEach(function(c,i){ c.style.transitionDelay=(i*0.08)+'s'; });
     });
-    // les logos d'outils apparaissent l'un après l'autre au défilement
-    document.querySelectorAll('.outils-row').forEach(function(row){
-      [].slice.call(row.children).forEach(function(c,i){ c.style.transitionDelay=(i*0.11)+'s'; });
+    document.querySelectorAll('.howto-steps').forEach(function(row){
+      [].slice.call(row.children).forEach(function(c,i){ c.style.transitionDelay=(i*0.07)+'s'; });
     });
     var io=new IntersectionObserver(function(entries){
       entries.forEach(function(en){

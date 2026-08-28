@@ -7,6 +7,7 @@
   <meta name="description" content="Le programme détaillé de la formation IA Learndigi pour courtiers en assurance : 8 modules, 7 heures, en visio ou en présentiel, programme sur mesure."/>
   <meta name="author" content="Learndigi, Matthieu Brubach et Hugo Salembier"/>
   <meta name="robots" content="index, follow"/>
+  <meta name="theme-color" content="#ffffff"/>
   <link rel="canonical" href="https://learndigi.fr/programme"/>
   <link rel="icon" type="image/png" href="favicon.png"/>
   <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
@@ -16,7 +17,7 @@
   <meta property="og:url" content="https://learndigi.fr/programme"/>
   <meta property="og:title" content="Le programme : 8 modules, 7 heures | Learndigi"/>
   <meta property="og:description" content="Le détail des 8 modules de la formation IA Learndigi pour courtiers en assurance : prompting, Claude et Microsoft 365, messagerie, prospection, portefeuille, RGPD et AI Act."/>
-  <meta property="og:image" content="https://learndigi.fr/formation-presentiel.jpg"/>
+  <meta property="og:image" content="https://learndigi.fr/og-image.jpg"/>
   <meta property="og:locale" content="fr_FR"/>
   <meta property="og:site_name" content="Learndigi"/>
 
@@ -82,7 +83,7 @@
     body{font-family:'Open Sans',sans-serif;color:var(--navy);background:#fff;overflow-x:hidden}
 
     /* ANIMATIONS */
-    .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1)}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s cubic-bezier(.16,1,.3,1)}
     .reveal.in{opacity:1;transform:none}
     @media(prefers-reduced-motion:reduce){
       .reveal{transition:none!important;opacity:1!important;transform:none!important}
@@ -99,6 +100,11 @@
     .nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:center;transition:transform .3s cubic-bezier(.16,1,.3,1)}
     .nav-links a:hover,.nav-links a.active{color:var(--red)}
     .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+    .nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:0;padding:10px;cursor:pointer}
+    .nav-burger span{display:block;width:24px;height:2px;background:var(--navy);transition:transform .25s ease,opacity .2s ease}
+    .nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .nav-burger.open span:nth-child(2){opacity:0}
+    .nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
     /* BTN */
     .btn-duo{display:inline-flex;align-items:stretch;text-decoration:none;border:none;cursor:pointer}
@@ -106,55 +112,37 @@
     .btn-label{background:var(--red);color:#fff;padding:12px 28px;font-family:'Raleway',sans-serif;font-size:13px;font-weight:700;letter-spacing:.6px}
     .btn-duo:hover .btn-label{background:var(--red2)}
 
-    /* PROGRAMME */
-    .programme{background:var(--grey);padding:80px 80px 90px}
-    .prog-banner{position:relative;height:340px;overflow:hidden;margin:-80px -80px 50px}
-    .prog-banner img{width:100%;height:100%;object-fit:cover;filter:saturate(.85);display:block}
-    .prog-banner-ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,44,107,.74),rgba(21,34,89,.92))}
-    .prog-banner-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px}
-    .prog-banner-c .eb{font-family:'Raleway',sans-serif;font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:14px}
-    .prog-banner-c h1{font-family:'Raleway',sans-serif;font-size:44px;font-weight:800;color:#fff;margin-bottom:14px;letter-spacing:-.5px}
-    .prog-banner-c p{font-size:14.5px;color:rgba(255,255,255,.85);max-width:640px;line-height:1.8}
-    .prog-highlights{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:46px}
-    .prog-hl{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(27,44,107,.12);padding:10px 18px;font-family:'Raleway',sans-serif;font-size:13px;font-weight:600;color:var(--navy)}
-    .prog-hl svg{width:16px;height:16px;fill:var(--red);flex-shrink:0}
-    .prog-modules{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
-    .prog-mod{background:#fff;display:flex;gap:24px;padding:26px 30px;position:relative;transition:transform .2s,box-shadow .2s}
-    .prog-mod:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(27,44,107,.1)}
-    .prog-mod::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:transparent;transition:background .25s}
-    .prog-mod:hover::before{background:var(--red)}
-    .prog-num{flex-shrink:0;width:54px;height:54px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Raleway',sans-serif;font-size:20px;font-weight:800;transition:background .25s}
-    .prog-num svg{width:24px;height:24px;fill:#fff}
-    .prog-mod:hover .prog-num{background:var(--red)}
-    .prog-mod::after{
-      content:'';position:absolute;inset:14px;pointer-events:none;
-      opacity:0;transition:opacity .3s ease,inset .3s cubic-bezier(.16,1,.3,1);
-      background-image:
-        linear-gradient(var(--gold),var(--gold)),linear-gradient(var(--gold),var(--gold)),
-        linear-gradient(var(--gold),var(--gold)),linear-gradient(var(--gold),var(--gold)),
-        linear-gradient(var(--gold),var(--gold)),linear-gradient(var(--gold),var(--gold)),
-        linear-gradient(var(--gold),var(--gold)),linear-gradient(var(--gold),var(--gold));
-      background-repeat:no-repeat;
-      background-size:14px 2px,2px 14px,14px 2px,2px 14px,14px 2px,2px 14px,14px 2px,2px 14px;
-      background-position:top left,top left,top right,top right,bottom left,bottom left,bottom right,bottom right;
-    }
-    .prog-mod:hover::after{opacity:1;inset:8px}
+    /* PROGRAMME : direction claire et éditoriale */
+    .programme{background:#fff;padding:0 40px}
+    .prog-banner{position:relative;max-width:1180px;height:auto;overflow:visible;margin:0 auto 48px;padding:108px 0 76px;border-bottom:1px solid #dfe3ea}
+    .prog-banner img,.prog-banner-ov{display:none}
+    .prog-banner-c{position:static;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;text-align:left;padding:0}
+    .prog-banner-c .eb{font-family:'Raleway',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:20px}
+    .prog-banner-c h1{font-family:'Raleway',sans-serif;font-size:clamp(44px,6vw,72px);font-weight:800;color:var(--navy);margin-bottom:24px;line-height:1;letter-spacing:-2.5px;max-width:900px}
+    .prog-banner-c p{font-size:15px;color:#5b6272;max-width:760px;line-height:1.9}
+    .prog-highlights{max-width:1180px;margin:0 auto 74px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #dfe3ea}
+    .prog-hl{display:flex;align-items:center;background:#fff;border:0;border-right:1px solid #dfe3ea;padding:22px 20px;font-family:'Raleway',sans-serif;font-size:12px;font-weight:700;color:var(--navy)}
+    .prog-hl:last-child{border-right:0}
+    .prog-modules{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:0;border-top:1px solid #dfe3ea}
+    .prog-mod{background:#fff;display:flex;gap:34px;padding:38px 0 40px;position:relative;border-bottom:1px solid #dfe3ea;transition:transform .28s cubic-bezier(.16,1,.3,1)}
+    .prog-mod:hover{transform:translateX(6px);box-shadow:none}
+    .prog-mod::before,.prog-mod::after{display:none}
+    .prog-num{flex-shrink:0;width:58px;height:58px;background:#fff;border:1px solid #cfd4df;color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:'Raleway',sans-serif;font-size:17px;font-weight:800;transition:border-color .25s,color .25s}
+    .prog-mod:hover .prog-num{background:#fff;border-color:var(--red);color:var(--red)}
     .prog-content{flex:1;min-width:0}
-    .prog-content h3{font-family:'Raleway',sans-serif;font-size:19px;font-weight:700;color:var(--navy);margin-bottom:8px}
-    .prog-dur{display:inline-block;background:var(--gold);color:var(--navy);font-family:'Raleway',sans-serif;font-size:11.5px;font-weight:800;letter-spacing:.5px;padding:4px 13px;border-radius:20px;margin-bottom:12px}
-    .prog-content>p{font-size:13.5px;color:var(--txt);line-height:1.7;margin-bottom:13px}
-    .prog-points{display:flex;flex-wrap:wrap;gap:8px 20px}
-    .prog-pt{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--navy);font-weight:600}
-    .prog-pt svg{width:14px;height:14px;fill:var(--red);flex-shrink:0}
-    .prog-cta{position:relative;overflow:hidden;margin:64px -80px -90px;padding:78px 40px 84px;display:flex;justify-content:center;text-align:center}
-    .prog-cta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.65) brightness(.85);transition:transform 1s cubic-bezier(.16,1,.3,1)}
-    .prog-cta:hover img{transform:scale(1.05)}
-    .prog-cta::after{content:'';position:absolute;inset:0;background:linear-gradient(150deg,rgba(10,14,36,.93) 0%,rgba(27,44,107,.84) 100%)}
-    .prog-cta-c{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:20px;max-width:620px}
-    .prog-cta-c .eb{font-family:'Raleway',sans-serif;font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold)}
-    .prog-cta-c h2{font-family:'Raleway',sans-serif;font-size:34px;font-weight:800;color:#fff;line-height:1.2;letter-spacing:-.5px}
-    .prog-cta-c p{font-family:'Open Sans',sans-serif;font-size:15px;font-weight:400;color:rgba(255,255,255,.82);line-height:1.8}
-    .prog-cta-c .btn-plus{background:var(--gold);color:var(--navy)}
+    .prog-content h3{font-family:'Raleway',sans-serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:10px}
+    .prog-dur{display:inline-block;background:transparent;color:var(--red);font-family:'Raleway',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;padding:0;border-radius:0;margin-bottom:13px}
+    .prog-content>p{font-size:13.5px;color:#555d70;line-height:1.8;margin-bottom:14px;max-width:760px}
+    .prog-points{display:flex;flex-wrap:wrap;gap:8px 22px}
+    .prog-pt{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--navy);font-weight:600}
+    .prog-pt::before{content:'·';color:var(--red);font-weight:800}
+    .prog-cta{position:relative;overflow:hidden;margin:96px -40px 0;padding:92px 40px 98px;display:flex;justify-content:center;text-align:center;background:#f6f7f9;border-top:1px solid #dfe3ea}
+    .prog-cta img,.prog-cta::after{display:none}
+    .prog-cta-c{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:20px;max-width:650px}
+    .prog-cta-c .eb{font-family:'Raleway',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red)}
+    .prog-cta-c h2{font-family:'Raleway',sans-serif;font-size:clamp(32px,4vw,46px);font-weight:800;color:var(--navy);line-height:1.1;letter-spacing:-1.2px}
+    .prog-cta-c p{font-family:'Open Sans',sans-serif;font-size:15px;font-weight:400;color:#5b6272;line-height:1.8}
+    .prog-cta-c .btn-plus{background:var(--navy);color:#fff}
 
     /* FOOTER */
     footer{background:var(--navy-dark);padding:50px 130px 28px}
@@ -173,13 +161,22 @@
       nav{padding:0 22px;height:74px}
       .logo-img{height:40px}
       nav.scrolled .logo-img{height:36px}
-      .nav-links{gap:22px}
-      .nav-links a{font-size:13px}
-      .programme{padding:50px 20px}
+      .nav-burger{display:flex}
+      .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:#fff;max-height:0;overflow:hidden;box-shadow:0 20px 34px -14px rgba(10,14,36,.2);transition:max-height .3s ease}
+      .nav-links.open{max-height:340px}
+      .nav-links li{border-top:1px solid rgba(27,44,107,.09)}
+      .nav-links a{display:block;padding:16px 22px;font-size:14px}
+      .nav-links a::after{display:none}
+      .programme{padding:0 20px}
+      .prog-banner{margin:0 auto 34px;padding:74px 4px 54px}
+      .prog-banner-c h1{font-size:clamp(38px,11vw,52px)}
+      .prog-highlights{grid-template-columns:1fr 1fr;margin-bottom:52px}
+      .prog-hl:nth-child(2){border-right:0}
+      .prog-hl:nth-child(-n+2){border-bottom:1px solid #dfe3ea}
       .prog-mod{flex-direction:column;gap:16px;padding:22px}
-      .prog-banner{margin:-50px -20px 34px;height:240px}
-      .prog-banner-c h1{font-size:28px}
-      .prog-cta{margin:48px -20px -50px;padding:56px 24px 60px}
+      .prog-mod{padding:30px 0 32px}
+      .prog-mod:hover{transform:none}
+      .prog-cta{margin:64px -20px 0;padding:68px 24px 72px}
       .prog-cta-c h2{font-size:26px}
       footer{padding:40px 22px 24px}
       .finfo{flex-direction:column;gap:24px}
@@ -196,18 +193,19 @@
   </a>
   <ul class="nav-links">
     <li><a href="/">Accueil</a></li>
-    <li><a href="/#choisir">Nous choisir</a></li>
-    <li><a href="/#formations">Nos services</a></li>
+    <li><a href="/#choisir">Notre approche</a></li>
+    <li><a href="/#formations">La formation</a></li>
     <li><a href="/programme" class="active">Programme</a></li>
     <li><a href="/#contact">Contact</a></li>
   </ul>
+  <button class="nav-burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" onclick="toggleMenu(this)">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- ── PROGRAMME ──────────────────────────────────────────────── -->
 <section class="programme">
   <div class="prog-banner">
-    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80&fit=crop" alt="Formation IA pour courtiers en assurance"/>
-    <div class="prog-banner-ov"></div>
     <div class="prog-banner-c">
       <span class="eb">Le programme détaillé</span>
       <h1>Votre parcours, module par module</h1>
@@ -216,10 +214,10 @@
   </div>
 
   <div class="prog-highlights">
-    <span class="prog-hl"><svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg> Visio ou présentiel</span>
-    <span class="prog-hl"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg> 7 heures</span>
-    <span class="prog-hl"><svg viewBox="0 0 24 24"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg> Programme sur mesure</span>
-    <span class="prog-hl"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 13L2 10v7l10 5 10-5v-7l-10 5z"/></svg> 8 modules métier</span>
+    <span class="prog-hl">Visio ou présentiel</span>
+    <span class="prog-hl">7 heures</span>
+    <span class="prog-hl">Programme sur mesure</span>
+    <span class="prog-hl">8 modules métier</span>
   </div>
 
   <div class="prog-modules">
@@ -228,62 +226,61 @@
       <h3>Introduction : l'IA au service du courtage</h3>
       <span class="prog-dur">30 min</span>
       <p>Comprendre ce qu'est vraiment l'IA générative, ce qu'elle change pour le métier de courtier et pourquoi c'est le moment d'agir.</p>
-      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Enjeux &amp; opportunités</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Vocabulaire clé</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Chiffres à retenir</span></div>
+      <div class="prog-points"><span class="prog-pt">Enjeux &amp; opportunités</span><span class="prog-pt">Vocabulaire clé</span><span class="prog-pt">Chiffres à retenir</span></div>
     </div></div>
 
     <div class="prog-mod"><div class="prog-num">02</div><div class="prog-content">
       <h3>Socle IA &amp; prompting</h3>
       <span class="prog-dur">30 min</span>
       <p>Apprendre à piloter l'IA plutôt qu'à la subir, en maîtrisant l'art de rédiger des instructions efficaces sur des cas réels de courtage.</p>
-      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>La méthode du bon prompt</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Bons &amp; mauvais usages</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Le Projet Cabinet</span></div>
+      <div class="prog-points"><span class="prog-pt">La méthode du bon prompt</span><span class="prog-pt">Bons &amp; mauvais usages</span><span class="prog-pt">Le Projet Cabinet</span></div>
     </div></div>
 
     <div class="prog-mod"><div class="prog-num">03</div><div class="prog-content">
       <h3>Claude en profondeur &amp; Microsoft 365</h3>
       <span class="prog-dur">1 h</span>
       <p>Installer et prendre en main votre environnement de travail augmenté : Claude et ses espaces, intégrés à Excel, Word, PowerPoint et Outlook.</p>
-      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Prise en main de Claude</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Excel : analyse de portefeuille</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Word, PowerPoint &amp; Outlook</span></div>
+      <div class="prog-points"><span class="prog-pt">Prise en main de Claude</span><span class="prog-pt">Excel : analyse de portefeuille</span><span class="prog-pt">Word, PowerPoint &amp; Outlook</span></div>
     </div></div>
 
     <div class="prog-mod"><div class="prog-num">04</div><div class="prog-content">
       <h3>Gérer et automatiser sa messagerie</h3>
       <span class="prog-dur">1 h</span>
       <p>Reprendre le contrôle de la moitié de votre journée en traitant mails, résumés et relances en quelques secondes, dans le ton de votre cabinet.</p>
-      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Réponses en quelques secondes</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Bibliothèque de modèles</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Relances structurées</span></div>
+      <div class="prog-points"><span class="prog-pt">Réponses en quelques secondes</span><span class="prog-pt">Bibliothèque de modèles</span><span class="prog-pt">Relances structurées</span></div>
     </div></div>
 
     <div class="prog-mod"><div class="prog-num">05</div><div class="prog-content">
       <h3>La prospection augmentée par l'IA</h3>
       <span class="prog-dur">1 h 30</span>
       <p>Construire votre machine de prospection Claude + Brevo : trouver, comprendre, contacter et relancer vos prospects, prête à l'emploi dès le lendemain.</p>
-      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Qualifier une liste</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Messages personnalisés</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Séquences de relance Brevo</span></div>
+      <div class="prog-points"><span class="prog-pt">Qualifier une liste</span><span class="prog-pt">Messages personnalisés</span><span class="prog-pt">Séquences de relance Brevo</span></div>
     </div></div>
 
     <div class="prog-mod"><div class="prog-num">06</div><div class="prog-content">
       <h3>Fidéliser et développer son portefeuille avec Marvin Systems</h3>
       <span class="prog-dur">1 h</span>
       <p>Transformer votre portefeuille existant en moteur de croissance : exploiter vos exports Excel avec l'IA en toute confidentialité grâce à Marvin Systems, préparer vos revues annuelles et détecter les opportunités dormantes.</p>
-      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Analyse d'exports Excel</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Revues annuelles</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Opportunités dormantes</span></div>
+      <div class="prog-points"><span class="prog-pt">Analyse d'exports Excel</span><span class="prog-pt">Revues annuelles</span><span class="prog-pt">Opportunités dormantes</span></div>
     </div></div>
 
     <div class="prog-mod"><div class="prog-num">07</div><div class="prog-content">
       <h3>RGPD, AI Act, RSE &amp; IA responsable</h3>
       <span class="prog-dur">1 h</span>
       <p>Utiliser l'IA en toute conformité et de façon responsable : protection des données clients, exigences du régulateur et usage sobre et transparent.</p>
-      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>RGPD &amp; données sensibles</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Charte IA interne</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>AI Act &amp; sobriété numérique</span></div>
+      <div class="prog-points"><span class="prog-pt">RGPD &amp; données sensibles</span><span class="prog-pt">Charte IA interne</span><span class="prog-pt">AI Act &amp; sobriété numérique</span></div>
     </div></div>
 
     <div class="prog-mod"><div class="prog-num">08</div><div class="prog-content">
       <h3>Conclusion : votre plan d'action</h3>
       <span class="prog-dur">15 min</span>
       <p>Repartir avec un cap clair : les enseignements clés du parcours et votre plan d'action personnel des 30 prochains jours.</p>
-      <div class="prog-points"><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Enseignements clés</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Plan d'action 30 jours</span><span class="prog-pt"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Prochaines étapes</span></div>
+      <div class="prog-points"><span class="prog-pt">Enseignements clés</span><span class="prog-pt">Plan d'action 30 jours</span><span class="prog-pt">Prochaines étapes</span></div>
     </div></div>
 
   </div>
 
   <div class="prog-cta">
-    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1600&q=80&fit=crop" alt="Équipe de cabinet en formation" loading="lazy" decoding="async"/>
     <div class="prog-cta-c">
       <span class="eb">Passez à l'action</span>
       <h2>Prêt à intégrer l'IA à votre cabinet ?</h2>
@@ -320,6 +317,23 @@
 </footer>
 
 <script>
+  function toggleMenu(btn){
+    var links = document.querySelector('.nav-links');
+    var open = links.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  document.querySelectorAll('.nav-links a').forEach(function(link){
+    link.addEventListener('click', function(){
+      var links = document.querySelector('.nav-links');
+      var btn = document.querySelector('.nav-burger');
+      links.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
   // ── Nav : rétrécissement au scroll ────────────────────────────
   (function(){
     var navEl = document.querySelector('nav');
