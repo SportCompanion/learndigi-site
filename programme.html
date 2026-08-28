@@ -7,7 +7,7 @@
   <meta name="description" content="Le programme détaillé de la formation IA Learndigi pour courtiers en assurance : 8 modules, 7 heures, en visio ou en présentiel, programme sur mesure."/>
   <meta name="author" content="Learndigi, Matthieu Brubach et Hugo Salembier"/>
   <meta name="robots" content="index, follow"/>
-  <meta name="theme-color" content="#ffffff"/>
+  <meta name="theme-color" content="#f7f6f2"/>
   <link rel="canonical" href="https://learndigi.fr/programme"/>
   <link rel="icon" type="image/png" href="favicon.png"/>
   <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
@@ -78,9 +78,10 @@
       --navy:#1B2C6B;--navy-dark:#152259;--red:#C0392B;--red2:#a93226;
       --grey:#F2F2F2;--card:#EBEBEB;--white:#fff;--txt:#444;
       --ink:#0A0E24;--gold:#E8921A;--gold-dim:rgba(232,146,26,.7);
+      --paper:#F7F6F2;--paper-soft:#EFF1F4;--surface:#FCFBF8;--line:#D9DDE5;
     }
     html{scroll-behavior:smooth}
-    body{font-family:'Open Sans',sans-serif;color:var(--navy);background:#fff;overflow-x:hidden}
+    body{font-family:'Open Sans',sans-serif;color:var(--navy);background:var(--paper);overflow-x:hidden}
 
     /* ANIMATIONS */
     .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s cubic-bezier(.16,1,.3,1)}
@@ -90,7 +91,7 @@
     }
 
     /* NAV */
-    nav{position:sticky;top:0;z-index:999;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:92px;box-shadow:0 1px 10px rgba(0,0,0,0.09);transition:height .25s ease,box-shadow .25s ease}
+    nav{position:sticky;top:0;z-index:999;background:rgba(252,251,248,.97);display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:92px;box-shadow:0 1px 10px rgba(0,0,0,0.07);transition:height .25s ease,box-shadow .25s ease}
     nav.scrolled{height:72px;box-shadow:0 6px 28px rgba(10,14,36,.12)}
     .logo-wrap{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
     .logo-img{height:54px;width:auto;display:block;transition:height .25s ease}
@@ -113,7 +114,7 @@
     .btn-duo:hover .btn-label{background:var(--red2)}
 
     /* PROGRAMME : direction claire et éditoriale */
-    .programme{background:#fff;padding:0 40px}
+    .programme{background:var(--paper);padding:0 40px}
     .prog-banner{position:relative;max-width:1180px;height:auto;overflow:visible;margin:0 auto 48px;padding:108px 0 76px;border-bottom:1px solid #dfe3ea}
     .prog-banner img,.prog-banner-ov{display:none}
     .prog-banner-c{position:static;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;text-align:left;padding:0}
@@ -121,14 +122,14 @@
     .prog-banner-c h1{font-family:'Raleway',sans-serif;font-size:clamp(44px,6vw,72px);font-weight:800;color:var(--navy);margin-bottom:24px;line-height:1;letter-spacing:-2.5px;max-width:900px}
     .prog-banner-c p{font-size:15px;color:#5b6272;max-width:760px;line-height:1.9}
     .prog-highlights{max-width:1180px;margin:0 auto 74px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #dfe3ea}
-    .prog-hl{display:flex;align-items:center;background:#fff;border:0;border-right:1px solid #dfe3ea;padding:22px 20px;font-family:'Raleway',sans-serif;font-size:12px;font-weight:700;color:var(--navy)}
+    .prog-hl{display:flex;align-items:center;background:var(--surface);border:0;border-right:1px solid var(--line);padding:22px 20px;font-family:'Raleway',sans-serif;font-size:12px;font-weight:700;color:var(--navy)}
     .prog-hl:last-child{border-right:0}
     .prog-modules{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:0;border-top:1px solid #dfe3ea}
-    .prog-mod{background:#fff;display:flex;gap:34px;padding:38px 0 40px;position:relative;border-bottom:1px solid #dfe3ea;transition:transform .28s cubic-bezier(.16,1,.3,1)}
+    .prog-mod{background:transparent;display:flex;gap:34px;padding:38px 0 40px;position:relative;border-bottom:1px solid var(--line);transition:transform .28s cubic-bezier(.16,1,.3,1)}
     .prog-mod:hover{transform:translateX(6px);box-shadow:none}
     .prog-mod::before,.prog-mod::after{display:none}
-    .prog-num{flex-shrink:0;width:58px;height:58px;background:#fff;border:1px solid #cfd4df;color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:'Raleway',sans-serif;font-size:17px;font-weight:800;transition:border-color .25s,color .25s}
-    .prog-mod:hover .prog-num{background:#fff;border-color:var(--red);color:var(--red)}
+    .prog-num{flex-shrink:0;width:58px;height:58px;background:var(--surface);border:1px solid #cfd4df;color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:'Raleway',sans-serif;font-size:17px;font-weight:800;transition:border-color .25s,color .25s}
+    .prog-mod:hover .prog-num{background:var(--surface);border-color:var(--red);color:var(--red)}
     .prog-content{flex:1;min-width:0}
     .prog-content h3{font-family:'Raleway',sans-serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:10px}
     .prog-dur{display:inline-block;background:transparent;color:var(--red);font-family:'Raleway',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;padding:0;border-radius:0;margin-bottom:13px}
@@ -136,7 +137,7 @@
     .prog-points{display:flex;flex-wrap:wrap;gap:8px 22px}
     .prog-pt{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--navy);font-weight:600}
     .prog-pt::before{content:'·';color:var(--red);font-weight:800}
-    .prog-cta{position:relative;overflow:hidden;margin:96px -40px 0;padding:92px 40px 98px;display:flex;justify-content:center;text-align:center;background:#f6f7f9;border-top:1px solid #dfe3ea}
+    .prog-cta{position:relative;overflow:hidden;margin:96px -40px 0;padding:92px 40px 98px;display:flex;justify-content:center;text-align:center;background:var(--paper-soft);border-top:1px solid var(--line)}
     .prog-cta img,.prog-cta::after{display:none}
     .prog-cta-c{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:20px;max-width:650px}
     .prog-cta-c .eb{font-family:'Raleway',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red)}
@@ -162,7 +163,7 @@
       .logo-img{height:40px}
       nav.scrolled .logo-img{height:36px}
       .nav-burger{display:flex}
-      .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:#fff;max-height:0;overflow:hidden;box-shadow:0 20px 34px -14px rgba(10,14,36,.2);transition:max-height .3s ease}
+      .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--surface);max-height:0;overflow:hidden;box-shadow:0 20px 34px -14px rgba(10,14,36,.2);transition:max-height .3s ease}
       .nav-links.open{max-height:340px}
       .nav-links li{border-top:1px solid rgba(27,44,107,.09)}
       .nav-links a{display:block;padding:16px 22px;font-size:14px}
