@@ -1481,19 +1481,58 @@
     .eng-card h3{font-size:20px;margin-bottom:12px}
     .eng-card p{font-size:14px;line-height:1.8;max-width:480px}
 
-    /* Tarif : une proposition sobre, sans grand panneau bleu décoratif */
-    .tarif-wrap{padding:104px 40px;background:var(--paper-soft)}
-    .tarif-card{background:var(--surface);border:1px solid var(--line);box-shadow:none}
-    .tarif-content{padding:58px 58px 56px}
-    .tarif-card h2{color:var(--navy)}
-    .tarif-card p{color:#5b6272}
-    .tarif-media{padding:58px 52px 106px;background:#f0f2f6;border-left:1px solid #dfe3ea}
+    /* Tarif : deux panneaux équilibrés, sans texte flottant */
+    .tarif-wrap{padding:112px 40px;background:var(--paper-soft)}
+    .tarif-card{
+      grid-template-columns:1fr 1fr;max-width:1180px;min-height:580px;
+      background:transparent;border:1px solid var(--line);box-shadow:none;
+    }
+    .tarif-content{
+      padding:72px 70px;background:var(--surface);
+      justify-content:center;align-items:flex-start;
+    }
+    .tarif-kicker{
+      display:block;margin-bottom:22px;
+      font-family:'Raleway',sans-serif;font-size:10px;font-weight:800;
+      letter-spacing:3px;text-transform:uppercase;color:var(--red);
+    }
+    .tarif-card h2{
+      max-width:470px;margin-bottom:30px;color:var(--navy);
+      font-size:clamp(35px,3.6vw,48px);line-height:1.1;letter-spacing:-1.4px;
+    }
+    .tarif-row{display:block;margin-bottom:40px}
+    .tarif-line{width:64px;margin:0 0 24px;background:var(--gold)}
+    .tarif-card p{max-width:450px;color:#5b6272;font-size:14.5px;line-height:1.9}
+    .tarif-btn .btn-duo{transition:transform .25s ease,box-shadow .25s ease}
+    .tarif-btn .btn-duo:hover{transform:translateY(-3px);box-shadow:0 14px 28px -18px rgba(27,44,107,.55)}
+    .tarif-media{
+      padding:72px 66px;background:#e9edf3;border-left:1px solid var(--line);
+      justify-content:center;overflow:hidden;
+    }
     .tarif-media::before{display:none}
-    .tarif-panel-eb{color:#6e7585}
-    .tarif-crit li{color:var(--navy);border-bottom:1px solid #d8dce4}
-    .tarif-crit li b{color:var(--red)}
-    .tarif-badge{background:var(--navy);color:#fff;box-shadow:none}
-    .tarif-badge svg{fill:#fff}
+    .tarif-panel-eb{color:#656d7e;margin-bottom:30px}
+    .tarif-crit{width:100%}
+    .tarif-crit li{
+      display:grid;grid-template-columns:32px 1fr;gap:14px;
+      color:var(--navy);border-bottom:1px solid #cfd5df;
+      padding:18px 0;font-size:14.5px;line-height:1.55;
+    }
+    .tarif-crit li b{color:var(--red);padding-top:2px}
+    .tarif-badge{
+      position:static;align-self:flex-start;margin-top:36px;
+      background:var(--navy);color:#fff;box-shadow:none;
+      padding:15px 25px;font-size:15px;
+    }
+    .tarif-badge svg{display:none}
+    .tarif-content.reveal{transform:translateX(-24px)}
+    .tarif-media.reveal{transform:translateX(24px)}
+    .tarif-content.reveal.in,.tarif-media.reveal.in{transform:none}
+    .tarif-media.reveal .tarif-crit li{opacity:0;transform:translateX(14px);transition:opacity .45s ease,transform .45s ease}
+    .tarif-media.reveal.in .tarif-crit li{opacity:1;transform:none}
+    .tarif-media.reveal.in .tarif-crit li:nth-child(1){transition-delay:.12s}
+    .tarif-media.reveal.in .tarif-crit li:nth-child(2){transition-delay:.2s}
+    .tarif-media.reveal.in .tarif-crit li:nth-child(3){transition-delay:.28s}
+    .tarif-media.reveal.in .tarif-crit li:nth-child(4){transition-delay:.36s}
 
     /* Preuve humaine : uniquement les photographies fournies par Learndigi */
     .team-proof{
@@ -1517,18 +1556,56 @@
     .trainer-card h3{font-family:'Raleway',sans-serif;font-size:16px;color:var(--navy);margin-bottom:5px}
     .trainer-card p{font-size:12px;color:#6b7280}
 
-    /* Résultats et livrables sur fond clair */
+    /* Résultats et livrables : deux panneaux de même niveau visuel */
     .video-section{background:var(--paper-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     .video-bg{display:none}
-    .video-inner{max-width:1180px;margin:0 auto;padding:100px 40px;gap:76px}
-    .video-text h2{color:var(--navy)}
-    .video-text h2 em{color:var(--red)}
-    .video-text p{color:#5d6474}
+    .video-inner{
+      max-width:1180px;margin:0 auto;padding:112px 40px;
+      display:grid;grid-template-columns:minmax(0,.95fr) minmax(420px,1.05fr);
+      align-items:stretch;gap:20px;
+    }
+    .video-text{
+      position:relative;min-width:0;padding:54px 50px;
+      display:flex;flex-direction:column;justify-content:center;
+      background:#e8ecf2;border:1px solid var(--line);
+    }
+    .video-text::before{
+      content:'';position:absolute;left:-1px;top:46px;bottom:46px;
+      width:3px;background:var(--red);transform-origin:top;
+    }
+    .video-eyebrow{color:var(--red);margin-bottom:24px}
+    .video-text h2{max-width:430px;color:var(--navy);font-size:clamp(36px,4vw,50px);line-height:1.06;letter-spacing:-1.4px;margin-bottom:24px}
+    .video-text h2 em{display:block;color:var(--red)}
+    .video-text p{max-width:440px;color:#5d6474;margin-bottom:34px;line-height:1.85}
+    .video-stats{
+      width:100%;gap:0;margin-bottom:36px;
+      padding:24px 0;border-top:1px solid #cfd5df;border-bottom:1px solid #cfd5df;
+    }
+    .vstat{flex:1;padding:0 20px;border-right:1px solid #cfd5df}
+    .vstat:first-child{padding-left:0}
+    .vstat:last-child{padding-right:0;border-right:0}
     .vstat strong{color:var(--navy)}
     .vstat>span{color:#747b8b}
+    .video-text.reveal .vstat{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
+    .video-text.reveal.in .vstat{opacity:1;transform:none}
+    .video-text.reveal.in .vstat:nth-child(1){transition-delay:.14s}
+    .video-text.reveal.in .vstat:nth-child(2){transition-delay:.22s}
+    .video-text.reveal.in .vstat:nth-child(3){transition-delay:.3s}
     .video-link{color:var(--navy)}
     .video-link:hover{color:var(--red)}
-    .deliverable-card{background:var(--surface);box-shadow:none;border:1px solid var(--line);border-top:3px solid var(--red)}
+    .deliverable-card{
+      width:auto;flex:auto;padding:48px 44px;
+      background:var(--surface);box-shadow:none;border:1px solid var(--line);border-top:3px solid var(--red)
+    }
+    .deliverable-card h3{font-size:30px;margin-bottom:12px}
+    .deliverable-intro{margin-bottom:28px}
+    .deliverable-list li{padding:18px 0;line-height:1.55}
+    .deliverable-card.reveal .deliverable-list li{opacity:0;transform:translateX(14px);transition:opacity .45s ease,transform .45s ease}
+    .deliverable-card.reveal.in .deliverable-list li{opacity:1;transform:none}
+    .deliverable-card.reveal.in .deliverable-list li:nth-child(1){transition-delay:.12s}
+    .deliverable-card.reveal.in .deliverable-list li:nth-child(2){transition-delay:.2s}
+    .deliverable-card.reveal.in .deliverable-list li:nth-child(3){transition-delay:.28s}
+    .deliverable-card.reveal.in .deliverable-list li:nth-child(4){transition-delay:.36s}
 
     /* La prise de rendez-vous reste claire ; le contact devient l'unique grand aplat bleu */
     .faq-section{background:var(--surface)}
@@ -1563,9 +1640,12 @@
       .eng-card,.eng-card:nth-child(odd),.eng-card:nth-child(even){padding:30px 0;border-right:0}
       .team-proof{grid-template-columns:1fr;gap:54px;padding:78px 24px}
       .trainer-card:nth-child(2){margin-top:30px}
-      .video-inner{padding:72px 24px}
+      .video-inner{grid-template-columns:1fr;padding:72px 24px;gap:18px}
+      .video-text,.deliverable-card{padding:40px 30px}
       .tarif-wrap{padding:72px 24px}
-      .tarif-media{border-left:0;border-top:1px solid #dfe3ea}
+      .tarif-card{grid-template-columns:1fr;min-height:0}
+      .tarif-content,.tarif-media{padding:48px 34px}
+      .tarif-media{border-left:0;border-top:1px solid var(--line)}
     }
 
     @media(max-width:560px){
@@ -1574,6 +1654,12 @@
       .howto-step,.howto-step:not(:first-child){padding:28px 0;border-right:0;border-bottom:1px solid #dde1e8}
       .howto-step:last-child{border-bottom:0}
       .outils-line{grid-template-columns:1fr;gap:7px}
+      .video-text,.deliverable-card{padding:34px 24px}
+      .video-stats{gap:0}
+      .vstat{padding:0 12px}
+      .vstat strong{font-size:27px}
+      .video-cta-row{align-items:flex-start;flex-direction:column}
+      .tarif-content,.tarif-media{padding:40px 24px}
       .team-proof-people{gap:10px}
       .trainer-card:nth-child(2){margin-top:24px}
       .trainer-card>div{padding:14px 12px 16px}
@@ -1808,6 +1894,7 @@
 <section class="tarif-wrap" id="tarif">
   <div class="tarif-card">
     <div class="tarif-content">
+      <span class="tarif-kicker">Tarif &amp; financement</span>
       <h2>Un tarif construit avec vous, pas un prix catalogue</h2>
       <div class="tarif-row">
         <div class="tarif-line"></div>
@@ -1829,7 +1916,6 @@
         <li><b>04</b>Les modules prioritaires pour votre cabinet</li>
       </ul>
       <div class="tarif-badge">
-        <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
         <span>Sur devis<small>Après un échange de 30 min</small></span>
       </div>
     </div>
@@ -2352,7 +2438,7 @@
   // ── Reveal au scroll (animations d'apparition) ───────────────
   (function(){
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var sel='.intro-heading, .intro-copy, .howto-top, .howto-step, .fiche, .contexts-heading, .context-card, .outils-heading, .outils-copy, .eng-header, .eng-card, .tarif-card, .team-proof-copy, .trainer-card, .video-text, .deliverable-card, .faq-item';
+    var sel='.intro-heading, .intro-copy, .howto-top, .howto-step, .fiche, .contexts-heading, .context-card, .outils-heading, .outils-copy, .eng-header, .eng-card, .tarif-content, .tarif-media, .team-proof-copy, .trainer-card, .video-text, .deliverable-card, .faq-item';
     var els=[].slice.call(document.querySelectorAll(sel));
     els.forEach(function(el){ el.classList.add('reveal'); });
     document.querySelectorAll('.context-grid, .eng-grid, .team-proof-people').forEach(function(grid){
