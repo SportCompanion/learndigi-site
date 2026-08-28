@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Learndigi | Formation IA pour courtiers en assurance, 7h en visio ou présentiel</title>
+  <title>Formation IA pour courtiers en assurance | Learndigi</title>
 
   <!-- SEO -->
-  <meta name="description" content="Learndigi forme les courtiers en assurance à l'intelligence artificielle. 7 heures animées en visio ou en présentiel, programme sur mesure : Claude, Microsoft 365, prospection, RGPD & AI Act."/>
+  <meta name="description" content="Formation pratique à l'IA pour les courtiers en assurance : 7 heures en visio ou dans votre cabinet, à partir de vos usages, de vos outils et de vos enjeux de conformité."/>
   <meta name="keywords" content="formation IA courtiers assurance, formation intelligence artificielle courtage, Claude courtier assurance, prospection IA assurance, formation IA présentiel visio, RGPD AI Act courtage"/>
   <meta name="author" content="Learndigi, Matthieu Brubach et Hugo Salembier"/>
   <meta name="robots" content="index, follow"/>
@@ -22,8 +22,8 @@
   <meta property="og:url" content="https://learndigi.fr/"/>
   <meta property="og:title" content="Learndigi | Formation IA pour courtiers en assurance"/>
   <meta property="og:description" content="7 heures de formation IA en visio ou en présentiel, 100 % métier, sur mesure. Applicable dans votre cabinet dès le lendemain."/>
-  <meta property="og:image" content="https://learndigi.fr/formation-presentiel.jpg"/>
-  <meta property="og:image:alt" content="Formateur Learndigi animant une session IA dans un cabinet de courtage"/>
+  <meta property="og:image" content="https://learndigi.fr/logo.png"/>
+  <meta property="og:image:alt" content="Learndigi, formation digitale"/>
   <meta property="og:locale" content="fr_FR"/>
   <meta property="og:site_name" content="Learndigi"/>
 
@@ -31,7 +31,7 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Learndigi | Formation IA pour courtiers en assurance"/>
   <meta name="twitter:description" content="7 heures de formation IA pour courtiers, en visio ou en présentiel. Programme sur mesure."/>
-  <meta name="twitter:image" content="https://learndigi.fr/formation-presentiel.jpg"/>
+  <meta name="twitter:image" content="https://learndigi.fr/logo.png"/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -57,7 +57,7 @@
           "url": "https://learndigi.fr/logo.png",
           "caption": "Learndigi, formation digitale"
         },
-        "image": "https://learndigi.fr/formation-presentiel.jpg",
+        "image": "https://learndigi.fr/logo.png",
         "slogan": "Efficacité · Adaptabilité · Conformité",
         "description": "Learndigi est une société française de formation qui forme les courtiers en assurance à l'usage professionnel de l'intelligence artificielle. Formation de 7 heures, en visioconférence ou en présentiel, au programme personnalisé selon les enjeux du cabinet.",
         "foundingDate": "2026-06-05",
@@ -134,7 +134,7 @@
         "name": "Learndigi, formation IA pour courtiers en assurance",
         "isPartOf": { "@id": "https://learndigi.fr/#website" },
         "about": { "@id": "https://learndigi.fr/#organization" },
-        "primaryImageOfPage": "https://learndigi.fr/formation-presentiel.jpg",
+        "primaryImageOfPage": "https://learndigi.fr/logo.png",
         "inLanguage": "fr-FR",
         "mainEntity": [
           {
@@ -258,6 +258,16 @@
     .reveal.in{opacity:1;transform:none}
     @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
     @keyframes bounceDown{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+    /* Aperçu concret du travail réalisé pendant la formation */
+    .deliverable-card{flex:0 0 470px;background:#fff;border:1px solid rgba(27,44,107,.12);box-shadow:0 24px 70px rgba(8,15,43,.16);padding:34px}
+    .deliverable-kicker{display:block;font-family:'Raleway',sans-serif;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+    .deliverable-card h3{font-family:'Raleway',sans-serif;font-size:26px;line-height:1.2;color:var(--navy);margin-bottom:8px}
+    .deliverable-intro{font-size:14px;line-height:1.65;color:#626879;margin-bottom:22px}
+    .deliverable-list{list-style:none;display:grid;gap:0;border-top:1px solid #e5e7ed}
+    .deliverable-list li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;padding:15px 0;border-bottom:1px solid #e5e7ed;color:#333;font-size:14px;line-height:1.45}
+    .deliverable-list span{font-family:'Raleway',sans-serif;font-weight:800;color:var(--gold)}
+    .deliverable-note{margin-top:18px;font-size:12px;line-height:1.55;color:#6c7280}
     .hero .hero-label{animation:fadeUp .7s ease-out .15s both}
     .hero .hero-title{animation:fadeUp .85s ease-out .3s both}
     .hero .hero-bar{animation:fadeUp .7s ease-out .52s both}
@@ -547,68 +557,6 @@
       letter-spacing:0;color:rgba(255,255,255,.6);line-height:1.6;
     }
 
-    /* ── Parcours cards ─────────────────────────────────────────── */
-    .parcours-grid{
-      display:grid;grid-template-columns:repeat(3,1fr);
-      gap:22px;margin-bottom:52px;
-    }
-    .parcours-card{
-      background:var(--card);border-radius:2px;
-      overflow:hidden;display:flex;flex-direction:column;
-      transition:transform .2s,box-shadow .2s;
-    }
-    .parcours-card:hover{transform:translateY(-5px);box-shadow:0 14px 36px rgba(0,0,0,.3)}
-    /* en-tête de carte aux couleurs Learndigi (pas de photo stock) */
-    .parcours-img-wrap{
-      position:relative;height:200px;overflow:hidden;
-      display:flex;align-items:center;justify-content:center;
-      background:linear-gradient(142deg,var(--c1) 0%,var(--c2) 100%);
-    }
-    .parcours-img-wrap.p1{--c1:#070C24;--c2:#1B2C6B}
-    .parcours-img-wrap.p2{--c1:#12205A;--c2:#2B4AA8}
-    .parcours-img-wrap.p3{--c1:#1B2C6B;--c2:#3B66D6}
-    .parcours-img-wrap::before{
-      content:'';position:absolute;inset:0;
-      background-image:radial-gradient(rgba(255,255,255,.18) 1px,transparent 1px);
-      background-size:22px 22px;opacity:.55;
-      -webkit-mask-image:radial-gradient(125% 100% at 50% 38%,#000 0%,transparent 74%);
-      mask-image:radial-gradient(125% 100% at 50% 38%,#000 0%,transparent 74%);
-    }
-    .parcours-img-wrap::after{
-      content:'';position:absolute;left:0;right:0;bottom:0;height:3px;
-      background:var(--gold);z-index:3;
-    }
-    .parcours-ring{
-      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-      width:124px;height:124px;border-radius:50%;
-      border:1px solid rgba(255,255,255,.24);z-index:1;
-    }
-    .parcours-ring::after{
-      content:'';position:absolute;inset:-24px;border-radius:50%;
-      border:1px solid rgba(255,255,255,.11);
-    }
-    .parcours-icon{
-      position:relative;z-index:2;width:58px;height:58px;
-      transition:transform .35s cubic-bezier(.16,1,.3,1);
-    }
-    .parcours-icon svg{width:100%;height:100%;fill:#fff;opacity:.95}
-    .parcours-card:hover .parcours-icon{transform:translateY(-4px) scale(1.06)}
-    .parcours-label{
-      position:absolute;top:16px;left:16px;z-index:4;
-      font-family:'Raleway',sans-serif;
-      font-size:10px;font-weight:800;
-      letter-spacing:2px;color:rgba(255,255,255,.9);
-      background:var(--red);
-      padding:4px 10px;
-    }
-    .parcours-body{padding:28px 24px 32px;flex:1;display:flex;flex-direction:column;gap:12px}
-    .parcours-body h3{
-      font-family:'Raleway',sans-serif;
-      font-size:18px;font-weight:700;color:var(--navy);
-    }
-    .parcours-body p{font-size:13px;color:var(--txt);line-height:1.7;flex:1}
-    .parcours-body .card-lnk{margin-top:8px;align-self:flex-start}
-
     /* ── Formations CTA ─────────────────────────────────────────── */
     .formations-cta{
       display:flex;align-items:center;justify-content:center;
@@ -658,42 +606,6 @@
       margin-top:30px;line-height:1.75;
     }
 
-    /* ═══ BANDE PHOTO : transition entre deux sections ═════════════ */
-    .bande{position:relative;width:100%;height:430px;overflow:hidden;background:var(--ink)}
-    .bande img{
-      width:100%;height:100%;object-fit:cover;object-position:center 44%;display:block;
-      transform:scale(1.07);opacity:0;
-      transition:transform 1.7s cubic-bezier(.16,1,.3,1),opacity 1.3s ease;
-    }
-    .bande.in img{transform:scale(1);opacity:1}
-    /* fond blanc en haut, gris de la section suivante en bas : aucune coupure nette */
-    .bande-ov{
-      position:absolute;inset:0;
-      background:
-        radial-gradient(58% 42% at 50% 50%, rgba(4,8,26,.66) 0%, rgba(4,8,26,0) 100%),
-        linear-gradient(180deg,
-          #fff 0%,
-          rgba(255,255,255,.5) 9%,
-          rgba(8,14,40,.46) 33%,
-          rgba(8,14,40,.52) 64%,
-          rgba(242,242,242,.6) 91%,
-          var(--grey) 100%);
-    }
-    .bande-txt{
-      position:absolute;z-index:2;top:50%;left:0;right:0;
-      transform:translateY(-50%);text-align:center;padding:0 26px;
-    }
-    .bande-txt p{
-      font-family:'Raleway',sans-serif;font-weight:700;color:#fff;
-      font-size:clamp(19px,2.3vw,28px);line-height:1.42;
-      max-width:720px;margin:0 auto;
-      text-shadow:0 2px 26px rgba(4,8,26,.75);
-    }
-    .bande-txt span{
-      display:block;width:44px;height:2px;background:var(--gold);
-      margin:20px auto 0;
-    }
-
     /* ═══ ENGAGEMENTS ══════════════════════════════════════════════ */
     .engagements{background:var(--grey);padding:80px 80px 90px}
     .eng-header{text-align:center;margin-bottom:60px}
@@ -731,40 +643,12 @@
       transition:background .25s;
     }
     .eng-card:hover::before{background:var(--red)}
-    .eng-icon{
-      width:44px;height:44px;border-radius:2px;
-      background:var(--navy);
-      display:flex;align-items:center;justify-content:center;
-      margin-bottom:22px;
-      transition:background .25s;
-    }
-    .eng-card:hover .eng-icon{background:var(--red)}
-    .eng-icon svg{width:20px;height:20px;fill:#fff}
     .eng-card h3{
       font-family:'Raleway',sans-serif;
       font-size:16px;font-weight:700;color:var(--navy);
       margin-bottom:10px;line-height:1.3;
     }
     .eng-card p{font-size:13px;color:var(--txt);line-height:1.75}
-
-    /* ═══ SIGNATURE : coins de précision au survol ══════════════════
-       Motif récurrent façon document certifié : 4 coins fins qui se
-       resserrent autour de la carte au hover. */
-    .parcours-card,.eng-card{position:relative}
-    .parcours-card::after,.eng-card::after{
-      content:'';position:absolute;inset:16px;pointer-events:none;
-      opacity:0;transition:opacity .3s ease,inset .3s cubic-bezier(.16,1,.3,1);
-      background-image:
-        linear-gradient(var(--gold),var(--gold)),linear-gradient(var(--gold),var(--gold)),
-        linear-gradient(var(--gold),var(--gold)),linear-gradient(var(--gold),var(--gold)),
-        linear-gradient(var(--gold),var(--gold)),linear-gradient(var(--gold),var(--gold)),
-        linear-gradient(var(--gold),var(--gold)),linear-gradient(var(--gold),var(--gold));
-      background-repeat:no-repeat;
-      background-size:16px 2px,2px 16px,16px 2px,2px 16px,16px 2px,2px 16px,16px 2px,2px 16px;
-      background-position:top left,top left,top right,top right,bottom left,bottom left,bottom right,bottom right;
-      z-index:2;
-    }
-    .parcours-card:hover::after,.eng-card:hover::after{opacity:1;inset:10px}
 
     /* ═══ TARIF ════════════════════════════════════════════════════ */
     .tarif-wrap{background:#fff;padding:60px 100px 80px}
@@ -828,60 +712,6 @@
     }
     .tarif-badge small{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.7;margin-top:2px}
     .tarif-badge svg{width:22px;height:22px;fill:var(--navy)}
-
-    /* ═══ NOUS CHOISIR ═════════════════════════════════════════════ */
-    .navy-bar{height:8px;background:var(--navy)}
-    .choisir{background:#fff;padding:80px 130px}
-    .choisir-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-    .choisir-text h2{
-      font-family:'Raleway',sans-serif;
-      font-size:36px;font-weight:700;color:var(--navy);
-      margin-bottom:20px;line-height:1.2;
-    }
-    .choisir-text p{font-size:15px;color:var(--txt);line-height:1.8;margin-bottom:16px}
-    .choisir-list{list-style:none;margin-bottom:34px}
-    .choisir-list li{
-      display:flex;align-items:flex-start;gap:14px;
-      margin-bottom:14px;font-size:14px;color:var(--txt);line-height:1.6;
-    }
-    .choisir-list li::before{
-      content:'';width:3px;height:20px;
-      background:var(--red);flex-shrink:0;margin-top:2px;
-    }
-    .choisir-img{width:100%;height:420px;object-fit:cover;object-position:58% center;filter:saturate(.92)}
-
-    /* ═══ BANDEAU SIGNATURE ════════════════════════════════════════ */
-    .hero2{
-      position:relative;width:100%;overflow:hidden;
-      padding:74px 40px 78px;text-align:center;
-      background:
-        radial-gradient(760px 420px at 50% 0%, rgba(59,102,214,.42) 0%, transparent 68%),
-        linear-gradient(120deg,#070C24 0%,#152259 48%,#1B2C6B 100%);
-    }
-    .hero2::before{
-      content:'';position:absolute;inset:0;pointer-events:none;
-      background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);
-      background-size:24px 24px;opacity:.4;
-      -webkit-mask-image:radial-gradient(90% 130% at 50% 50%,#000 0%,transparent 76%);
-      mask-image:radial-gradient(90% 130% at 50% 50%,#000 0%,transparent 76%);
-    }
-    .hero2-inner{position:relative;z-index:2}
-    .hero2-eyebrow{
-      display:block;font-family:'Raleway',sans-serif;
-      font-size:10px;font-weight:800;letter-spacing:3.4px;text-transform:uppercase;
-      color:rgba(255,255,255,.42);margin-bottom:20px;
-    }
-    .hero2-claim{
-      font-family:'Raleway',sans-serif;
-      font-size:clamp(26px,3.2vw,40px);font-weight:800;color:#fff;
-      letter-spacing:-.6px;line-height:1.25;
-    }
-    .hero2-claim i{font-style:normal;color:var(--gold);margin:0 14px;font-weight:400}
-    .hero2-sub{
-      font-size:14.5px;color:rgba(255,255,255,.6);
-      margin-top:22px;line-height:1.8;
-    }
-    .hero2-stripe{position:absolute;bottom:0;left:0;right:0;height:7px;background:var(--gold);opacity:.85}
 
     /* ═══ ÉQUIPE (dans contact) ════════════════════════════════════ */
     .team-row{
@@ -1122,44 +952,6 @@
     }
     .nav-rdv:hover{background:var(--red2);transform:translateY(-1px)}
     .nav-rdv svg{width:15px;height:15px;fill:#fff;flex-shrink:0}
-
-    /* ═══ TRUST BAR ════════════════════════════════════════════════ */
-    /* la barre prolonge le bas de l'image au lieu de s'y coller */
-    .trust-bar{
-      position:relative;
-      background:linear-gradient(180deg,#080E28 0%,#0E1740 55%,#121D4A 100%);
-      display:flex;align-items:center;justify-content:center;
-      gap:0;padding:0;
-    }
-    /* filet lumineux, la même lueur que la traînée bleue du visuel */
-    .trust-bar::before{
-      content:'';position:absolute;top:0;left:0;right:0;height:1px;
-      background:linear-gradient(90deg,
-        transparent 0%,
-        rgba(124,171,255,.45) 26%,
-        rgba(232,146,26,.42) 60%,
-        rgba(124,171,255,.30) 78%,
-        transparent 100%);
-    }
-    .trust-item{
-      flex:1;display:flex;align-items:center;justify-content:center;gap:13px;
-      padding:22px 16px;border-right:1px solid rgba(146,176,235,.10);
-    }
-    .trust-item:last-child{border-right:none}
-    .trust-icon{
-      width:38px;height:38px;border-radius:50%;
-      background:rgba(120,166,255,.09);
-      border:1px solid rgba(140,180,255,.20);
-      display:flex;align-items:center;justify-content:center;
-      flex-shrink:0;
-    }
-    .trust-icon svg{width:17px;height:17px;fill:#A6C6FF}
-    .trust-text strong{
-      display:block;
-      font-family:'Raleway',sans-serif;font-size:13px;font-weight:700;
-      color:#fff;letter-spacing:.1px;
-    }
-    .trust-text span{font-size:11px;color:rgba(184,203,238,.62)}
 
     /* ═══ RDV SECTION ══════════════════════════════════════════════ */
     .rdv-section{background:var(--grey);padding:80px 80px 90px}
@@ -1492,89 +1284,6 @@
     }
     .video-link:hover{color:#fff}
 
-    /* ── AI Chat Mockup ─────────────────────────────────────────── */
-    .ai-mockup{
-      flex:1.2;max-width:580px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.1);
-      border-radius:8px;
-      overflow:hidden;
-      box-shadow:0 30px 80px rgba(0,0,0,.4);
-    }
-    .ai-mockup-bar{
-      background:rgba(255,255,255,.06);
-      padding:12px 16px;
-      display:flex;align-items:center;gap:10px;
-      border-bottom:1px solid rgba(255,255,255,.07);
-    }
-    .ai-mockup-dots{display:flex;gap:6px}
-    .ai-mockup-dots span{
-      width:10px;height:10px;border-radius:50%;display:block;
-    }
-    .ai-mockup-dots span:nth-child(1){background:rgba(255,90,90,.6)}
-    .ai-mockup-dots span:nth-child(2){background:rgba(255,180,50,.6)}
-    .ai-mockup-dots span:nth-child(3){background:rgba(80,200,120,.6)}
-    .ai-mockup-title{
-      font-family:'Raleway',sans-serif;font-size:11px;font-weight:600;
-      color:rgba(255,255,255,.4);letter-spacing:.5px;
-    }
-    .ai-mockup-body{padding:24px 20px;min-height:340px;display:flex;flex-direction:column;gap:16px}
-    .ai-tag{
-      display:inline-flex;align-items:center;gap:6px;
-      background:rgba(232,146,26,.15);border:1px solid rgba(232,146,26,.25);
-      padding:4px 10px;border-radius:20px;
-      font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;
-      color:#E8921A;letter-spacing:.5px;align-self:flex-start;
-      margin-bottom:4px;
-    }
-    .ai-tag svg{width:10px;height:10px;fill:#E8921A}
-    .msg-user{
-      align-self:flex-end;max-width:85%;
-      background:rgba(27,44,107,.6);border:1px solid rgba(255,255,255,.1);
-      border-radius:12px 12px 2px 12px;
-      padding:12px 16px;
-      font-size:13px;color:rgba(255,255,255,.9);line-height:1.55;
-    }
-    .msg-ai{
-      align-self:flex-start;max-width:92%;
-      background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);
-      border-radius:2px 12px 12px 12px;
-      padding:14px 16px;
-      font-size:13px;color:rgba(255,255,255,.8);line-height:1.65;
-    }
-    .msg-ai-header{
-      display:flex;align-items:center;gap:8px;margin-bottom:8px;
-    }
-    .msg-ai-avatar{
-      width:22px;height:22px;border-radius:4px;
-      background:linear-gradient(135deg,#4A7FD4,#E8921A);
-      display:flex;align-items:center;justify-content:center;
-      flex-shrink:0;
-    }
-    .msg-ai-avatar svg{width:12px;height:12px;fill:#fff}
-    .msg-ai-name{font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.5px}
-    .cursor{
-      display:inline-block;width:2px;height:13px;
-      background:#E8921A;margin-left:2px;vertical-align:middle;
-      animation:blink .7s steps(1) infinite;
-    }
-    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-    .msg-hidden{display:none}
-    .ai-mockup-footer{
-      padding:12px 20px;border-top:1px solid rgba(255,255,255,.07);
-      display:flex;align-items:center;gap:10px;
-    }
-    .ai-input-mock{
-      flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
-      border-radius:6px;padding:9px 14px;
-      font-size:12px;color:rgba(255,255,255,.3);font-family:'Open Sans',sans-serif;
-    }
-    .ai-send-btn{
-      width:32px;height:32px;border-radius:6px;background:#E8921A;
-      display:flex;align-items:center;justify-content:center;flex-shrink:0;
-    }
-    .ai-send-btn svg{width:14px;height:14px;fill:#fff}
-
     /* ═══ COOKIE BANNER ════════════════════════════════════════════ */
     .cookie-banner{
       position:fixed;bottom:0;left:0;right:0;z-index:3000;
@@ -1618,8 +1327,8 @@
       .hero-inner{padding:76px 40px 92px}
       .hero-bg{object-position:76% center}
     }
-    /* ── Menu déroulant sous 820px ── */
-    @media(max-width:820px){
+    /* ── Menu déroulant dès que la navigation complète manque d'espace ── */
+    @media(max-width:1100px){
       .nav-burger{display:flex}
       .nav-links{
         position:absolute;top:100%;left:0;right:0;
@@ -1642,21 +1351,18 @@
       /* sur mobile le texte occupe toute la largeur : voile vertical plutôt que latéral */
       .hero-ov{background:linear-gradient(180deg,rgba(4,8,26,.93) 0%,rgba(4,8,26,.80) 46%,rgba(4,8,26,.88) 100%)}
       .hero-cta{flex-wrap:wrap;gap:14px}
-      .bande{height:300px}
       .logo-img{height:40px}
       nav.scrolled .logo-img{height:36px}
       .nav-links{gap:20px}
-      .intro,.choisir,.contact,footer{padding-left:20px;padding-right:20px}
+      .contact,footer{padding-left:20px;padding-right:20px}
       .contact-inner{grid-template-columns:1fr;gap:48px}
       .eng-grid{grid-template-columns:1fr}
       .formations{padding:50px 20px 70px}
       .fiche{grid-template-columns:1fr 1fr;margin-bottom:36px}
       .fiche-cell{padding:20px 18px 22px}
       .cards-grid{grid-template-columns:1fr}
-      .parcours-grid{grid-template-columns:1fr}
       .stats-row{flex-wrap:wrap;gap:20px}
       .stat-sep{display:none}
-      .choisir-grid{grid-template-columns:1fr}
       .crow{grid-template-columns:1fr;gap:20px}
       .outils{padding:52px 20px 56px}
       .outil{flex:1 1 50%;min-width:0;padding:22px 8px;gap:10px}
@@ -1675,8 +1381,6 @@
       .tarif-crit li{font-size:13.5px;padding:13px 0}
       .finfo{flex-direction:column;gap:20px}
       .fcontact p{text-align:left}
-      .trust-bar{flex-wrap:wrap}
-      .trust-item{min-width:50%;border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
       .rdv-section{padding:50px 20px 60px}
       .rdv-grid{grid-template-columns:1fr}
       .faq-section{padding:50px 20px}
@@ -1690,9 +1394,166 @@
       .partners{padding:40px 20px}
       .partner-item{min-width:140px;padding:18px 16px}
       .video-inner{flex-direction:column;padding:50px 20px}
+      .deliverable-card{flex:auto;width:100%;padding:26px 22px}
       .video-text h2{font-size:28px}
       .cookie-banner{flex-direction:column;padding:20px;gap:16px}
       .cookie-btns{width:100%;justify-content:flex-end}
+    }
+
+    /* ═══ REFONTE ÉDITORIALE 2026 ════════════════════════════════ */
+    .section-kicker{
+      display:block;margin-bottom:18px;
+      font-family:'Raleway',sans-serif;font-size:10px;font-weight:800;
+      letter-spacing:3px;text-transform:uppercase;color:var(--red);
+    }
+    .section-kicker.light{color:#f2a744}
+
+    /* Hero sans imagerie artificielle : typographie, rythme et identité */
+    .hero{
+      min-height:680px;background:linear-gradient(118deg,#070b1d 0%,#101a46 62%,#1b2c6b 100%);
+      isolation:isolate;
+    }
+    .hero::before{
+      content:'';position:absolute;inset:0;z-index:0;opacity:.28;
+      background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+      background-size:72px 72px;
+      mask-image:linear-gradient(90deg,transparent 0%,#000 50%,#000 100%);
+    }
+    .hero::after{
+      content:'IA';position:absolute;right:5vw;top:50%;z-index:0;
+      transform:translateY(-53%);font-family:'Raleway',sans-serif;
+      font-size:clamp(220px,28vw,440px);font-weight:900;letter-spacing:-.12em;
+      color:rgba(255,255,255,.035);line-height:.8;pointer-events:none;
+    }
+    .hero-ov{
+      background:radial-gradient(circle at 82% 46%,rgba(59,102,214,.28),transparent 33%),linear-gradient(90deg,rgba(7,11,29,.3),transparent 68%);
+    }
+    .hero-inner{max-width:1240px;padding:104px 60px 112px}
+    .hero-content{max-width:720px}
+    .hero-title{font-size:clamp(46px,6vw,78px);line-height:.99;letter-spacing:-2.7px;margin-bottom:28px}
+    .hero-sub{max-width:620px;font-size:17px;line-height:1.7;margin-bottom:34px}
+    .hero-list{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:36px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12)}
+    .hero-list li{font-size:14px}
+
+    /* Introduction en deux colonnes, comme une page de cabinet conseil */
+    .intro{
+      max-width:1180px;margin:0 auto;padding:110px 40px;
+      display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:100px;
+      align-items:start;
+    }
+    .intro h2{
+      font-family:'Raleway',sans-serif;font-size:clamp(32px,4vw,48px);
+      line-height:1.12;letter-spacing:-1.5px;color:var(--navy);font-weight:800;
+    }
+    .intro p{font-size:15px;line-height:1.9;margin-bottom:24px}
+
+    /* Sections centrées sur une grille commune */
+    .howto{padding:100px max(40px,calc((100vw - 1180px)/2)) 104px}
+    .formations{padding:108px max(40px,calc((100vw - 1180px)/2)) 96px;background:#17296a}
+    .formations h2{font-size:clamp(38px,5vw,58px);line-height:1.08;max-width:760px;letter-spacing:-1.8px}
+    .formations>p{max-width:760px;margin-bottom:48px}
+    .fiche{margin:0 0 74px}
+    .fiche-cell{padding:28px 24px 30px;background:#17296a}
+
+    .contexts-heading{
+      display:grid;grid-template-columns:.7fr 1.3fr;gap:70px;align-items:start;
+      padding:0 0 28px;border-bottom:1px solid rgba(255,255,255,.22);
+    }
+    .contexts-heading>span{
+      font-family:'Raleway',sans-serif;font-size:13px;font-weight:800;
+      letter-spacing:1.4px;text-transform:uppercase;color:#fff;
+    }
+    .contexts-heading p{font-size:14px;line-height:1.8;color:rgba(255,255,255,.68)}
+    .context-grid{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid rgba(255,255,255,.22);margin-bottom:52px}
+    .context-card{padding:38px 34px 42px 0;border-right:1px solid rgba(255,255,255,.18)}
+    .context-card:not(:first-child){padding-left:34px}
+    .context-card:last-child{border-right:0;padding-right:0}
+    .context-number{
+      display:block;margin-bottom:46px;font-family:'Raleway',sans-serif;
+      font-size:13px;font-weight:800;color:#f2a744;letter-spacing:1px;
+    }
+    .context-card h3{font-family:'Raleway',sans-serif;font-size:21px;line-height:1.25;color:#fff;margin-bottom:14px}
+    .context-card p{font-size:13.5px;line-height:1.75;color:rgba(255,255,255,.68)}
+    .formations-cta{padding:0;border:0;background:transparent;flex-direction:row;justify-content:space-between}
+    .formations-cta p{font-size:15px}
+
+    /* Les marques restent identifiables, mais ne dominent plus la page */
+    .outils{padding:72px 40px 78px}
+    .outils-row{max-width:1040px}
+    .outil{padding:24px 12px}
+    .outil img{width:30px;height:30px;filter:grayscale(1);opacity:.72;transition:filter .2s,opacity .2s}
+    .outil:hover img{filter:none;opacity:1}
+    .outil b{font-size:13px;font-weight:600}
+
+    /* Engagements : quatre principes, aucun pictogramme décoratif */
+    .engagements{padding:108px max(40px,calc((100vw - 1180px)/2));background:#f4f5f8}
+    .eng-header{text-align:left;display:grid;grid-template-columns:.8fr 1.2fr;column-gap:80px;margin-bottom:54px}
+    .eng-header .eng-eyebrow{grid-column:1/-1}
+    .eng-header h2{font-size:clamp(34px,4vw,48px);line-height:1.12;margin:0}
+    .eng-header p{margin:4px 0 0;max-width:520px}
+    .eng-grid{grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid #d8dce6}
+    .eng-card{padding:38px 42px 44px 0;background:transparent;border-bottom:1px solid #d8dce6}
+    .eng-card:nth-child(odd){border-right:1px solid #d8dce6;padding-right:54px}
+    .eng-card:nth-child(even){padding-left:54px}
+    .eng-card:hover{transform:none;box-shadow:none}
+    .eng-card::before,.eng-card::after{display:none}
+    .eng-number{display:block;margin-bottom:34px;font-family:'Raleway',sans-serif;font-size:12px;font-weight:800;color:var(--red)}
+    .eng-card h3{font-size:20px;margin-bottom:12px}
+    .eng-card p{font-size:14px;line-height:1.8;max-width:480px}
+
+    /* Preuve humaine : uniquement les photographies fournies par Learndigi */
+    .team-proof{
+      max-width:1180px;margin:0 auto;padding:116px 40px;
+      display:grid;grid-template-columns:.82fr 1.18fr;gap:86px;align-items:center;
+    }
+    .team-proof h2{font-family:'Raleway',sans-serif;font-size:clamp(34px,4vw,50px);line-height:1.1;letter-spacing:-1.5px;color:var(--navy);margin-bottom:28px}
+    .team-proof-copy>p{font-size:14.5px;line-height:1.85;color:var(--txt);margin-bottom:18px}
+    .text-link{display:inline-flex;gap:10px;margin-top:18px;font-family:'Raleway',sans-serif;font-size:13px;font-weight:800;color:var(--red);text-decoration:none}
+    .text-link:hover span{transform:translateX(4px)}
+    .text-link span{transition:transform .2s}
+    .team-proof-people{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;align-items:start}
+    .trainer-card{background:#f4f5f8}
+    .trainer-card:nth-child(2){margin-top:54px}
+    .trainer-card img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;display:block;filter:saturate(.78)}
+    .trainer-card>div{padding:20px 20px 22px;border-top:3px solid var(--gold)}
+    .trainer-card h3{font-family:'Raleway',sans-serif;font-size:16px;color:var(--navy);margin-bottom:5px}
+    .trainer-card p{font-size:12px;color:#6b7280}
+
+    /* Le bloc livrables remplace l'ancienne démonstration de faux assistant */
+    .video-section{background:#0c132f}
+    .video-inner{max-width:1180px;margin:0 auto;padding:100px 40px;gap:76px}
+    .deliverable-card{box-shadow:none;border:0;border-top:4px solid var(--gold)}
+
+    @media(max-width:900px){
+      .hero{min-height:0}
+      .hero::after{display:none}
+      .hero-inner{padding:72px 24px 84px}
+      .hero-title{font-size:clamp(40px,12vw,58px);letter-spacing:-1.8px}
+      .hero-label{letter-spacing:2.4px;line-height:1.6}
+      .intro{grid-template-columns:1fr;gap:36px;padding:72px 24px}
+      .howto,.formations,.engagements{padding-left:24px;padding-right:24px}
+      .contexts-heading{grid-template-columns:1fr;gap:16px}
+      .context-grid{grid-template-columns:1fr}
+      .context-card,.context-card:not(:first-child){padding:28px 0;border-right:0;border-bottom:1px solid rgba(255,255,255,.16)}
+      .context-card:last-child{border-bottom:0}
+      .context-number{margin-bottom:20px}
+      .formations-cta{align-items:flex-start;flex-direction:column}
+      .eng-header{grid-template-columns:1fr;gap:18px}
+      .eng-grid{grid-template-columns:1fr}
+      .eng-card,.eng-card:nth-child(odd),.eng-card:nth-child(even){padding:30px 0;border-right:0}
+      .team-proof{grid-template-columns:1fr;gap:54px;padding:78px 24px}
+      .trainer-card:nth-child(2){margin-top:30px}
+      .video-inner{padding:72px 24px}
+    }
+
+    @media(max-width:560px){
+      .fiche{grid-template-columns:1fr}
+      .team-proof-people{gap:10px}
+      .trainer-card:nth-child(2){margin-top:24px}
+      .trainer-card>div{padding:14px 12px 16px}
+      .trainer-card h3{font-size:13px}
+      .trainer-card p{font-size:10.5px}
+      .outils{padding-left:20px;padding-right:20px}
     }
   </style>
 </head>
@@ -1707,8 +1568,8 @@
 
   <ul class="nav-links">
     <li><a href="#accueil" class="active" onclick="setNav(this)">Accueil</a></li>
-    <li><a href="#choisir" onclick="setNav(this)">Nous choisir</a></li>
-    <li><a href="#formations" onclick="setNav(this)">Nos services</a></li>
+    <li><a href="#choisir" onclick="setNav(this)">Notre approche</a></li>
+    <li><a href="#formations" onclick="setNav(this)">La formation</a></li>
     <li><a href="/programme">Programme</a></li>
     <li><a href="#contact" onclick="setNav(this)">Contact</a></li>
   </ul>
@@ -1721,22 +1582,20 @@
 
 <!-- ── HERO 1 ──────────────────────────────────────────────────── -->
 <section class="hero" id="accueil">
-  <img class="hero-bg" src="hero-fond.jpg" alt="" aria-hidden="true" fetchpriority="high" decoding="async" width="1672" height="941"/>
   <div class="hero-ov"></div>
   <div class="hero-inner">
     <div class="hero-content">
-      <p class="hero-label">Formation digitale &nbsp;·&nbsp; Courtiers en assurance</p>
-      <h1 class="hero-title">Formez votre cabinet<br>à l'Intelligence<br>Artificielle</h1>
+      <p class="hero-label">Formation professionnelle &nbsp;·&nbsp; Courtiers en assurance</p>
+      <h1 class="hero-title">L'IA au service<br>de votre métier<br>de courtier.</h1>
       <div class="hero-bar"></div>
-      <p class="hero-sub">7 heures animées par nos formateurs, en visioconférence ou dans vos locaux.</p>
+      <p class="hero-sub">Une formation de 7 heures, construite à partir de vos outils et de situations réelles de courtage.</p>
       <ul class="hero-list">
-        <li><svg viewBox="0 0 20 20"><path d="M11.45 5L17 10M17 10H2M17 10l-5.55 5"/></svg>Programme calibré sur vos enjeux grâce à un QCM en amont</li>
-        <li><svg viewBox="0 0 20 20"><path d="M11.45 5L17 10M17 10H2M17 10l-5.55 5"/></svg>Cas d'usage réels de courtage, jamais d'exemples génériques</li>
-        <li><svg viewBox="0 0 20 20"><path d="M11.45 5L17 10M17 10H2M17 10l-5.55 5"/></svg>Vos propres dossiers travaillés pendant la séance</li>
-        <li><svg viewBox="0 0 20 20"><path d="M11.45 5L17 10M17 10H2M17 10l-5.55 5"/></svg>Attestation et plan d'action à l'issue de la journée</li>
+        <li><svg viewBox="0 0 20 20"><path d="M11.45 5L17 10M17 10H2M17 10l-5.55 5"/></svg>Des cas d'usage issus du quotidien du courtage</li>
+        <li><svg viewBox="0 0 20 20"><path d="M11.45 5L17 10M17 10H2M17 10l-5.55 5"/></svg>Un programme ajusté aux priorités de votre cabinet</li>
+        <li><svg viewBox="0 0 20 20"><path d="M11.45 5L17 10M17 10H2M17 10l-5.55 5"/></svg>Un cadre clair pour protéger les données clients</li>
       </ul>
       <div class="hero-cta">
-        <a href="#rdv" class="hero-btn-primary">Réserver un échange de 30 min</a>
+        <a href="#rdv" class="hero-btn-primary">Échanger avec un formateur</a>
         <a href="#formations" class="hero-btn-link">
           Voir la formation
           <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -1751,57 +1610,23 @@
   </a>
 </section>
 
-<!-- ── TRUST BAR ──────────────────────────────────────────────── -->
-<div class="trust-bar">
-  <div class="trust-item">
-    <div class="trust-icon">
-      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
-    </div>
-    <div class="trust-text">
-      <strong>7 heures de formation</strong>
-      <span>Une journée ou deux demi-journées</span>
-    </div>
-  </div>
-  <div class="trust-item">
-    <div class="trust-icon">
-      <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
-    </div>
-    <div class="trust-text">
-      <strong>Approche 100 % métier</strong>
-      <span>Cas d'usage réels de courtage</span>
-    </div>
-  </div>
-  <div class="trust-item">
-    <div class="trust-icon">
-      <svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
-    </div>
-    <div class="trust-text">
-      <strong>Visio ou présentiel</strong>
-      <span>Selon l'organisation de votre cabinet</span>
-    </div>
-  </div>
-</div>
-
 <!-- ── INTRO ──────────────────────────────────────────────────── -->
 <section class="intro">
-  <p>
-    Learndigi accompagne les cabinets de courtage dans l'intégration concrète de l'IA au quotidien.
-    Nos formations sont conçues exclusivement pour les professionnels de la distribution d'assurance : 7 heures animées par nos formateurs, en visio ou dans vos locaux, avec un programme construit sur vos enjeux.
-  </p>
-  <p>
-    Gagnez du temps sur vos mails, vos synthèses et vos relances, structurez votre prospection et exploitez votre portefeuille, dans un cadre sécurisé et responsable (RGPD, AI Act).
-  </p>
-  <a href="#formations" class="btn-duo">
-    <span class="btn-plus">+</span>
-    <span class="btn-label">En savoir plus</span>
-  </a>
+  <div class="intro-heading">
+    <span class="section-kicker">Notre parti pris</span>
+    <h2>Former à des usages métier, pas à une technologie.</h2>
+  </div>
+  <div class="intro-copy">
+    <p>Learndigi forme les professionnels de la distribution d'assurance à des usages de l'IA directement liés à leur quotidien. Le point de départ n'est pas l'outil : ce sont vos tâches, vos documents et les règles propres à votre cabinet.</p>
+    <p>Courriels, synthèses, relances, prospection et analyse du portefeuille sont travaillés dans un cadre qui tient compte des données clients, du RGPD et de l'AI Act.</p>
+  </div>
 </section>
 
 <!-- ── COMMENT ÇA MARCHE ──────────────────────────────────────── -->
 <section class="howto">
   <div class="howto-top">
     <h2>Comment<br/>ça marche ?</h2>
-    <p>De votre première prise de contact à votre plan d'action : un parcours simple, guidé, sans friction.</p>
+    <p>Quatre étapes, du cadrage de vos besoins à la mise en pratique dans le cabinet.</p>
   </div>
   <div class="howto-steps">
 
@@ -1810,7 +1635,7 @@
       <div class="howto-step-bar"></div>
       <span class="howto-tag">Étape 01</span>
       <h3>Échangeons 30 minutes</h3>
-      <p>Contactez-nous ou réservez un créneau. On identifie ensemble vos enjeux et le format adapté à votre cabinet.</p>
+      <p>Nous faisons le point sur votre organisation, vos outils et les situations dans lesquelles l'IA peut être utile.</p>
     </div>
 
     <div class="howto-step">
@@ -1834,7 +1659,7 @@
       <div class="howto-step-bar"></div>
       <span class="howto-tag">Étape 04</span>
       <h3>Repartez avec votre plan d'action</h3>
-      <p>À l'issue de la session, votre attestation de formation et un plan d'action personnel pour les 30 prochains jours.</p>
+      <p>Chaque participant repart avec son attestation et des actions prioritaires à mettre en œuvre dans les 30 jours.</p>
     </div>
 
   </div>
@@ -1842,10 +1667,10 @@
 
 <!-- ── NOS FORMATIONS ─────────────────────────────────────────── -->
 <section class="formations" id="formations">
-  <h2>Nos formations</h2>
+  <span class="section-kicker light">Le programme</span>
+  <h2>Une formation, adaptée à votre cabinet</h2>
   <p>
-    Une formation de 7 heures 100 % dédiée aux courtiers en assurance, animée en visio ou en présentiel.
-    8 modules progressifs, calibrés sur les enjeux de votre structure, et des outils IA applicables dès le lendemain.
+    Huit modules forment un socle commun. Le questionnaire préparatoire permet ensuite d'ajuster les exercices, les outils et le niveau de détail à votre organisation.
   </p>
 
   <dl class="fiche">
@@ -1867,57 +1692,31 @@
     </div>
   </dl>
 
-  <!-- 3 parcours -->
-  <div class="parcours-grid">
-    <div class="parcours-card">
-      <div class="parcours-img-wrap p1">
-        <span class="parcours-ring"></span>
-        <div class="parcours-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-        </div>
-        <div class="parcours-label">PARCOURS 01</div>
-      </div>
-      <div class="parcours-body">
-        <h3>Courtier indépendant</h3>
-        <p>Vous exercez seul ou en micro-structure. Ce parcours vous donne les outils IA essentiels pour gagner du temps sur les tâches répétitives et renforcer votre relation client.</p>
-        <a href="#contact" class="card-lnk">RECEVOIR LE PROGRAMME →</a>
-      </div>
-    </div>
-
-    <div class="parcours-card">
-      <div class="parcours-img-wrap p2">
-        <span class="parcours-ring"></span>
-        <div class="parcours-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-        </div>
-        <div class="parcours-label">PARCOURS 02</div>
-      </div>
-      <div class="parcours-body">
-        <h3>Cabinet PME (2–20 pers.)</h3>
-        <p>Pour les cabinets avec une équipe. Automatisez vos processus, structurez votre CRM avec l'IA et uniformisez les pratiques de vos collaborateurs.</p>
-        <a href="#contact" class="card-lnk">RECEVOIR LE PROGRAMME →</a>
-      </div>
-    </div>
-
-    <div class="parcours-card">
-      <div class="parcours-img-wrap p3">
-        <span class="parcours-ring"></span>
-        <div class="parcours-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
-        </div>
-        <div class="parcours-label">PARCOURS 03</div>
-      </div>
-      <div class="parcours-body">
-        <h3>Grand cabinet (20+ pers.)</h3>
-        <p>Pour les structures importantes. Déployez l'IA à l'échelle, gérez la conformité AI Act, pilotez la montée en compétences de toute votre organisation.</p>
-        <a href="#contact" class="card-lnk">RECEVOIR LE PROGRAMME →</a>
-      </div>
-    </div>
+  <div class="contexts-heading">
+    <span>La même exigence, trois contextes</span>
+    <p>Le contenu ne change pas de nature selon la taille du cabinet. Ce sont les priorités, les exercices et la méthode de déploiement qui évoluent.</p>
+  </div>
+  <div class="context-grid">
+    <article class="context-card">
+      <span class="context-number">01</span>
+      <h3>Courtier indépendant</h3>
+      <p>Structurer ses usages personnels, gagner du temps sur les tâches récurrentes et préserver la qualité de la relation client.</p>
+    </article>
+    <article class="context-card">
+      <span class="context-number">02</span>
+      <h3>Cabinet avec une équipe</h3>
+      <p>Partager des méthodes communes, choisir les bons cas d'usage et encadrer l'utilisation des outils par les collaborateurs.</p>
+    </article>
+    <article class="context-card">
+      <span class="context-number">03</span>
+      <h3>Organisation multi-équipe</h3>
+      <p>Définir un cadre d'adoption, faire monter les équipes en compétence et intégrer les exigences de conformité dès le départ.</p>
+    </article>
   </div>
 
   <!-- CTA central -->
   <div class="formations-cta">
-    <p>Vous souhaitez voir le contenu détaillé des modules ?</p>
+    <p>Consultez le déroulé complet, module par module.</p>
     <a href="/programme" class="btn-duo">
       <span class="btn-plus">+</span>
       <span class="btn-label">Voir le programme détaillé</span>
@@ -1927,7 +1726,7 @@
 
 <!-- ── OUTILS ENSEIGNÉS ─────────────────────────────────────────── -->
 <section class="outils">
-  <span class="outils-eb">Outils enseignés pendant la formation</span>
+  <span class="outils-eb">Outils mobilisés selon vos besoins</span>
   <div class="outils-row">
     <div class="outil"><img src="logo-claude.png" alt="Claude" width="220" height="220" loading="lazy" decoding="async"/><b>Claude</b></div>
     <div class="outil"><img src="logo-chatgpt.png" alt="ChatGPT" width="220" height="220" loading="lazy" decoding="async"/><b>ChatGPT</b></div>
@@ -1939,73 +1738,34 @@
   <p class="outils-note">Et les outils déjà en place dans votre cabinet, selon vos usages et vos licences.</p>
 </section>
 
-<!-- ── BANDE PHOTO ──────────────────────────────────────────────── -->
-<div class="bande">
-  <img src="formation-presentiel.jpg" alt="Formateur Learndigi animant une session IA dans un cabinet de courtage" loading="lazy" decoding="async" width="1004" height="565"/>
-  <div class="bande-ov"></div>
-  <div class="bande-txt">
-    <p>Sept heures, votre équipe, vos dossiers réels.</p>
-    <span></span>
-  </div>
-</div>
-
 <!-- ── ENGAGEMENTS ──────────────────────────────────────────────── -->
 <section class="engagements">
   <div class="eng-header">
-    <span class="eng-eyebrow">Ce que nous garantissons</span>
-    <h2>Nos engagements</h2>
-    <p>Learndigi est une formation pensée par des praticiens pour des praticiens. Voici ce sur quoi vous pouvez compter.</p>
+    <span class="eng-eyebrow">Efficacité · Adaptabilité · Conformité</span>
+    <h2>Ce qui guide chaque session</h2>
+    <p>Quatre principes simples structurent la préparation, l'animation et la mise en pratique.</p>
   </div>
   <div class="eng-grid">
-
     <div class="eng-card">
-      <div class="eng-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-      </div>
-      <h3>Contenu 100 % métier</h3>
-      <p>Chaque module est construit sur des cas réels de cabinet. Aucun contenu générique : tout est calibré pour les courtiers en assurance.</p>
+      <span class="eng-number">01</span>
+      <h3>Partir du métier</h3>
+      <p>Les exercices reprennent des situations de courtage : courriels, synthèses, relances, rendez-vous, prospection et portefeuille.</p>
     </div>
-
     <div class="eng-card">
-      <div class="eng-icon">
-        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
-      </div>
-      <h3>Applicable dès le lendemain</h3>
-      <p>Pas de théorie inutile. Chaque outil présenté est immédiatement utilisable dans votre quotidien, avec des modèles prêts à l'emploi.</p>
+      <span class="eng-number">02</span>
+      <h3>Faire pratiquer</h3>
+      <p>Les démonstrations sont suivies d'exercices guidés afin que chacun sache reprendre la méthode dans son environnement.</p>
     </div>
-
     <div class="eng-card">
-      <div class="eng-icon">
-        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
-      </div>
-      <h3>7 heures, sur mesure</h3>
-      <p>Un programme personnalisable selon vos enjeux grâce à notre QCM, organisé en une journée, deux demi-journées ou au rythme du cabinet.</p>
+      <span class="eng-number">03</span>
+      <h3>Adapter sans disperser</h3>
+      <p>Le questionnaire préparatoire permet de concentrer la session sur vos priorités tout en conservant un socle pédagogique cohérent.</p>
     </div>
-
     <div class="eng-card">
-      <div class="eng-icon">
-        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-      </div>
-      <h3>Conformité &amp; sécurité</h3>
-      <p>RGPD, AI Act, données clients sensibles : un module entier est consacré à l'usage de l'IA dans un cadre maîtrisé et défendable.</p>
+      <span class="eng-number">04</span>
+      <h3>Poser un cadre responsable</h3>
+      <p>Un module dédié précise ce qui peut être confié à une IA, les précautions à prendre et les règles à partager dans le cabinet.</p>
     </div>
-
-    <div class="eng-card">
-      <div class="eng-icon">
-        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-      </div>
-      <h3>Accompagnement inclus</h3>
-      <p>Vous n'êtes pas seuls après la session. Un suivi par e-mail et en visio est inclus pour ancrer les réflexes acquis.</p>
-    </div>
-
-    <div class="eng-card">
-      <div class="eng-icon">
-        <svg viewBox="0 0 24 24"><path d="M21 6.5C21 8.43 19.43 10 17.5 10S14 8.43 14 6.5 15.57 3 17.5 3 21 4.57 21 6.5zm-3.5 5c-2.69 0-8 1.34-8 4v2.5h16V15.5c0-2.66-5.31-4-8-4zm-7-5C10.5 8.43 8.93 10 7 10S3.5 8.43 3.5 6.5 5.07 3 7 3s3.5 1.57 3.5 3.5zM7 11.5c-2.69 0-8 1.34-8 4V18h8v-2.5c0-1.04.4-2.66 1.97-3.91C8.55 11.57 7.73 11.5 7 11.5z"/></svg>
-      </div>
-      <h3>Contenu mis à jour en continu</h3>
-      <p>L'IA évolue vite. Nos supports sont mis à jour en continu pour suivre les dernières versions des outils et l'évolution de l'AI Act.</p>
-    </div>
-
   </div>
 </section>
 
@@ -2042,41 +1802,25 @@
 </section>
 
 <!-- ── NOUS CHOISIR ───────────────────────────────────────────── -->
-<div class="navy-bar"></div>
-
-<section class="choisir" id="choisir">
-  <div class="choisir-grid">
-    <div class="choisir-text">
-      <h2>Pourquoi choisir Learndigi ?</h2>
-      <p>Nous ne sommes pas un organisme généraliste. Nous formons exclusivement les professionnels de la distribution d'assurance, avec un contenu construit sur les vrais problèmes de terrain.</p>
-      <ul class="choisir-list">
-        <li>7 heures animées par nos formateurs, en visio ou dans vos locaux</li>
-        <li>Programme personnalisé grâce à notre QCM d'auto-positionnement</li>
-        <li>Des outils concrets : Claude, Microsoft 365, Brevo, Marvin Systems</li>
-        <li>Des cas d'usage réels de courtage, applicables dès le lendemain</li>
-        <li>Format adapté à la taille de votre structure (solo, PME, grand cabinet)</li>
-        <li>Conformité intégrée : RGPD, AI Act, protection des données clients</li>
-      </ul>
-      <a href="#contact" class="btn-duo">
-        <span class="btn-plus">+</span>
-        <span class="btn-label">Nous contacter</span>
-      </a>
-    </div>
-    <div>
-      <img class="choisir-img" src="courtier-bureau.jpg" alt="Courtier utilisant l'IA depuis son bureau, support de formation Learndigi à l'écran" loading="lazy" decoding="async" width="1004" height="565"/>
-    </div>
+<section class="team-proof" id="choisir">
+  <div class="team-proof-copy">
+    <span class="section-kicker">Pourquoi Learndigi</span>
+    <h2>La formation est conçue et animée par vos interlocuteurs.</h2>
+    <p>Hugo Salembier et Matthieu Brubach préparent la session à partir de votre questionnaire, animent les exercices et répondent aux questions liées à votre organisation.</p>
+    <p>Cette continuité permet de conserver un discours précis, des exemples cohérents et un cadre adapté aux professionnels de la distribution d'assurance.</p>
+    <a href="#contact" class="text-link">Échanger avec nous <span>→</span></a>
+  </div>
+  <div class="team-proof-people">
+    <article class="trainer-card">
+      <img src="hugo.jpg" alt="Hugo Salembier, co-fondateur et formateur Learndigi" loading="lazy" decoding="async" width="638" height="785"/>
+      <div><h3>Hugo Salembier</h3><p>Co-fondateur · Formateur IA</p></div>
+    </article>
+    <article class="trainer-card">
+      <img src="matthieu.jpg" alt="Matthieu Brubach, co-fondateur et formateur Learndigi" loading="lazy" decoding="async" width="960" height="960"/>
+      <div><h3>Matthieu Brubach</h3><p>Co-fondateur · Formateur IA</p></div>
+    </article>
   </div>
 </section>
-
-<!-- ── HERO 2 ──────────────────────────────────────────────────── -->
-<div class="hero2">
-  <div class="hero2-inner">
-    <span class="hero2-eyebrow">La signature Learndigi</span>
-    <p class="hero2-claim">Efficacité <i>·</i> Adaptabilité <i>·</i> Conformité</p>
-    <p class="hero2-sub">Trois exigences que nous tenons dans chacune des 7 heures de formation.</p>
-  </div>
-  <div class="hero2-stripe"></div>
-</div>
 
 <!-- ── VIDÉO ──────────────────────────────────────────────────── -->
 <section class="video-section">
@@ -2084,9 +1828,9 @@
   <div class="video-inner">
 
     <div class="video-text">
-      <span class="video-eyebrow">Présentation</span>
-      <h2>Learndigi en <em>2 minutes</em></h2>
-      <p>Découvrez comment notre formation transforme concrètement le quotidien des courtiers en assurance, du traitement des mails à l'analyse du portefeuille.</p>
+      <span class="video-eyebrow">Résultat de la formation</span>
+      <h2>Des acquis <em>utilisables</em></h2>
+      <p>La session alterne explications, démonstrations et travail guidé. L'objectif est que chaque participant sache reproduire les méthodes dans son environnement professionnel.</p>
       <div class="video-stats">
         <div class="vstat">
           <strong><span class="cu" data-target="7">0</span>h</strong>
@@ -2110,24 +1854,17 @@
       </div>
     </div>
 
-    <!-- AI Chat Mockup animé -->
-    <div class="ai-mockup">
-      <div class="ai-mockup-bar">
-        <div class="ai-mockup-dots">
-          <span></span><span></span><span></span>
-        </div>
-        <div class="ai-mockup-title">Learndigi · Assistant IA Courtage</div>
-      </div>
-      <div class="ai-mockup-body" id="aiChat">
-        <div class="ai-tag">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-          Cas d'usage en direct
-        </div>
-      </div>
-      <div class="ai-mockup-footer">
-        <div class="ai-input-mock">Posez une question à votre assistant...</div>
-        <div class="ai-send-btn"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></div>
-      </div>
+    <div class="deliverable-card">
+      <span class="deliverable-kicker">À l'issue de la session</span>
+      <h3>Votre boîte à outils métier</h3>
+      <p class="deliverable-intro">Des supports conçus pendant la formation, à reprendre et à adapter dans le cabinet.</p>
+      <ul class="deliverable-list">
+        <li><span>01</span><div>Une méthode de rédaction pour les courriels, synthèses et relances</div></li>
+        <li><span>02</span><div>Des trames d'instructions adaptées à vos cas d'usage prioritaires</div></li>
+        <li><span>03</span><div>Des repères pour choisir ce qui peut — ou non — être confié à une IA</div></li>
+        <li><span>04</span><div>Un plan d'action individuel pour les 30 jours suivants</div></li>
+      </ul>
+      <p class="deliverable-note">Le contenu exact est ajusté après le questionnaire d'auto-positionnement.</p>
     </div>
 
   </div>
@@ -2137,7 +1874,7 @@
 <section class="faq-section">
   <div class="faq-header">
     <h2>Questions fréquentes</h2>
-    <p>Tout ce que vous devez savoir avant de vous inscrire.</p>
+    <p>Durée, organisation, tarif, prérequis et confidentialité des données.</p>
   </div>
   <div class="faq-list">
 
@@ -2274,7 +2011,6 @@
           <a href="tel:0633639605" class="team-contact">06 33 63 96 05</a>
         </div>
       </div>
-    </div>
 
       <a href="https://www.linkedin.com/company/110659807" target="_blank" rel="noopener" class="contact-linkedin">
         <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
@@ -2357,7 +2093,7 @@
 <!-- ── COOKIE BANNER ──────────────────────────────────────────── -->
 <div class="cookie-banner" id="cookieBanner">
   <div class="cookie-text">
-    <strong>🍪 Ce site utilise des cookies</strong>
+    <strong>Paramètres des cookies</strong>
     <p>Nous utilisons des cookies techniques nécessaires au fonctionnement du site et Google Fonts pour l'affichage des polices.
     Aucun cookie publicitaire n'est déposé. En savoir plus dans notre
     <a href="#" onclick="openModal('modal-cookies');return false;">politique cookies</a>.</p>
@@ -2450,79 +2186,6 @@
 </div>
 
 <script>
-  // ── AI Chat animation ────────────────────────────────────────
-  const CONVERSATIONS = [
-    {
-      user: "Rédige un email de relance pour un client dont la prime est impayée depuis 15 jours.",
-      ai: "Objet : rappel de règlement de votre prime d'assurance\n\nBonjour [Prénom],\n\nSauf erreur de notre part, votre prime échue le [date] d'un montant de [X]€ n'a pas encore été réglée.\n\nAfin d'éviter toute suspension de garantie, nous vous invitons à procéder au paiement avant le [date limite].\n\nRestant à votre disposition, [Signature]"
-    },
-    {
-      user: "Résume ce contrat MRH en 3 points clés pour mon client.",
-      ai: "Voici les 3 points essentiels à retenir :\n\n1. Garanties incluses : incendie, dégâts des eaux, vol (franchise de 150 €).\n\n2. Exclusions principales : dommages causés par vétusté, négligence grave ou sinistres non déclarés sous 5 jours.\n\n3. Plafond d'indemnisation : 250 000€ pour le bâtiment, 80 000€ pour le contenu."
-    },
-    {
-      user: "Quels sont les points de vigilance RGPD si j'utilise ChatGPT avec des données clients ?",
-      ai: "3 règles clés à respecter :\n\n1. Ne jamais saisir de données personnelles identifiables (nom, IBAN, n° contrat) dans un outil IA public.\n\n2. Utiliser des versions enterprise (ChatGPT Teams, Claude Pro) qui ne réentraînent pas sur vos données.\n\n3. Documenter l'usage dans votre registre de traitement RGPD : c'est une obligation légale."
-    }
-  ];
-
-  let convIndex = 0;
-  let chatRunning = false;
-
-  function typeText(el, text, speed, cb){
-    let i = 0;
-    el.textContent = '';
-    const cursor = document.createElement('span');
-    cursor.className = 'cursor';
-    el.appendChild(cursor);
-    const iv = setInterval(()=>{
-      if(i < text.length){
-        el.insertBefore(document.createTextNode(text[i]), cursor);
-        i++;
-      } else {
-        clearInterval(iv);
-        cursor.remove();
-        if(cb) setTimeout(cb, 800);
-      }
-    }, speed);
-  }
-
-  function runConversation(){
-    if(chatRunning) return;
-    chatRunning = true;
-    const chat = document.getElementById('aiChat');
-    const conv = CONVERSATIONS[convIndex % CONVERSATIONS.length];
-    convIndex++;
-
-    // Reset : keep only the tag
-    chat.innerHTML = `<div class="ai-tag"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>Cas d'usage en direct</div>`;
-
-    // User message
-    setTimeout(()=>{
-      const userMsg = document.createElement('div');
-      userMsg.className = 'msg-user';
-      chat.appendChild(userMsg);
-      typeText(userMsg, conv.user, 28, ()=>{
-
-        // AI response
-        const aiMsg = document.createElement('div');
-        aiMsg.className = 'msg-ai';
-        aiMsg.innerHTML = `<div class="msg-ai-header"><div class="msg-ai-avatar"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div><span class="msg-ai-name">LEARNDIGI AI</span></div>`;
-        const aiText = document.createElement('div');
-        aiMsg.appendChild(aiText);
-        chat.appendChild(aiMsg);
-        chat.scrollTop = chat.scrollHeight;
-        typeText(aiText, conv.ai, 14, ()=>{
-          chatRunning = false;
-          setTimeout(runConversation, 3500);
-        });
-      });
-    }, 400);
-  }
-
-  // Start after page load
-  setTimeout(runConversation, 1200);
-
   // ── Cookie banner ───────────────────────────────────────────
   (function(){
     if(!localStorage.getItem('ld_cookies')){
@@ -2599,7 +2262,7 @@
 
 
   // ── Nav scroll highlight ─────────────────────────────────────
-  // Nav order: Accueil(0) | Nous choisir(1) | Nos services(2) | Programme(3, not scroll-tied) | Contact(4)
+  // Nav order: Accueil(0) | Notre approche(1) | La formation(2) | Programme(3) | Contact(4)
   window.addEventListener('scroll',()=>{
     const sc = window.scrollY + 130;
     const links = document.querySelectorAll('.nav-links a');
@@ -2654,10 +2317,10 @@
   // ── Reveal au scroll (animations d'apparition) ───────────────
   (function(){
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var sel='.intro, .howto, .parcours-card, .eng-header, .eng-card, .tarif-card, .choisir-text, .choisir-img, .choisir-list, .video-text, .faq-item, .trust-item, .outils-eb, .outil, .outils-note, .bande';
+    var sel='.intro-heading, .intro-copy, .howto, .fiche, .context-card, .eng-header, .eng-card, .tarif-card, .team-proof-copy, .trainer-card, .video-text, .deliverable-card, .faq-item, .outils-eb, .outil, .outils-note';
     var els=[].slice.call(document.querySelectorAll(sel));
     els.forEach(function(el){ el.classList.add('reveal'); });
-    document.querySelectorAll('.parcours-grid, .eng-grid').forEach(function(grid){
+    document.querySelectorAll('.context-grid, .eng-grid, .team-proof-people').forEach(function(grid){
       [].slice.call(grid.children).forEach(function(c,i){ c.style.transitionDelay=(i*0.08)+'s'; });
     });
     // les logos d'outils apparaissent l'un après l'autre au défilement
