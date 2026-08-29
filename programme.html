@@ -16,7 +16,7 @@
   <meta property="og:type" content="article"/>
   <meta property="og:url" content="https://learndigi.fr/programme"/>
   <meta property="og:title" content="Le programme : 8 modules, 7 heures | Learndigi"/>
-  <meta property="og:description" content="Le détail des 8 modules de la formation IA Learndigi pour courtiers en assurance : prompting, Claude et Microsoft 365, messagerie, prospection, portefeuille, RGPD et AI Act."/>
+  <meta property="og:description" content="Le détail des 8 modules de la formation IA Learndigi pour courtiers en assurance : prompting, outils métier, partenariat Marvin Systems, anonymisation, RGPD et AI Act."/>
   <meta property="og:image" content="https://learndigi.fr/og-image.jpg"/>
   <meta property="og:locale" content="fr_FR"/>
   <meta property="og:site_name" content="Learndigi"/>
@@ -52,7 +52,7 @@
         "@id": "https://learndigi.fr/#course",
         "name": "L'intelligence artificielle au service du courtier en assurance",
         "url": "https://learndigi.fr/programme",
-        "description": "Formation de 7 heures destinée aux courtiers en assurance : comprendre l'IA générative, piloter Claude et Microsoft 365, automatiser sa messagerie, structurer sa prospection, développer son portefeuille et rester conforme au RGPD et à l'AI Act.",
+        "description": "Formation de 7 heures destinée aux courtiers en assurance : comprendre l'IA générative, piloter les principaux assistants, automatiser sa messagerie, structurer sa prospection, développer son portefeuille avec Marvin Systems et rester conforme au RGPD et à l'AI Act.",
         "provider": {
           "@type": "EducationalOrganization",
           "@id": "https://learndigi.fr/#organization",
@@ -113,30 +113,68 @@
     .btn-label{background:var(--red);color:#fff;padding:12px 28px;font-family:'Raleway',sans-serif;font-size:13px;font-weight:700;letter-spacing:.6px}
     .btn-duo:hover .btn-label{background:var(--red2)}
 
-    /* PROGRAMME : direction claire et éditoriale */
+    /* PROGRAMME : parcours visuel, lisible et ancré dans les outils */
     .programme{background:var(--paper);padding:0 40px}
-    .prog-banner{position:relative;max-width:1180px;height:auto;overflow:visible;margin:0 auto 48px;padding:108px 0 76px;border-bottom:1px solid #dfe3ea}
-    .prog-banner img,.prog-banner-ov{display:none}
-    .prog-banner-c{position:static;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;text-align:left;padding:0}
+    .prog-banner{
+      position:relative;max-width:1180px;margin:0 auto 42px;padding:96px 0 68px;
+      display:grid;grid-template-columns:minmax(0,1.05fr) minmax(390px,.75fr);
+      gap:72px;align-items:center;border-bottom:1px solid #dfe3ea;
+    }
+    .prog-banner-c{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
     .prog-banner-c .eb{font-family:'Raleway',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:20px}
-    .prog-banner-c h1{font-family:'Raleway',sans-serif;font-size:clamp(44px,6vw,72px);font-weight:800;color:var(--navy);margin-bottom:24px;line-height:1;letter-spacing:-2.5px;max-width:900px}
-    .prog-banner-c p{font-size:15px;color:#5b6272;max-width:760px;line-height:1.9}
-    .prog-highlights{max-width:1180px;margin:0 auto 74px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #dfe3ea}
+    .prog-banner-c h1{font-family:'Raleway',sans-serif;font-size:clamp(44px,5.4vw,68px);font-weight:800;color:var(--navy);margin-bottom:24px;line-height:1;letter-spacing:-2.5px;max-width:760px}
+    .prog-banner-c p{font-size:15px;color:#5b6272;max-width:670px;line-height:1.9}
+    .prog-banner-visual{
+      position:relative;background:#e8ecf2;border:1px solid var(--line);
+      padding:30px 28px 28px;min-height:360px;display:flex;flex-direction:column;justify-content:center;
+    }
+    .prog-banner-visual::before,.prog-banner-visual::after{content:'';position:absolute;width:34px;height:34px;border-color:var(--gold)}
+    .prog-banner-visual::before{left:14px;top:14px;border-left:2px solid var(--gold);border-top:2px solid var(--gold)}
+    .prog-banner-visual::after{right:14px;bottom:14px;border-right:2px solid var(--gold);border-bottom:2px solid var(--gold)}
+    .prog-visual-eb{font-family:'Raleway',sans-serif;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin:0 0 22px 4px}
+    .prog-tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .prog-tool{
+      min-height:98px;background:var(--surface);border:1px solid rgba(27,44,107,.09);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;
+      transition:transform .28s cubic-bezier(.16,1,.3,1),border-color .25s ease,box-shadow .25s ease;
+    }
+    .prog-tool:hover{transform:translateY(-4px);border-color:rgba(192,57,43,.32);box-shadow:0 14px 28px -24px rgba(27,44,107,.55)}
+    .prog-tool img{width:42px;height:42px;object-fit:contain;display:block}
+    .prog-tool span{font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;color:var(--navy)}
+    .prog-highlights{max-width:1180px;margin:0 auto 76px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #dfe3ea}
     .prog-hl{display:flex;align-items:center;background:var(--surface);border:0;border-right:1px solid var(--line);padding:22px 20px;font-family:'Raleway',sans-serif;font-size:12px;font-weight:700;color:var(--navy)}
     .prog-hl:last-child{border-right:0}
-    .prog-modules{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:0;border-top:1px solid #dfe3ea}
-    .prog-mod{background:transparent;display:flex;gap:34px;padding:38px 0 40px;position:relative;border-bottom:1px solid var(--line);transition:transform .28s cubic-bezier(.16,1,.3,1)}
-    .prog-mod:hover{transform:translateX(6px);box-shadow:none}
-    .prog-mod::before,.prog-mod::after{display:none}
-    .prog-num{flex-shrink:0;width:58px;height:58px;background:var(--surface);border:1px solid #cfd4df;color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:'Raleway',sans-serif;font-size:17px;font-weight:800;transition:border-color .25s,color .25s}
-    .prog-mod:hover .prog-num{background:var(--surface);border-color:var(--red);color:var(--red)}
+    .prog-modules{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .prog-mod{
+      min-width:0;background:var(--surface);display:grid;grid-template-columns:54px minmax(0,1fr);
+      gap:22px;padding:34px 32px;position:relative;border:1px solid var(--line);border-top:3px solid transparent;
+      transition:transform .32s cubic-bezier(.16,1,.3,1),border-color .25s ease,box-shadow .25s ease;
+    }
+    .prog-mod:hover{transform:translateY(-6px);border-top-color:var(--red);box-shadow:0 24px 46px -38px rgba(27,44,107,.65)}
+    .prog-num{flex-shrink:0;width:54px;height:54px;background:#edf0f5;border:1px solid #cfd4df;color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:'Raleway',sans-serif;font-size:16px;font-weight:800;transition:border-color .25s,color .25s,background .25s}
+    .prog-mod:hover .prog-num{background:var(--navy);border-color:var(--navy);color:#fff}
     .prog-content{flex:1;min-width:0}
-    .prog-content h3{font-family:'Raleway',sans-serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:10px}
+    .prog-content h3{font-family:'Raleway',sans-serif;font-size:21px;line-height:1.25;font-weight:750;color:var(--navy);margin-bottom:9px}
     .prog-dur{display:inline-block;background:transparent;color:var(--red);font-family:'Raleway',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;padding:0;border-radius:0;margin-bottom:13px}
-    .prog-content>p{font-size:13.5px;color:#555d70;line-height:1.8;margin-bottom:14px;max-width:760px}
+    .prog-content>p{font-size:13.5px;color:#555d70;line-height:1.78;margin-bottom:16px;max-width:760px}
     .prog-points{display:flex;flex-wrap:wrap;gap:8px 22px}
     .prog-pt{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--navy);font-weight:600}
     .prog-pt::before{content:'·';color:var(--red);font-weight:800}
+    .prog-tools{display:flex;align-items:center;gap:8px;margin-top:22px;padding-top:18px;border-top:1px solid #e3e6eb}
+    .prog-tools img{width:32px;height:32px;object-fit:contain;display:block;background:#fff;border:1px solid #e1e4ea;padding:3px}
+    .prog-tools span{font-size:11px;color:#737a89;margin-left:2px}
+    .prog-mod--partner{
+      grid-column:1/-1;grid-template-columns:54px minmax(0,1fr) minmax(300px,.72fr);
+      gap:28px;background:linear-gradient(100deg,var(--surface) 0%,var(--surface) 58%,#e9edf4 58%,#e9edf4 100%);
+      border-top-color:var(--red);padding:38px 36px;
+    }
+    .prog-partner-note{align-self:stretch;padding:4px 0 4px 32px;border-left:1px solid #ccd2dd;display:flex;flex-direction:column;justify-content:center}
+    .partner-brand{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+    .partner-brand img{width:58px;height:58px;object-fit:contain;background:#fff;border:1px solid #d7dce5;padding:6px}
+    .partner-brand span{font-family:'Raleway',sans-serif;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--red)}
+    .partner-brand strong{display:block;margin-top:5px;font-size:18px;letter-spacing:0;text-transform:none;color:var(--navy)}
+    .prog-partner-note p{font-size:13px;line-height:1.75;color:#535b6d}
+    .partner-benefit{display:inline-flex;align-self:flex-start;margin-top:18px;padding:8px 11px;background:var(--navy);color:#fff;font-family:'Raleway',sans-serif;font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase}
     .prog-cta{position:relative;overflow:hidden;margin:96px -40px 0;padding:92px 40px 98px;display:flex;justify-content:center;text-align:center;background:var(--paper-soft);border-top:1px solid var(--line)}
     .prog-cta img,.prog-cta::after{display:none}
     .prog-cta-c{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:20px;max-width:650px}
@@ -169,19 +207,29 @@
       .nav-links a{display:block;padding:16px 22px;font-size:14px}
       .nav-links a::after{display:none}
       .programme{padding:0 20px}
-      .prog-banner{margin:0 auto 34px;padding:74px 4px 54px}
+      .prog-banner{grid-template-columns:1fr;gap:38px;margin:0 auto 34px;padding:74px 4px 54px}
       .prog-banner-c h1{font-size:clamp(38px,11vw,52px)}
+      .prog-banner-visual{min-height:0;padding:28px 24px}
       .prog-highlights{grid-template-columns:1fr 1fr;margin-bottom:52px}
       .prog-hl:nth-child(2){border-right:0}
       .prog-hl:nth-child(-n+2){border-bottom:1px solid #dfe3ea}
-      .prog-mod{flex-direction:column;gap:16px;padding:22px}
-      .prog-mod{padding:30px 0 32px}
+      .prog-modules{grid-template-columns:1fr}
+      .prog-mod,.prog-mod--partner{grid-column:auto;grid-template-columns:48px minmax(0,1fr);gap:18px;padding:28px 24px;background:var(--surface)}
+      .prog-partner-note{grid-column:1/-1;padding:24px 0 0;border-left:0;border-top:1px solid #d7dce5}
       .prog-mod:hover{transform:none}
       .prog-cta{margin:64px -20px 0;padding:68px 24px 72px}
       .prog-cta-c h2{font-size:26px}
       footer{padding:40px 22px 24px}
       .finfo{flex-direction:column;gap:24px}
       .fcontact p{text-align:left}
+    }
+    @media(max-width:520px){
+      .prog-tool-grid{grid-template-columns:repeat(2,1fr)}
+      .prog-mod,.prog-mod--partner{grid-template-columns:1fr;padding:26px 22px}
+      .prog-num{width:46px;height:46px}
+      .prog-highlights{grid-template-columns:1fr}
+      .prog-hl,.prog-hl:nth-child(2),.prog-hl:nth-child(-n+2){border-right:0;border-bottom:1px solid var(--line)}
+      .prog-hl:last-child{border-bottom:0}
     }
   </style>
 </head>
@@ -212,6 +260,17 @@
       <h1>Votre parcours, module par module</h1>
       <p>7 heures, 8 modules, un parcours progressif et 100 % métier : on apprend d'abord à dialoguer avec l'IA, puis on l'applique à chaque temps fort du quotidien d'un cabinet, avant de poser les garde-fous de conformité.</p>
     </div>
+    <div class="prog-banner-visual" aria-label="Outils mobilisés pendant la formation">
+      <span class="prog-visual-eb">Outils mobilisés selon vos besoins</span>
+      <div class="prog-tool-grid">
+        <div class="prog-tool"><img src="logo-claude.png" alt="Claude" width="220" height="220"/><span>Claude</span></div>
+        <div class="prog-tool"><img src="logo-chatgpt.png" alt="ChatGPT" width="220" height="220"/><span>ChatGPT</span></div>
+        <div class="prog-tool"><img src="logo-copilot.png" alt="Microsoft Copilot" width="220" height="220"/><span>Copilot</span></div>
+        <div class="prog-tool"><img src="logo-mistral.png" alt="Mistral AI" width="220" height="220"/><span>Mistral</span></div>
+        <div class="prog-tool"><img src="logo-brevo.png" alt="Brevo" width="220" height="220"/><span>Brevo</span></div>
+        <div class="prog-tool"><img src="logo-marvin.png" alt="Marvin Systems" width="220" height="220"/><span>Marvin Systems</span></div>
+      </div>
+    </div>
   </div>
 
   <div class="prog-highlights">
@@ -223,61 +282,74 @@
 
   <div class="prog-modules">
 
-    <div class="prog-mod"><div class="prog-num">01</div><div class="prog-content">
+    <article class="prog-mod"><div class="prog-num">01</div><div class="prog-content">
       <h3>Introduction : l'IA au service du courtage</h3>
       <span class="prog-dur">30 min</span>
       <p>Comprendre ce qu'est vraiment l'IA générative, ce qu'elle change pour le métier de courtier et pourquoi c'est le moment d'agir.</p>
       <div class="prog-points"><span class="prog-pt">Enjeux &amp; opportunités</span><span class="prog-pt">Vocabulaire clé</span><span class="prog-pt">Chiffres à retenir</span></div>
-    </div></div>
+      <div class="prog-tools"><img src="logo-chatgpt.png" alt="" width="220" height="220"/><img src="logo-mistral.png" alt="" width="220" height="220"/><span>Comparer les principaux assistants</span></div>
+    </div></article>
 
-    <div class="prog-mod"><div class="prog-num">02</div><div class="prog-content">
+    <article class="prog-mod"><div class="prog-num">02</div><div class="prog-content">
       <h3>Socle IA &amp; prompting</h3>
       <span class="prog-dur">30 min</span>
       <p>Apprendre à piloter l'IA plutôt qu'à la subir, en maîtrisant l'art de rédiger des instructions efficaces sur des cas réels de courtage.</p>
       <div class="prog-points"><span class="prog-pt">La méthode du bon prompt</span><span class="prog-pt">Bons &amp; mauvais usages</span><span class="prog-pt">Le Projet Cabinet</span></div>
-    </div></div>
+      <div class="prog-tools"><img src="logo-claude.png" alt="" width="220" height="220"/><img src="logo-chatgpt.png" alt="" width="220" height="220"/><span>Pratiquer sur vos cas d'usage</span></div>
+    </div></article>
 
-    <div class="prog-mod"><div class="prog-num">03</div><div class="prog-content">
+    <article class="prog-mod"><div class="prog-num">03</div><div class="prog-content">
       <h3>Claude en profondeur &amp; Microsoft 365</h3>
       <span class="prog-dur">1 h</span>
       <p>Installer et prendre en main votre environnement de travail augmenté : Claude et ses espaces, intégrés à Excel, Word, PowerPoint et Outlook.</p>
       <div class="prog-points"><span class="prog-pt">Prise en main de Claude</span><span class="prog-pt">Excel : analyse de portefeuille</span><span class="prog-pt">Word, PowerPoint &amp; Outlook</span></div>
-    </div></div>
+      <div class="prog-tools"><img src="logo-claude.png" alt="" width="220" height="220"/><img src="logo-copilot.png" alt="" width="220" height="220"/><span>Claude et l'environnement Microsoft</span></div>
+    </div></article>
 
-    <div class="prog-mod"><div class="prog-num">04</div><div class="prog-content">
+    <article class="prog-mod"><div class="prog-num">04</div><div class="prog-content">
       <h3>Gérer et automatiser sa messagerie</h3>
       <span class="prog-dur">1 h</span>
       <p>Reprendre le contrôle de la moitié de votre journée en traitant mails, résumés et relances en quelques secondes, dans le ton de votre cabinet.</p>
       <div class="prog-points"><span class="prog-pt">Réponses en quelques secondes</span><span class="prog-pt">Bibliothèque de modèles</span><span class="prog-pt">Relances structurées</span></div>
-    </div></div>
+      <div class="prog-tools"><img src="logo-claude.png" alt="" width="220" height="220"/><img src="logo-copilot.png" alt="" width="220" height="220"/><span>Courriels, synthèses et relances</span></div>
+    </div></article>
 
-    <div class="prog-mod"><div class="prog-num">05</div><div class="prog-content">
+    <article class="prog-mod"><div class="prog-num">05</div><div class="prog-content">
       <h3>La prospection augmentée par l'IA</h3>
       <span class="prog-dur">1 h 30</span>
       <p>Construire votre machine de prospection Claude + Brevo : trouver, comprendre, contacter et relancer vos prospects, prête à l'emploi dès le lendemain.</p>
       <div class="prog-points"><span class="prog-pt">Qualifier une liste</span><span class="prog-pt">Messages personnalisés</span><span class="prog-pt">Séquences de relance Brevo</span></div>
-    </div></div>
+      <div class="prog-tools"><img src="logo-claude.png" alt="" width="220" height="220"/><img src="logo-brevo.png" alt="" width="220" height="220"/><span>De la qualification à la relance</span></div>
+    </div></article>
 
-    <div class="prog-mod"><div class="prog-num">06</div><div class="prog-content">
+    <article class="prog-mod prog-mod--partner"><div class="prog-num">06</div><div class="prog-content">
       <h3>Fidéliser et développer son portefeuille avec Marvin Systems</h3>
       <span class="prog-dur">1 h</span>
-      <p>Transformer votre portefeuille existant en moteur de croissance : exploiter vos exports Excel avec l'IA en toute confidentialité grâce à Marvin Systems, préparer vos revues annuelles et détecter les opportunités dormantes.</p>
+      <p>Transformer votre portefeuille existant en moteur de croissance : préparer vos exports, les anonymiser avant analyse, structurer vos revues annuelles et détecter les opportunités dormantes.</p>
       <div class="prog-points"><span class="prog-pt">Analyse d'exports Excel</span><span class="prog-pt">Revues annuelles</span><span class="prog-pt">Opportunités dormantes</span></div>
-    </div></div>
+    </div>
+      <aside class="prog-partner-note">
+        <div class="partner-brand"><img src="logo-marvin.png" alt="Logo Marvin Systems" width="220" height="220"/><span>Partenaire technologique<strong>Marvin Systems</strong></span></div>
+        <p>Marvin Systems permet d'anonymiser les fichiers avant leur analyse par l'IA. Grâce au partenariat, les clients Learndigi peuvent bénéficier d'une réduction avec notre code partenaire, communiqué par notre équipe.</p>
+        <span class="partner-benefit">Avantage partenaire Learndigi</span>
+      </aside>
+    </article>
 
-    <div class="prog-mod"><div class="prog-num">07</div><div class="prog-content">
+    <article class="prog-mod"><div class="prog-num">07</div><div class="prog-content">
       <h3>RGPD, AI Act, RSE &amp; IA responsable</h3>
       <span class="prog-dur">1 h</span>
       <p>Utiliser l'IA en toute conformité et de façon responsable : protection des données clients, exigences du régulateur et usage sobre et transparent.</p>
       <div class="prog-points"><span class="prog-pt">RGPD &amp; données sensibles</span><span class="prog-pt">Charte IA interne</span><span class="prog-pt">AI Act &amp; sobriété numérique</span></div>
-    </div></div>
+      <div class="prog-tools"><span>Un cadre clair pour les données clients</span></div>
+    </div></article>
 
-    <div class="prog-mod"><div class="prog-num">08</div><div class="prog-content">
+    <article class="prog-mod"><div class="prog-num">08</div><div class="prog-content">
       <h3>Conclusion : votre plan d'action</h3>
       <span class="prog-dur">15 min</span>
       <p>Repartir avec un cap clair : les enseignements clés du parcours et votre plan d'action personnel des 30 prochains jours.</p>
       <div class="prog-points"><span class="prog-pt">Enseignements clés</span><span class="prog-pt">Plan d'action 30 jours</span><span class="prog-pt">Prochaines étapes</span></div>
-    </div></div>
+      <div class="prog-tools"><span>Une feuille de route concrète à l'issue de la session</span></div>
+    </div></article>
 
   </div>
 
@@ -346,11 +418,14 @@
   // ── Reveal au scroll (animations d'apparition) ────────────────
   (function(){
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var sel = '.prog-highlights, .prog-mod, .prog-cta';
+    var sel = '.prog-banner-visual, .prog-tool, .prog-highlights, .prog-mod, .prog-cta';
     var els = [].slice.call(document.querySelectorAll(sel));
     els.forEach(function(el){ el.classList.add('reveal'); });
     document.querySelectorAll('.prog-modules').forEach(function(grid){
       [].slice.call(grid.children).forEach(function(c,i){ c.style.transitionDelay = (i*0.05)+'s'; });
+    });
+    document.querySelectorAll('.prog-tool-grid').forEach(function(grid){
+      [].slice.call(grid.children).forEach(function(c,i){ c.style.transitionDelay = (i*0.06)+'s'; });
     });
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
