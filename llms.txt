@@ -40,7 +40,6 @@ Outils travaillés : Claude, Microsoft 365 (Excel, Word, PowerPoint, Outlook), B
 
 - [Accueil](https://learndigi.fr/) : présentation de la formation, engagements, tarif, FAQ, prise de rendez-vous
 - [Programme détaillé](https://learndigi.fr/programme) : les 8 modules et leur contenu
-- [Plaquette PDF](https://learndigi.fr/plaquette.pdf) : la plaquette commerciale complète
 
 ## Contact
 

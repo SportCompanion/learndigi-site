@@ -27,6 +27,12 @@
       ]
     },
     {
+      "source": "/plaquette.pdf",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, noarchive, nosnippet" }
+      ]
+    },
+    {
       "source": "/(robots.txt|sitemap.xml|llms.txt)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600" }
