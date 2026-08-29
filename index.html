@@ -1577,9 +1577,6 @@
 
     /* Résultats et livrables : deux panneaux de même niveau visuel */
     .video-section{
-      --result-blue:#3B62A3;
-      --result-blue-dark:#2F528B;
-      --result-gold:#9B661D;
       background:var(--paper-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)
     }
     .video-bg{display:none}
@@ -1591,15 +1588,13 @@
     .video-text{
       position:relative;min-width:0;padding:54px 50px;
       display:flex;flex-direction:column;justify-content:center;
-      background:#e8ecf2;border:1px solid var(--line);
+      background:var(--surface);border:1px solid var(--line);
     }
-    .video-text::before{
-      content:'';position:absolute;left:-1px;top:46px;bottom:46px;
-      width:3px;background:var(--result-blue);transform-origin:top;
-    }
-    .video-eyebrow{color:var(--result-gold);margin-bottom:24px}
+    .video-text::before{display:none}
+    .video-eyebrow{color:var(--red);margin-bottom:24px}
     .video-text h2{max-width:430px;color:var(--navy);font-size:clamp(36px,4vw,50px);line-height:1.06;letter-spacing:-1.4px;margin-bottom:24px}
-    .video-text h2 em{display:block;color:var(--result-blue)}
+    .video-text h2 em{display:block;color:var(--navy)}
+    .video-text h2::after{content:'';display:block;width:64px;height:2px;background:var(--gold);margin-top:24px}
     .video-text p{max-width:440px;color:#5d6474;margin-bottom:34px;line-height:1.85}
     .video-stats{
       width:100%;gap:0;margin-bottom:36px;
@@ -1616,15 +1611,16 @@
     .video-text.reveal.in .vstat:nth-child(2){transition-delay:.22s}
     .video-text.reveal.in .vstat:nth-child(3){transition-delay:.3s}
     .video-link{color:var(--navy)}
-    .video-link:hover{color:var(--result-blue)}
-    .video-section .btn-label{background:var(--result-blue)}
-    .video-section .btn-duo:hover .btn-label{background:var(--result-blue-dark)}
+    .video-link:hover{color:var(--red)}
+    .video-section .btn-plus{background:var(--gold);color:var(--navy)}
+    .video-section .btn-label{background:var(--red)}
+    .video-section .btn-duo:hover .btn-label{background:var(--red2)}
     .deliverable-card{
       width:auto;flex:auto;padding:48px 44px;
-      background:var(--surface);box-shadow:none;border:1px solid var(--line);border-top:3px solid var(--result-blue)
+      background:#e9edf3;box-shadow:none;border:1px solid var(--line)
     }
-    .deliverable-kicker{color:var(--result-gold)}
-    .deliverable-list span{color:var(--result-gold)}
+    .deliverable-kicker{color:#656d7e}
+    .deliverable-list span{color:var(--red)}
     .deliverable-card h3{font-size:30px;margin-bottom:12px}
     .deliverable-intro{margin-bottom:28px}
     .deliverable-list li{padding:18px 0;line-height:1.55}
