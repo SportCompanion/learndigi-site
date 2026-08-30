@@ -121,18 +121,19 @@
     .nav-programme-toggle:hover::after,.nav-programme-toggle.active::after,.nav-programme.open .nav-programme-toggle::after{transform:scaleX(1)}
     .nav-programme-chevron{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:1.8;transition:transform .25s ease}
     .nav-programme.open .nav-programme-chevron{transform:rotate(180deg)}
-    .nav-programme::after{content:'';position:absolute;top:100%;left:-20px;right:-20px;height:20px}
-    .nav-programme-menu{position:absolute;top:calc(100% + 14px);right:-58px;width:330px;padding:9px;background:var(--surface);border:1px solid #dfe2e7;box-shadow:0 16px 36px -24px rgba(10,14,36,.34);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-7px);transition:opacity .2s ease,visibility .2s ease,transform .24s cubic-bezier(.16,1,.3,1)}
+    .nav-programme::after{content:'';position:absolute;top:100%;left:-24px;right:-24px;height:28px}
+    .nav-programme-menu{position:fixed;top:92px;left:0;right:0;width:100%;padding:34px 60px 38px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(280px,1.15fr);gap:36px;background:#fff;border-top:1px solid #e5e7eb;border-bottom:1px solid #dfe2e7;box-shadow:0 20px 42px -34px rgba(10,14,36,.38);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-6px);transition:opacity .2s ease,visibility .2s ease,transform .24s cubic-bezier(.16,1,.3,1)}
+    nav.scrolled .nav-programme-menu{top:72px}
     .nav-programme:hover .nav-programme-menu,.nav-programme.open .nav-programme-menu{opacity:1;visibility:visible;pointer-events:auto;transform:none}
-    .nav-programme-eyebrow{display:block;padding:4px 7px 8px;font-family:'Raleway',sans-serif;font-size:7.5px;font-weight:700;letter-spacing:1.35px;text-transform:uppercase;color:#9197a3}
-    .nav-programme-menu a{display:grid;grid-template-columns:20px minmax(0,1fr) 12px;gap:8px;align-items:center;padding:9px 7px;border-top:1px solid #e7e9ed;color:var(--navy);transition:background .18s ease}
+    .nav-programme-column{min-width:0}
+    .nav-programme-eyebrow{display:block;margin-bottom:15px;font-family:'Raleway',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.45px;text-transform:uppercase;color:#9aa3b3}
+    .nav-programme-menu a{display:block;padding:0;margin:0 0 12px;color:var(--navy);font-size:13.5px;font-weight:500;line-height:1.45;transition:color .18s ease}
     .nav-programme-menu a::after{display:none}
-    .nav-programme-menu a:hover{background:#f3f4f6;color:var(--navy)}
-    .nav-programme-num{font-family:'Raleway',sans-serif;font-size:8px;font-weight:700;color:#9298a4;letter-spacing:.55px}
-    .nav-programme-menu strong{display:block;font-family:'Raleway',sans-serif;font-size:11.5px;font-weight:700;line-height:1.25;color:inherit}
-    .nav-programme-menu small{display:block;margin-top:2px;font-size:9.25px;font-weight:400;line-height:1.3;color:#7c828e}
-    .nav-programme-arrow{font-size:12px;color:#9298a4;transition:transform .18s ease}
-    .nav-programme-menu a:hover .nav-programme-arrow{transform:translateX(1px)}
+    .nav-programme-menu a:hover{color:var(--red)}
+    .nav-programme-aside{border-left:1px solid #e2e5ea;padding-left:36px}
+    .nav-programme-aside p{font-size:12.5px;line-height:1.7;color:#667084;margin-bottom:18px;max-width:360px}
+    .nav-programme-menu .nav-programme-cta{display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;max-width:310px;margin:0;padding:11px 14px;border:1px solid #dce1e8;background:#f7f8fa;font-family:'Raleway',sans-serif;font-size:12.5px;font-weight:650;color:var(--navy)}
+    .nav-programme-menu .nav-programme-cta:hover{background:#f1f3f6;color:var(--navy)}
     .nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:0;padding:10px;cursor:pointer}
     .nav-burger span{display:block;width:24px;height:2px;background:var(--navy);transition:transform .25s ease,opacity .2s ease}
     .nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -241,11 +242,13 @@
       .nav-programme::after{display:none}
       .nav-programme-toggle{width:100%;justify-content:space-between;padding:16px 22px;font-size:14px;text-align:left}
       .nav-programme-toggle::after{display:none}
-      .nav-programme-menu{position:static;width:auto;max-height:0;padding:0 12px;overflow:hidden;border:0;box-shadow:none;background:#f1f3f6;opacity:1;visibility:visible;pointer-events:auto;transform:none;transition:max-height .3s ease,padding .3s ease}
+      .nav-programme-menu{position:static;display:block;width:auto;max-height:0;padding:0 22px;overflow:hidden;border:0;box-shadow:none;background:#f3f4f6;opacity:1;visibility:visible;pointer-events:auto;transform:none;transition:max-height .3s ease,padding .3s ease}
       .nav-programme:not(.open) .nav-programme-menu{max-height:0;padding-top:0;padding-bottom:0}
-      .nav-programme.open .nav-programme-menu{max-height:430px;padding:7px 12px 10px}
-      .nav-programme-eyebrow{padding-left:8px}
-      .nav-programme-menu a{padding:9px 8px}
+      .nav-programme.open .nav-programme-menu{max-height:360px;padding:12px 22px 14px}
+      .nav-programme-column{padding:0 0 8px}
+      .nav-programme-eyebrow{margin:0 0 4px;font-size:8px}
+      .nav-programme-menu a{padding:4px 0;margin:0;font-size:12.5px}
+      .nav-programme-aside{display:none}
       .programme{padding:0 20px}
       .prog-banner{grid-template-columns:1fr;gap:38px;margin:0 auto 34px;padding:74px 4px 54px}
       .prog-banner-c h1{font-size:clamp(38px,11vw,52px)}
@@ -290,12 +293,24 @@
         <svg class="nav-programme-chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="m2.5 4.25 3.5 3.5 3.5-3.5"/></svg>
       </button>
       <div class="nav-programme-menu" id="programme-menu">
-        <span class="nav-programme-eyebrow">Choisir un accompagnement</span>
-        <a href="/programme"><span class="nav-programme-num">01</span><span><strong>Parcours de formation</strong><small>7 heures · 8 modules métier</small></span><span class="nav-programme-arrow">→</span></a>
-        <a href="/#audit-ia"><span class="nav-programme-num">02</span><span><strong>Audit IA</strong><small>Diagnostic et feuille de route · sur devis</small></span><span class="nav-programme-arrow">→</span></a>
-        <a href="/#veille-ia"><span class="nav-programme-num">03</span><span><strong>Veille IA métier</strong><small>Outils, usages et réglementation · sur devis</small></span><span class="nav-programme-arrow">→</span></a>
-        <a href="/#creation-outils"><span class="nav-programme-num">04</span><span><strong>Claude Code &amp; Codex</strong><small>Créer un outil interne sur mesure</small></span><span class="nav-programme-arrow">→</span></a>
-        <a href="/#formation-individuelle"><span class="nav-programme-num">05</span><span><strong>Formation individuelle</strong><small>Un accompagnement adapté à votre niveau</small></span><span class="nav-programme-arrow">→</span></a>
+        <div class="nav-programme-column">
+          <span class="nav-programme-eyebrow">Formation</span>
+          <a href="/programme">Parcours de formation</a>
+          <a href="/#formation-individuelle">Formation individuelle</a>
+        </div>
+        <div class="nav-programme-column">
+          <span class="nav-programme-eyebrow">Conseil</span>
+          <a href="/#audit-ia">Audit IA</a>
+          <a href="/#veille-ia">Veille IA métier</a>
+        </div>
+        <div class="nav-programme-column">
+          <span class="nav-programme-eyebrow">Outils sur mesure</span>
+          <a href="/#creation-outils">Claude Code &amp; Codex</a>
+        </div>
+        <aside class="nav-programme-aside">
+          <p>Learndigi accompagne les courtiers de la formation au déploiement d'usages et d'outils IA adaptés à leur cabinet.</p>
+          <a class="nav-programme-cta" href="/#rdv"><span>Échangeons sur votre projet</span><span>→</span></a>
+        </aside>
       </div>
     </li>
     <li><a href="/#contact">Contact</a></li>
