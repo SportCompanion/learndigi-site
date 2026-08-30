@@ -1506,69 +1506,6 @@
     }
     .intro p{font-size:15px;line-height:1.9;margin-bottom:24px}
 
-    /* Offres : composition éditoriale inspirée d'un cabinet de conseil */
-    .services{
-      padding:112px max(40px,calc((100vw - 1180px)/2));
-      background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-    }
-    .services-header{
-      display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);
-      column-gap:92px;align-items:end;margin-bottom:58px;
-    }
-    .services-header .section-kicker{grid-column:1/-1;margin-bottom:20px}
-    .services-header h2{
-      max-width:520px;font-family:'Raleway',sans-serif;font-size:clamp(38px,4.6vw,56px);
-      font-weight:800;line-height:1.06;letter-spacing:-1.8px;color:var(--navy);
-    }
-    .services-header p{max-width:540px;font-size:14.5px;line-height:1.85;color:#626a7a}
-    .services-list{border-top:1px solid #d7dce5}
-    .service-row{
-      position:relative;display:grid;grid-template-columns:minmax(280px,.78fr) minmax(0,1.22fr);
-      column-gap:92px;padding:38px 0;border-bottom:1px solid #d7dce5;
-      scroll-margin-top:90px;
-      transition:padding .3s cubic-bezier(.16,1,.3,1),background .25s ease;
-    }
-    .service-row::before{
-      content:'';position:absolute;inset:0 -24px;background:#f3f5f8;opacity:0;
-      transition:opacity .25s ease;z-index:0;
-    }
-    .service-row:hover::before{opacity:1}
-    .service-title,.service-content{position:relative;z-index:1}
-    .service-title{display:grid;grid-template-columns:34px 1fr;gap:20px;align-items:start}
-    .service-number{
-      padding-top:7px;font-family:'Raleway',sans-serif;font-size:10px;font-weight:800;
-      letter-spacing:1.2px;color:var(--red);
-    }
-    .service-title h3{
-      max-width:330px;font-family:'Raleway',sans-serif;font-size:clamp(24px,2.7vw,34px);
-      font-weight:750;line-height:1.08;letter-spacing:-.8px;color:var(--navy);
-      transition:color .25s ease;
-    }
-    .service-row:hover .service-title h3{color:var(--red)}
-    .service-content{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:34px;align-items:center}
-    .service-content p{max-width:670px;font-size:14px;line-height:1.78;color:#596172}
-    .service-action{display:flex;flex-direction:column;align-items:flex-end;gap:13px;min-width:116px}
-    .service-status{
-      font-family:'Raleway',sans-serif;font-size:9px;font-weight:800;letter-spacing:1.7px;
-      text-transform:uppercase;color:#7a8190;text-align:right;
-    }
-    .service-link{
-      display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;
-      border:1px solid #cbd1dc;color:var(--navy);text-decoration:none;font-size:20px;
-      transition:color .2s ease,background .2s ease,border-color .2s ease,transform .25s ease;
-    }
-    .service-link:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateX(4px)}
-    .services-footer{
-      display:flex;align-items:center;justify-content:space-between;gap:30px;padding-top:34px;
-    }
-    .services-footer p{font-size:13px;line-height:1.7;color:#697181}
-    .services-footer a{
-      display:inline-flex;align-items:center;gap:12px;white-space:nowrap;font-family:'Raleway',sans-serif;
-      font-size:12px;font-weight:800;color:var(--red);text-decoration:none;
-    }
-    .services-footer a span{font-size:18px;transition:transform .2s ease}
-    .services-footer a:hover span{transform:translateX(4px)}
-
     /* Parcours : beaucoup d'air et une lecture linéaire */
     .howto{padding:108px max(40px,calc((100vw - 1180px)/2)) 112px;background:var(--paper-soft)}
     .howto::before{display:none}
@@ -1866,10 +1803,6 @@
       .hero-label{letter-spacing:2.4px;line-height:1.6}
       .hero-scroll{display:none}
       .intro{grid-template-columns:1fr;gap:36px;padding:72px 24px}
-      .services{padding:78px 24px}
-      .services-header{grid-template-columns:1fr;gap:22px;margin-bottom:42px}
-      .service-row{grid-template-columns:minmax(230px,.78fr) minmax(0,1.22fr);column-gap:42px}
-      .service-content{gap:20px}
       .howto,.formations,.engagements{padding-left:24px;padding-right:24px}
       .contexts-heading{grid-template-columns:1fr;gap:16px}
       .context-grid{grid-template-columns:1fr}
@@ -1900,15 +1833,6 @@
 
     @media(max-width:560px){
       .fiche{grid-template-columns:1fr}
-      .services{padding:68px 20px}
-      .service-row{grid-template-columns:1fr;gap:20px;padding:30px 0}
-      .service-row::before{inset:0 -12px}
-      .service-title{grid-template-columns:28px 1fr;gap:14px}
-      .service-content{grid-template-columns:1fr;gap:16px;padding-left:42px}
-      .service-content p{font-size:13.5px}
-      .service-action{width:100%;min-width:0;flex-direction:row;align-items:center;justify-content:space-between}
-      .service-status{text-align:left}
-      .services-footer{align-items:flex-start;flex-direction:column}
       .howto-steps{grid-template-columns:1fr}
       .howto-step,.howto-step:not(:first-child){padding:28px 0;border-right:0;border-bottom:1px solid #dde1e8}
       .howto-step:last-child{border-bottom:0}
@@ -1949,7 +1873,6 @@
 
   <ul class="nav-links">
     <li><a href="#accueil" class="active" onclick="setNav(this)">Accueil</a></li>
-    <li><a href="#offres" onclick="setNav(this)">Nos offres</a></li>
     <li><a href="#choisir" onclick="setNav(this)">Notre approche</a></li>
     <li class="nav-programme">
       <button class="nav-programme-toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="programme-menu" onclick="toggleProgramMenu(event,this)">
@@ -1960,16 +1883,16 @@
         <div class="nav-programme-column">
           <span class="nav-programme-eyebrow">Formation</span>
           <a href="/programme">Parcours de formation</a>
-          <a href="#formation-individuelle">Formation individuelle</a>
+          <a href="#rdv">Formation individuelle</a>
         </div>
         <div class="nav-programme-column">
           <span class="nav-programme-eyebrow">Conseil</span>
-          <a href="#audit-ia">Audit IA</a>
-          <a href="#veille-ia">Veille IA métier</a>
+          <a href="#rdv">Audit IA</a>
+          <a href="#rdv">Veille IA métier</a>
         </div>
         <div class="nav-programme-column">
           <span class="nav-programme-eyebrow">Outils sur mesure</span>
-          <a href="#creation-outils">Claude Code &amp; Codex</a>
+          <a href="#rdv">Claude Code &amp; Codex</a>
         </div>
         <aside class="nav-programme-aside">
           <p>Learndigi accompagne les courtiers de la formation au déploiement d'usages et d'outils IA adaptés à leur cabinet.</p>
@@ -2003,22 +1926,22 @@
       </ul>
       <div class="hero-cta">
         <a href="#rdv" class="hero-btn-primary">Échanger avec nous</a>
-        <a href="#offres" class="hero-btn-link">
-          Découvrir nos offres
+        <a href="/programme" class="hero-btn-link">
+          Voir le parcours de formation
           <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
     </div>
   </div>
 
-  <a href="#offres" class="hero-scroll" aria-label="Découvrir nos offres">
+  <a href="#approche" class="hero-scroll" aria-label="Découvrir l'approche Learndigi">
     <span>Découvrir</span>
     <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
   </a>
 </section>
 
 <!-- ── INTRO ──────────────────────────────────────────────────── -->
-<section class="intro">
+<section class="intro" id="approche">
   <div class="intro-heading">
     <span class="section-kicker">Notre parti pris</span>
     <h2>Partir des usages métier, pas de la technologie.</h2>
@@ -2026,78 +1949,6 @@
   <div class="intro-copy">
     <p>Learndigi accompagne les professionnels de la distribution d'assurance sur des usages de l'IA directement liés à leur quotidien. Le point de départ n'est pas l'outil : ce sont vos tâches, vos documents et les règles propres à votre cabinet.</p>
     <p>Courriels, synthèses, relances, prospection et analyse du portefeuille sont travaillés dans un cadre qui tient compte des données clients, du RGPD et de l'AI Act.</p>
-  </div>
-</section>
-
-<!-- ── NOS ACCOMPAGNEMENTS IA ─────────────────────────────────── -->
-<section class="services" id="offres">
-  <header class="services-header">
-    <span class="section-kicker">Nos accompagnements IA</span>
-    <h2>Du diagnostic à l'outil, selon votre besoin.</h2>
-    <p>Une offre volontairement resserrée pour faire avancer des sujets concrets : identifier les bons cas d'usage, rester à jour, créer un outil métier ou progresser avec un accompagnement individuel.</p>
-  </header>
-
-  <div class="services-list">
-    <article class="service-row" id="audit-ia">
-      <div class="service-title">
-        <span class="service-number">01</span>
-        <h3>Audit IA</h3>
-      </div>
-      <div class="service-content">
-        <p>Nous analysons vos processus, vos outils et les tâches qui mobilisent le plus vos équipes. Vous repartez avec des cas d'usage priorisés et une feuille de route réaliste, adaptée aux contraintes de votre cabinet.</p>
-        <div class="service-action">
-          <span class="service-status">Sur devis</span>
-          <a class="service-link" href="#rdv" aria-label="Échanger à propos d'un audit IA">→</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="service-row" id="veille-ia">
-      <div class="service-title">
-        <span class="service-number">02</span>
-        <h3>Veille IA métier</h3>
-      </div>
-      <div class="service-content">
-        <p>Nous suivons les évolutions des outils, des usages et du cadre réglementaire pour ne retenir que ce qui mérite votre attention. Le format et la fréquence de la veille sont définis avec vous.</p>
-        <div class="service-action">
-          <span class="service-status">Sur devis</span>
-          <a class="service-link" href="#rdv" aria-label="Échanger à propos d'une veille IA">→</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="service-row" id="creation-outils">
-      <div class="service-title">
-        <span class="service-number">03</span>
-        <h3>Créer avec Claude Code et Codex</h3>
-      </div>
-      <div class="service-content">
-        <p>Apprenez à cadrer, générer, tester et faire évoluer du code avec des agents de programmation. L'objectif : construire un premier outil interne sur mesure et acquérir une méthode que vous pourrez réutiliser.</p>
-        <div class="service-action">
-          <span class="service-status">Accompagné</span>
-          <a class="service-link" href="#rdv" aria-label="Échanger à propos de la création d'un outil sur mesure">→</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="service-row" id="formation-individuelle">
-      <div class="service-title">
-        <span class="service-number">04</span>
-        <h3>Formation individuelle</h3>
-      </div>
-      <div class="service-content">
-        <p>Une session en tête-à-tête centrée sur votre niveau, vos outils et un besoin précis. Le contenu, le rythme et les exercices sont adaptés pour obtenir un résultat directement applicable.</p>
-        <div class="service-action">
-          <span class="service-status">Sur mesure</span>
-          <a class="service-link" href="#rdv" aria-label="Échanger à propos d'une formation individuelle">→</a>
-        </div>
-      </div>
-    </article>
-  </div>
-
-  <div class="services-footer">
-    <p>Chaque accompagnement commence par un échange de 30 minutes pour cadrer le besoin et vérifier que nous sommes les bons interlocuteurs.</p>
-    <a href="#rdv">Présenter votre besoin <span aria-hidden="true">→</span></a>
   </div>
 </section>
 
@@ -2806,11 +2657,11 @@
 
 
   // ── Nav scroll highlight ─────────────────────────────────────
-  // Nav order: Accueil(0) | Nos offres(1) | Notre approche(2) | Programme(3) | Contact(4)
+  // Nav order: Accueil(0) | Notre approche(1) | Programme(2) | Contact(3)
   window.addEventListener('scroll',()=>{
     const sc = window.scrollY + 130;
     const links = document.querySelectorAll('.nav-links > li > a, .nav-programme-toggle');
-    const map = {accueil:0, offres:1, formations:1, choisir:2, rdv:4, contact:4};
+    const map = {accueil:0, choisir:1, formations:2, rdv:3, contact:3};
     let act = 0;
     Object.entries(map).forEach(([id, navIdx])=>{
       const el = document.getElementById(id);
@@ -2861,7 +2712,7 @@
   // ── Reveal au scroll (animations d'apparition) ───────────────
   (function(){
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var sel='.intro-heading, .intro-copy, .services-header, .service-row, .services-footer, .howto-top, .howto-step, .fiche, .contexts-heading, .context-card, .formations-human, .outils-heading, .outils-copy, .tool-brand, .outils-partner, .eng-header, .eng-card, .tarif-content, .tarif-media, .team-proof-copy, .trainer-card, .video-text, .deliverable-card, .faq-item, .rdv-header, .rdv-info, .rdv-booking-card';
+    var sel='.intro-heading, .intro-copy, .howto-top, .howto-step, .fiche, .contexts-heading, .context-card, .formations-human, .outils-heading, .outils-copy, .tool-brand, .outils-partner, .eng-header, .eng-card, .tarif-content, .tarif-media, .team-proof-copy, .trainer-card, .video-text, .deliverable-card, .faq-item, .rdv-header, .rdv-info, .rdv-booking-card';
     var els=[].slice.call(document.querySelectorAll(sel));
     els.forEach(function(el){ el.classList.add('reveal'); });
     document.querySelectorAll('.context-grid, .eng-grid, .team-proof-people').forEach(function(grid){
@@ -2869,9 +2720,6 @@
     });
     document.querySelectorAll('.howto-steps').forEach(function(row){
       [].slice.call(row.children).forEach(function(c,i){ c.style.transitionDelay=(i*0.07)+'s'; });
-    });
-    document.querySelectorAll('.services-list').forEach(function(list){
-      [].slice.call(list.children).forEach(function(c,i){ c.style.transitionDelay=(i*0.06)+'s'; });
     });
     document.querySelectorAll('.tool-brand-grid').forEach(function(row){
       [].slice.call(row.children).forEach(function(c,i){ c.style.transitionDelay=(i*0.07)+'s'; });
