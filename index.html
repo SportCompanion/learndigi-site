@@ -375,6 +375,47 @@
     .nav-links a:hover,.nav-links a.active{color:var(--red)}
     .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
 
+    /* Volet Programme */
+    .nav-programme{position:relative}
+    .nav-programme-toggle{
+      position:relative;display:flex;align-items:center;gap:7px;padding:0 0 8px;
+      border:0;background:none;cursor:pointer;font-family:'Raleway',sans-serif;
+      font-size:15px;font-weight:600;color:var(--navy);transition:color .2s;
+    }
+    .nav-programme-toggle::after{
+      content:'';position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--gold);
+      transform:scaleX(0);transform-origin:center;transition:transform .3s cubic-bezier(.16,1,.3,1);
+    }
+    .nav-programme-toggle:hover,.nav-programme-toggle.active,.nav-programme.open .nav-programme-toggle{color:var(--red)}
+    .nav-programme-toggle:hover::after,.nav-programme-toggle.active::after,.nav-programme.open .nav-programme-toggle::after{transform:scaleX(1)}
+    .nav-programme-chevron{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:1.8;transition:transform .25s ease}
+    .nav-programme.open .nav-programme-chevron{transform:rotate(180deg)}
+    .nav-programme::after{content:'';position:absolute;top:100%;left:-20px;right:-20px;height:20px}
+    .nav-programme-menu{
+      position:absolute;top:calc(100% + 16px);right:-88px;width:390px;padding:14px;
+      background:var(--surface);border:1px solid var(--line);box-shadow:0 24px 56px -24px rgba(10,14,36,.42);
+      opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-10px);
+      transition:opacity .22s ease,visibility .22s ease,transform .3s cubic-bezier(.16,1,.3,1);
+    }
+    .nav-programme:hover .nav-programme-menu,.nav-programme.open .nav-programme-menu{
+      opacity:1;visibility:visible;pointer-events:auto;transform:none;
+    }
+    .nav-programme-eyebrow{
+      display:block;padding:5px 8px 11px;font-family:'Raleway',sans-serif;font-size:9px;font-weight:800;
+      letter-spacing:1.8px;text-transform:uppercase;color:#858c9a;
+    }
+    .nav-programme-menu a{
+      display:grid;grid-template-columns:28px minmax(0,1fr) 18px;gap:12px;align-items:center;
+      padding:13px 10px;border-top:1px solid #e4e7ec;color:var(--navy);transition:background .2s ease,color .2s ease;
+    }
+    .nav-programme-menu a::after{display:none}
+    .nav-programme-menu a:hover{background:#f0f2f6;color:var(--red)}
+    .nav-programme-num{font-family:'Raleway',sans-serif;font-size:9px;font-weight:800;color:var(--red);letter-spacing:.8px}
+    .nav-programme-menu strong{display:block;font-family:'Raleway',sans-serif;font-size:13px;line-height:1.3;color:inherit}
+    .nav-programme-menu small{display:block;margin-top:3px;font-size:10.5px;font-weight:400;line-height:1.35;color:#737a89}
+    .nav-programme-arrow{font-size:16px;transition:transform .2s ease}
+    .nav-programme-menu a:hover .nav-programme-arrow{transform:translateX(3px)}
+
     /* BURGER (mobile) */
     .nav-burger{
       display:none;flex-direction:column;gap:5px;
@@ -1344,10 +1385,22 @@
         box-shadow:0 20px 34px -14px rgba(10,14,36,.3);
         transition:max-height .3s ease;
       }
-      .nav-links.open{max-height:340px}
       .nav-links li{border-top:1px solid rgba(27,44,107,.09)}
       .nav-links a{display:block;padding:16px 22px;font-size:14.5px;padding-bottom:16px}
       .nav-links a::after{display:none}
+      .nav-links.open{max-height:calc(100vh - 92px);overflow-y:auto;overscroll-behavior:contain}
+      .nav-programme::after{display:none}
+      .nav-programme-toggle{width:100%;justify-content:space-between;padding:16px 22px;font-size:14.5px;text-align:left}
+      .nav-programme-toggle::after{display:none}
+      .nav-programme-menu{
+        position:static;width:auto;max-height:0;padding:0 14px;overflow:hidden;
+        border:0;box-shadow:none;background:#f1f3f6;opacity:1;visibility:visible;pointer-events:auto;transform:none;
+        transition:max-height .3s ease,padding .3s ease;
+      }
+      .nav-programme:not(.open) .nav-programme-menu{max-height:0;padding-top:0;padding-bottom:0}
+      .nav-programme.open .nav-programme-menu{max-height:520px;padding:10px 14px 14px}
+      .nav-programme-eyebrow{padding-left:10px}
+      .nav-programme-menu a{padding:12px 10px;font-size:13px}
     }
     @media(max-width:900px){
       nav{padding:0 20px}
@@ -1470,6 +1523,7 @@
     .service-row{
       position:relative;display:grid;grid-template-columns:minmax(280px,.78fr) minmax(0,1.22fr);
       column-gap:92px;padding:38px 0;border-bottom:1px solid #d7dce5;
+      scroll-margin-top:90px;
       transition:padding .3s cubic-bezier(.16,1,.3,1),background .25s ease;
     }
     .service-row::before{
@@ -1895,7 +1949,20 @@
     <li><a href="#accueil" class="active" onclick="setNav(this)">Accueil</a></li>
     <li><a href="#offres" onclick="setNav(this)">Nos offres</a></li>
     <li><a href="#choisir" onclick="setNav(this)">Notre approche</a></li>
-    <li><a href="/programme">Programme</a></li>
+    <li class="nav-programme">
+      <button class="nav-programme-toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="programme-menu" onclick="toggleProgramMenu(event,this)">
+        Programme
+        <svg class="nav-programme-chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="m2.5 4.25 3.5 3.5 3.5-3.5"/></svg>
+      </button>
+      <div class="nav-programme-menu" id="programme-menu">
+        <span class="nav-programme-eyebrow">Choisir un accompagnement</span>
+        <a href="/programme"><span class="nav-programme-num">01</span><span><strong>Parcours de formation</strong><small>7 heures · 8 modules métier</small></span><span class="nav-programme-arrow">→</span></a>
+        <a href="#audit-ia"><span class="nav-programme-num">02</span><span><strong>Audit IA</strong><small>Diagnostic et feuille de route · sur devis</small></span><span class="nav-programme-arrow">→</span></a>
+        <a href="#veille-ia"><span class="nav-programme-num">03</span><span><strong>Veille IA métier</strong><small>Outils, usages et réglementation · sur devis</small></span><span class="nav-programme-arrow">→</span></a>
+        <a href="#creation-outils"><span class="nav-programme-num">04</span><span><strong>Claude Code &amp; Codex</strong><small>Créer un outil interne sur mesure</small></span><span class="nav-programme-arrow">→</span></a>
+        <a href="#formation-individuelle"><span class="nav-programme-num">05</span><span><strong>Formation individuelle</strong><small>Un accompagnement adapté à votre niveau</small></span><span class="nav-programme-arrow">→</span></a>
+      </div>
+    </li>
     <li><a href="#contact" onclick="setNav(this)">Contact</a></li>
   </ul>
 
@@ -1957,7 +2024,7 @@
   </header>
 
   <div class="services-list">
-    <article class="service-row">
+    <article class="service-row" id="audit-ia">
       <div class="service-title">
         <span class="service-number">01</span>
         <h3>Audit IA</h3>
@@ -1971,7 +2038,7 @@
       </div>
     </article>
 
-    <article class="service-row">
+    <article class="service-row" id="veille-ia">
       <div class="service-title">
         <span class="service-number">02</span>
         <h3>Veille IA métier</h3>
@@ -1985,7 +2052,7 @@
       </div>
     </article>
 
-    <article class="service-row">
+    <article class="service-row" id="creation-outils">
       <div class="service-title">
         <span class="service-number">03</span>
         <h3>Créer avec Claude Code et Codex</h3>
@@ -1999,7 +2066,7 @@
       </div>
     </article>
 
-    <article class="service-row">
+    <article class="service-row" id="formation-individuelle">
       <div class="service-title">
         <span class="service-number">04</span>
         <h3>Formation individuelle</h3>
@@ -2680,9 +2747,30 @@
 
   // ── Nav active on click ─────────────────────────────────────
   function setNav(el){
-    document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+    document.querySelectorAll('.nav-links > li > a, .nav-programme-toggle').forEach(a=>a.classList.remove('active'));
     el.classList.add('active');
   }
+
+  // ── Volet Programme : survol desktop, clic/toucher partout ──
+  function toggleProgramMenu(event,btn){
+    event.preventDefault();
+    event.stopPropagation();
+    var item=btn.closest('.nav-programme');
+    var open=item.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+  }
+  function closeProgramMenu(){
+    var item=document.querySelector('.nav-programme');
+    var btn=document.querySelector('.nav-programme-toggle');
+    if(item)item.classList.remove('open');
+    if(btn)btn.setAttribute('aria-expanded','false');
+  }
+  document.addEventListener('click',function(event){
+    if(!event.target.closest('.nav-programme'))closeProgramMenu();
+  });
+  document.addEventListener('keydown',function(event){
+    if(event.key==='Escape')closeProgramMenu();
+  });
 
   // ── Menu mobile ──────────────────────────────────────────────
   function toggleMenu(btn){
@@ -2690,6 +2778,7 @@
     var open = links.classList.toggle('open');
     btn.classList.toggle('open', open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if(!open)closeProgramMenu();
   }
   document.querySelectorAll('.nav-links a').forEach(function(a){
     a.addEventListener('click', function(){
@@ -2697,6 +2786,7 @@
       var btn = document.querySelector('.nav-burger');
       links.classList.remove('open');
       if(btn){ btn.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+      closeProgramMenu();
     });
   });
 
@@ -2705,7 +2795,7 @@
   // Nav order: Accueil(0) | Nos offres(1) | Notre approche(2) | Programme(3) | Contact(4)
   window.addEventListener('scroll',()=>{
     const sc = window.scrollY + 130;
-    const links = document.querySelectorAll('.nav-links a');
+    const links = document.querySelectorAll('.nav-links > li > a, .nav-programme-toggle');
     const map = {accueil:0, offres:1, formations:1, choisir:2, rdv:4, contact:4};
     let act = 0;
     Object.entries(map).forEach(([id, navIdx])=>{
