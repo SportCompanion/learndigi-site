@@ -140,6 +140,7 @@ nav.scrolled .nav-programme-menu{top:72px}
 .experts-copy h2{font-family:'Raleway',sans-serif;font-size:clamp(34px,4vw,50px);line-height:1.08;letter-spacing:-1.5px;color:var(--navy)}
 .experts-copy p{margin-top:24px;font-size:14px;line-height:1.85;color:#61697a}
 .expert-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.expert-cards.single{grid-template-columns:minmax(0,420px)}
 .expert-card{display:grid;grid-template-columns:112px 1fr;align-items:center;border:1px solid var(--line);background:var(--surface);min-width:0}
 .expert-card img{width:112px;height:144px;object-fit:cover;object-position:center 24%;filter:saturate(.82)}
 .expert-card div{padding:18px}

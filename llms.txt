@@ -11,9 +11,11 @@ Learndigi accompagne les cabinets de courtage en assurance dans l'intégration c
 quotidien : traitement des mails et des relances, synthèses de contrats, préparation des rendez-vous,
 prospection, analyse et développement du portefeuille, dans un cadre conforme au RGPD et à l'AI Act.
 
-En complément du parcours de formation, Learndigi propose des formations individuelles, des audits IA,
-une veille IA métier et un accompagnement à la création d'outils internes sur mesure avec Claude Code
-et Codex. Ces prestations sont cadrées selon les processus, les outils et le niveau de maturité du cabinet.
+En complément du parcours de formation, Learndigi propose des formations de 7 heures dédiées à un seul
+assistant IA (Claude, ChatGPT, Mistral AI ou Microsoft Copilot), une formation à la prospection améliorée
+avec l'IA et Brevo animée par Hugo Salembier, des formations individuelles, des audits IA, une veille IA
+métier et un accompagnement à la création d'outils internes sur mesure avec Claude Code et Codex. Ces
+prestations sont cadrées selon les processus, les outils et le niveau de maturité du cabinet.
 
 La formation s'adresse exclusivement aux professionnels de la distribution d'assurance : courtiers
 indépendants, cabinets PME de 2 à 20 personnes, et grands cabinets de plus de 20 personnes.
@@ -33,17 +35,19 @@ indépendants, cabinets PME de 2 à 20 personnes, et grands cabinets de plus de 
 2. Socle IA et prompting (30 min)
 3. Claude en profondeur et Microsoft 365 (1 h)
 4. Gérer et automatiser sa messagerie (1 h)
-5. La prospection augmentée par l'IA, avec Claude et Brevo (1 h 30)
+5. Analyser et synthétiser les documents métier (1 h 30)
 6. Fidéliser et développer son portefeuille avec Marvin Systems (1 h)
 7. RGPD, AI Act, RSE et IA responsable (1 h)
-8. Conclusion : votre plan d'action (15 min)
+8. Conclusion : votre plan d'action (30 min)
 
-Outils travaillés : Claude, Microsoft 365 (Excel, Word, PowerPoint, Outlook), Brevo, Marvin Systems.
+Outils travaillés : Claude, ChatGPT, Microsoft Copilot, Mistral AI, Microsoft 365 (Excel, Word, PowerPoint, Outlook) et Marvin Systems.
 
 ## Pages
 
 - [Accueil](https://learndigi.fr/) : présentation de la formation, engagements, tarif, FAQ, prise de rendez-vous
 - [Programme détaillé](https://learndigi.fr/programme) : les 8 modules et leur contenu
+- [Formation dédiée à un outil IA](https://learndigi.fr/formation-outil-ia) : 7 heures consacrées à Claude, ChatGPT, Mistral AI ou Microsoft Copilot
+- [Prospection améliorée avec l'IA](https://learndigi.fr/prospection-ia) : formation de 7 heures sur le ciblage, les messages, les séquences et le suivi dans Brevo, animée par Hugo Salembier
 - [Formation individuelle](https://learndigi.fr/formation-individuelle) : accompagnement personnalisé selon le niveau, les outils et un objectif métier précis
 - [Audit IA](https://learndigi.fr/audit-ia) : analyse des processus, priorisation des cas d'usage et feuille de route opérationnelle
 - [Veille IA métier](https://learndigi.fr/veille-ia) : suivi ciblé des outils, des usages du courtage et du cadre réglementaire

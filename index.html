@@ -118,6 +118,7 @@
           "Distribution d'assurance",
           "IA générative appliquée au courtage",
           "Prospection assistée par l'IA",
+          "Formation à Claude, ChatGPT, Mistral AI et Microsoft Copilot",
           "RGPD et AI Act pour les cabinets de courtage",
           "Audit IA pour les cabinets de courtage",
           "Veille sur les outils et usages de l'intelligence artificielle",
@@ -127,6 +128,24 @@
           "@type": "OfferCatalog",
           "name": "Accompagnements IA Learndigi",
           "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Course",
+                "name": "Formation dédiée à un outil IA",
+                "description": "Formation de 7 heures dédiée à Claude, ChatGPT, Mistral AI ou Microsoft Copilot.",
+                "url": "https://learndigi.fr/formation-outil-ia"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Course",
+                "name": "Prospection améliorée avec l'IA et Brevo",
+                "description": "Formation de 7 heures à la prospection améliorée avec l'IA et Brevo, animée par Hugo Salembier.",
+                "url": "https://learndigi.fr/prospection-ia"
+              }
+            },
             {
               "@type": "Offer",
               "itemOffered": {
@@ -243,7 +262,7 @@
         "@id": "https://learndigi.fr/#course",
         "name": "L'intelligence artificielle au service du courtier en assurance",
         "url": "https://learndigi.fr/programme",
-        "description": "Formation de 7 heures destinée aux courtiers en assurance : comprendre l'IA générative, piloter Claude et Microsoft 365, automatiser sa messagerie, structurer sa prospection, développer son portefeuille et rester conforme au RGPD et à l'AI Act.",
+        "description": "Formation de 7 heures destinée aux courtiers en assurance : comprendre l'IA générative, piloter les principaux assistants, automatiser sa messagerie, analyser des documents métier, développer son portefeuille et rester conforme au RGPD et à l'AI Act.",
         "provider": { "@id": "https://learndigi.fr/#organization" },
         "inLanguage": "fr-FR",
         "timeRequired": "PT7H",
@@ -257,7 +276,7 @@
           "Rédiger des instructions efficaces sur des cas réels de courtage",
           "Utiliser Claude dans Excel, Word, PowerPoint et Outlook",
           "Traiter mails, résumés et relances en quelques secondes",
-          "Construire une machine de prospection avec Claude et Brevo",
+          "Analyser, comparer et synthétiser des documents métier",
           "Exploiter son portefeuille client en toute confidentialité",
           "Utiliser l'IA dans le respect du RGPD et de l'AI Act"
         ],
@@ -276,10 +295,10 @@
           { "@type": "Syllabus", "position": 2, "name": "Socle IA et prompting", "timeRequired": "PT30M" },
           { "@type": "Syllabus", "position": 3, "name": "Claude en profondeur et Microsoft 365", "timeRequired": "PT1H" },
           { "@type": "Syllabus", "position": 4, "name": "Gérer et automatiser sa messagerie", "timeRequired": "PT1H" },
-          { "@type": "Syllabus", "position": 5, "name": "La prospection augmentée par l'IA", "timeRequired": "PT1H30M" },
+          { "@type": "Syllabus", "position": 5, "name": "Analyser et synthétiser les documents métier", "timeRequired": "PT1H30M" },
           { "@type": "Syllabus", "position": 6, "name": "Fidéliser et développer son portefeuille avec Marvin Systems", "timeRequired": "PT1H" },
           { "@type": "Syllabus", "position": 7, "name": "RGPD, AI Act, RSE et IA responsable", "timeRequired": "PT1H" },
-          { "@type": "Syllabus", "position": 8, "name": "Conclusion : votre plan d'action", "timeRequired": "PT15M" }
+          { "@type": "Syllabus", "position": 8, "name": "Conclusion : votre plan d'action", "timeRequired": "PT30M" }
         ]
       }
     ]
@@ -1570,7 +1589,7 @@
     }
     .outils-heading h2{font-family:'Raleway',sans-serif;font-size:clamp(34px,4vw,48px);line-height:1.1;letter-spacing:-1.4px;color:var(--navy)}
     .outils-copy>p{font-size:14.5px;line-height:1.85;color:#555d70;margin-bottom:28px;max-width:590px}
-    .tool-brand-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:12px}
+    .tool-brand-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
     .tool-brand{
       min-width:0;background:var(--surface);border:1px solid var(--line);padding:17px 10px 14px;
       display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;
@@ -1887,6 +1906,8 @@
         <div class="nav-programme-column">
           <span class="nav-programme-eyebrow">Formation</span>
           <a href="/programme">Parcours de formation</a>
+          <a href="/formation-outil-ia">Formation dédiée à un outil IA</a>
+          <a href="/prospection-ia">Prospection améliorée avec l'IA</a>
           <a href="/formation-individuelle">Formation individuelle</a>
         </div>
         <div class="nav-programme-column">
@@ -1985,7 +2006,7 @@
       <div class="howto-step-bar"></div>
       <span class="howto-tag">Étape 03</span>
       <h3>Une journée, ou deux demi-journées</h3>
-      <p>7 heures animées en visio ou dans vos locaux, sur vos propres cas : mails, relances, portefeuille, prospection.</p>
+      <p>7 heures animées en visio ou dans vos locaux, sur vos propres cas : mails, synthèses, documents et portefeuille.</p>
     </div>
 
     <div class="howto-step">
@@ -2071,13 +2092,12 @@
     <h2>Les usages d'abord.<br/>Les outils ensuite.</h2>
   </div>
   <div class="outils-copy">
-    <p>Nous travaillons avec les solutions déjà présentes dans votre cabinet et retenons uniquement celles qui servent un objectif concret : mieux rédiger, synthétiser, relancer, prospecter ou analyser.</p>
+    <p>Nous travaillons avec les solutions déjà présentes dans votre cabinet et retenons uniquement celles qui servent un objectif concret : mieux rédiger, synthétiser, relancer, préparer un rendez-vous ou analyser.</p>
     <div class="tool-brand-grid" aria-label="Outils abordés pendant la formation">
       <div class="tool-brand"><img src="logo-claude.png" alt="Claude" loading="lazy" width="220" height="220"/><span>Claude</span></div>
       <div class="tool-brand"><img src="logo-chatgpt.png" alt="ChatGPT" loading="lazy" width="220" height="220"/><span>ChatGPT</span></div>
       <div class="tool-brand"><img src="logo-copilot.png" alt="Microsoft Copilot" loading="lazy" width="220" height="220"/><span>Copilot</span></div>
       <div class="tool-brand"><img src="logo-mistral.png" alt="Mistral AI" loading="lazy" width="220" height="220"/><span>Mistral</span></div>
-      <div class="tool-brand"><img src="logo-brevo.png" alt="Brevo" loading="lazy" width="220" height="220"/><span>Brevo</span></div>
     </div>
     <div class="outils-partner">
       <img src="logo-marvin.png" alt="Logo Marvin Systems" loading="lazy" width="220" height="220"/>
