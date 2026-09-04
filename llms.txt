@@ -2,7 +2,7 @@
 
 > Learndigi est une société française de formation, basée à Chennevières-sur-Marne (Val-de-Marne),
 > qui forme les courtiers en assurance à l'usage professionnel de l'intelligence artificielle.
-> La formation dure 7 heures, se déroule en visioconférence ou en présentiel dans les locaux du
+> Le parcours de formation classique dure 7 heures, se déroule en visioconférence ou en présentiel dans les locaux du
 > cabinet, et son programme est personnalisé selon les enjeux de chaque structure.
 
 ## Ce que fait Learndigi
@@ -12,15 +12,15 @@ quotidien : traitement des mails et des relances, synthèses de contrats, prépa
 prospection, analyse et développement du portefeuille, dans un cadre conforme au RGPD et à l'AI Act.
 
 En complément du parcours de formation, Learndigi propose des formations de 7 heures dédiées à un seul
-assistant IA (Claude, ChatGPT, Mistral AI ou Microsoft Copilot), une formation à la prospection améliorée
-avec l'IA et Brevo animée par Hugo Salembier, des formations individuelles, des audits IA, une veille IA
+assistant IA (Claude, ChatGPT, Mistral AI ou Microsoft Copilot), une formation à durée sur mesure à la prospection améliorée
+avec l'IA et Apollo animée par Hugo Salembier, des formations individuelles, des audits IA, une veille IA
 métier et un accompagnement à la création d'outils internes sur mesure avec Claude Code et Codex. Ces
 prestations sont cadrées selon les processus, les outils et le niveau de maturité du cabinet.
 
 La formation s'adresse exclusivement aux professionnels de la distribution d'assurance : courtiers
 indépendants, cabinets PME de 2 à 20 personnes, et grands cabinets de plus de 20 personnes.
 
-## Format
+## Format du parcours de formation classique
 
 - Durée : 7 heures
 - Modalité : visioconférence ou présentiel, au choix du cabinet
@@ -47,7 +47,7 @@ Outils travaillés : Claude, ChatGPT, Microsoft Copilot, Mistral AI, Microsoft 3
 - [Accueil](https://learndigi.fr/) : présentation de la formation, engagements, tarif, FAQ, prise de rendez-vous
 - [Programme détaillé](https://learndigi.fr/programme) : les 8 modules et leur contenu
 - [Formation dédiée à un outil IA](https://learndigi.fr/formation-outil-ia) : 7 heures consacrées à Claude, ChatGPT, Mistral AI ou Microsoft Copilot
-- [Prospection améliorée avec l'IA](https://learndigi.fr/prospection-ia) : formation de 7 heures sur le ciblage, les messages, les séquences et le suivi dans Brevo, animée par Hugo Salembier
+- [Prospection améliorée avec l'IA](https://learndigi.fr/prospection-ia) : formation à durée sur mesure sur le ciblage, les messages, les séquences et le suivi dans Apollo, animée par Hugo Salembier. Durée, nombre de séances et rythme définis selon vos objectifs et votre niveau
 - [Formation individuelle](https://learndigi.fr/formation-individuelle) : accompagnement personnalisé selon le niveau, les outils et un objectif métier précis
 - [Audit IA](https://learndigi.fr/audit-ia) : analyse des processus, priorisation des cas d'usage et feuille de route opérationnelle
 - [Veille IA métier](https://learndigi.fr/veille-ia) : suivi ciblé des outils, des usages du courtage et du cadre réglementaire
