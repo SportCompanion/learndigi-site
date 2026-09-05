@@ -4,7 +4,21 @@
   "cleanUrls": true,
   "trailingSlash": false,
 
+  "crons": [
+    { "path": "/api/newsletter", "schedule": "0 8 * * 1" }
+  ],
+
+  "functions": {
+    "api/newsletter.js": { "includeFiles": "newsletters/**" }
+  },
+
   "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" }
+      ]
+    },
     {
       "source": "/(.*)",
       "headers": [

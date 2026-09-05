@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'IA du courtier, la newsletter de Learndigi</title>
+<meta name="description" content="Chaque lundi, l'essentiel de l'intelligence artificielle pour les courtiers en assurance : réglementation, outils, et un prompt à tester dans la semaine. Toutes les éditions en ligne.">
+<link rel="canonical" href="https://learndigi.fr/newsletter">
+<meta property="og:type" content="website">
+<meta property="og:title" content="L'IA du courtier, la newsletter de Learndigi">
+<meta property="og:description" content="Chaque lundi, l'essentiel de l'IA pour les courtiers en assurance : réglementation, outils, et un prompt à tester dans la semaine.">
+<meta property="og:url" content="https://learndigi.fr/newsletter">
+<meta property="og:locale" content="fr_FR">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "L'IA du courtier, la newsletter de Learndigi",
+  "url": "https://learndigi.fr/newsletter",
+  "inLanguage": "fr-FR",
+  "description": "Newsletter hebdomadaire sur l'intelligence artificielle pour les courtiers en assurance, publiée chaque lundi par Learndigi Formation.",
+  "isPartOf": {"@type": "WebSite", "name": "Learndigi", "url": "https://learndigi.fr/"},
+  "publisher": {"@type": "Organization", "name": "Learndigi Formation", "url": "https://learndigi.fr/"},
+  "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://learndigi.fr/"},
+    {"@type": "ListItem", "position": 2, "name": "Newsletter", "item": "https://learndigi.fr/newsletter"}
+  ]}
+}
+</script>
+<style>
+  :root{
+    --navy:#1B2C6B;--navy-dark:#152259;--gold:#E8921A;--red:#C0392B;--red2:#a93226;
+    --ink:#0A0E24;--txt:#444;--paper:#F7F6F2;--paper-soft:#EFF1F4;--surface:#FCFBF8;
+    --line:#D9DDE5;--white:#fff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--txt);font-family:'Open Sans',Arial,sans-serif;font-size:16px;line-height:1.65}
+  a{color:var(--navy)}
+  .top{background:var(--white);border-bottom:1px solid var(--line)}
+  .top-in{max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{display:flex;align-items:center;text-decoration:none}
+  .logo img{height:32px;width:auto;display:block}
+  .top a.retour{color:var(--navy);font-size:13px;text-decoration:none;font-family:'Raleway',sans-serif;font-weight:700;letter-spacing:.3px}
+  .top a.retour:hover{color:var(--red)}
+  .hero{max-width:1080px;margin:0 auto;padding:60px 24px 34px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(280px,.9fr);gap:40px;align-items:end}
+  .eyebrow{font-family:'Raleway',sans-serif;font-size:10.5px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+  h1{font-family:'Raleway',sans-serif;font-size:40px;font-weight:900;line-height:1.1;letter-spacing:-.8px;color:var(--navy);margin:0 0 16px;text-wrap:balance}
+  .lead{font-size:17px;font-weight:300;color:var(--txt);max-width:58ch;margin:0}
+  .abo{background:var(--white);border:1px solid var(--line);padding:24px 26px;display:flex;flex-direction:column;gap:12px}
+  .abo h2{font-family:'Raleway',sans-serif;font-size:17px;font-weight:800;color:var(--navy);margin:0;letter-spacing:-.2px}
+  .abo p{margin:0;font-size:14px;color:#5A6070}
+  .btn{display:inline-block;align-self:flex-start;background:var(--red);color:#fff;text-decoration:none;font-family:'Raleway',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:14px 26px;border-radius:2px;transition:background .18s}
+  .btn:hover{background:var(--red2)}
+  .abo small{font-size:11px;color:#8A8F9C;line-height:1.5}
+  .rule{max-width:1080px;margin:0 auto;padding:0 24px}
+  .rule div{border-top:2px solid var(--gold)}
+  .editions{max-width:1080px;margin:0 auto;padding:30px 24px 80px}
+  .editions h2{font-family:'Raleway',sans-serif;font-size:11px;font-weight:800;letter-spacing:2.6px;text-transform:uppercase;color:#7A7F8E;margin:0 0 18px}
+  .liste{display:grid;gap:14px}
+  .edition{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:22px;align-items:baseline;background:var(--white);border:1px solid var(--line);padding:22px 26px;text-decoration:none;color:inherit;transition:border-color .18s,transform .18s}
+  .edition:hover{border-color:var(--navy);transform:translateY(-1px)}
+  .edition time{font-family:'Raleway',sans-serif;font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.3px;font-variant-numeric:tabular-nums}
+  .edition strong{display:block;font-family:'Raleway',sans-serif;font-size:19px;font-weight:800;line-height:1.3;color:var(--navy);margin:0 0 6px;letter-spacing:-.2px}
+  .edition span{font-size:14.5px;color:#5A6070;display:block;max-width:70ch}
+  .edition em{font-style:normal;font-family:'Raleway',sans-serif;font-size:12px;font-weight:700;color:var(--navy);white-space:nowrap}
+  .vide{background:var(--white);border:1px dashed var(--line);padding:26px;text-align:center;color:#7A7F8E;font-size:14px}
+  footer{background:var(--navy-dark);color:rgba(255,255,255,.6);font-size:12.5px}
+  footer .in{max-width:1080px;margin:0 auto;padding:26px 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer a{color:rgba(255,255,255,.85);text-decoration:none}
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr;padding-top:44px;gap:28px}
+    h1{font-size:31px}
+    .edition{grid-template-columns:1fr;gap:6px;padding:20px 22px}
+    .edition em{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="logo" href="/"><img src="/logo.png" alt="Learndigi"></a>
+    <a class="retour" href="/">Retour au site</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <p class="eyebrow">Newsletter hebdomadaire · chaque lundi</p>
+    <h1>L'IA du courtier</h1>
+    <p class="lead">L'essentiel de l'intelligence artificielle pour les cabinets de courtage, en une lecture de cinq minutes : ce que le régulateur prépare, ce que vos outils savent faire de nouveau, et un prompt à tester dans la semaine.</p>
+  </div>
+  <div class="abo">
+    <h2>Recevoir les prochaines éditions</h2>
+    <p>Un mail le lundi matin, rien d'autre. Désabonnement en un clic.</p>
+    <a class="btn" href="https://cb6dd451.sibforms.com/serve/MUIFAJdt6Le4DiYo_VOKQB19tcawXtJEFgvbLlN2kHcUHCG10VYgoYKwFllwbR-7X4vUc0GUhp_GPQDpX0Cv2WnOMHBwExzlg7Ho0TtsmFfiFL6jX3PtnQZpRwR5mVUEQp265L6PsBg_2703qrFD6YR9WhlzpGynxWYYOfUn7AIUINHwE4_tsinLzjKU_kYp4kswIaEmgCyRPlB6rg==" target="_blank" rel="noopener">S'inscrire</a>
+    <small>Données traitées par Brevo, hébergées en Europe, jamais transmises à des tiers.</small>
+  </div>
+</section>
+
+<div class="rule"><div></div></div>
+
+<section class="editions">
+  <h2>Toutes les éditions</h2>
+  <div class="liste" id="liste">
+    <!-- Liste rendue depuis newsletters/index.json ; cette entrée reste en repli si le script ne s'exécute pas. -->
+    <a class="edition" href="/newsletters/2026-09-07">
+      <time datetime="2026-09-07">7 septembre 2026</time>
+      <div>
+        <strong>Le régulateur vous demande votre avis sur l'IA. Jusqu'au 30 septembre.</strong>
+        <span>Consultation de l'ACPR, calendrier de l'AI Act, nouveaux modèles chez Anthropic et OpenAI, et un prompt pour rédiger vos comptes rendus de conseil.</span>
+      </div>
+      <em>Lire →</em>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="in">
+    <span>Learndigi Formation · 88 rue de Champigny, 94430 Chennevières-sur-Marne</span>
+    <span><a href="/">learndigi.fr</a> · <a href="mailto:contact@learndigi.fr">contact@learndigi.fr</a></span>
+  </div>
+</footer>
+
+<script>
+// La liste est tenue à jour par la routine qui publie chaque édition dans
+// newsletters/index.json. On la lit ici pour ne pas avoir à retoucher cette
+// page à chaque lundi ; le HTML ci-dessus reste le repli sans script.
+(function(){
+  var MOIS=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  function libelle(d){var p=d.split('-');return parseInt(p[2],10)+' '+MOIS[parseInt(p[1],10)-1]+' '+p[0];}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  fetch('/newsletters/index.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():null;}).then(function(liste){
+    if(!Array.isArray(liste)||!liste.length)return;
+    liste.sort(function(a,b){return b.date.localeCompare(a.date);});
+    document.getElementById('liste').innerHTML=liste.map(function(e){
+      var slug=String(e.fichier||'').replace(/\.html$/,'');
+      if(!/^[\w.-]+$/.test(slug))return'';
+      return'<a class="edition" href="/newsletters/'+slug+'">'
+        +'<time datetime="'+esc(e.date)+'">'+esc(libelle(e.date))+'</time>'
+        +'<div><strong>'+esc(e.titre||e.objet)+'</strong><span>'+esc(e.resume||'')+'</span></div>'
+        +'<em>Lire →</em></a>';
+    }).join('');
+  }).catch(function(){});
+})();
+</script>
+</body>
+</html>

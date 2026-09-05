@@ -52,6 +52,7 @@ Outils travaillés : Claude, ChatGPT, Microsoft Copilot, Mistral AI, Microsoft 3
 - [Audit IA](https://learndigi.fr/audit-ia) : analyse des processus, priorisation des cas d'usage et feuille de route opérationnelle
 - [Veille IA métier](https://learndigi.fr/veille-ia) : suivi ciblé des outils, des usages du courtage et du cadre réglementaire
 - [Claude Code et Codex](https://learndigi.fr/claude-code-codex) : accompagnement à la création d'outils internes sur mesure et de prototypes maîtrisés
+- [Newsletter « L'IA du courtier »](https://learndigi.fr/newsletter) : chaque lundi, réglementation, outils et un prompt à tester, pour les cabinets de courtage. Toutes les éditions y sont lisibles en ligne.
 
 ## Contact
 
