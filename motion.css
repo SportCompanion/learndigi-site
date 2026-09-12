@@ -1070,3 +1070,37 @@ html.lenis,html.lenis body{height:auto}
   .lx-pile-item{color:#fff}
   .lx-pile-fond{background:var(--lx-navy)}
 }
+
+/* ============================================================
+   DEUX CORRECTIONS, 12/09/2026
+   ============================================================ */
+
+/* ── Alignement des deux colonnes ───────────────────────────
+   « .video-inner » centre verticalement ses deux colonnes. Tant
+   que la carte de droite était courte, ça passait. Depuis
+   qu'elle contient la démo animée, elle est bien plus haute que
+   le texte de gauche, qui se retrouve à flotter au milieu du
+   vide. Les deux colonnes partent maintenant du haut, et la
+   carte reçoit une largeur plus généreuse puisqu'elle porte
+   désormais l'essentiel du propos.                            */
+.video-inner{align-items:flex-start !important}
+.video-text{padding-top:2px}
+@media (min-width:981px){
+  .deliverable-card{flex:0 0 clamp(470px,38vw,540px) !important}
+}
+
+/* ── Douceur de la pile ─────────────────────────────────────
+   Les trois propriétés animées partagent la même durée et la
+   même courbe. Quand elles divergeaient, le fond finissait
+   avant le dépliage et la bande semblait tressauter.          */
+.lx-pile-item,
+.lx-pile-fond,
+.lx-pile-num,
+.lx-pile-corps{
+  transition-duration:.52s;
+  transition-timing-function:cubic-bezier(.22,.61,.36,1);
+}
+.lx-pile-corps p{transition-duration:.42s;transition-delay:.08s}
+/* La hauteur ne doit pas changer d'un cheveu pendant le
+   basculement, sinon tout ce qui suit dans la page tremble. */
+.lx-pile{contain:layout}

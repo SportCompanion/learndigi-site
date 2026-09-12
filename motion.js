@@ -1065,17 +1065,37 @@
 
     if (reduit || !opts || !opts.auDefilement) return pile;
 
-    // Chaque bande s'ouvre quand elle franchit le tiers haut de
-    // l'écran. Une bande large déclencherait trop tôt avec un
-    // seuil en pourcentage : on vise une ligne fixe.
-    var attente = false;
+    // Le choix se calcule sur la position de la PILE, jamais sur
+    // celle des bandes.
+    //
+    // C'était le défaut : mesurer chaque bande créait une boucle.
+    // Une bande s'ouvrait, celles du dessous descendaient de sa
+    // hauteur dépliée, le calcul suivant désignait une autre
+    // bande, et l'ouverture se mettait à osciller pendant tout le
+    // défilement. En divisant la hauteur de la pile en autant de
+    // zones qu'il y a de bandes, la référence ne bouge plus :
+    // la pile garde la même hauteur puisqu'une seule bande est
+    // ouverte à la fois.
+    var attente = false, courant = 0, gele = 0;
     function suivre() {
-      var h = window.innerHeight, ligne = h * 0.42, choix = -1;
-      items.forEach(function (it, n) {
-        if (it.getBoundingClientRect().top <= ligne) choix = n;
-      });
-      if (choix >= 0) ouvrir(choix);
       attente = false;
+      var maintenant = Date.now();
+      // Petit gel après un changement : pendant les 0,52 s de
+      // transition la hauteur varie légèrement, et sans ce répit
+      // le dernier soubresaut peut désigner la bande voisine.
+      if (maintenant < gele) return;
+
+      var r = pile.getBoundingClientRect();
+      if (r.height < 1) return;
+      var ligne = window.innerHeight * 0.42;
+      var avance = (ligne - r.top) / r.height;
+      var n = Math.floor(avance * items.length);
+      if (n < 0) n = 0;
+      if (n > items.length - 1) n = items.length - 1;
+      if (n === courant) return;
+      courant = n;
+      gele = maintenant + 260;
+      ouvrir(n);
     }
     window.addEventListener('scroll', function () {
       if (attente) return;
