@@ -1174,19 +1174,46 @@
   // Les usages repris de la page : rien n'est promis ici qui ne
   // soit déjà écrit dans la section « Outils abordés ».
   var JETONS = [
-    { logo: 'logo-claude.png',  nom: 'Claude',  x: 15, y: 14, t: 20,   p: 1,   amp: 6,   v1: .72, v2: .55,
+    { logo: 'logo-claude.png',  nom: 'Claude',  x: 16, y: 16, t: 19, z: 66, p: 1,  amp: 6,   v1: .72, v2: .55,
       use: 'Synthétiser un contrat, préparer un rendez-vous.' },
-    { logo: 'logo-chatgpt.png', nom: 'ChatGPT', x: 63, y: 12, t: 17,   p: .94, amp: 5.5, v1: .61, v2: .78,
+    { logo: 'logo-chatgpt.png', nom: 'ChatGPT', x: 62, y: 15, t: 19, z: 55, p: 1,  amp: 5.5, v1: .61, v2: .78,
       use: 'Rédiger, relancer, analyser un portefeuille.' },
-    { logo: 'logo-copilot.png', nom: 'Copilot', x: 88, y: 38, t: 17.5, p: 1,   amp: 5.5, v1: .83, v2: .59,
+    { logo: 'logo-copilot.png', nom: 'Copilot', x: 86, y: 40, t: 19, z: 64, p: 1,  amp: 5.5, v1: .83, v2: .59,
       use: 'L\'IA dans les outils Microsoft du cabinet.' },
-    { logo: 'logo-mistral.png', nom: 'Mistral', x: 43, y: 51, t: 21,   p: 1,   amp: 6.5, v1: .5,  v2: .67,
+    { logo: 'logo-mistral.png', nom: 'Mistral', x: 44, y: 50, t: 19, z: 56, p: 1,  amp: 6.5, v1: .5,  v2: .67,
       use: 'Un modèle français, hébergé en Europe.' },
-    { logo: 'logo-marvin.png',  nom: 'Marvin',  x: 13, y: 66, t: 13,   p: .6,  amp: 5,   v1: .66, v2: .86,
+    { logo: 'logo-marvin.png',  nom: 'Marvin',  x: 14, y: 68, t: 13.5, z: 64, p: .62, amp: 5, v1: .66, v2: .86,
       use: 'Notre partenaire : anonymiser avant d\'analyser.' },
-    { logo: 'logo-apollo.png',  nom: 'Apollo',  x: 68, y: 77, t: 15,   p: .74, amp: 5,   v1: .77, v2: .5,
+    { logo: 'logo-apollo.png',  nom: 'Apollo',  x: 68, y: 76, t: 13.5, z: 56, p: .74, amp: 5, v1: .77, v2: .5,
       use: 'Prospecter et enrichir vos fichiers.' }
   ];
+
+  /* Le surtitre est écrit d'une traite dans la page, séparateurs
+     compris. Découpé ici, chaque terme peut entrer à son tour et
+     les points prennent l'accent doré : la ligne se lit comme
+     trois métiers annoncés, plus comme une suite de mots. */
+  function surtitre(hero) {
+    var el = hero.querySelector('.hero-label');
+    if (!el || el.dataset.lxDecoupe) return;
+    var mots = el.textContent.split('·').map(function (m) { return m.trim(); }).filter(Boolean);
+    if (mots.length < 2) return;
+    el.dataset.lxDecoupe = '1';
+    el.textContent = '';
+    mots.forEach(function (m, i) {
+      if (i) {
+        var sep = document.createElement('i');
+        sep.textContent = '·';
+        sep.setAttribute('aria-hidden', 'true');
+        el.appendChild(sep);
+      }
+      var s = document.createElement('span');
+      s.textContent = m;
+      s.style.setProperty('--i', i);
+      el.appendChild(s);
+    });
+    if (!reduit) setTimeout(function () { el.classList.add('lx-label-on'); }, 180);
+    else el.classList.add('lx-label-on');
+  }
 
   function heroOutils() {
     var hero = document.querySelector('.hero');
@@ -1197,6 +1224,7 @@
     // Le hero n'a plus d'image agrandie à contenir : la découpe
     // posée pour la parallaxe rognerait les ombres des pastilles.
     hero.classList.remove('lx-clip');
+    surtitre(hero);
 
     var zone = document.createElement('div');
     zone.className = 'lx-scene-zone';
@@ -1236,6 +1264,13 @@
       el.style.setProperty('--x', j.x + '%');
       el.style.setProperty('--y', j.y + '%');
       el.style.setProperty('--t', j.t + '%');
+      // Correction optique. Trois de ces logos portent leur propre
+      // fond plein, les trois autres sont dessinés sur du blanc.
+      // À taille égale, les premiers pèsent visiblement plus lourd
+      // et la rangée paraît irrégulière. On les rend donc plus
+      // petits dans leur pastille, jusqu'à ce que les six aient la
+      // même présence.
+      el.style.setProperty('--z', j.z + '%');
       el.style.setProperty('--p', j.p);
       el.style.setProperty('--i', i);
 

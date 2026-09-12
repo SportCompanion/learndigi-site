@@ -1230,14 +1230,97 @@ html.lenis,html.lenis body{height:auto}
   padding-bottom:clamp(56px,6vw,92px) !important;
 }
 .lx-hero-clair .hero-content{max-width:none}
-.lx-hero-clair .hero-title{color:var(--lx-navy) !important;text-shadow:none !important}
-.lx-hero-clair .hero-label{color:var(--lx-red) !important}
-.lx-hero-clair .hero-sub{color:#4A5163 !important}
-.lx-hero-clair .hero-list li{color:#4A5163 !important}
-.lx-hero-clair .hero-list li svg{stroke:var(--lx-gold)}
-.lx-hero-clair .hero-bar{background:var(--lx-gold) !important}
+.lx-hero-clair .hero-title{color:var(--lx-navy) !important;text-shadow:none !important;margin-bottom:24px !important}
+
+/* ── Le surtitre ────────────────────────────────────────────
+   Il était en rouge, c'est à dire dans la couleur des boutons.
+   Deux rouges dans le même écran, et l'appel à l'action n'est
+   plus le seul point qui attire l'œil. Le surtitre passe donc
+   au gris bleuté et ne garde de couleur que ses séparateurs,
+   dorés comme le filet sous le titre.                        */
+.lx-hero-clair .hero-label{
+  color:#79839A !important;
+  font-size:12.5px !important;
+  letter-spacing:.15em !important;
+  margin-bottom:20px !important;
+  line-height:1.7 !important;
+}
+.lx-hero-clair .hero-label i{
+  font-style:normal;color:var(--lx-gold);
+  margin:0 .62em;opacity:.9;
+}
+.lx-hero-clair .hero-label span,
+.lx-hero-clair .hero-label i{
+  display:inline-block;
+  opacity:0;transform:translateY(7px);
+  transition:opacity .5s ease,transform .6s var(--lx-ease);
+}
+.lx-hero-clair .hero-label.lx-label-on span{
+  opacity:1;transform:none;
+  transition-delay:calc(var(--i) * 90ms);
+}
+.lx-hero-clair .hero-label.lx-label-on i{opacity:.9;transform:none;transition-delay:.1s}
+
+.lx-hero-clair .hero-bar{
+  background:linear-gradient(90deg,var(--lx-gold),rgba(232,146,26,0)) !important;
+  width:64px !important;height:2px !important;margin-bottom:26px !important;
+}
+.lx-hero-clair .hero-sub{
+  color:#4A5163 !important;
+  font-size:17px !important;line-height:1.64 !important;
+  max-width:47ch;margin-bottom:0 !important;
+}
+
+/* ── Les trois promesses ────────────────────────────────────
+   Un filet les détache de l'accroche : sans lui, six lignes de
+   gris se suivent sans qu'on sache où l'une finit. La flèche
+   passe en doré et s'affine, elle accompagne au lieu de
+   pointer.                                                   */
+.lx-hero-clair .hero-list{
+  margin:30px 0 34px !important;padding-top:26px !important;
+  border-top:1px solid rgba(27,44,107,.11) !important;
+  gap:14px !important;
+}
+.lx-hero-clair .hero-list li{
+  color:#4A5163 !important;
+  font-size:15px !important;line-height:1.5 !important;
+  gap:13px !important;
+}
+.lx-hero-clair .hero-list li svg{
+  stroke:var(--lx-gold);stroke-width:1.45;
+  width:15px;height:15px;margin-top:4px;
+}
+
+/* ── Les deux appels ────────────────────────────────────────
+   Le bouton était un dégradé à angles vifs sous une ombre
+   noire, dessiné pour se détacher d'un fond sombre. Sur du
+   clair, cette ombre salit. Aplat de rouge, pastille, et une
+   ombre de la couleur du bouton : elle le pose sans le tacher. */
+.lx-hero-clair .hero-btn-primary{
+  background:var(--lx-red) !important;
+  border-radius:999px !important;
+  padding:15px 30px !important;
+  font-size:13.5px !important;letter-spacing:.005em !important;
+  box-shadow:0 15px 30px -16px rgba(192,57,43,.6) !important;
+  transition:background .22s ease,box-shadow .28s ease,transform .22s var(--lx-ease) !important;
+}
+.lx-hero-clair .hero-btn-primary:hover{
+  background:#A93226 !important;filter:none !important;
+  transform:translateY(-2px);
+  box-shadow:0 20px 38px -16px rgba(192,57,43,.68) !important;
+}
+/* L'ombre reprise ici remplace celle de .lx-press, dont le
+   relief de quatre pixels appartenait au bouton à angles vifs.
+   L'appui doit rester perceptible : la pastille redescend et son
+   ombre se resserre sous elle.                                 */
+.lx-hero-clair .hero-btn-primary:active{
+  transform:translateY(1px);
+  box-shadow:0 7px 16px -12px rgba(192,57,43,.7) !important;
+}
 .lx-hero-clair .hero-btn-link,
 .lx-hero-clair .hero-btn-link *{color:var(--lx-navy) !important}
+.lx-hero-clair .hero-btn-link{font-size:13.5px !important}
+.lx-hero-clair .hero-cta{gap:22px !important}
 .lx-hero-clair .hero-scroll{display:none !important}
 @media (max-width:900px){
   .lx-hero-clair .hero-inner{grid-template-columns:1fr}
@@ -1318,8 +1401,11 @@ html.lenis,html.lenis body{height:auto}
   opacity:1;transform:none;
   transition-delay:calc(var(--i) * 95ms);
 }
+/* La taille du logo dans sa pastille est réglée logo par logo,
+   par --z, pour compenser leurs fonds : voir le commentaire de
+   la correction optique dans motion.js.                       */
 .lx-jeton img{
-  width:62%;height:62%;
+  width:var(--z,62%);height:var(--z,62%);
   object-fit:contain;border-radius:20%;
   user-select:none;-webkit-user-drag:none;
 }
@@ -1381,6 +1467,15 @@ html.lenis,html.lenis body{height:auto}
     padding-bottom:clamp(30px,6vw,52px) !important;
     gap:26px;
   }
+  /* Sur 327 pixels de colonne, le surtitre passait à la ligne en
+     abandonnant un point en fin de première ligne. Un cran de
+     corps et un peu moins de chasse suffisent à le tenir sur une
+     seule ligne, ce qui vaut mieux qu'une coupure arbitrée par
+     le navigateur.                                             */
+  .lx-hero-clair .hero-label{font-size:11px !important;letter-spacing:.12em !important}
+  .lx-hero-clair .hero-label i{margin:0 .5em}
+  .lx-hero-clair .hero-sub{font-size:16px !important}
+  .lx-hero-clair .hero-list{margin:24px 0 28px !important;padding-top:22px !important}
   .lx-scene{aspect-ratio:1 / .88;max-width:380px;margin:0 auto}
   .lx-jeton-n{font-size:10px;margin-top:8px;letter-spacing:.06em}
   .lx-scene-legende{margin-top:12px;font-size:11.5px}
