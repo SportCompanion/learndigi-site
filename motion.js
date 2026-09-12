@@ -167,8 +167,15 @@
 
     // La mesure ne dépend plus du chargement des logos : leurs
     // dimensions sont déclarées, la mise en page est donc déjà
-    // juste à la frame suivante.
+    // juste à la frame suivante. On repasse tout de même quand les
+    // polices sont prêtes : le nom des outils est du texte, et
+    // Figtree ne chasse pas comme la police de repli. Sans ce
+    // second passage, la durée de boucle est calculée sur une
+    // largeur qui n'existe plus une seconde plus tard.
     requestAnimationFrame(dimensionner);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { essais = 0; dimensionner(); });
+    }
 
     window.addEventListener('resize', (function () {
       var t;
@@ -480,6 +487,124 @@
     if (groupe && groupe.children.length === 2) groupe.classList.add('lx-ranger');
   }
 
+
+  /* ── 13. Défilement satiné ──────────────────────────────────
+     Lenis est chargé en différé par les pages. S'il n'est pas là,
+     rien ne casse : le navigateur garde son défilement natif.
+     On ne l'active pas si le visiteur a demandé moins
+     d'animations, ni sur écran tactile, où le défilement à
+     inertie du système est déjà bon et où le remplacer donne une
+     sensation de flottement.                                   */
+  function defilementSatine() {
+    if (reduit) return;
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    if (typeof window.Lenis !== 'function') return;
+
+    var lenis = new window.Lenis({
+      duration: 1.05,
+      easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+      smoothWheel: true,
+      wheelMultiplier: 0.95
+    });
+    function boucle(t) { lenis.raf(t); requestAnimationFrame(boucle); }
+    requestAnimationFrame(boucle);
+
+    // Les ancres internes doivent passer par Lenis, sinon le saut
+    // natif et l'inertie se disputent la position.
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      var id = a.getAttribute('href');
+      if (!id || id === '#') return;
+      var cible = document.querySelector(id);
+      if (!cible) return;
+      e.preventDefault();
+      lenis.scrollTo(cible, { offset: -80 });
+    });
+    window.__lxLenis = lenis;
+  }
+
+  /* ── 14. Chevauchement et phrase géante ────────────────────── */
+  var REEL = [
+    ['Formation', null], ['Audit', null], ['Outils', 'sur mesure'],
+    ['Conformité', null], ['Prospection', null], ['Veille', 'métier']
+  ];
+
+  function structure() {
+    // La section rendez-vous remonte sur celle qui la précède.
+    var rdv = document.querySelector('.rdv-section');
+    if (rdv) rdv.classList.add('lx-overlap');
+
+    // La phrase géante s'insère avant le contact, seul endroit de
+    // la page où la typographie prend toute la largeur.
+    var contact = document.querySelector('.contact');
+    if (!contact || document.querySelector('.lx-reel')) return;
+
+    function unSet() {
+      var set = document.createElement('div');
+      set.style.display = 'flex';
+      set.style.alignItems = 'center';
+      set.style.flex = 'none';
+      REEL.forEach(function (paire) {
+        var it = document.createElement('span');
+        it.className = 'lx-reel-item';
+        it.appendChild(document.createTextNode(paire[0]));
+        if (paire[1]) {
+          var em = document.createElement('em');
+          em.textContent = ' ' + paire[1];
+          it.appendChild(em);
+        }
+        var pt = document.createElement('span');
+        pt.className = 'lx-reel-sep';
+        pt.setAttribute('aria-hidden', 'true');
+        it.appendChild(pt);
+        set.appendChild(it);
+      });
+      return set;
+    }
+
+    var reel = document.createElement('div');
+    reel.className = 'lx-reel';
+    reel.setAttribute('role', 'img');
+    reel.setAttribute('aria-label',
+      'Formation, audit, outils sur mesure, conformité, prospection, veille métier');
+    var piste = document.createElement('div');
+    piste.className = 'lx-reel-track';
+    piste.appendChild(unSet());
+    reel.appendChild(piste);
+    contact.parentNode.insertBefore(reel, contact);
+
+    // Même principe que le bandeau d'outils : on répète assez pour
+    // couvrir deux largeurs d'écran, sinon un trou apparaît à la
+    // boucle sur les grands moniteurs.
+    var essais = 0;
+    function calibrer() {
+      var set = piste.firstElementChild;
+      if (!set) return;
+      var l = set.scrollWidth;
+      if (!l) { if (essais++ < 30) requestAnimationFrame(calibrer); return; }
+      var rep = Math.max(1, Math.ceil(Math.max(reel.offsetWidth, 320) / l));
+      piste.innerHTML = '';
+      for (var i = 0; i < rep; i++) piste.appendChild(unSet());
+      var bloc = piste.scrollWidth;
+      for (var j = 0; j < rep; j++) {
+        var c = unSet();
+        c.setAttribute('aria-hidden', 'true');
+        piste.appendChild(c);
+      }
+      piste.style.setProperty('--lx-reel-duration', Math.round(bloc / 62) + 's');
+    }
+    requestAnimationFrame(calibrer);
+    // Même raison que pour le bandeau d'outils : la phrase est du
+    // texte, sa largeur dépend entièrement de la police chargée.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { essais = 0; calibrer(); });
+    }
+    window.addEventListener('resize', (function () {
+      var t; return function () { clearTimeout(t); t = setTimeout(calibrer, 250); };
+    })(), { passive: true });
+  }
+
   /* ── Mise en route ────────────────────────────────────────── */
   function demarrer() {
     // Ces deux-là servent aussi sans animation : l'un remplace une
@@ -489,6 +614,8 @@
     toucher();
     boutonsRipple();
     survols();
+    structure();
+    defilementSatine();
 
     if (reduit) {
       tous('.lx-w').forEach(function (m) { m.classList.add('lx-w-on'); });

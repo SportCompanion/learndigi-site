@@ -562,3 +562,71 @@
   .lx-ranger > *{transform:none !important;transition:none}
   .lx-spring,.lx-spring:hover{transform:none;transition:none}
 }
+
+/* ============================================================
+   STRUCTURE, 12/09/2026
+   ------------------------------------------------------------
+   Le reproche « ça fait IA » ne venait plus des animations mais
+   du squelette : douze sections de même largeur, même hauteur,
+   titre centré puis grille de boîtes égales. Cette régularité
+   est la signature. On la casse à trois endroits.
+   ============================================================ */
+
+/* ── 1. Défilement satiné ───────────────────────────────────
+   Lenis remplace le défilement par saccades du navigateur par
+   un mouvement à inertie. C'est le changement qu'on ne voit pas
+   mais qu'on sent : tout le reste des animations s'y accroche
+   et paraît soudain lié. Licence MIT, hébergé chez nous.      */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:clip}
+.lenis.lenis-smooth iframe{pointer-events:none}
+
+/* ── 2. Sections qui se chevauchent ─────────────────────────
+   Une section remonte sur celle qui la précède et arrondit ses
+   deux coins hauts. La page cesse d'être une pile de blocs
+   posés bout à bout : elle prend une épaisseur.               */
+.lx-overlap{
+  position:relative;z-index:3;
+  margin-top:clamp(-88px,-6vw,-48px);
+  border-radius:clamp(28px,4vw,64px) clamp(28px,4vw,64px) 0 0;
+  overflow:hidden;
+}
+
+/* ── 3. La phrase géante qui défile ─────────────────────────
+   Un seul endroit de la page où la typographie prend toute la
+   largeur et sort du cadre. C'est la respiration qui manquait
+   entre des sections toutes calibrées pareil.                 */
+.lx-reel{
+  position:relative;overflow:hidden;
+  padding:clamp(34px,5vw,68px) 0;
+  border-top:1px solid var(--lx-line);
+  border-bottom:1px solid var(--lx-line);
+}
+.lx-reel-track{
+  display:flex;width:max-content;align-items:center;
+  animation:lx-reel var(--lx-reel-duration,34s) linear infinite;
+  will-change:transform;
+}
+.lx-reel:hover .lx-reel-track{animation-play-state:paused}
+.lx-reel-item{
+  padding:0 clamp(18px,3vw,54px);
+  font-size:clamp(38px,7.4vw,104px);
+  font-weight:400;line-height:1.06;letter-spacing:-.035em;
+  color:var(--lx-navy);white-space:nowrap;
+}
+.lx-reel-item em{
+  font-family:var(--lx-serif);font-style:italic;font-weight:400;
+  color:var(--lx-gold);
+}
+.lx-reel-sep{
+  display:inline-block;width:.34em;height:.34em;
+  margin:0 .1em .22em;border-radius:50%;
+  background:var(--lx-gold);vertical-align:middle;
+}
+@keyframes lx-reel{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+
+@media (prefers-reduced-motion: reduce){
+  .lx-reel-track{animation:none}
+  .lx-overlap{margin-top:0;border-radius:0}
+}
