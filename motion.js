@@ -330,6 +330,41 @@
     maj();
   }
 
+
+  /* ── 9. Frise du parcours qui se trace ─────────────────────
+     Le trait avance étape par étape à mesure qu'elles entrent
+     dans l'écran. C'est ce trait qui dit « ceci est une suite »,
+     ce qui a permis de retirer le cadre autour de chaque étape. */
+  function frise() {
+    var liste = document.querySelector('.lx-frise');
+    if (!liste) return;
+    var etapes = tous('.lx-etape', liste);
+    if (!etapes.length) return;
+    var atteintes = 0;
+    auScroll(etapes, function (el) {
+      el.classList.add('lx-etape-on');
+      atteintes++;
+      // Le trait s'arrête au centre de la dernière étape atteinte,
+      // sinon il dépasse dans le vide après la quatrième.
+      var part = (atteintes - 0.5) / etapes.length * 100;
+      liste.style.setProperty('--lx-frise-avance', Math.min(100, part).toFixed(1) + '%');
+    }, 0.3);
+  }
+
+  /* ── 10. Photographies et listes à filet ───────────────────── */
+  function visuels() {
+    var photos = tous('.lx-photo');
+    auScroll(photos, function (el) { el.classList.add('lx-photo-on'); }, 0.15);
+
+    var listes = tous('.lx-liste');
+    listes.forEach(function (l) {
+      [].slice.call(l.children).forEach(function (li, i) {
+        li.style.setProperty('--lx-delai', (i * 0.09) + 's');
+      });
+    });
+    auScroll(listes, function (l) { l.classList.add('lx-liste-on'); }, 0.2);
+  }
+
   /* ── Mise en route ────────────────────────────────────────── */
   function demarrer() {
     // Ces deux-là servent aussi sans animation : l'un remplace une
@@ -340,12 +375,19 @@
 
     if (reduit) {
       tous('.lx-w').forEach(function (m) { m.classList.add('lx-w-on'); });
+      tous('.lx-photo').forEach(function (f) { f.classList.add('lx-photo-on'); });
+      tous('.lx-liste').forEach(function (l) { l.classList.add('lx-liste-on'); });
+      tous('.lx-etape').forEach(function (e) { e.classList.add('lx-etape-on'); });
+      var fr = document.querySelector('.lx-frise');
+      if (fr) fr.style.setProperty('--lx-frise-avance', '100%');
       return;
     }
 
     progression();
     navigation();
     parallaxe();
+    frise();
+    visuels();
     phrasesAnimees([
       '.intro-heading h2',        // accueil
       '.team-proof-copy h2',

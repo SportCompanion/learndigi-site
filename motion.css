@@ -204,3 +204,170 @@
   .lx-underline:hover{background-size:100% 1.5px}
   .lx-parallax{transform:none !important}
 }
+
+/* ============================================================
+   BLOCS REPRIS, 12/09/2026
+   ------------------------------------------------------------
+   Hugo a relevé que plusieurs sections « faisaient IA ». Le
+   défaut était repérable : des numéros 01/02/03 posés partout,
+   y compris là où le contenu n'est pas une séquence (trois
+   tailles de cabinet, quatre critères de devis, quatre livrables).
+   Un numéro qui ne compte rien est de la décoration, et c'est
+   exactement la signature qu'on reproche aux pages générées.
+   Ils ne sont gardés que dans le parcours en quatre étapes, où
+   l'ordre porte une information réelle.
+   Le reste suit : moins de cellules, plus de rythme, et de
+   vraies photographies pour casser les murs de texte.
+   ============================================================ */
+
+/* ── Logos du bandeau en couleur ────────────────────────────
+   Le gris cachait Claude, Brevo et Apollo, qui sont justement
+   ce qu'on veut montrer. */
+.lx-marquee-item{opacity:.92;filter:none}
+.lx-marquee:hover .lx-marquee-item{opacity:.6}
+.lx-marquee-item:hover{opacity:1}
+
+/* ── Ligne de faits ─────────────────────────────────────────
+   Remplace la fiche en quatre cellules. Quatre faits séparés
+   par un filet, sur une seule respiration : on lit une phrase,
+   plus un tableau.                                            */
+.lx-faits{
+  display:flex;flex-wrap:wrap;gap:0;margin:26px 0 0;padding:0;
+  list-style:none;border-top:1px solid var(--lx-line);
+}
+.lx-faits li{
+  flex:1 1 200px;min-width:0;padding:18px 22px 18px 0;
+  border-bottom:1px solid var(--lx-line);
+}
+.lx-faits li + li{padding-left:22px;border-left:1px solid var(--lx-line)}
+.lx-faits b{
+  display:block;font-family:'Raleway',sans-serif;
+  font-size:19px;font-weight:800;color:var(--lx-navy);
+  letter-spacing:-.2px;margin-bottom:3px;
+}
+.lx-faits span{
+  display:block;font-family:'Open Sans',sans-serif;
+  font-size:13.5px;line-height:1.5;color:#6A7080;
+}
+@media (max-width:760px){
+  .lx-faits li{flex:1 1 100%;padding:15px 0}
+  .lx-faits li + li{padding-left:0;border-left:none}
+}
+
+/* ── Frise du parcours ──────────────────────────────────────
+   Les quatre étapes ne sont plus quatre boîtes identiques mais
+   une ligne qui se trace. Le trait de progression avance au
+   défilement : c'est lui qui raconte qu'il s'agit d'une suite,
+   le cadre autour de chaque étape devient inutile.             */
+.lx-frise{
+  position:relative;list-style:none;margin:44px 0 0;padding:0;
+  display:grid;gap:30px;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+.lx-frise::before{
+  content:'';position:absolute;left:0;right:0;top:17px;height:2px;
+  background:var(--lx-line);
+}
+.lx-frise::after{
+  content:'';position:absolute;left:0;top:17px;height:2px;
+  width:var(--lx-frise-avance,0%);
+  background:linear-gradient(90deg,var(--lx-gold),var(--lx-red));
+  transition:width .9s var(--lx-ease);
+}
+.lx-etape{position:relative;padding-top:54px}
+.lx-etape-num{
+  position:absolute;top:0;left:0;
+  display:flex;align-items:center;justify-content:center;
+  width:36px;height:36px;border-radius:50%;
+  background:#fff;border:2px solid var(--lx-line);
+  font-family:'Raleway',sans-serif;font-size:14px;font-weight:800;
+  color:#9AA0B0;
+  transition:border-color .45s ease,color .45s ease,transform .45s var(--lx-ease);
+}
+.lx-etape-on .lx-etape-num{
+  border-color:var(--lx-gold);color:var(--lx-navy);transform:scale(1.06);
+}
+.lx-etape h3{
+  font-family:'Raleway',sans-serif;font-size:17px;font-weight:800;
+  line-height:1.3;color:var(--lx-navy);margin:0 0 8px;letter-spacing:-.2px;
+}
+.lx-etape p{
+  font-family:'Open Sans',sans-serif;font-size:14.5px;line-height:1.65;
+  color:#5A6070;margin:0;
+}
+@media (max-width:860px){
+  .lx-frise{grid-template-columns:1fr;gap:0;padding-left:44px}
+  .lx-frise::before{left:17px;right:auto;top:0;bottom:0;width:2px;height:auto}
+  .lx-frise::after{
+    left:17px;top:0;width:2px;height:var(--lx-frise-avance,0%);
+    background:linear-gradient(180deg,var(--lx-gold),var(--lx-red));
+    transition:height .9s var(--lx-ease);
+  }
+  .lx-etape{padding:0 0 30px 0}
+  .lx-etape-num{left:-44px;top:-4px}
+}
+
+/* ── Photographies de section ───────────────────────────────
+   Format large et calme, sans ombre portée ni coin arrondi :
+   la photo doit se lire comme une image, pas comme une carte
+   de plus.                                                    */
+.lx-photo{
+  position:relative;margin:38px 0 0;overflow:hidden;
+  background:#EFF1F4;
+}
+.lx-photo img{
+  display:block;width:100%;height:100%;object-fit:cover;
+  transform:scale(1.04);
+  transition:transform 1.4s var(--lx-ease),filter 1.4s ease;
+}
+.lx-photo-on img{transform:scale(1)}
+.lx-photo figcaption{
+  position:absolute;left:0;bottom:0;
+  padding:10px 16px;
+  background:var(--lx-navy);color:#fff;
+  font-family:'Raleway',sans-serif;font-size:11.5px;font-weight:700;
+  letter-spacing:1.4px;text-transform:uppercase;
+}
+.lx-photo--large{aspect-ratio:21/9}
+.lx-photo--moyenne{aspect-ratio:3/2}
+@media (max-width:760px){
+  .lx-photo--large{aspect-ratio:16/10}
+}
+
+/* ── Listes sans numérotation décorative ────────────────────
+   Un filet doré court remplace le « 01 » : il marque l'entrée
+   sans prétendre à un ordre qui n'existe pas.                 */
+.lx-liste{list-style:none;margin:0;padding:0}
+.lx-liste li{
+  position:relative;padding-left:26px;margin-bottom:14px;
+  font-family:'Open Sans',sans-serif;line-height:1.65;
+}
+.lx-liste li::before{
+  content:'';position:absolute;left:0;top:.7em;
+  width:14px;height:2px;background:var(--lx-gold);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .45s var(--lx-ease) var(--lx-delai,0s);
+}
+.lx-liste-on li::before{transform:scaleX(1)}
+
+@media (prefers-reduced-motion: reduce){
+  .lx-frise::after{transition:none}
+  .lx-photo img{transform:none;transition:none}
+  .lx-liste li::before{transform:scaleX(1);transition:none}
+  .lx-etape-num{transition:none}
+}
+
+/* ── Rattrapage des deux listes numérotées ──────────────────
+   « tarif-crit » et « deliverable-list » étaient des grilles
+   « colonne étroite + texte », la colonne étroite portant le
+   numéro décoratif. Le numéro retiré, le texte tombait dans ces
+   32 à 34 pixels et s'affichait un mot par ligne. On repasse en
+   colonne unique : le filet doré occupe la place du numéro, sans
+   prétendre à un ordre qui n'existe pas.                       */
+.tarif-crit.lx-liste li,
+.deliverable-list.lx-liste li{
+  display:block;grid-template-columns:none;
+  padding-left:26px;margin-bottom:0;
+}
+/* Sur le panneau tarif, qui est sombre, le filet doit rester lisible. */
+.tarif-crit.lx-liste li::before{background:var(--lx-gold)}
