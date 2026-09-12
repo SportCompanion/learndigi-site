@@ -1154,91 +1154,223 @@
     }, 0.55);
   }
 
+  /* ── 23. Le hero : les outils qui dérivent ─────────────────
+     Six pastilles portent les outils travaillés en formation.
+     Elles dérivent lentement et s'écartent du curseur qui
+     s'approche : le hero devient une surface qui répond, sans
+     rien demander au visiteur.
 
-  /* ── 23. Le hero : un contrat qu'on dépouille ──────────────
-     Le contenu est un vrai extrait de contrat professionnel,
-     sur un cabinet fictif. Les trois clauses surlignées sont
-     celles qu'un courtier cherche en priorité : la franchise,
-     une exclusion, le préavis. La synthèse dit ce qu'il en fait.
+     La répulsion plutôt que l'attraction. Une pastille qui
+     suit le curseur finit collée aux autres et l'ensemble
+     s'empile. En s'écartant, elles laissent au contraire le
+     passage et se replacent seules, ce qui se lit comme de la
+     matière plutôt que comme un effet.
 
-     Rien n'est inventé sur Learndigi : ce sont des clauses
-     standard de multirisque professionnelle. Un prospect
-     courtier les reconnaîtra, et c'est tout l'intérêt.        */
-  var DOC = {
-    titre: 'Multirisque professionnelle',
-    ref: 'Réf. MRP-2024-118',
-    blocs: [
-      { art: 'Article 4 · Garanties accordées', barres: [86, 62] },
-      { cle: 'Franchise de <b>1 500 €</b> par sinistre, portée à 3 000 € sur les dommages électriques.' },
-      { art: 'Article 7 · Exclusions', barres: [78] },
-      { cle: 'Sont exclus les dommages résultant d\'un <b>défaut d\'entretien</b> caractérisé.' },
-      { art: 'Article 12 · Durée et reconduction', barres: [70, 54] },
-      { cle: 'Résiliation à échéance sous réserve d\'un <b>préavis de deux mois</b>.' }
-    ],
-    synthese: [
-      'La franchise a doublé depuis l\'avenant de mars, à signaler.',
-      'L\'exclusion pour défaut d\'entretien mérite un point avec le client.',
-      'Préavis de deux mois : la fenêtre se ferme le 31 octobre.'
-    ]
-  };
+     Les quatre modèles de langage sont au premier plan, les
+     deux outils de cabinet derrière, plus petits et moins
+     réactifs : le facteur de profondeur p sert à la fois à
+     l'opacité, dans le CSS, et à la force de répulsion, ici.  */
+  var LEGENDE = 'Les outils que nous prenons en main avec vous.';
+  // Les usages repris de la page : rien n'est promis ici qui ne
+  // soit déjà écrit dans la section « Outils abordés ».
+  var JETONS = [
+    { logo: 'logo-claude.png',  nom: 'Claude',  x: 15, y: 14, t: 20,   p: 1,   amp: 6,   v1: .72, v2: .55,
+      use: 'Synthétiser un contrat, préparer un rendez-vous.' },
+    { logo: 'logo-chatgpt.png', nom: 'ChatGPT', x: 63, y: 12, t: 17,   p: .94, amp: 5.5, v1: .61, v2: .78,
+      use: 'Rédiger, relancer, analyser un portefeuille.' },
+    { logo: 'logo-copilot.png', nom: 'Copilot', x: 88, y: 38, t: 17.5, p: 1,   amp: 5.5, v1: .83, v2: .59,
+      use: 'L\'IA dans les outils Microsoft du cabinet.' },
+    { logo: 'logo-mistral.png', nom: 'Mistral', x: 43, y: 51, t: 21,   p: 1,   amp: 6.5, v1: .5,  v2: .67,
+      use: 'Un modèle français, hébergé en Europe.' },
+    { logo: 'logo-marvin.png',  nom: 'Marvin',  x: 13, y: 66, t: 13,   p: .6,  amp: 5,   v1: .66, v2: .86,
+      use: 'Notre partenaire : anonymiser avant d\'analyser.' },
+    { logo: 'logo-apollo.png',  nom: 'Apollo',  x: 68, y: 77, t: 15,   p: .74, amp: 5,   v1: .77, v2: .5,
+      use: 'Prospecter et enrichir vos fichiers.' }
+  ];
 
-  function heroDocument() {
+  function heroOutils() {
     var hero = document.querySelector('.hero');
     var inner = hero && hero.querySelector('.hero-inner');
     if (!hero || !inner || hero.dataset.lxHero) return;
     hero.dataset.lxHero = '1';
     hero.classList.add('lx-hero-clair');
     // Le hero n'a plus d'image agrandie à contenir : la découpe
-    // posée pour la parallaxe n'a plus lieu d'être, et elle
-    // rognerait l'ombre portée de la feuille.
+    // posée pour la parallaxe rognerait les ombres des pastilles.
     hero.classList.remove('lx-clip');
 
-    var d = document.createElement('div');
-    d.className = 'lx-doc';
-    d.setAttribute('role', 'img');
-    d.setAttribute('aria-label',
-      'Illustration animée : un contrat multirisque professionnelle dont trois clauses sont ' +
-      'repérées, franchise, exclusion et préavis, puis résumées en trois points à signaler au ' +
-      'client. Contrat fictif.');
+    var zone = document.createElement('div');
+    zone.className = 'lx-scene-zone';
 
-    var html = '<div class="lx-doc-papier">';
-    html += '<div class="lx-doc-tete"><b>' + DOC.titre + '</b><span>' + DOC.ref + '</span></div>';
-    DOC.blocs.forEach(function (b) {
-      if (b.art) {
-        html += '<div class="lx-doc-art">' + b.art + '</div>';
-        (b.barres || []).forEach(function (w) {
-          html += '<div class="lx-doc-ligne"><i style="width:' + w + '%"></i></div>';
-        });
-      } else {
-        html += '<span class="lx-doc-cle"><span>' + b.cle + '</span></span>';
-      }
+    var scene = document.createElement('div');
+    scene.className = 'lx-scene';
+    // Le nom de chaque outil est écrit sous sa pastille : le
+    // lecteur d'écran n'a donc pas à relire la liste. La scène
+    // est annoncée une fois pour ce qu'elle est.
+    scene.setAttribute('role', 'img');
+    scene.setAttribute('aria-label',
+      'Les outils pris en main pendant la formation : ' +
+      JETONS.map(function (j) { return j.nom; }).join(', ') + '.');
+
+    // La légende dit l'usage de l'outil survolé, et retrouve sa
+    // phrase d'accueil quand on s'en éloigne. C'est ce qui fait la
+    // différence entre une décoration et une information : on
+    // apprend quelque chose en promenant la souris.
+    var legende = document.createElement('p');
+    legende.className = 'lx-scene-legende';
+    legende.textContent = LEGENDE;
+
+    function dire(txt) {
+      if (legende.dataset.dit === txt) return;
+      legende.dataset.dit = txt;
+      clearTimeout(legende.minuteur);
+      legende.classList.add('est-change');
+      legende.minuteur = setTimeout(function () {
+        legende.textContent = txt;
+        legende.classList.remove('est-change');
+      }, 170);
+    }
+
+    var etats = JETONS.map(function (j, i) {
+      var el = document.createElement('div');
+      el.className = 'lx-jeton';
+      el.style.setProperty('--x', j.x + '%');
+      el.style.setProperty('--y', j.y + '%');
+      el.style.setProperty('--t', j.t + '%');
+      el.style.setProperty('--p', j.p);
+      el.style.setProperty('--i', i);
+
+      var c = document.createElement('div');
+      c.className = 'lx-jeton-c';
+      var img = document.createElement('img');
+      img.src = j.logo;
+      img.alt = '';
+      img.decoding = 'async';
+      img.draggable = false;
+      // Dimensions déclarées pour la même raison qu'au bandeau :
+      // sans elles la pastille n'a pas de place réservée et la
+      // scène se réorganise à l'arrivée de chaque logo.
+      img.width = 64;
+      img.height = 64;
+      c.appendChild(img);
+
+      var n = document.createElement('span');
+      n.className = 'lx-jeton-n';
+      n.textContent = j.nom;
+
+      el.appendChild(c);
+      el.appendChild(n);
+      scene.appendChild(el);
+
+      c.addEventListener('pointerenter', function () {
+        el.classList.add('est-actif');
+        scene.classList.add('a-un-actif');
+        dire(j.use);
+      });
+      c.addEventListener('pointerleave', function () {
+        el.classList.remove('est-actif');
+        scene.classList.remove('a-un-actif');
+        dire(LEGENDE);
+      });
+
+      return { el: el, j: j, x: 0, y: 0, ph: i * 1.7, amp: j.amp, v1: j.v1, v2: j.v2 };
     });
-    html += '<div class="lx-doc-synth"><div><b>Trois points à signaler</b><ul>';
-    DOC.synthese.forEach(function (l) { html += '<li>' + l + '</li>'; });
-    html += '</ul></div></div>';
-    html += '</div><p class="lx-doc-note">Illustration animée, contrat fictif.</p>';
-    d.innerHTML = html;
-    inner.appendChild(d);
+
+    zone.appendChild(scene);
+    zone.appendChild(legende);
+    inner.appendChild(zone);
 
     if (reduit) {
-      d.classList.add('lx-doc-on', 'lx-doc-synth-on');
-      tous('.lx-doc-cle', d).forEach(function (c) { c.classList.add('est-vu'); });
+      scene.classList.add('lx-scene-on');
       return;
     }
 
-    // Le hero est visible au chargement : la séquence part d'une
-    // temporisation plutôt que d'un observateur, sinon elle
-    // démarre avant que la page ait fini de se poser.
-    setTimeout(function () {
-      d.classList.add('lx-doc-on');
-      var cles = tous('.lx-doc-cle', d);
-      cles.forEach(function (c, i) {
-        setTimeout(function () { c.classList.add('est-vu'); }, 700 + i * 620);
-      });
-      setTimeout(function () {
-        d.classList.add('lx-doc-synth-on');
-      }, 700 + cles.length * 620 + 260);
-    }, 420);
+    // L'entrée part d'une temporisation et non d'un observateur :
+    // le hero est déjà visible au chargement, et il faut laisser
+    // la page se poser avant de lancer la cascade.
+    setTimeout(function () { scene.classList.add('lx-scene-on'); }, 240);
+
+    // Le cadre est mesuré et gardé : la boucle a besoin de la
+    // taille de la scène à chaque image, et la relire soixante
+    // fois par seconde imposerait autant de recalculs de mise
+    // en page pour une valeur qui ne change qu'au redimensionnement.
+    var cadre = { l: 0, t: 0, w: 0, h: 0, e: 1 };
+    function mesurer() {
+      var r = scene.getBoundingClientRect();
+      cadre.l = r.left; cadre.t = r.top; cadre.w = r.width; cadre.h = r.height;
+      // Amplitudes et distances sont écrites en pixels pour une
+      // scène de 440 : sur un écran étroit elles doivent suivre,
+      // sinon la même dérive de dix pixels, qui se remarque à
+      // peine en grand, fait passer une pastille sur le nom de
+      // sa voisine.
+      cadre.e = Math.max(.68, Math.min(1.15, r.width / 440));
+    }
+
+    var RAYON = 200, FORCE = 34;
+    var souris = { x: 0, y: 0, actif: false };
+    var rid = 0, marche = false, t0 = 0;
+
+    function image(ts) {
+      if (!t0) t0 = ts;
+      var t = (ts - t0) / 1000;
+      for (var i = 0; i < etats.length; i++) {
+        var e = etats[i], j = e.j, k = cadre.e;
+        var dx = Math.sin(t * e.v1 + e.ph) * e.amp * k;
+        var dy = Math.cos(t * e.v2 + e.ph * 1.37) * e.amp * .8 * k;
+
+        if (souris.actif && cadre.w) {
+          var ex = cadre.w * j.x / 100 - souris.x;
+          var ey = cadre.h * j.y / 100 - souris.y;
+          var d = Math.sqrt(ex * ex + ey * ey);
+          if (d > 0.5 && d < RAYON * k) {
+            // Le carré de la distance restante donne une poussée
+            // qui s'éteint en douceur au bord du rayon, au lieu
+            // de s'arrêter net et de faire sursauter la pastille.
+            var f = 1 - d / (RAYON * k);
+            f = f * f * FORCE * k * j.p;
+            dx += ex / d * f;
+            dy += ey / d * f;
+          }
+        }
+
+        e.x += (dx - e.x) * .085;
+        e.y += (dy - e.y) * .085;
+        e.el.style.transform = 'translate3d(' + e.x.toFixed(2) + 'px,' + e.y.toFixed(2) + 'px,0)';
+      }
+      rid = requestAnimationFrame(image);
+    }
+
+    function lancer() {
+      if (marche) return;
+      marche = true; mesurer();
+      rid = requestAnimationFrame(image);
+    }
+    function arreter() {
+      marche = false;
+      if (rid) cancelAnimationFrame(rid);
+      rid = 0;
+    }
+
+    // Rien ne tourne pendant qu'on lit le reste de la page.
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entrees) {
+        if (entrees[0].isIntersecting) lancer(); else arreter();
+      }, { threshold: 0 }).observe(hero);
+    } else {
+      lancer();
+    }
+
+    // La répulsion ne concerne qu'un vrai pointeur. Sur un écran
+    // tactile il n'y a personne à fuir, et la dérive suffit.
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      hero.addEventListener('pointermove', function (ev) {
+        souris.x = ev.clientX - cadre.l;
+        souris.y = ev.clientY - cadre.t;
+        souris.actif = true;
+      }, { passive: true });
+      hero.addEventListener('pointerleave', function () { souris.actif = false; }, { passive: true });
+    }
+    window.addEventListener('resize', mesurer, { passive: true });
+    window.addEventListener('scroll', function () { if (marche) mesurer(); }, { passive: true });
   }
 
   /* ── Mise en route ────────────────────────────────────────── */
@@ -1246,7 +1378,7 @@
     // Ces deux-là servent aussi sans animation : l'un remplace une
     // grille par une liste plus complète, l'autre rend la barre
     // lisible. Ils tournent donc dans tous les cas.
-    heroDocument();
+    heroOutils();
     bandeauOutils();
     toucher();
     boutonsRipple();

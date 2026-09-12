@@ -1242,127 +1242,153 @@ html.lenis,html.lenis body{height:auto}
 @media (max-width:900px){
   .lx-hero-clair .hero-inner{grid-template-columns:1fr}
 }
+/* ── La constellation d'outils ──────────────────────────────
+   À droite du titre, les outils que la formation prend en main,
+   posés sur des pastilles blanches qui dérivent lentement et
+   s'écartent du curseur quand il passe près d'elles.
 
-/* ── La feuille ─────────────────────────────────────────────*/
-.lx-doc{position:relative;width:100%}
-.lx-doc-papier{
-  position:relative;background:#fff;
-  border:1px solid var(--lx-line);
-  box-shadow:0 34px 80px -40px rgba(10,14,36,.36);
-  padding:clamp(22px,2.4vw,30px) clamp(22px,2.6vw,34px) clamp(26px,2.8vw,34px);
-  clip-path:polygon(0 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 0 100%);
-  opacity:0;transform:translateY(14px);
-  transition:opacity .7s ease,transform .8s var(--lx-ease);
-}
-.lx-doc-on .lx-doc-papier{opacity:1;transform:none}
+   Trois principes tenus :
 
-.lx-doc-tete{
-  display:flex;align-items:baseline;justify-content:space-between;
-  gap:14px;padding-bottom:13px;margin-bottom:16px;
-  border-bottom:1px solid var(--lx-line);
+   Le mouvement est lent. Chaque pastille suit une sinusoïde de
+   six à neuf secondes sur une amplitude de quelques pixels. On
+   le remarque à peine, et c'est le but : une page qui respire,
+   pas une page qui s'agite.
+
+   Il y a de la profondeur. Les quatre modèles de langage sont
+   au premier plan, en grand et pleinement opaques. Les deux
+   outils de cabinet sont derrière, plus petits et plus pâles,
+   et ils réagissent moins fort au curseur. Sans cet écart,
+   l'ensemble ressemble à des autocollants posés à plat.
+
+   Les noms sont toujours écrits. Un logo seul se devine, un
+   logo nommé s'identifie. C'est aussi ce qui rend la scène
+   lisible sans souris et au lecteur d'écran.
+   ============================================================ */
+
+/* La scène et sa légende sont enveloppées ensemble : le
+   hero-inner est une grille à deux colonnes, deux enfants de
+   plus y créeraient une troisième cellule et renverraient la
+   légende à la ligne suivante.                               */
+.lx-scene-zone{position:relative;width:100%}
+.lx-scene{
+  position:relative;
+  width:100%;
+  aspect-ratio:1 / .88;
+  touch-action:pan-y;
 }
-.lx-doc-tete b{
-  font-size:13.5px;font-weight:600;color:var(--lx-navy);
-  letter-spacing:-.01em;line-height:1.35;
+/* Le halo donne un centre à la composition. Sans lui, les
+   pastilles flottent sans raison sur un fond vide.           */
+.lx-scene::before{
+  content:'';position:absolute;inset:6% 4%;
+  border-radius:50%;
+  background:radial-gradient(circle at 50% 46%,rgba(27,44,107,.055),rgba(27,44,107,0) 68%);
+  opacity:0;transition:opacity 1.1s ease .2s;
 }
-.lx-doc-tete span{
-  flex:none;font-size:10.5px;font-weight:600;letter-spacing:.14em;
-  text-transform:uppercase;color:#9AA0B0;font-variant-numeric:tabular-nums;
+.lx-scene-on.lx-scene::before{opacity:1}
+
+.lx-jeton{
+  position:absolute;
+  left:var(--x);top:var(--y);
+  width:var(--t);
+  /* Les marges négatives valent la moitié de la largeur : le
+     point (x, y) devient le centre de la pastille, ce qui rend
+     le placement lisible et le calcul de répulsion juste.     */
+  margin-left:calc(var(--t) / -2);
+  margin-top:calc(var(--t) / -2);
+  opacity:var(--p);
+  transition:opacity .45s ease;
+  will-change:transform;
+}
+/* Deux couches, et c'est volontaire : le JS écrit le transform
+   de .lx-jeton pour la dérive, le CSS garde celui de la
+   pastille pour l'entrée et le survol. Une seule couche et les
+   deux écritures s'annuleraient l'une l'autre.               */
+.lx-jeton-c{
+  position:relative;display:grid;place-items:center;
+  width:100%;aspect-ratio:1;
+  border-radius:26%;
+  background:#fff;
+  border:1px solid rgba(20,30,60,.07);
+  box-shadow:0 18px 34px -22px rgba(10,14,36,.4),0 2px 5px rgba(10,14,36,.05);
+  opacity:0;transform:scale(.78) translateY(20px);
+  transition:opacity .6s ease,transform .8s var(--lx-ease),box-shadow .45s ease;
+  cursor:default;
+}
+.lx-scene-on .lx-jeton-c{
+  opacity:1;transform:none;
+  transition-delay:calc(var(--i) * 95ms);
+}
+.lx-jeton img{
+  width:62%;height:62%;
+  object-fit:contain;border-radius:20%;
+  user-select:none;-webkit-user-drag:none;
+}
+.lx-jeton-n{
+  display:block;margin-top:10px;text-align:center;
+  font-size:11px;font-weight:600;letter-spacing:.09em;
+  text-transform:uppercase;color:#98A0B2;white-space:nowrap;
+  opacity:0;transform:translateY(6px);
+  transition:opacity .5s ease,transform .55s var(--lx-ease),color .3s ease;
+}
+.lx-scene-on .lx-jeton-n{
+  opacity:1;transform:none;
+  transition-delay:calc(var(--i) * 95ms + 160ms);
 }
 
-/* ── Les lignes du contrat ──────────────────────────────────
-   Les lignes secondaires sont des barres grises : lisibles comme
-   du texte sans en être, elles n'appellent pas la lecture et
-   laissent toute la place aux trois clauses qui comptent.     */
-.lx-doc-ligne{display:flex;align-items:center;gap:9px;padding:5px 0}
-.lx-doc-ligne i{
-  display:block;height:7px;border-radius:3px;
-  background:#E7EAF1;flex:none;
+/* ── Au survol ──────────────────────────────────────────────
+   La pastille monte d'un cran, son ombre s'allonge, son nom
+   passe au navy, et les autres reculent. C'est le geste de
+   Cuberto : ce n'est pas l'élément touché qui change le plus,
+   c'est le reste qui s'efface.                               */
+.lx-jeton-c:hover,
+.lx-jeton.est-actif .lx-jeton-c{
+  transform:scale(1.07);
+  box-shadow:0 30px 54px -24px rgba(10,14,36,.45),0 3px 8px rgba(10,14,36,.07);
+  border-color:rgba(27,44,107,.16);
 }
-.lx-doc-art{
-  font-size:10.5px;font-weight:600;letter-spacing:.1em;
-  text-transform:uppercase;color:#B0B6C4;padding:11px 0 3px;
-}
-.lx-doc-cle{
-  position:relative;display:block;
-  margin:3px -8px;padding:7px 8px;border-radius:5px;
-  font-size:13px;line-height:1.5;color:#3A4152;
-}
-.lx-doc-cle::before{
-  content:'';position:absolute;inset:0;border-radius:5px;
-  background:rgba(232,146,26,.16);
-  transform:scaleX(0);transform-origin:left;
-  transition:transform .5s var(--lx-ease);
-}
-.lx-doc-cle.est-vu::before{transform:scaleX(1)}
-.lx-doc-cle span{position:relative;z-index:1}
-.lx-doc-cle b{font-weight:600;color:var(--lx-navy)}
+.lx-jeton.est-actif .lx-jeton-n{color:var(--lx-navy)}
+.lx-scene.a-un-actif .lx-jeton:not(.est-actif){opacity:calc(var(--p) * .46)}
 
-/* ── La synthèse ────────────────────────────────────────────*/
-.lx-doc-synth{
-  margin-top:18px;padding-top:16px;border-top:1px solid var(--lx-line);
-  display:grid;grid-template-rows:0fr;
-  transition:grid-template-rows .7s var(--lx-ease);
+/* ── La légende parlante ────────────────────────────────────
+   Au repos elle nomme la scène, au survol elle dit l'usage de
+   l'outil. La hauteur est réservée d'avance : sans elle, une
+   phrase plus courte que la précédente ferait sauter tout ce
+   qui suit à chaque passage de souris.                       */
+.lx-scene-legende{
+  display:flex;align-items:center;justify-content:center;
+  margin:16px auto 0;max-width:36ch;min-height:2.9em;
+  text-align:center;font-size:12.5px;line-height:1.5;color:#8D95A6;
+  opacity:0;transform:translateY(6px);
+  transition:opacity .42s ease,transform .5s var(--lx-ease);
 }
-.lx-doc-synth > div{overflow:hidden;min-height:0}
-.lx-doc-synth-on .lx-doc-synth{grid-template-rows:1fr}
-.lx-doc-synth b{
-  display:block;font-size:10.5px;font-weight:600;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--lx-gold);margin-bottom:11px;
+.lx-scene-on ~ .lx-scene-legende{
+  opacity:1;transform:none;
+  transition-delay:.78s;
 }
-.lx-doc-synth ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
-.lx-doc-synth li{
-  position:relative;padding-left:20px;
-  font-size:13px;line-height:1.5;color:#3A4152;
-  opacity:0;transform:translateY(5px);
-  transition:opacity .45s ease,transform .5s var(--lx-ease);
-}
-.lx-doc-synth li::before{
-  content:'';position:absolute;left:0;top:.62em;
-  width:11px;height:2px;background:var(--lx-gold);
-}
-.lx-doc-synth-on .lx-doc-synth li{opacity:1;transform:none}
-.lx-doc-synth-on .lx-doc-synth li:nth-child(2){transition-delay:.11s}
-.lx-doc-synth-on .lx-doc-synth li:nth-child(3){transition-delay:.22s}
-
-.lx-doc-note{
-  margin:12px 0 0;text-align:center;
-  font-size:11px;color:#9AA0B0;
+.lx-scene-on ~ .lx-scene-legende.est-change{
+  opacity:0;transform:translateY(4px);
+  transition-delay:0s;transition-duration:.16s;
 }
 
 /* ── Sur téléphone ──────────────────────────────────────────
-   En colonne unique, le texte et la feuille s'empilent : mesuré
-   à 375 px, le hero atteignait 1 286 px, soit un écran et demi
-   avant d'arriver à la suite du site. La feuille se resserre
-   donc partout où c'est indolore, marges, interlignes, hauteur
-   des barres, sans rien retirer de ce qui porte le propos, les
-   trois clauses et la synthèse.                                */
+   Il n'y a pas de curseur à fuir : seule la dérive reste. La
+   scène se réduit et se cale sous le texte, et les noms
+   passent en 10 px pour ne pas se chevaucher quand deux
+   pastilles voisines dérivent l'une vers l'autre.            */
 @media (max-width:760px){
   .lx-hero-clair .hero-inner{
     padding-top:clamp(30px,6vw,52px) !important;
     padding-bottom:clamp(30px,6vw,52px) !important;
-    gap:30px;
+    gap:26px;
   }
-  .lx-doc-papier{
-    padding:18px 18px 22px;
-    clip-path:polygon(0 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 0 100%);
-    box-shadow:0 22px 52px -32px rgba(10,14,36,.34);
-  }
-  .lx-doc-tete{padding-bottom:11px;margin-bottom:13px}
-  .lx-doc-art{padding:8px 0 2px;font-size:10px}
-  .lx-doc-ligne{padding:3px 0}
-  .lx-doc-ligne i{height:6px}
-  .lx-doc-cle{font-size:12.5px;padding:6px 8px;margin:2px -8px}
-  .lx-doc-synth{margin-top:14px;padding-top:13px}
-  .lx-doc-synth b{margin-bottom:9px}
-  .lx-doc-synth ul{gap:8px}
-  .lx-doc-synth li{font-size:12.5px}
-  .lx-doc-note{margin-top:10px}
+  .lx-scene{aspect-ratio:1 / .88;max-width:380px;margin:0 auto}
+  .lx-jeton-n{font-size:10px;margin-top:8px;letter-spacing:.06em}
+  .lx-scene-legende{margin-top:12px;font-size:11.5px}
 }
 
 @media (prefers-reduced-motion: reduce){
-  .lx-doc-papier{opacity:1;transform:none}
-  .lx-doc-cle::before{transform:scaleX(1)}
-  .lx-doc-synth{grid-template-rows:1fr}
-  .lx-doc-synth li{opacity:1;transform:none}
+  .lx-jeton-c{opacity:1;transform:none}
+  .lx-jeton-n{opacity:1;transform:none}
+  .lx-scene::before{opacity:1}
+  .lx-scene-legende{opacity:1;transform:none}
 }
