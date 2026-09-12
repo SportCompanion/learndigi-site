@@ -1104,3 +1104,98 @@ html.lenis,html.lenis body{height:auto}
 /* La hauteur ne doit pas changer d'un cheveu pendant le
    basculement, sinon tout ce qui suit dans la page tremble. */
 .lx-pile{contain:layout}
+
+/* ============================================================
+   REPRISE DU 12/09/2026, SOIR
+   ============================================================ */
+
+/* ── 1. La photo prenait la place de l'information ──────────
+   En 21/9 pleine largeur juste après le parcours, elle occupait
+   un écran entier sans rien apprendre. On arrivait sur le site
+   et on voyait défiler des photos avant de lire quoi que ce
+   soit. Elle devient une bande basse, et sa légende dit
+   maintenant quelque chose d'utile plutôt que d'habiller.     */
+.lx-photo--large{aspect-ratio:32/9}
+@media (max-width:760px){.lx-photo--large{aspect-ratio:2/1}}
+.lx-photo figcaption{
+  padding:8px 14px;font-size:10.5px;letter-spacing:.16em;
+  background:rgba(27,44,107,.92);
+  backdrop-filter:saturate(1.4) blur(3px);
+}
+
+/* ── 2. Les chiffres clés sans leurs cadres ─────────────────
+   Les traits verticaux entre les chiffres, plus le rail doré
+   que j'avais ajouté à gauche de chacun, faisaient trois
+   séparateurs pour trois nombres. On retire tout : un chiffre
+   large et sa légende suffisent à se distinguer.              */
+.vstat .lx-seg{display:none}
+.video-stats{gap:clamp(28px,3.4vw,52px) !important}
+.video-stats .vstat{border:none !important;padding-left:0 !important}
+.video-stats .vstat + .vstat{border-left:none !important}
+.vstat strong{
+  display:block;font-size:clamp(30px,3.2vw,44px);font-weight:400 !important;
+  line-height:1;letter-spacing:-.03em;color:var(--lx-navy);margin-bottom:7px;
+}
+.vstat > span{
+  display:block;font-size:12.5px;line-height:1.4;color:#7A7F8E;
+  max-width:11ch;
+}
+
+/* ── 3. Le bouton devient une pastille ──────────────────────
+   Le carré accolé au libellé, même rendu à sa couleur, restait
+   deux morceaux mis bout à bout. Cuberto n'a qu'une forme : une
+   pastille arrondie, un libellé centré, une flèche à l'intérieur.
+   Le voile de remplissage y trouve enfin sa place, puisqu'il
+   épouse le contour au lieu de s'arrêter à un angle droit.    */
+.btn-duo{
+  min-height:auto !important;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 30px !important;
+  border-radius:999px !important;
+  background:var(--lx-red);color:#fff;
+  overflow:hidden;
+}
+.btn-duo .btn-plus{
+  order:2;width:auto !important;border:none !important;background:none !important;
+  font-size:0;display:flex;align-items:center;position:relative;z-index:2;
+}
+.btn-duo .btn-plus::after{
+  content:'';display:block;width:8px;height:8px;
+  border-top:2px solid currentColor;border-right:2px solid currentColor;
+  transform:rotate(45deg);
+  transition:transform .25s var(--lx-ease);
+}
+.btn-duo:hover .btn-plus::after{transform:rotate(45deg) translate(2px,-2px)}
+.btn-duo .btn-label{
+  order:1;padding:0 !important;background:none !important;
+  font-size:14.5px;font-weight:600;letter-spacing:.01em;
+}
+.btn-duo .lx-ripple-fill{border-radius:999px}
+
+/* ── 4. Le bandeau de fin, plus petit et plus tenu ──────────
+   En grandes capitales bâtons il criait. En petit, espacé,
+   dans une graisse moyenne et une teinte adoucie, il devient
+   une frise discrète qui sépare deux sections au lieu d'en
+   réclamer une pour lui seul.                                 */
+.lx-reel{padding:clamp(15px,1.7vw,24px) 0}
+.lx-reel-item{
+  padding:0 clamp(13px,1.5vw,24px);
+  font-size:clamp(12px,1.05vw,15px);
+  font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:#8A90A2;
+}
+.lx-reel-item em{
+  font-family:var(--lx-sans);font-style:normal;font-weight:600;
+  color:var(--lx-navy);letter-spacing:.2em;
+}
+.lx-reel-sep{
+  width:4px;height:4px;margin:0 0 .12em .9em;
+  background:var(--lx-gold);opacity:.7;
+}
+
+/* ── 5. La carte de démo sans l'avatar ──────────────────────
+   Les initiales dans un rond n'apportaient rien : le nom est
+   juste à côté. Elles ajoutaient surtout une pastille de plus
+   dans une carte qui en compte déjà beaucoup.                 */
+.lx-demo-av{display:none}
+.lx-demo-tete{gap:0}

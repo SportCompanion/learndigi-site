@@ -653,7 +653,7 @@
       html += '<span class="lx-demo-orbe"><img src="' + o[0] + '" alt="" width="22" height="22" loading="lazy" decoding="async"></span>';
     });
     html += '<div class="lx-demo-carte">';
-    html += '<div class="lx-demo-tete"><span class="lx-demo-av">' + DEMO.initiales + '</span>';
+    html += '<div class="lx-demo-tete">';
     html += '<span><b>' + DEMO.dossier + '</b><span>' + DEMO.contexte + '</span></span></div>';
     html += '<div class="lx-demo-etiq">';
     DEMO.etiquettes.forEach(function (e) { html += '<i>' + e + '</i>'; });
@@ -1121,6 +1121,39 @@
     enPile(document.querySelector('.eng-grid'), { auDefilement: true });
   }
 
+
+  /* ── 22. Les chiffres montent ──────────────────────────────
+     Les pages ont déjà un compteur pour « 7 » et « 8 », mais il
+     ne touche que les éléments porteurs d'un data-target. On
+     l'étend aux valeurs écrites en dur, en respectant leur
+     forme : « J+1 » garde son plus, « 48 h » son unité. Le
+     texte d'origine est remis à la fin, jamais reconstruit.   */
+  function chiffresMontants() {
+    if (reduit) return;
+    var cibles = tous('.vstat strong, .kpi').filter(function (el) {
+      return !el.querySelector('.cu') && /\d/.test(el.textContent);
+    });
+    if (!cibles.length) return;
+
+    auScroll(cibles, function (el) {
+      var final = el.textContent;
+      var m = final.match(/(\D*)(\d+)(.*)/);
+      if (!m) return;
+      var avant = m[1], valeur = parseInt(m[2], 10), apres = m[3];
+      if (!valeur || valeur > 2000) return;
+      var debut = null, duree = 900;
+      function pas(t) {
+        if (debut === null) debut = t;
+        var p = Math.min((t - debut) / duree, 1);
+        var adouci = 1 - Math.pow(1 - p, 3);
+        el.textContent = avant + Math.round(adouci * valeur) + apres;
+        if (p < 1) requestAnimationFrame(pas);
+        else el.textContent = final;
+      }
+      requestAnimationFrame(pas);
+    }, 0.55);
+  }
+
   /* ── Mise en route ────────────────────────────────────────── */
   function demarrer() {
     // Ces deux-là servent aussi sans animation : l'un remplace une
@@ -1137,6 +1170,7 @@
     pastillesModules();
     piles();
     faq();
+    chiffresMontants();
     masques();
     defilementSatine();
 
