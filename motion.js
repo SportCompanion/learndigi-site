@@ -1315,7 +1315,7 @@
     inner.appendChild(zone);
 
     if (reduit) {
-      scene.classList.add('lx-scene-on');
+      scene.classList.add('lx-scene-on', 'lx-scene-posee');
       return;
     }
 
@@ -1344,11 +1344,67 @@
     var souris = { x: 0, y: 0, actif: false };
     var rid = 0, marche = false, t0 = 0;
 
+    /* ── L'ouverture ──────────────────────────────────────────
+       Les six pastilles se rassemblent d'abord en rosace au
+       centre, puis s'ouvrent vers leur place en tournant d'un
+       cinquième de tour.
+
+       Le mouvement est calculé en coordonnées polaires et non en
+       x et y : on interpole le rayon et l'angle séparément, ce
+       qui fait décrire à chaque pastille un arc plutôt qu'une
+       ligne droite. C'est toute la différence entre des vignettes
+       qui glissent et un jeu de cartes qu'on étale.            */
+    var OUV = { attente: 420, duree: 950, pas: 45, rot: 1.6, r0: .13 };
+    var depart = 0, posee = false;
+
+    // Deux progressions, et c'est ce qui fait lire la scène en
+    // deux temps. L'angle part tout de suite et vite : la rosace
+    // tourne sur elle même pendant que le rayon, lui, attend. Le
+    // rayon s'ouvre ensuite, lentement au départ comme à
+    // l'arrivée, ce qui donne une ouverture qu'on suit de l'œil.
+    function rotation(u) { return u * (2 - u); }
+    function ouvre(u) {
+      return u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2;
+    }
+    function borne(u) { return u < 0 ? 0 : (u > 1 ? 1 : u); }
+
+    function placer(e, i, ec) {
+      var j = e.j;
+      var ua = rotation(borne(ec / (OUV.attente + OUV.duree)));
+      var ur = ouvre(borne((ec - OUV.attente) / OUV.duree));
+      // Place définitive, comptée depuis le centre de la scène.
+      var fx = cadre.w * (j.x - 50) / 100;
+      var fy = cadre.h * (j.y - 50) / 100;
+      var R = Math.sqrt(fx * fx + fy * fy);
+      var A = Math.atan2(fy, fx);
+      var r0 = cadre.w * OUV.r0;
+      var r = r0 + (R - r0) * ur;
+      var an = A - OUV.rot * (1 - ua);
+      e.x = Math.cos(an) * r - fx;
+      e.y = Math.sin(an) * r - fy;
+      e.el.style.transform = 'translate3d(' + e.x.toFixed(2) + 'px,' + e.y.toFixed(2) + 'px,0)';
+    }
+
     function image(ts) {
       if (!t0) t0 = ts;
       var t = (ts - t0) / 1000;
+
+      if (!posee) {
+        if (!depart) depart = ts;
+        if (ts - depart > OUV.attente + OUV.duree + (etats.length - 1) * OUV.pas) {
+          posee = true;
+          scene.classList.add('lx-scene-posee');
+        }
+      }
+
       for (var i = 0; i < etats.length; i++) {
         var e = etats[i], j = e.j, k = cadre.e;
+
+        if (!posee) {
+          placer(e, i, ts - depart - i * OUV.pas);
+          continue;
+        }
+
         var dx = Math.sin(t * e.v1 + e.ph) * e.amp * k;
         var dy = Math.cos(t * e.v2 + e.ph * 1.37) * e.amp * .8 * k;
 
@@ -1377,6 +1433,10 @@
     function lancer() {
       if (marche) return;
       marche = true; mesurer();
+      // Si le hero est ressorti de l'écran avant la fin de
+      // l'ouverture, elle repart de zéro au retour : mieux vaut la
+      // rejouer entière que la retrouver déjà terminée.
+      if (!posee) depart = 0;
       rid = requestAnimationFrame(image);
     }
     function arreter() {
@@ -1384,6 +1444,14 @@
       if (rid) cancelAnimationFrame(rid);
       rid = 0;
     }
+
+    // Première pose, tout de suite : sans elle les pastilles
+    // occupent une image leur place définitive avant que la
+    // boucle ne les rassemble au centre. Elles sont encore
+    // transparentes à cet instant, mais sur une machine chargée
+    // le saut finirait par se voir.
+    mesurer();
+    etats.forEach(function (e, i) { placer(e, i, 0); });
 
     // Rien ne tourne pendant qu'on lit le reste de la page.
     if ('IntersectionObserver' in window) {

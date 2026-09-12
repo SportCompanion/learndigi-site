@@ -545,16 +545,19 @@
 .lx-zoom:hover img{transform:scale(1.05)}
 
 /* ── 4. Les portraits qui se rangent ────────────────────────
-   Au repos les deux cartes sont légèrement décalées et pivotées,
-   comme deux photos posées sur un bureau. Au survol du groupe
-   elles s'alignent. C'est le seul endroit du site où l'on se
-   permet une fantaisie, et elle dit quelque chose de juste :
-   deux personnes, pas une institution.                        */
+   Les deux portraits étaient pivotés de part et d'autre au
+   repos, comme deux photos posées sur un bureau. De près, sur
+   des visages, la fantaisie se lisait comme un défaut de
+   montage : deux photos de travers. Ils sont donc droits.
+
+   Le mouvement reste, déplacé sur le survol : les deux cartes
+   s'écartent l'une de l'autre et montent, à un dixième de
+   seconde d'intervalle. Ce décalage est ce qui fait qu'on voit
+   deux personnes et non un bloc.                              */
 @media (pointer:fine) and (min-width:861px){
-  .lx-ranger > *{transition:transform 1s cubic-bezier(.25,1,.5,1)}
-  .lx-ranger > :first-child{transform:translateY(8px) rotate(-1.4deg)}
-  .lx-ranger > :nth-child(2){transform:translateY(-8px) rotate(1.4deg)}
-  .lx-ranger:hover > *{transform:none}
+  .lx-ranger > *{transition:transform .85s cubic-bezier(.25,1,.5,1)}
+  .lx-ranger:hover > :first-child{transform:translate(-7px,-6px)}
+  .lx-ranger:hover > :nth-child(2){transform:translate(7px,-6px);transition-delay:.09s}
 }
 
 /* Ressort léger sur les éléments ronds, repris de leur
@@ -1115,8 +1118,25 @@ html.lenis,html.lenis body{height:auto}
    et on voyait défiler des photos avant de lire quoi que ce
    soit. Elle devient une bande basse, et sa légende dit
    maintenant quelque chose d'utile plutôt que d'habiller.     */
-.lx-photo--large{aspect-ratio:32/9}
+.lx-photo--large{aspect-ratio:3/1}
 @media (max-width:760px){.lx-photo--large{aspect-ratio:2/1}}
+
+/* ── Le cadrage, photo par photo ────────────────────────────
+   En 32/9 il ne restait que 42 % de la hauteur d'une image en
+   3/2, prise au centre par défaut : les deux hommes du bureau
+   étaient coupés au front. Le format s'ouvre à 3/1, et surtout
+   chaque photo reçoit le point sur lequel elle doit se caler,
+   puisque leur sujet n'est pas à la même hauteur.
+
+   Bureau : les visages sont dans le premier quart, on remonte.
+   Table de travail : le sujet est la main qui écrit, aux deux
+   tiers, on descend. Tablette : le sujet est en haut à gauche
+   et le bas de l'image ne montre qu'une chaussure, donc format
+   plus large et calage haut.                                  */
+.lx-photo img[src*="photo-echange-cabinet"]{object-position:50% 5% !important}
+.lx-photo img[src*="photo-session-travail"]{object-position:50% 62% !important}
+.lx-photo--moyenne{aspect-ratio:16/9}
+.lx-photo img[src*="photo-devis-echange"]{object-position:50% 12% !important}
 .lx-photo figcaption{
   padding:8px 14px;font-size:10.5px;letter-spacing:.16em;
   background:rgba(27,44,107,.92);
@@ -1399,7 +1419,7 @@ html.lenis,html.lenis body{height:auto}
 }
 .lx-scene-on .lx-jeton-c{
   opacity:1;transform:none;
-  transition-delay:calc(var(--i) * 95ms);
+  transition-delay:calc(var(--i) * 45ms);
 }
 /* La taille du logo dans sa pastille est réglée logo par logo,
    par --z, pour compenser leurs fonds : voir le commentaire de
@@ -1416,9 +1436,12 @@ html.lenis,html.lenis body{height:auto}
   opacity:0;transform:translateY(6px);
   transition:opacity .5s ease,transform .55s var(--lx-ease),color .3s ease;
 }
-.lx-scene-on .lx-jeton-n{
+/* Les noms attendent que les pastilles aient trouvé leur place :
+   pendant l'ouverture elles tournent, et une étiquette qui
+   tourne avec elles ne se lit pas.                            */
+.lx-scene-posee .lx-jeton-n{
   opacity:1;transform:none;
-  transition-delay:calc(var(--i) * 95ms + 160ms);
+  transition-delay:calc(var(--i) * 60ms);
 }
 
 /* ── Au survol ──────────────────────────────────────────────
@@ -1447,11 +1470,11 @@ html.lenis,html.lenis body{height:auto}
   opacity:0;transform:translateY(6px);
   transition:opacity .42s ease,transform .5s var(--lx-ease);
 }
-.lx-scene-on ~ .lx-scene-legende{
+.lx-scene-posee ~ .lx-scene-legende{
   opacity:1;transform:none;
-  transition-delay:.78s;
+  transition-delay:.2s;
 }
-.lx-scene-on ~ .lx-scene-legende.est-change{
+.lx-scene-posee ~ .lx-scene-legende.est-change{
   opacity:0;transform:translateY(4px);
   transition-delay:0s;transition-duration:.16s;
 }
