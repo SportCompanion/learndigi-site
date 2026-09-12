@@ -996,3 +996,77 @@ html.lenis,html.lenis body{height:auto}
   .lx-filet svg{display:none}
   .lx-faq-a{transition:none}
 }
+
+/* ============================================================
+   LA PILE, 12/09/2026
+   ------------------------------------------------------------
+   Reprise du « cb-feature » de Cuberto. Les grilles de quatre
+   boîtes égales deviennent une pile de bandes pleine largeur
+   dont une seule est ouverte. Trois choses changent d'un coup :
+   la page cesse d'aligner des colonnes, la hauteur varie d'une
+   bande à l'autre, et le regard a un seul point d'entrée au
+   lieu de quatre équivalents. C'est ce qui distingue une mise
+   en page d'un tableau.
+   ============================================================ */
+
+.lx-pile{display:grid;gap:10px;margin:clamp(30px,3.4vw,48px) 0 0;padding:0;list-style:none}
+.lx-pile-item{
+  position:relative;
+  padding:clamp(22px,2.6vw,34px) clamp(22px,3vw,44px);
+  cursor:pointer;color:var(--lx-navy);
+  border-radius:16px;overflow:hidden;
+  transition:color .45s ease;
+}
+.lx-pile-fond{
+  position:absolute;inset:0;z-index:0;
+  background:#EDF0F6;border-radius:16px;
+  transition:background .45s ease;
+}
+.lx-pile-item.est-ouvert{color:#fff}
+.lx-pile-item.est-ouvert .lx-pile-fond{background:var(--lx-navy)}
+
+.lx-pile-tete{
+  position:relative;z-index:1;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-direction:row-reverse;gap:20px;
+}
+.lx-pile-num{
+  flex:none;font-size:clamp(15px,1.5vw,19px);font-weight:400;
+  font-variant-numeric:tabular-nums;letter-spacing:-.01em;
+  opacity:.28;transition:opacity .45s ease,color .45s ease;
+}
+.lx-pile-item.est-ouvert .lx-pile-num{opacity:1;color:var(--lx-gold)}
+.lx-pile-titre{
+  min-width:0;margin:0;
+  font-size:clamp(19px,2.3vw,30px);font-weight:400;
+  line-height:1.18;letter-spacing:-.015em;color:inherit;
+}
+
+.lx-pile-corps{
+  position:relative;z-index:1;
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .6s var(--lx-ease);
+}
+.lx-pile-corps > div{overflow:hidden;min-height:0}
+.lx-pile-item.est-ouvert .lx-pile-corps{grid-template-rows:1fr}
+.lx-pile-corps p{
+  margin:0;padding-top:16px;max-width:62ch;
+  font-size:15.5px;line-height:1.65;
+  color:rgba(255,255,255,.78);
+  opacity:0;transform:translateY(6px);
+  transition:opacity .45s ease .1s,transform .5s var(--lx-ease) .1s;
+}
+.lx-pile-item.est-ouvert .lx-pile-corps p{opacity:1;transform:none}
+
+@media (pointer:fine){
+  .lx-pile-item:not(.est-ouvert):hover .lx-pile-fond{background:#E4E8F1}
+  .lx-pile-item:not(.est-ouvert):hover .lx-pile-num{opacity:.55}
+}
+.lx-pile-item:focus-visible{outline:2px solid var(--lx-gold);outline-offset:3px}
+
+@media (prefers-reduced-motion: reduce){
+  .lx-pile-corps{grid-template-rows:1fr}
+  .lx-pile-corps p{opacity:1;transform:none;color:rgba(255,255,255,.78)}
+  .lx-pile-item{color:#fff}
+  .lx-pile-fond{background:var(--lx-navy)}
+}

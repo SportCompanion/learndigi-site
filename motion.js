@@ -982,6 +982,125 @@
     });
   }
 
+
+  /* ── 21. La pile ───────────────────────────────────────────
+     Transforme une grille de boîtes égales en une pile de bandes
+     dont une seule est ouverte. Le contenu est lu depuis le
+     balisage existant, on ne réécrit donc aucun texte : le titre
+     et le paragraphe restent ceux que Codex a posés.
+
+     L'ouverture suit le défilement. C'est la partie qui fait la
+     différence : une pile qui n'attend qu'un clic reste un
+     accordéon banal, une pile qui s'ouvre toute seule au passage
+     raconte une progression.                                   */
+  function enPile(conteneur, opts) {
+    if (!conteneur || conteneur.dataset.lxPile) return null;
+    var enfants = [].slice.call(conteneur.children).filter(function (c) {
+      return c.querySelector('h3') || c.querySelector('h4');
+    });
+    if (enfants.length < 2) return null;
+    conteneur.dataset.lxPile = '1';
+
+    var pile = document.createElement('ol');
+    pile.className = 'lx-pile';
+
+    enfants.forEach(function (c, i) {
+      var titre = c.querySelector('h3') || c.querySelector('h4');
+      var texte = c.querySelector('p');
+      var li = document.createElement('li');
+      li.className = 'lx-pile-item';
+      li.tabIndex = 0;
+      li.setAttribute('role', 'button');
+      li.setAttribute('aria-expanded', 'false');
+
+      var fond = document.createElement('span');
+      fond.className = 'lx-pile-fond';
+      fond.setAttribute('aria-hidden', 'true');
+
+      var tete = document.createElement('div');
+      tete.className = 'lx-pile-tete';
+      var num = document.createElement('span');
+      num.className = 'lx-pile-num';
+      num.setAttribute('aria-hidden', 'true');
+      num.textContent = (i + 1 < 10 ? '0' : '') + (i + 1);
+      var h = document.createElement('h3');
+      h.className = 'lx-pile-titre';
+      h.textContent = titre ? titre.textContent.trim() : '';
+      tete.appendChild(num);
+      tete.appendChild(h);
+
+      var corps = document.createElement('div');
+      corps.className = 'lx-pile-corps';
+      var boite = document.createElement('div');
+      var pp = document.createElement('p');
+      pp.textContent = texte ? texte.textContent.trim() : '';
+      boite.appendChild(pp);
+      corps.appendChild(boite);
+
+      li.appendChild(fond);
+      li.appendChild(tete);
+      li.appendChild(corps);
+      pile.appendChild(li);
+    });
+
+    conteneur.parentNode.insertBefore(pile, conteneur);
+    conteneur.remove();
+
+    var items = tous('.lx-pile-item', pile);
+    function ouvrir(n) {
+      items.forEach(function (it, k) {
+        var actif = k === n;
+        it.classList.toggle('est-ouvert', actif);
+        it.setAttribute('aria-expanded', actif ? 'true' : 'false');
+      });
+    }
+    ouvrir(0);
+
+    items.forEach(function (it, n) {
+      it.addEventListener('click', function () { ouvrir(n); });
+      it.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); ouvrir(n); }
+      });
+    });
+
+    if (reduit || !opts || !opts.auDefilement) return pile;
+
+    // Chaque bande s'ouvre quand elle franchit le tiers haut de
+    // l'écran. Une bande large déclencherait trop tôt avec un
+    // seuil en pourcentage : on vise une ligne fixe.
+    var attente = false;
+    function suivre() {
+      var h = window.innerHeight, ligne = h * 0.42, choix = -1;
+      items.forEach(function (it, n) {
+        if (it.getBoundingClientRect().top <= ligne) choix = n;
+      });
+      if (choix >= 0) ouvrir(choix);
+      attente = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (attente) return;
+      attente = true;
+      requestAnimationFrame(suivre);
+    }, { passive: true });
+    suivre();
+    return pile;
+  }
+
+  function piles() {
+    // Le parcours en quatre étapes : la frise restait quatre
+    // colonnes de même largeur, donc un tableau déguisé.
+    var frise = document.querySelector('.lx-frise');
+    if (frise) {
+      var p1 = enPile(frise, { auDefilement: true });
+      // Les pastilles des modules suivaient la frise, elles suivent
+      // maintenant la pile.
+      var puces = document.querySelector('.lx-puces');
+      if (p1 && puces) p1.parentNode.insertBefore(puces, p1.nextSibling);
+    }
+    // Les quatre engagements : grille deux par deux, numérotée.
+    enPile(document.querySelector('.eng-grid'), { auDefilement: true });
+  }
+
   /* ── Mise en route ────────────────────────────────────────── */
   function demarrer() {
     // Ces deux-là servent aussi sans animation : l'un remplace une
@@ -996,6 +1115,7 @@
     demoVivante();
     devisVivant();
     pastillesModules();
+    piles();
     faq();
     masques();
     defilementSatine();
@@ -1008,6 +1128,7 @@
       demoVivante();
       devisVivant();
       pastillesModules();
+      piles();
       faq();
       masques();
       var fr = document.querySelector('.lx-frise');
