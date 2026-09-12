@@ -912,3 +912,87 @@ html.lenis,html.lenis body{height:auto}
   .lx-demo-mail{opacity:1;transform:none}
   .lx-devis-ligne,.lx-devis-pied{opacity:1;transform:none;transition:none}
 }
+
+/* ============================================================
+   PLUS DE MOUVEMENT, EN PLUS PETIT, 12/09/2026
+   ============================================================ */
+
+/* ── La phrase géante ramenée à sa place ────────────────────
+   À plus de cent pixels elle mangeait l'écran entier et devenait
+   le sujet de la page. Divisée par deux, elle redevient ce
+   qu'elle doit être : une respiration entre deux sections.    */
+.lx-reel{padding:clamp(20px,2.6vw,34px) 0}
+.lx-reel-item{
+  padding:0 clamp(14px,1.8vw,30px);
+  font-size:clamp(21px,2.9vw,42px);
+  letter-spacing:-.022em;
+}
+.lx-reel-sep{width:.28em;height:.28em;margin:0 .06em .18em}
+
+/* ── Ligne de pastilles qui défile ──────────────────────────
+   Reprise du lexique d'OPTIGEN. Les huit modules passent en
+   continu sous le parcours : petit, lisible, et ça donne une
+   idée du contenu sans ajouter un bloc de plus.               */
+.lx-puces{
+  position:relative;overflow:hidden;
+  margin-top:clamp(26px,3vw,40px);
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);
+  mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);
+}
+.lx-puces-piste{
+  display:flex;width:max-content;gap:10px;
+  animation:lx-puces var(--lx-puces-duration,46s) linear infinite;
+  will-change:transform;
+}
+.lx-puces:hover .lx-puces-piste{animation-play-state:paused}
+.lx-puces-jeu{display:flex;gap:10px;flex:none}
+.lx-puces span{
+  flex:none;display:inline-flex;align-items:center;gap:8px;
+  padding:8px 15px;border-radius:99px;
+  border:1px solid var(--lx-line);background:#fff;
+  font-size:13px;font-weight:500;color:var(--lx-navy);
+  white-space:nowrap;
+  transition:border-color .25s ease,color .25s ease;
+}
+.lx-puces span:hover{border-color:var(--lx-gold)}
+.lx-puces span i{
+  font-style:normal;font-size:11px;font-weight:600;
+  color:var(--lx-gold);font-variant-numeric:tabular-nums;
+}
+@keyframes lx-puces{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+
+/* ── Le filet qui se creuse ─────────────────────────────────
+   Repris de Cuberto. Une hairline entre deux sections qui se
+   déforme légèrement sous le curseur. C'est le plus petit
+   mouvement du site et probablement le plus satisfaisant :
+   il répond au geste sans rien demander.                     */
+.lx-filet{position:relative;height:1px;margin:0}
+.lx-filet svg{
+  position:absolute;top:-40px;left:0;width:100%;height:80px;
+  pointer-events:none;overflow:visible;
+}
+.lx-filet path{
+  fill:none;stroke:var(--lx-line);stroke-width:1;
+  transition:stroke .3s ease;
+}
+.lx-filet:hover path{stroke:var(--lx-gold)}
+.lx-filet::before{
+  content:'';position:absolute;top:-14px;left:0;right:0;height:28px;
+}
+
+/* ── Réponses de la FAQ ─────────────────────────────────────
+   Le dépliage passait par une hauteur fixe en pixels, ce qui
+   tronquait les réponses longues. Une grille à 0fr vers 1fr
+   s'adapte au contenu sans qu'on ait à le mesurer.            */
+.lx-faq-a{
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .55s var(--lx-ease);
+}
+.lx-faq-a > div{overflow:hidden;min-height:0}
+.lx-faq-ouvert .lx-faq-a{grid-template-rows:1fr}
+
+@media (prefers-reduced-motion: reduce){
+  .lx-puces-piste{animation:none}
+  .lx-filet svg{display:none}
+  .lx-faq-a{transition:none}
+}

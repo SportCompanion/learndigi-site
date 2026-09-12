@@ -831,6 +831,157 @@
     auScroll([d], function () { d.classList.add('lx-devis-on'); }, 0.25);
   }
 
+
+  /* ── 18. Ligne de pastilles ────────────────────────────────
+     Les huit modules défilent sous le parcours. Même mécanique
+     de répétition que les deux autres bandeaux, et même
+     recalcul quand les polices sont prêtes.                   */
+  var MODULES = [
+    'Introduction', 'Socle IA et prompting', 'Claude et Microsoft 365',
+    'Messagerie et relances', 'Prospection avec Apollo',
+    'Portefeuille avec Marvin', 'RGPD, AI Act, RSE', 'Plan d\'action'
+  ];
+
+  function pastillesModules() {
+    var frise = document.querySelector('.lx-frise');
+    if (!frise || document.querySelector('.lx-puces')) return;
+
+    function unJeu() {
+      var j = document.createElement('div');
+      j.className = 'lx-puces-jeu';
+      MODULES.forEach(function (m, i) {
+        var s2 = document.createElement('span');
+        var num = document.createElement('i');
+        num.textContent = (i + 1 < 10 ? '0' : '') + (i + 1);
+        s2.appendChild(num);
+        s2.appendChild(document.createTextNode(m));
+        j.appendChild(s2);
+      });
+      return j;
+    }
+
+    var cadre = document.createElement('div');
+    cadre.className = 'lx-puces';
+    cadre.setAttribute('role', 'img');
+    cadre.setAttribute('aria-label', 'Les huit modules : ' + MODULES.join(', ') + '.');
+    var piste = document.createElement('div');
+    piste.className = 'lx-puces-piste';
+    piste.appendChild(unJeu());
+    cadre.appendChild(piste);
+    frise.parentNode.insertBefore(cadre, frise.nextSibling);
+
+    var essais = 0;
+    function calibrer() {
+      var jeu = piste.firstElementChild;
+      if (!jeu) return;
+      var l = jeu.scrollWidth;
+      if (!l) { if (essais++ < 30) requestAnimationFrame(calibrer); return; }
+      var rep = Math.max(1, Math.ceil(Math.max(cadre.offsetWidth, 320) / l));
+      piste.innerHTML = '';
+      for (var i = 0; i < rep; i++) piste.appendChild(unJeu());
+      var bloc2 = piste.scrollWidth;
+      for (var k = 0; k < rep; k++) {
+        var c = unJeu();
+        c.setAttribute('aria-hidden', 'true');
+        piste.appendChild(c);
+      }
+      piste.style.setProperty('--lx-puces-duration', Math.round(bloc2 / 44) + 's');
+    }
+    requestAnimationFrame(calibrer);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { essais = 0; calibrer(); });
+    }
+    window.addEventListener('resize', (function () {
+      var t; return function () { clearTimeout(t); t = setTimeout(calibrer, 250); };
+    })(), { passive: true });
+  }
+
+  /* ── 19. Le filet qui se creuse ────────────────────────────
+     Le tracé est recalculé à chaque mouvement de souris : un
+     seul point de contrôle suit le curseur et la courbe se
+     détend d'elle-même quand il sort. Le calcul reste dans une
+     frame d'animation, sinon un déplacement rapide déclenche
+     des centaines de redessins pour rien.                     */
+  function filets() {
+    if (reduit) return;
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+
+    var apres = ['.howto', '.formations', '.outils', '.tarif-wrap'];
+    apres.forEach(function (sel) {
+      var section = document.querySelector(sel);
+      if (!section || section.nextElementSibling &&
+          section.nextElementSibling.classList.contains('lx-filet')) return;
+
+      var f = document.createElement('div');
+      f.className = 'lx-filet';
+      f.setAttribute('aria-hidden', 'true');
+      f.innerHTML = '<svg preserveAspectRatio="none"><path d=""/></svg>';
+      section.parentNode.insertBefore(f, section.nextSibling);
+
+      var path = f.querySelector('path');
+      var cible = 0, actuel = 0, x = 0.5, anime = false;
+
+      function tracer() {
+        var w = f.offsetWidth || 1;
+        actuel += (cible - actuel) * 0.12;
+        var cx = x * w;
+        path.setAttribute('d', 'M0 40 Q' + cx.toFixed(1) + ' ' + (40 + actuel).toFixed(1) + ' ' + w + ' 40');
+        if (Math.abs(cible - actuel) > 0.3) {
+          requestAnimationFrame(tracer);
+        } else {
+          actuel = cible;
+          path.setAttribute('d', 'M0 40 Q' + cx.toFixed(1) + ' ' + (40 + actuel).toFixed(1) + ' ' + w + ' 40');
+          anime = false;
+        }
+      }
+      function relancer() { if (!anime) { anime = true; requestAnimationFrame(tracer); } }
+
+      f.addEventListener('mousemove', function (e) {
+        var r = f.getBoundingClientRect();
+        x = (e.clientX - r.left) / (r.width || 1);
+        cible = 26;
+        relancer();
+      });
+      f.addEventListener('mouseleave', function () { cible = 0; relancer(); });
+      tracer();
+    });
+  }
+
+  /* ── 20. Réponses de la FAQ ────────────────────────────────
+     Les pages ouvrent les réponses en posant une hauteur en
+     pixels, ce qui tronque les longues. On passe la main à une
+     grille qui s'adapte au contenu, et on suit l'état existant
+     plutôt que de le remplacer : le bouton des pages continue
+     de fonctionner tel quel.                                  */
+  function faq() {
+    var items = tous('.faq-item');
+    if (!items.length) return;
+    items.forEach(function (it) {
+      var rep = it.querySelector('.faq-a');
+      if (!rep || rep.dataset.lxFaq) return;
+      rep.dataset.lxFaq = '1';
+      var boite = document.createElement('div');
+      while (rep.firstChild) boite.appendChild(rep.firstChild);
+      rep.appendChild(boite);
+      rep.classList.add('lx-faq-a');
+      rep.style.maxHeight = 'none';
+      rep.style.height = 'auto';
+    });
+
+    function suivre() {
+      items.forEach(function (it) {
+        var q = it.querySelector('.faq-q');
+        it.classList.toggle('lx-faq-ouvert', !!(q && q.classList.contains('open')));
+      });
+    }
+    suivre();
+    var obs = new MutationObserver(suivre);
+    items.forEach(function (it) {
+      var q = it.querySelector('.faq-q');
+      if (q) obs.observe(q, { attributes: true, attributeFilter: ['class'] });
+    });
+  }
+
   /* ── Mise en route ────────────────────────────────────────── */
   function demarrer() {
     // Ces deux-là servent aussi sans animation : l'un remplace une
@@ -841,8 +992,11 @@
     boutonsRipple();
     survols();
     structure();
+    filets();
     demoVivante();
     devisVivant();
+    pastillesModules();
+    faq();
     masques();
     defilementSatine();
 
@@ -853,6 +1007,8 @@
       tous('.lx-etape').forEach(function (e) { e.classList.add('lx-etape-on'); });
       demoVivante();
       devisVivant();
+      pastillesModules();
+      faq();
       masques();
       var fr = document.querySelector('.lx-frise');
       if (fr) fr.style.setProperty('--lx-frise-avance', '100%');
