@@ -365,6 +365,121 @@
     auScroll(listes, function (l) { l.classList.add('lx-liste-on'); }, 0.2);
   }
 
+
+  /* ── 11. Boutons à remplissage, repris de Cuberto ───────────
+     Le voile et le double du libellé sont construits ici : le
+     HTML des pages n'a pas à porter les trois span imbriqués
+     que leur balisage exige. Le double passe par un attribut
+     lu en CSS (::after content:attr), donc le texte n'existe
+     qu'une fois dans le document et un lecteur d'écran ne
+     l'annonce pas deux fois.                                  */
+  function boutonsRipple() {
+    var cibles = tous([
+      '.hero-btn-primary', '.btn-duo', '.rdv-btn', '.cta-btn',
+      '.btn-primary', '.btn-secondary', '.contact-submit', '.nl-btn', '.btn-sec'
+    ].join(','));
+
+    cibles.forEach(function (b) {
+      if (b.dataset.lxRipple) return;
+      b.dataset.lxRipple = '1';
+
+      // La couleur du double est celle du fond du bouton : quand le
+      // voile blanc monte, le texte doit virer à cette teinte pour
+      // rester lisible. Un fond transparent ne donne rien, on garde
+      // alors l'encre d'origine.
+      var fond = getComputedStyle(b).backgroundColor;
+      var m = fond.match(/[\d.]+/g);
+      var opaque = m && m.length >= 3 && (m.length < 4 || parseFloat(m[3]) > 0.5);
+      if (opaque) b.style.setProperty('--lx-ripple-ink', 'rgb(' + m[0] + ',' + m[1] + ',' + m[2] + ')');
+
+      // Le libellé se trouve à trois endroits possibles : un élément
+      // dédié, un unique enfant qui porte tout le texte, ou des nœuds
+      // de texte posés directement dans le bouton. Il faut le repérer
+      // avant de le remplacer, sinon on ajoute le double sans retirer
+      // l'original et le libellé s'affiche deux fois.
+      var label = b.querySelector('.btn-label');
+      if (!label) {
+        // Plusieurs enfants peuvent porter du texte : sur les pages
+        // d'offre le bouton s'écrit <span>libellé</span><span>flèche</span>.
+        // On retient le plus long, ce qui écarte les flèches et les
+        // chevrons sans avoir à les énumérer.
+        var porteurs = [].slice.call(b.children)
+          .map(function (c) { return { el: c, t: (c.textContent || '').trim() }; })
+          .filter(function (o) { return o.t.length > 2; })
+          .sort(function (a, z) { return z.t.length - a.t.length; });
+        if (porteurs.length) label = porteurs[0].el;
+      }
+      var texte;
+      if (label) {
+        texte = (label.textContent || '').trim();
+      } else {
+        // On ne prend que le texte posé à même le bouton : une flèche
+        // ou une icône dans un enfant doit rester en place.
+        label = b;
+        texte = [].slice.call(b.childNodes)
+          .filter(function (n) { return n.nodeType === 3; })
+          .map(function (n) { return n.textContent; }).join('').trim();
+      }
+      if (!texte) return;
+
+      var swap = document.createElement('span');
+      swap.className = 'lx-swap';
+      var inner = document.createElement('span');
+      inner.textContent = texte;
+      inner.setAttribute('data-text', texte);
+      swap.appendChild(inner);
+
+      if (label === b) {
+        // On ne garde que les éléments (svg, icônes) et on remplace le texte.
+        [].slice.call(b.childNodes).forEach(function (n) {
+          if (n.nodeType === 3) n.remove();
+        });
+        b.insertBefore(swap, b.firstChild);
+      } else {
+        label.textContent = '';
+        label.appendChild(swap);
+      }
+
+      var fill = document.createElement('span');
+      fill.className = 'lx-ripple-fill';
+      fill.setAttribute('aria-hidden', 'true');
+      fill.appendChild(document.createElement('i'));
+      b.insertBefore(fill, b.firstChild);
+      b.classList.add('lx-ripple');
+    });
+
+    // Les liens de texte reçoivent le retournement seul, sans voile.
+    tous('.text-link, .video-link, .nav-links a').forEach(function (a) {
+      if (a.dataset.lxSwap) return;
+      var t = (a.textContent || '').trim();
+      if (!t || t.length > 42 || a.querySelector('.lx-swap')) return;
+      a.dataset.lxSwap = '1';
+      var garde = [].slice.call(a.children);
+      a.textContent = '';
+      var swap = document.createElement('span');
+      swap.className = 'lx-swap';
+      var inner = document.createElement('span');
+      inner.textContent = t;
+      inner.setAttribute('data-text', t);
+      swap.appendChild(inner);
+      a.appendChild(swap);
+      garde.forEach(function (g) { a.appendChild(g); });
+      a.classList.add('lx-swaponly');
+    });
+  }
+
+  /* ── 12. Survols de visuels et portraits qui se rangent ───── */
+  function survols() {
+    tous('.lx-photo, .trainer-card .masque, .cas-thumb').forEach(function (el) {
+      if (el.querySelector('img')) el.classList.add('lx-zoom');
+    });
+    tous('.trainer-card').forEach(function (c) {
+      if (c.querySelector('img')) c.classList.add('lx-zoom');
+    });
+    var groupe = document.querySelector('.team-proof-people');
+    if (groupe && groupe.children.length === 2) groupe.classList.add('lx-ranger');
+  }
+
   /* ── Mise en route ────────────────────────────────────────── */
   function demarrer() {
     // Ces deux-là servent aussi sans animation : l'un remplace une
@@ -372,6 +487,8 @@
     // lisible. Ils tournent donc dans tous les cas.
     bandeauOutils();
     toucher();
+    boutonsRipple();
+    survols();
 
     if (reduit) {
       tous('.lx-w').forEach(function (m) { m.classList.add('lx-w-on'); });

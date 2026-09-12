@@ -471,3 +471,94 @@
   .lx-etape::after{transition:none}
   .btn-duo .btn-plus::after{transition:none}
 }
+
+/* ============================================================
+   GESTES REPRIS DE CUBERTO, 12/09/2026
+   ------------------------------------------------------------
+   Quatre mécanismes retenus dans leur feuille de style, choisis
+   parce qu'ils tiennent sur un site B2B. Leur curseur
+   personnalisé en mix-blend-mode et leurs titres à 16 rem sont
+   écartés : sur un site qui vend de la formation à des cabinets
+   de courtage, ils feraient démonstration technique plutôt que
+   sérieux.
+   ============================================================ */
+
+/* ── 1. Le bouton à remplissage ─────────────────────────────
+   Leur signature. Un voile monte du bas avec un bord supérieur
+   arrondi qui s'aplatit en cours de route, pendant que le
+   libellé glisse vers le haut et découvre son double dans la
+   couleur inverse. Deux durées différentes sur la même
+   transition (.5s pour la position, .9s pour l'arrondi) : c'est
+   ce décalage qui donne l'effet de liquide.                   */
+.lx-ripple{position:relative;overflow:hidden;isolation:isolate}
+.lx-ripple-fill{
+  position:absolute;inset:0;z-index:0;
+  overflow:hidden;border-radius:inherit;pointer-events:none;
+}
+.lx-ripple-fill i{
+  display:block;width:100%;height:100%;
+  transform:translateY(101%);
+  background:currentColor;
+  border-radius:50% 50% 0 0;
+  transition:transform .5s cubic-bezier(.4,0,0,1),
+             border-radius .5s cubic-bezier(.4,0,0,1);
+}
+.lx-ripple:hover .lx-ripple-fill i,
+.lx-ripple:focus-visible .lx-ripple-fill i{
+  transform:translateY(0);border-radius:0;
+  transition-duration:.5s,.9s;
+}
+
+/* ── 2. Le libellé qui se retourne ──────────────────────────
+   Le double est écrit dans un attribut et posé en ::after, donc
+   aucun texte en double dans le document : un lecteur d'écran
+   n'entend le libellé qu'une fois.                            */
+.lx-swap{position:relative;display:block;overflow:hidden;z-index:2}
+.lx-swap > span{display:block;transition:transform .55s cubic-bezier(.16,1,.3,1)}
+.lx-swap > span::after{
+  content:attr(data-text);
+  display:block;position:absolute;top:112%;left:0;right:0;
+  color:var(--lx-ripple-ink,inherit);
+}
+.lx-ripple:hover .lx-swap > span,
+.lx-ripple:focus-visible .lx-swap > span{transform:translateY(-112%)}
+.lx-ripple .btn-plus{position:relative;z-index:2}
+
+/* Les liens de texte reçoivent le même retournement, sans voile. */
+.lx-swaponly .lx-swap > span::after{color:var(--lx-gold)}
+.lx-swaponly:hover .lx-swap > span{transform:translateY(-112%)}
+
+/* ── 3. Le survol des visuels ───────────────────────────────
+   Le cadre recule pendant que l'image avance. Les deux gestes
+   opposés sur la même durée créent une profondeur qu'un simple
+   agrandissement ne donne pas.                                */
+.lx-zoom{overflow:hidden;transform:translateZ(0)}
+.lx-zoom,.lx-zoom img{transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.lx-zoom:hover{transform:scale(.985)}
+.lx-zoom:hover img{transform:scale(1.05)}
+
+/* ── 4. Les portraits qui se rangent ────────────────────────
+   Au repos les deux cartes sont légèrement décalées et pivotées,
+   comme deux photos posées sur un bureau. Au survol du groupe
+   elles s'alignent. C'est le seul endroit du site où l'on se
+   permet une fantaisie, et elle dit quelque chose de juste :
+   deux personnes, pas une institution.                        */
+@media (pointer:fine) and (min-width:861px){
+  .lx-ranger > *{transition:transform 1s cubic-bezier(.25,1,.5,1)}
+  .lx-ranger > :first-child{transform:translateY(8px) rotate(-1.4deg)}
+  .lx-ranger > :nth-child(2){transform:translateY(-8px) rotate(1.4deg)}
+  .lx-ranger:hover > *{transform:none}
+}
+
+/* Ressort léger sur les éléments ronds, repris de leur
+   cubic-bezier à dépassement. */
+.lx-spring{transition:transform .7s cubic-bezier(.34,4.56,.64,1)}
+.lx-spring:hover{transform:scale(.95)}
+
+@media (prefers-reduced-motion: reduce){
+  .lx-ripple-fill i{display:none}
+  .lx-swap > span{transform:none !important;transition:none}
+  .lx-zoom,.lx-zoom img,.lx-zoom:hover,.lx-zoom:hover img{transform:none;transition:none}
+  .lx-ranger > *{transform:none !important;transition:none}
+  .lx-spring,.lx-spring:hover{transform:none;transition:none}
+}
