@@ -1,0 +1,206 @@
+/* ============================================================
+   motion.css, couche d'animation du site Learndigi
+   ------------------------------------------------------------
+   Écrite comme une couche séparée, posée par-dessus le design
+   existant : aucune règle ne réécrit le style de base, tout est
+   préfixé « lx- » pour ne jamais entrer en conflit avec les
+   classes des pages. Retirer les deux lignes qui appellent
+   motion.css et motion.js rend le site exactement à son état
+   d'avant.
+
+   Le vocabulaire de mouvement, repris du site de référence et
+   adapté à nos couleurs :
+     · rails d'accent verticaux qui se tracent près des chiffres
+     · bandeau d'outils qui défile en continu
+     · phrases qui s'allument mot par mot
+     · boutons qui s'enfoncent sous le doigt
+     · révélations décalées à l'entrée dans l'écran
+
+   Rien ne bouge si le visiteur a demandé moins d'animations :
+   voir le bloc prefers-reduced-motion en fin de fichier.
+   ============================================================ */
+
+:root{
+  --lx-navy:#1B2C6B;
+  --lx-gold:#E8921A;
+  --lx-red:#C0392B;
+  --lx-line:#D9DDE5;
+  --lx-ease:cubic-bezier(.16,1,.3,1);
+}
+
+/* ── Barre de progression de lecture ────────────────────────
+   Un fil doré en haut de page. Il dit où l'on en est dans une
+   page longue, ce qu'aucune barre de défilement fine de macOS
+   ne montre plus.                                            */
+.lx-progress{
+  position:fixed;top:0;left:0;height:2px;width:100%;
+  transform:scaleX(0);transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--lx-gold),var(--lx-red));
+  z-index:9999;pointer-events:none;
+  will-change:transform;
+}
+
+/* ── Rails d'accent ─────────────────────────────────────────
+   Un trait vertical court qui se trace à gauche d'un chiffre ou
+   d'un titre au moment où il entre dans l'écran. C'est le geste
+   le plus discret du lot et celui qui se remarque le plus : il
+   souligne sans rien ajouter à lire.                          */
+.lx-seg{
+  position:absolute;left:0;top:50%;
+  width:2px;height:0;
+  transform:translateY(-50%);
+  background:linear-gradient(180deg,var(--lx-gold),var(--lx-red));
+  border-radius:2px;
+  transition:height .5s var(--lx-ease);
+  pointer-events:none;
+}
+.lx-seg-on{height:26px}
+
+/* ── Bandeau d'outils qui défile ────────────────────────────
+   Les logos avancent en continu, avec un fondu sur les deux
+   bords pour que rien n'apparaisse ni ne disparaisse net. La
+   piste est dupliquée à l'identique : quand la première moitié
+   a défilé, la seconde est exactement à sa place et la boucle
+   ne se voit pas.                                             */
+.lx-marquee{
+  position:relative;width:100%;min-width:0;max-width:100%;
+  height:48px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);
+}
+/* La piste est sortie du flux volontairement. En la laissant
+   dedans, sa largeur « max-content » remontait au conteneur
+   parent, qui est une cellule de grille : la page entière
+   gagnait 700 pixels et défilait latéralement. Hors flux, elle
+   ne pèse plus rien dans le calcul de largeur. */
+.lx-marquee-track{
+  position:absolute;top:0;left:0;height:100%;
+  display:flex;width:max-content;align-items:center;gap:54px;
+  animation:lx-slide var(--lx-marquee-duration,42s) linear infinite;
+  will-change:transform;
+}
+.lx-marquee:hover .lx-marquee-track{animation-play-state:paused}
+.lx-marquee-set{display:flex;align-items:center;gap:54px;flex:none}
+.lx-marquee-item{
+  display:flex;align-items:center;gap:11px;flex:none;
+  opacity:.62;filter:grayscale(1);
+  transition:opacity .3s ease,filter .3s ease;
+}
+.lx-marquee:hover .lx-marquee-item{opacity:.42}
+.lx-marquee-item:hover{opacity:1;filter:grayscale(0)}
+/* Boîte de taille fixe, image contenue dedans : la piste peut
+   être mesurée avant même que les logos soient chargés, et un
+   logo non carré n'est pas déformé. */
+.lx-marquee-item img{height:30px;width:30px;display:block;object-fit:contain}
+.lx-marquee-item span{
+  font-family:'Raleway',sans-serif;font-size:13.5px;font-weight:700;
+  color:var(--lx-navy);white-space:nowrap;letter-spacing:.2px;
+}
+@keyframes lx-slide{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+
+.lx-marquee-legend{
+  display:block;margin-top:14px;text-align:center;
+  font-family:'Open Sans',sans-serif;font-size:12px;color:#7A7F8E;
+}
+
+/* ── Phrase qui s'allume mot par mot ────────────────────────
+   Les mots partent en gris clair et prennent leur couleur l'un
+   après l'autre, au rythme de la lecture. Réservé aux deux ou
+   trois phrases qui portent vraiment le propos : appliqué
+   partout, l'effet devient un tic.                            */
+.lx-words{display:inline}
+.lx-w{
+  display:inline-block;
+  color:#C7CAD4;
+  transition:color .34s ease,transform .34s var(--lx-ease);
+  transform:translateY(2px);
+}
+.lx-w-on{color:inherit;transform:none}
+
+/* ── Boutons tactiles ───────────────────────────────────────
+   Une ombre pleine sous le bouton, qui se réduit pendant que le
+   bouton descend : il s'enfonce au lieu de changer de teinte.
+   La cible reste au même endroit, seule l'ombre absorbe le
+   déplacement.                                                */
+.lx-press{
+  transition:transform .14s ease,box-shadow .14s ease,filter .18s ease !important;
+  box-shadow:0 4px 0 var(--lx-press-shadow,rgba(10,14,36,.22));
+}
+.lx-press:hover{
+  transform:translateY(2px);
+  box-shadow:0 2px 0 var(--lx-press-shadow,rgba(10,14,36,.22));
+}
+.lx-press:active{
+  transform:translateY(4px);
+  box-shadow:0 0 0 var(--lx-press-shadow,rgba(10,14,36,.22));
+}
+
+/* ── Révélation décalée des grilles ─────────────────────────
+   Les enfants d'une même grille entrent l'un après l'autre.
+   Le décalage est calculé en JS et posé en variable, pour que
+   la règle reste unique quel que soit le nombre de cartes.    */
+.lx-stagger > *{
+  opacity:0;transform:translateY(16px);
+  transition:opacity .6s ease var(--lx-delay,0s),
+             transform .7s var(--lx-ease) var(--lx-delay,0s);
+}
+.lx-stagger-on > *{opacity:1;transform:none}
+
+/* ── Chiffres qui défilent ──────────────────────────────────
+   Les chiffres gardent leur largeur pendant le décompte, sinon
+   la ligne tremble à chaque incrément.                        */
+.lx-count{font-variant-numeric:tabular-nums}
+
+/* ── Soulignement qui se trace ──────────────────────────────
+   Sur les liens de texte, le trait part de la gauche au survol
+   au lieu d'apparaître d'un coup.                             */
+.lx-underline{
+  background-image:linear-gradient(var(--lx-gold),var(--lx-gold));
+  background-size:0% 1.5px;background-position:0 100%;
+  background-repeat:no-repeat;
+  transition:background-size .34s var(--lx-ease);
+  text-decoration:none;
+}
+.lx-underline:hover{background-size:100% 1.5px}
+
+/* ── Parallaxe du fond de la page d'accueil ─────────────────
+   Le fond descend moins vite que le texte. Très léger,
+   volontairement : au-delà, la lecture du titre en souffre.
+   L'agrandissement de 6 % évite qu'un bord vide apparaisse en
+   haut quand l'image descend ; il déborde donc de 3 % de chaque
+   côté, d'où la découpe posée sur la section qui l'accueille. */
+.lx-parallax{will-change:transform}
+.lx-clip{overflow:hidden}
+
+/* ── Barre de navigation au défilement ──────────────────────
+   Elle se resserre et pose une ombre dès que la page bouge,
+   ce qui la détache du contenu qui passe dessous.             */
+.lx-nav-shift{
+  transition:box-shadow .3s ease,backdrop-filter .3s ease,background-color .3s ease !important;
+}
+.lx-nav-shift.lx-nav-on{
+  box-shadow:0 1px 0 var(--lx-line),0 10px 30px -18px rgba(10,14,36,.45);
+  backdrop-filter:saturate(1.4) blur(6px);
+}
+
+/* ── Cartes qui se soulèvent ────────────────────────────────*/
+.lx-lift{transition:transform .3s var(--lx-ease),box-shadow .3s ease}
+.lx-lift:hover{transform:translateY(-3px)}
+
+/* ── Respect du réglage système ─────────────────────────────
+   Un visiteur qui a demandé moins d'animations reçoit la page
+   entièrement lisible, sans aucun mouvement : les états finaux
+   sont posés directement.                                     */
+@media (prefers-reduced-motion: reduce){
+  .lx-progress{display:none}
+  .lx-marquee-track{animation:none;transform:none}
+  .lx-marquee{-webkit-mask-image:none;mask-image:none}
+  .lx-marquee-item{opacity:1;filter:none}
+  .lx-w{color:inherit;transform:none;transition:none}
+  .lx-seg{height:26px;transition:none}
+  .lx-stagger > *{opacity:1;transform:none;transition:none}
+  .lx-press,.lx-lift,.lx-underline{transition:none}
+  .lx-press:hover,.lx-press:active,.lx-lift:hover{transform:none}
+  .lx-underline:hover{background-size:100% 1.5px}
+  .lx-parallax{transform:none !important}
+}
