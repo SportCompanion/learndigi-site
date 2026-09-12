@@ -778,3 +778,137 @@ html.lenis,html.lenis body{height:auto}
   .lx-demo-curseur{animation:none;opacity:0}
   .lx-demo-rail i{height:100% !important;transition:none}
 }
+
+/* ============================================================
+   DÉMOS VIVANTES, AFFINAGE ET SECONDE CARTE, 12/09/2026
+   ============================================================ */
+
+/* ── Affinage de la première carte ──────────────────────────*/
+.lx-demo{padding:40px 26px 10px}
+.lx-demo-carte{padding:22px 24px 20px;border-radius:18px}
+.lx-demo-av{
+  width:38px;height:38px;font-size:12.5px;font-weight:600;
+  letter-spacing:.03em;line-height:1;
+  box-shadow:0 0 0 3px #fff,0 0 0 4px var(--lx-line);
+}
+.lx-demo-tete{gap:13px;padding-bottom:15px}
+.lx-demo-tete b{font-size:14.5px;letter-spacing:-.01em}
+.lx-demo-etiq{margin-top:15px;gap:7px}
+.lx-demo-etiq i{padding:5px 11px;font-size:11.5px;letter-spacing:.01em}
+.lx-demo-prompt{margin-top:16px;padding:13px 15px;font-size:13.5px;line-height:1.55;border-radius:10px}
+.lx-demo-etape{padding:7px 0;font-size:13.5px}
+.lx-demo-rail{left:14px}
+.lx-demo-pastille{width:30px;height:30px}
+
+/* Les orbes s'écartent un peu plus de la carte et se posent en
+   diagonale plutôt qu'au hasard : quatre objets flottants alignés
+   sur une même oblique se lisent comme un système, dispersés ils
+   se lisent comme du décor. */
+.lx-demo-orbe:nth-of-type(1){left:-14px;top:12%}
+.lx-demo-orbe:nth-of-type(2){right:-16px;top:3%}
+.lx-demo-orbe:nth-of-type(3){right:-18px;top:48%}
+.lx-demo-orbe:nth-of-type(4){left:-18px;bottom:12%}
+
+/* ── Le résultat qui apparaît ───────────────────────────────
+   Le geste manquant : la carte montrait le traitement mais
+   jamais ce qui en sort. Un extrait du courrier rédigé se
+   déplie à la fin, et c'est lui qui vend la formation.        */
+.lx-demo-sortie{
+  display:grid;grid-template-rows:0fr;
+  margin-top:0;
+  transition:grid-template-rows .7s var(--lx-ease),margin-top .7s var(--lx-ease);
+}
+.lx-demo-sortie > div{overflow:hidden}
+.lx-demo-on-sortie .lx-demo-sortie{grid-template-rows:1fr;margin-top:15px}
+.lx-demo-mail{
+  border:1px solid var(--lx-line);border-radius:10px;
+  background:#FCFBF8;padding:13px 15px;
+  opacity:0;transform:translateY(8px);
+  transition:opacity .5s ease .18s,transform .55s var(--lx-ease) .18s;
+}
+.lx-demo-on-sortie .lx-demo-mail{opacity:1;transform:none}
+.lx-demo-mail b{
+  display:block;font-size:11px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--lx-gold);margin-bottom:7px;
+}
+.lx-demo-mail p{margin:0;font-size:13px;line-height:1.6;color:#444}
+.lx-demo-mail p + p{margin-top:7px}
+.lx-demo-mail em{font-style:normal;color:#9AA0B0}
+
+/* ── Seconde carte : le devis qui se compose ────────────────
+   Elle remplace la liste « ce qui fait varier le devis », qui
+   était quatre lignes à puces. Les quatre critères deviennent
+   quatre réglages qui se posent l'un après l'autre, et le
+   panneau conclut sur le délai de réponse. Aucun montant n'est
+   affiché : le tarif est sur devis, l'inventer même en exemple
+   serait un engagement qu'on ne tient pas.                    */
+/* Le panneau qui accueille cette carte est clair sur bureau et
+   sombre en dessous d'un certain point : deux jeux de règles
+   coexistent dans le CSS des pages. Plutôt que de deviner, les
+   teintes sont posées en variables et le script les calcule à
+   partir du fond réellement rendu. */
+.lx-devis{
+  position:relative;padding:6px 0 0;
+  --lx-devis-soft:rgba(27,44,107,.68);
+  --lx-devis-line:rgba(27,44,107,.16);
+  --lx-devis-ink:#1B2C6B;
+  --lx-devis-chip:rgba(27,44,107,.05);
+  --lx-devis-bord:rgba(27,44,107,.2);
+  --lx-devis-faint:rgba(27,44,107,.55);
+}
+.lx-devis-ligne{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 0;border-bottom:1px solid var(--lx-devis-line);
+  opacity:0;transform:translateX(10px);
+  transition:opacity .5s ease,transform .55s var(--lx-ease);
+}
+.lx-devis-on .lx-devis-ligne{opacity:1;transform:none}
+.lx-devis-on .lx-devis-ligne:nth-child(2){transition-delay:.14s}
+.lx-devis-on .lx-devis-ligne:nth-child(3){transition-delay:.28s}
+.lx-devis-on .lx-devis-ligne:nth-child(4){transition-delay:.42s}
+.lx-devis-ligne:last-of-type{border-bottom:none}
+.lx-devis-cle{
+  flex:1;min-width:0;
+  font-size:13.5px;line-height:1.45;color:var(--lx-devis-soft);
+}
+.lx-devis-val{
+  flex:none;display:inline-flex;align-items:center;gap:7px;
+  padding:6px 13px;border-radius:99px;
+  background:var(--lx-devis-chip);
+  border:1px solid var(--lx-devis-bord);
+  font-size:13px;font-weight:600;color:var(--lx-devis-ink);
+  font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.lx-devis-val svg{width:13px;height:13px;opacity:.8}
+.lx-devis-pied{
+  display:flex;align-items:center;gap:11px;
+  margin-top:20px;padding-top:18px;
+  border-top:1px solid var(--lx-devis-line);
+  opacity:0;transform:translateY(8px);
+  transition:opacity .55s ease .58s,transform .6s var(--lx-ease) .58s;
+}
+.lx-devis-on .lx-devis-pied{opacity:1;transform:none}
+/* Seule la pastille est de taille fixe. Sans « flex:1 » sur le
+   bloc de texte qui suit, celui-ci se comprimait en colonne
+   étroite et venait buter sur le badge « Sur devis ». */
+.lx-devis-pied{margin-bottom:8px}
+.lx-devis-pied > span:first-child{
+  flex:none;width:34px;height:34px;border-radius:50%;
+  background:var(--lx-gold);color:#fff;display:grid;place-items:center;
+}
+.lx-devis-pied > span:last-child{flex:1;min-width:0}
+.lx-devis-pied span svg{width:16px;height:16px}
+.lx-devis-pied b{display:block;font-size:14px;font-weight:600;color:var(--lx-devis-ink);line-height:1.35}
+.lx-devis-pied em{display:block;font-style:normal;font-size:12.5px;color:var(--lx-devis-faint);line-height:1.45}
+
+@media (max-width:620px){
+  .lx-demo{padding:34px 8px 6px}
+  .lx-devis-ligne{flex-wrap:wrap;gap:8px}
+  .lx-devis-cle{flex:1 1 100%}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .lx-demo-sortie{grid-template-rows:1fr;margin-top:15px}
+  .lx-demo-mail{opacity:1;transform:none}
+  .lx-devis-ligne,.lx-devis-pied{opacity:1;transform:none;transition:none}
+}

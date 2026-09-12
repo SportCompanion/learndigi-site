@@ -665,6 +665,12 @@
               '<span>' + e[0] + '</span><em>' + e[1] + '</em></li>';
     });
     html += '</ul>';
+    html += '<div class="lx-demo-sortie"><div><div class="lx-demo-mail">' +
+            '<b>Brouillon proposé</b>' +
+            '<p>Bonjour Madame D.,</p>' +
+            '<p>Votre contrat auto arrive à échéance le 12 octobre. Votre garantie bris de glace reste acquise aux mêmes conditions.</p>' +
+            '<p><em>Relisez, ajustez, signez.</em></p>' +
+            '</div></div></div>';
     html += '<p class="lx-demo-note">Illustration animée, dossier fictif.</p>';
     html += '</div>';
     d.innerHTML = html;
@@ -679,7 +685,9 @@
     if (reduit) {
       d.classList.add('lx-demo-on');
       d.querySelector('.lx-demo-txt').textContent = DEMO.instruction;
-      tous('.lx-demo-etape', d).forEach(function (e) {
+      d.classList.add('lx-demo-on-sortie');
+      tous('.lx-demo-etape', d).forEach(function (e, i) {
+        if (i === DEMO.etapes.length - 1) return;
         e.classList.add('est-faite');
         e.querySelector('.lx-demo-pastille').innerHTML = ICONE_COCHE;
       });
@@ -718,7 +726,13 @@
 
       // La dernière étape reste ouverte : c'est la relecture humaine,
       // et la laisser cochée dirait que l'IA a signé le courrier.
-      if (n === etapes.length - 1) return;
+      // C'est au moment où elle s'ouvre que le brouillon apparaît :
+      // ce qui sort de la machine arrive sur le bureau du courtier,
+      // pas chez le client.
+      if (n === etapes.length - 1) {
+        setTimeout(function () { d.classList.add('lx-demo-on-sortie'); }, 260);
+        return;
+      }
 
       setTimeout(function () {
         e.classList.remove('est-active');
@@ -739,6 +753,84 @@
     });
   }
 
+
+  /* ── 17. Le devis qui se compose ───────────────────────────
+     Remplace la liste « ce qui fait varier le devis », qui était
+     quatre puces. Les quatre critères deviennent quatre réglages
+     qui se posent l'un après l'autre.
+
+     Aucun montant n'apparaît, et c'est délibéré : le tarif est
+     sur devis. En inventer un, même présenté comme exemple,
+     serait un engagement qu'on ne tient pas, et le premier
+     prospect à le citer au téléphone aurait raison.           */
+  var DEVIS = [
+    ['Participants à former', '6 personnes', 'groupe'],
+    ['Modalité retenue', 'Dans vos locaux', 'lieu'],
+    ['Organisation', 'Deux demi-journées', 'horloge'],
+    ['Modules prioritaires', '5 sur 8', 'modules']
+  ];
+  var PICTOS = {
+    groupe: '<svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 19c0-3 2.5-4.8 5.5-4.8s5.5 1.8 5.5 4.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16 6.2a3 3 0 0 1 0 5.6M17.5 19c0-2 .6-3.4-.6-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+    lieu:   '<svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg>',
+    horloge:'<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.4" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.4V12l3.2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    modules:'<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="1.6" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="4" width="7" height="7" rx="1.6" stroke="currentColor" stroke-width="1.8"/><rect x="4" y="13" width="7" height="7" rx="1.6" stroke="currentColor" stroke-width="1.8"/><path d="M13.6 16.5h6M16.6 13.5v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+    envoi:  '<svg viewBox="0 0 24 24" fill="none"><path d="M3.6 11.8 20 4.6l-7.2 16.4-2.1-6.9-7.1-2.3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>'
+  };
+
+  function devisVivant() {
+    var liste = document.querySelector('.tarif-crit');
+    if (!liste || liste.dataset.lxDevis) return;
+    liste.dataset.lxDevis = '1';
+
+    var d = document.createElement('div');
+    d.className = 'lx-devis';
+    d.setAttribute('role', 'img');
+    d.setAttribute('aria-label',
+      'Illustration animée : les quatre éléments qui composent un devis, ' +
+      DEVIS.map(function (l) { return l[0] + ' ' + l[1]; }).join(', ') +
+      '. Proposition chiffrée sous 48 heures. Exemple fictif.');
+
+    var html = '';
+    DEVIS.forEach(function (l) {
+      html += '<div class="lx-devis-ligne"><span class="lx-devis-cle">' + l[0] + '</span>' +
+              '<span class="lx-devis-val">' + PICTOS[l[2]] + l[1] + '</span></div>';
+    });
+    html += '<div class="lx-devis-pied"><span>' + PICTOS.envoi + '</span>' +
+            '<span><b>Proposition chiffrée sous 48 h</b>' +
+            '<em>Après un échange de 30 minutes, sans engagement.</em></span></div>';
+    d.innerHTML = html;
+
+    liste.parentNode.insertBefore(d, liste);
+    liste.remove();
+
+    // Le panneau d'accueil est clair sur bureau et sombre plus bas :
+    // on lit la couleur réellement rendue en remontant les parents
+    // jusqu'au premier fond opaque, puis on bascule les teintes.
+    var fond = null, n = d.parentElement;
+    while (n && !fond) {
+      var c = getComputedStyle(n).backgroundColor;
+      var v = c.match(/[\d.]+/g);
+      if (v && v.length >= 3 && (v.length < 4 || parseFloat(v[3]) > 0.6)) fond = v;
+      n = n.parentElement;
+    }
+    if (fond) {
+      // Luminance perçue : le vert pèse bien plus que le bleu dans
+      // l'œil, une moyenne simple se tromperait sur un bleu marine.
+      var lum = (0.2126 * fond[0] + 0.7152 * fond[1] + 0.0722 * fond[2]) / 255;
+      if (lum < 0.5) {
+        d.style.setProperty('--lx-devis-soft', 'rgba(255,255,255,.72)');
+        d.style.setProperty('--lx-devis-line', 'rgba(255,255,255,.16)');
+        d.style.setProperty('--lx-devis-ink', '#fff');
+        d.style.setProperty('--lx-devis-chip', 'rgba(255,255,255,.1)');
+        d.style.setProperty('--lx-devis-bord', 'rgba(255,255,255,.22)');
+        d.style.setProperty('--lx-devis-faint', 'rgba(255,255,255,.6)');
+      }
+    }
+
+    if (reduit) { d.classList.add('lx-devis-on'); return; }
+    auScroll([d], function () { d.classList.add('lx-devis-on'); }, 0.25);
+  }
+
   /* ── Mise en route ────────────────────────────────────────── */
   function demarrer() {
     // Ces deux-là servent aussi sans animation : l'un remplace une
@@ -750,6 +842,7 @@
     survols();
     structure();
     demoVivante();
+    devisVivant();
     masques();
     defilementSatine();
 
@@ -759,6 +852,7 @@
       tous('.lx-liste').forEach(function (l) { l.classList.add('lx-liste-on'); });
       tous('.lx-etape').forEach(function (e) { e.classList.add('lx-etape-on'); });
       demoVivante();
+      devisVivant();
       masques();
       var fr = document.querySelector('.lx-frise');
       if (fr) fr.style.setProperty('--lx-frise-avance', '100%');
