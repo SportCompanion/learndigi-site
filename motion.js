@@ -605,6 +605,140 @@
     })(), { passive: true });
   }
 
+
+  /* ── 15. La démo vivante ───────────────────────────────────
+     Ce que fait vraiment un courtier : une relance d'échéance
+     rédigée à partir d'un contrat. Le scénario est écrit ici
+     plutôt que dans le HTML, parce qu'il change avec l'offre et
+     qu'on ne veut pas le chercher dans dix pages.             */
+  var DEMO = {
+    dossier: 'Cabinet Laurent · Marie D.',
+    contexte: 'Contrat auto · échéance le 12 octobre',
+    initiales: 'MD',
+    etiquettes: ['Contrat auto', 'Échéance J-30', 'Client depuis 2019'],
+    instruction: "Rédige une relance d'échéance pour Marie, dans le ton du cabinet, en rappelant sa garantie bris de glace.",
+    etapes: [
+      ['Lecture du contrat', '4 s'],
+      ['Repérage de l\'échéance et des garanties', '2 s'],
+      ['Rédaction dans le ton du cabinet', '6 s'],
+      ['Relecture par vos soins', 'à vous']
+    ],
+    outils: [
+      ['logo-claude.png', 'Claude'],
+      ['logo-chatgpt.png', 'ChatGPT'],
+      ['logo-copilot.png', 'Microsoft Copilot'],
+      ['logo-mistral.png', 'Mistral AI']
+    ]
+  };
+
+  var ICONE_CRAYON = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20l4-1 10-10-3-3L5 16l-1 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
+  var ICONE_COCHE  = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var ICONE_POINT  = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>';
+
+  function demoVivante() {
+    var hote = document.querySelector('.deliverable-card');
+    if (!hote || hote.dataset.lxDemo) return;
+    hote.dataset.lxDemo = '1';
+
+    var d = document.createElement('div');
+    d.className = 'lx-demo';
+    // Le contenu est décoratif : il illustre, il ne s'annonce pas.
+    // Le texte utile est déjà dans le titre de la section.
+    d.setAttribute('role', 'img');
+    d.setAttribute('aria-label',
+      'Illustration animée : une relance client rédigée avec l\'IA, étape par étape. Exemple fictif.');
+
+    var html = '';
+    DEMO.outils.forEach(function (o) {
+      html += '<span class="lx-demo-orbe"><img src="' + o[0] + '" alt="" width="22" height="22" loading="lazy" decoding="async"></span>';
+    });
+    html += '<div class="lx-demo-carte">';
+    html += '<div class="lx-demo-tete"><span class="lx-demo-av">' + DEMO.initiales + '</span>';
+    html += '<span><b>' + DEMO.dossier + '</b><span>' + DEMO.contexte + '</span></span></div>';
+    html += '<div class="lx-demo-etiq">';
+    DEMO.etiquettes.forEach(function (e) { html += '<i>' + e + '</i>'; });
+    html += '</div>';
+    html += '<div class="lx-demo-prompt">' + ICONE_CRAYON + '<span class="lx-demo-txt"></span><span class="lx-demo-curseur"></span></div>';
+    html += '<ul class="lx-demo-etapes"><span class="lx-demo-rail"><i></i></span>';
+    DEMO.etapes.forEach(function (e) {
+      html += '<li class="lx-demo-etape"><span class="lx-demo-pastille">' + ICONE_POINT + '</span>' +
+              '<span>' + e[0] + '</span><em>' + e[1] + '</em></li>';
+    });
+    html += '</ul>';
+    html += '<p class="lx-demo-note">Illustration animée, dossier fictif.</p>';
+    html += '</div>';
+    d.innerHTML = html;
+
+    // On garde le titre et le chapeau de la carte, on remplace la liste.
+    var liste = hote.querySelector('.deliverable-list');
+    var note = hote.querySelector('.deliverable-note');
+    if (liste) liste.remove();
+    if (note) note.remove();
+    hote.appendChild(d);
+
+    if (reduit) {
+      d.classList.add('lx-demo-on');
+      d.querySelector('.lx-demo-txt').textContent = DEMO.instruction;
+      tous('.lx-demo-etape', d).forEach(function (e) {
+        e.classList.add('est-faite');
+        e.querySelector('.lx-demo-pastille').innerHTML = ICONE_COCHE;
+      });
+      return;
+    }
+
+    auScroll([d], function () { jouerDemo(d); }, 0.3);
+  }
+
+  function jouerDemo(d) {
+    d.classList.add('lx-demo-on');
+    var txt = d.querySelector('.lx-demo-txt');
+    var rail = d.querySelector('.lx-demo-rail i');
+    var etapes = tous('.lx-demo-etape', d);
+    var phrase = DEMO.instruction;
+    var i = 0;
+
+    // La frappe avance par petits paquets de caractères : lettre à
+    // lettre, une phrase de cent signes prendrait dix secondes et
+    // le visiteur serait déjà parti.
+    function taper() {
+      i += 2 + Math.floor(Math.random() * 2);
+      txt.textContent = phrase.slice(0, i);
+      if (i < phrase.length) {
+        setTimeout(taper, 18 + Math.random() * 26);
+      } else {
+        setTimeout(function () { avancer(0); }, 420);
+      }
+    }
+
+    function avancer(n) {
+      if (n >= etapes.length) return;
+      var e = etapes[n];
+      e.classList.add('est-active');
+      rail.style.height = ((n + 0.5) / etapes.length * 100) + '%';
+
+      // La dernière étape reste ouverte : c'est la relecture humaine,
+      // et la laisser cochée dirait que l'IA a signé le courrier.
+      if (n === etapes.length - 1) return;
+
+      setTimeout(function () {
+        e.classList.remove('est-active');
+        e.classList.add('est-faite');
+        e.querySelector('.lx-demo-pastille').innerHTML = ICONE_COCHE;
+        rail.style.height = ((n + 1) / etapes.length * 100) + '%';
+        avancer(n + 1);
+      }, 900 + Math.random() * 500);
+    }
+
+    setTimeout(taper, 350);
+  }
+
+  /* ── 16. Masques à coin coupé ─────────────────────────────── */
+  function masques() {
+    tous('.lx-photo, .trainer-card .masque').forEach(function (el) {
+      el.classList.add('lx-masque');
+    });
+  }
+
   /* ── Mise en route ────────────────────────────────────────── */
   function demarrer() {
     // Ces deux-là servent aussi sans animation : l'un remplace une
@@ -615,6 +749,8 @@
     boutonsRipple();
     survols();
     structure();
+    demoVivante();
+    masques();
     defilementSatine();
 
     if (reduit) {
@@ -622,6 +758,8 @@
       tous('.lx-photo').forEach(function (f) { f.classList.add('lx-photo-on'); });
       tous('.lx-liste').forEach(function (l) { l.classList.add('lx-liste-on'); });
       tous('.lx-etape').forEach(function (e) { e.classList.add('lx-etape-on'); });
+      demoVivante();
+      masques();
       var fr = document.querySelector('.lx-frise');
       if (fr) fr.style.setProperty('--lx-frise-avance', '100%');
       return;

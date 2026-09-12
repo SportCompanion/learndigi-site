@@ -449,14 +449,20 @@
    devient un bloc de même hauteur que le texte, séparé par un
    filet, avec une flèche : le bouton se lit comme un objet
    unique au lieu de deux morceaux collés.                      */
+/* La hauteur est portée par le bouton lui-même et non par le
+   remplissage vertical du libellé : en passant ce dernier à
+   « 0 24px » pour centrer le texte, le bouton s'écrasait à la
+   hauteur d'une ligne, soit 21 pixels. */
 .btn-duo{
   align-items:stretch;border-radius:0;overflow:hidden;
+  min-height:52px;
 }
+/* Le carré garde la couleur que Codex lui a donnée : la teinter
+   en sombre le détachait du libellé et le bouton redevenait deux
+   morceaux collés, ce qu'on cherchait justement à corriger. */
 .btn-duo .btn-plus{
   display:flex;align-items:center;justify-content:center;
-  width:52px;font-size:0;
-  border-left:1px solid rgba(255,255,255,.28);
-  background:rgba(0,0,0,.14);
+  width:52px;font-size:0;flex:none;
 }
 .btn-duo .btn-plus::after{
   content:'';display:block;width:9px;height:9px;
@@ -465,7 +471,8 @@
   transition:transform .22s var(--lx-ease);
 }
 .btn-duo:hover .btn-plus::after{transform:rotate(45deg) translate(1px,-1px)}
-.btn-duo .btn-label{padding:0 24px;display:flex;align-items:center}
+.btn-duo .btn-label{padding:0 24px;display:flex;align-items:center;white-space:nowrap}
+.btn-duo .lx-swap,.btn-duo .lx-swap > span{white-space:nowrap}
 
 @media (prefers-reduced-motion: reduce){
   .lx-etape::after{transition:none}
@@ -629,4 +636,145 @@ html.lenis,html.lenis body{height:auto}
 @media (prefers-reduced-motion: reduce){
   .lx-reel-track{animation:none}
   .lx-overlap{margin-top:0;border-radius:0}
+}
+
+/* ============================================================
+   LA DÉMO VIVANTE, 12/09/2026
+   ------------------------------------------------------------
+   Analyse d'OPTIGEN et de Cuberto : ce qui les fait échapper au
+   gabarit n'est ni leur police ni leurs transitions, c'est qu'ils
+   montrent leur produit en train de fonctionner. OPTIGEN a une
+   carte animée où des logos d'outils gravitent pendant qu'une
+   instruction se tape et que des étapes se cochent. Aucun
+   générateur de site ne produit ça, parce qu'il faut connaître le
+   métier pour l'écrire.
+
+   La nôtre montre ce qu'un courtier fait vraiment : une relance
+   d'échéance rédigée à partir d'un contrat. Elle remplace la
+   liste « Votre boîte à outils métier », qui était quatre lignes
+   de texte dans un cadre.
+   ============================================================ */
+
+.lx-demo{
+  position:relative;
+  padding:34px 22px 8px;
+  font-family:var(--lx-sans);
+}
+.lx-demo-carte{
+  position:relative;z-index:2;
+  background:#fff;border:1px solid var(--lx-line);
+  border-radius:16px;padding:20px 22px 18px;
+  box-shadow:0 26px 60px -34px rgba(10,14,36,.42);
+}
+
+/* ── Les logos qui gravitent ────────────────────────────────
+   Ils flottent en permanence avec des retards différents, ce qui
+   évite l'effet mécanique d'une animation synchrone.           */
+.lx-demo-orbe{
+  position:absolute;z-index:3;
+  width:42px;height:42px;border-radius:11px;
+  background:#fff;border:1px solid var(--lx-line);
+  box-shadow:0 12px 26px -14px rgba(10,14,36,.45);
+  display:grid;place-items:center;
+  opacity:0;transform:translateY(6px);
+  transition:opacity .7s ease,transform .7s var(--lx-ease);
+}
+.lx-demo-orbe img{width:22px;height:22px;object-fit:contain}
+.lx-demo.lx-demo-on .lx-demo-orbe{opacity:1;transform:none;animation:lx-flotte 6s ease-in-out infinite}
+.lx-demo-orbe:nth-of-type(1){left:-6px;top:16%}
+.lx-demo-orbe:nth-of-type(2){right:-8px;top:6%;animation-delay:-1.5s;transition-delay:.1s}
+.lx-demo-orbe:nth-of-type(3){right:-10px;top:54%;animation-delay:-3s;transition-delay:.2s}
+.lx-demo-orbe:nth-of-type(4){left:-10px;bottom:16%;animation-delay:-2.2s;transition-delay:.3s}
+@keyframes lx-flotte{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+/* ── En-tête du dossier ─────────────────────────────────────*/
+.lx-demo-tete{display:flex;align-items:center;gap:11px;padding-bottom:13px;border-bottom:1px solid var(--lx-line)}
+.lx-demo-av{
+  flex:none;width:34px;height:34px;border-radius:50%;
+  background:linear-gradient(135deg,var(--lx-navy),#4A7FD4);
+  color:#fff;display:grid;place-items:center;
+  font-size:12px;font-weight:600;letter-spacing:.02em;
+}
+.lx-demo-tete b{display:block;font-size:14px;font-weight:600;color:var(--lx-navy);line-height:1.3}
+.lx-demo-tete span{display:block;font-size:12px;color:#7A7F8E;line-height:1.4}
+
+/* ── Étiquettes du dossier ──────────────────────────────────*/
+.lx-demo-etiq{display:flex;flex-wrap:wrap;gap:6px;margin:13px 0 0}
+.lx-demo-etiq i{
+  font-style:normal;font-size:11.5px;font-weight:600;
+  padding:4px 9px;border-radius:99px;
+  background:#EFF1F4;color:#5A6070;
+  opacity:0;transform:translateY(4px);
+  transition:opacity .4s ease,transform .45s var(--lx-ease);
+}
+.lx-demo-on .lx-demo-etiq i{opacity:1;transform:none}
+.lx-demo-etiq i:nth-child(2){transition-delay:.08s}
+.lx-demo-etiq i:nth-child(3){transition-delay:.16s}
+
+/* ── L'instruction qui se tape ──────────────────────────────*/
+.lx-demo-prompt{
+  display:flex;align-items:flex-start;gap:9px;
+  margin:14px 0 0;padding:11px 13px;
+  background:#FCFBF8;border:1px dashed var(--lx-gold);
+  border-radius:9px;
+  font-size:13px;line-height:1.5;color:#444;min-height:58px;
+}
+.lx-demo-prompt svg{flex:none;width:14px;height:14px;margin-top:3px;color:var(--lx-gold)}
+.lx-demo-curseur{
+  display:inline-block;width:2px;height:1em;
+  background:var(--lx-navy);vertical-align:-2px;margin-left:1px;
+  animation:lx-clign 1s step-end infinite;
+}
+@keyframes lx-clign{50%{opacity:0}}
+
+/* ── Les étapes qui se cochent ──────────────────────────────
+   Un rail vertical se remplit derrière les pastilles. C'est lui
+   qui donne la sensation de traitement en cours plutôt que
+   d'une liste qui s'affiche.                                  */
+.lx-demo-etapes{position:relative;list-style:none;margin:15px 0 0;padding:0}
+.lx-demo-rail{position:absolute;left:13px;top:16px;bottom:16px;width:2px;background:var(--lx-line);border-radius:2px;overflow:hidden}
+.lx-demo-rail i{display:block;width:100%;height:0;background:linear-gradient(180deg,var(--lx-gold),var(--lx-red));transition:height .6s var(--lx-ease)}
+.lx-demo-etape{
+  position:relative;display:flex;align-items:center;gap:11px;
+  padding:6px 0;opacity:.4;transition:opacity .4s ease;
+  font-size:13px;line-height:1.4;color:#444;
+}
+.lx-demo-etape.est-faite,.lx-demo-etape.est-active{opacity:1}
+.lx-demo-pastille{
+  position:relative;z-index:1;flex:none;
+  width:28px;height:28px;border-radius:50%;
+  background:#fff;border:1px solid var(--lx-line);
+  display:grid;place-items:center;color:#9AA0B0;
+  transition:border-color .4s,color .4s,background .4s;
+}
+.lx-demo-pastille svg{width:13px;height:13px}
+.est-active .lx-demo-pastille{border-color:var(--lx-gold);color:var(--lx-gold)}
+.est-faite .lx-demo-pastille{border-color:var(--lx-gold);background:var(--lx-gold);color:#fff}
+.lx-demo-etape em{font-style:normal;margin-left:auto;font-size:11px;color:#9AA0B0;white-space:nowrap}
+
+.lx-demo-note{margin:14px 0 0;font-size:11.5px;line-height:1.5;color:#8A8F9C;text-align:center}
+
+@media (max-width:620px){
+  .lx-demo{padding:30px 6px 4px}
+  .lx-demo-orbe{width:36px;height:36px}
+  .lx-demo-orbe:nth-of-type(2),.lx-demo-orbe:nth-of-type(4){display:none}
+}
+
+/* ── Le masque à coin coupé ─────────────────────────────────
+   Repris d'OPTIGEN. Un coin retiré en haut à droite : c'est un
+   marqueur d'identité qui ne coûte rien et qu'on reconnaît d'une
+   page à l'autre.                                             */
+.lx-masque{
+  clip-path:polygon(0 0, calc(100% - 56px) 0, 100% 56px, 100% 100%, 0 100%);
+}
+@media (max-width:760px){
+  .lx-masque{clip-path:polygon(0 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 0 100%)}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .lx-demo-orbe{opacity:1 !important;transform:none !important;animation:none !important}
+  .lx-demo-etiq i{opacity:1;transform:none}
+  .lx-demo-etape{opacity:1}
+  .lx-demo-curseur{animation:none;opacity:0}
+  .lx-demo-rail i{height:100% !important;transition:none}
 }
