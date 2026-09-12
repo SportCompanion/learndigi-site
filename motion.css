@@ -371,3 +371,103 @@
 }
 /* Sur le panneau tarif, qui est sombre, le filet doit rester lisible. */
 .tarif-crit.lx-liste li::before{background:var(--lx-gold)}
+
+/* ============================================================
+   REPRISE 2, 12/09/2026
+   ------------------------------------------------------------
+   « ça fait juste un trait qui tient dans des trucs ». Le
+   reproche est juste : une hairline continue avec quatre petits
+   ronds dessus, c'est un schéma, pas une mise en page. On retire
+   le fil et les pastilles. À la place, un grand chiffre en
+   graisse légère, et un filet épais au-dessus de chaque colonne
+   qui se remplit quand l'étape entre dans l'écran. Le rythme
+   vient de la typographie, pas d'un décor.
+   ============================================================ */
+
+.lx-frise{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:0;margin:52px 0 0;padding:0;list-style:none;position:static;
+}
+.lx-frise::before,.lx-frise::after{content:none}
+
+.lx-etape{
+  position:relative;padding:26px 30px 8px 0;
+}
+.lx-etape + .lx-etape{padding-left:30px}
+/* Le filet de tête : gris au repos, il se remplit d'or au passage.
+   C'est le seul mouvement du bloc, et il suffit à dire la suite. */
+.lx-etape::before{
+  content:'';position:absolute;top:0;left:0;right:30px;height:3px;
+  background:var(--lx-line);
+}
+.lx-etape::after{
+  content:'';position:absolute;top:0;left:0;height:3px;width:0;
+  background:linear-gradient(90deg,var(--lx-gold),var(--lx-red));
+  transition:width .75s var(--lx-ease);
+}
+.lx-etape-on::after{width:calc(100% - 30px)}
+.lx-etape + .lx-etape::before{left:30px}
+.lx-etape + .lx-etape::after{left:30px}
+.lx-etape + .lx-etape.lx-etape-on::after{width:calc(100% - 60px)}
+
+.lx-etape-num{
+  position:static;display:block;
+  width:auto;height:auto;border:none;background:none;border-radius:0;
+  font-size:52px;line-height:1;font-weight:400;
+  color:#C3C9D8;letter-spacing:-.03em;
+  margin:0 0 18px;
+  transition:color .6s ease;
+}
+.lx-etape-on .lx-etape-num{color:var(--lx-gold);transform:none}
+.lx-etape h3{margin:0 0 10px;font-size:19px;line-height:1.25}
+.lx-etape p{font-size:15px;line-height:1.6;color:#5A6070;margin:0}
+
+@media (max-width:860px){
+  .lx-frise{grid-template-columns:1fr;padding-left:0}
+  .lx-etape,.lx-etape + .lx-etape{padding:22px 0 26px}
+  .lx-etape::before{right:0}
+  .lx-etape + .lx-etape::before,.lx-etape + .lx-etape::after{left:0}
+  .lx-etape-on::after,.lx-etape + .lx-etape.lx-etape-on::after{width:100%}
+  .lx-etape-num{font-size:40px;margin-bottom:12px}
+}
+
+/* ── Bloc tarif ─────────────────────────────────────────────
+   Le libellé était posé à même la photo et les tirets des
+   critères venaient buter dessus. On décolle l'un de l'autre :
+   la photo garde sa place, le libellé reprend sa ligne.        */
+.tarif-media .lx-photo{margin:0 0 26px}
+.tarif-media .tarif-panel-eb{display:block;margin:0 0 18px}
+.tarif-crit.lx-liste li{padding-left:0;padding-top:2px}
+.tarif-crit.lx-liste li::before{
+  position:static;display:block;
+  width:22px;height:2px;margin:0 0 9px;
+  background:var(--lx-gold);
+}
+
+/* ── Bouton ─────────────────────────────────────────────────
+   Le petit carré « + » accolé au libellé faisait bricolage. Il
+   devient un bloc de même hauteur que le texte, séparé par un
+   filet, avec une flèche : le bouton se lit comme un objet
+   unique au lieu de deux morceaux collés.                      */
+.btn-duo{
+  align-items:stretch;border-radius:0;overflow:hidden;
+}
+.btn-duo .btn-plus{
+  display:flex;align-items:center;justify-content:center;
+  width:52px;font-size:0;
+  border-left:1px solid rgba(255,255,255,.28);
+  background:rgba(0,0,0,.14);
+}
+.btn-duo .btn-plus::after{
+  content:'';display:block;width:9px;height:9px;
+  border-top:2px solid currentColor;border-right:2px solid currentColor;
+  transform:rotate(45deg) translate(-1px,1px);
+  transition:transform .22s var(--lx-ease);
+}
+.btn-duo:hover .btn-plus::after{transform:rotate(45deg) translate(1px,-1px)}
+.btn-duo .btn-label{padding:0 24px;display:flex;align-items:center}
+
+@media (prefers-reduced-motion: reduce){
+  .lx-etape::after{transition:none}
+  .btn-duo .btn-plus::after{transition:none}
+}

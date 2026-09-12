@@ -1,0 +1,154 @@
+/* ============================================================
+   type.css, système typographique du site Learndigi
+   ------------------------------------------------------------
+   Figtree pour le texte, Noto Serif italique pour l'accent.
+   Les deux sont sous licence SIL Open Font, donc libres y
+   compris en usage commercial, et hébergées chez nous : aucune
+   requête vers Google Fonts, rien à déclarer côté cookies.
+
+   Pourquoi ce changement. Le site était en Raleway 900 pour les
+   titres et Open Sans pour le texte. Deux polices Google parmi
+   les plus utilisées du web, posées dans leurs graisses les plus
+   lourdes : c'est la combinaison qu'on retrouve sur la moitié
+   des gabarits, et c'est une grande part de l'effet « fait par
+   une machine ». Le remède n'est pas d'ajouter des effets, c'est
+   de descendre en graisse. Un titre large en 400, interligne
+   serré et chasse légèrement resserrée se lit comme une page de
+   magazine ; le même titre en 900 se lit comme une bannière.
+
+   Ce fichier est chargé après le style en ligne des pages, il
+   remplace donc les déclarations existantes sans qu'on ait à
+   toucher au CSS de Codex.
+   ============================================================ */
+
+/* ── Figtree ────────────────────────────────────────────────── */
+@font-face{font-family:'Figtree';font-style:normal;font-weight:400;font-display:swap;
+  src:url(assets/fonts/figtree-400-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:400;font-display:swap;
+  src:url(assets/fonts/figtree-400-latin-ext.woff2) format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:500;font-display:swap;
+  src:url(assets/fonts/figtree-500-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:500;font-display:swap;
+  src:url(assets/fonts/figtree-500-latin-ext.woff2) format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:600;font-display:swap;
+  src:url(assets/fonts/figtree-600-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:600;font-display:swap;
+  src:url(assets/fonts/figtree-600-latin-ext.woff2) format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:700;font-display:swap;
+  src:url(assets/fonts/figtree-700-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:700;font-display:swap;
+  src:url(assets/fonts/figtree-700-latin-ext.woff2) format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+
+/* ── Noto Serif, uniquement en italique et pour l'accent ───── */
+@font-face{font-family:'Noto Serif';font-style:italic;font-weight:400;font-display:swap;
+  src:url(assets/fonts/notoserif-400-italic-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Noto Serif';font-style:italic;font-weight:400;font-display:swap;
+  src:url(assets/fonts/notoserif-400-italic-latin-ext.woff2) format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+
+/* ── Remplacement des deux anciennes familles ───────────────
+   Toutes les règles des pages nomment 'Raleway' ou 'Open Sans'.
+   Plutôt que de les réécrire une par une dans dix fichiers, on
+   redirige les deux noms vers Figtree. La déclaration reste donc
+   valable où qu'elle soit écrite.                              */
+:root{
+  --lx-sans:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --lx-serif:'Noto Serif',Georgia,'Times New Roman',serif;
+}
+/* La substitution passe par !important, et c'est assumé. Les
+   pages déclarent 'Raleway' sur des classes (.hero-title, etc.)
+   qui l'emportent sur tout sélecteur d'élément. Sans ce forçage,
+   le navigateur cherchait Raleway, ne le trouvait plus puisque
+   Google Fonts a été retiré, et retombait sur la police système :
+   le titre changeait donc d'allure selon le Mac ou le PC du
+   visiteur. La règle serif qui suit reprend la main sur l'accent. */
+body,body *{font-family:var(--lx-sans) !important}
+.serif,.serif *{font-family:var(--lx-serif) !important}
+code,kbd,pre,samp,.ld-type,.m-prompt{font-family:ui-monospace,SFMono-Regular,Menlo,monospace !important}
+
+/* ── Échelle ────────────────────────────────────────────────
+   Les titres descendent de 900 à 400. C'est le seul changement
+   qui compte vraiment : une grande taille en graisse légère,
+   interligne serré, chasse resserrée.                         */
+body{font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+
+h1,.hero-title,.h-hero{
+  font-weight:400 !important;
+  letter-spacing:-.018em;
+  line-height:1.04;
+}
+.hero-title{
+  font-size:clamp(38px,5.1vw,72px) !important;
+  letter-spacing:-.02em !important;
+  text-shadow:none;
+}
+h2{
+  font-weight:400 !important;
+  font-size:clamp(30px,3.4vw,50px);
+  line-height:1.07;
+  letter-spacing:-.012em;
+}
+h3{
+  font-weight:500 !important;
+  font-size:clamp(19px,1.9vw,27px);
+  line-height:1.2;
+  letter-spacing:-.006em;
+}
+h4,h5{font-weight:500}
+
+/* Le paragraphe d'accroche gagne de l'air : en Figtree, une
+   interligne de 1,85 donnait un texte qui flottait. */
+.hero-sub{font-size:clamp(16px,1.25vw,19px) !important;line-height:1.6 !important;font-weight:400 !important}
+
+/* ── Surtitres ──────────────────────────────────────────────
+   10 pixels en graisse 800 avec 3 pixels d'interlettrage, c'était
+   illisible et daté. On passe à 13 pixels en 600, chasse en em
+   pour qu'elle suive la taille.                                */
+.section-kicker,.overline,.eyebrow,.eb,.hero-label,.tarif-kicker,
+.video-eyebrow,.deliverable-kicker,.prog-visual-eb,.tarif-panel-eb,
+.nav-programme-eyebrow,.lx-photo figcaption{
+  font-family:var(--lx-sans) !important;
+  font-size:13px !important;
+  font-weight:600 !important;
+  letter-spacing:.14em !important;
+  text-transform:uppercase;
+  line-height:1.5;
+}
+
+/* ── L'accent en serif italique ─────────────────────────────
+   Un seul mot par titre, jamais deux. C'est ce contraste entre
+   une sans très neutre et une serif italique qui donne le ton
+   éditorial, et il ne fonctionne que s'il reste rare.          */
+.serif{
+  font-family:var(--lx-serif) !important;
+  font-style:italic;
+  font-weight:400 !important;
+  letter-spacing:-.005em;
+}
+
+/* ── Chiffres ───────────────────────────────────────────────*/
+.vstat strong,.kpi,.lx-faits b,.lx-etape-num,.prog-num,.context-number{
+  font-variant-numeric:tabular-nums;
+  font-weight:500 !important;
+  letter-spacing:-.02em;
+}
+
+/* ── Boutons ────────────────────────────────────────────────*/
+.hero-btn-primary,.btn-label,.btn-duo,.btn-sec,.cta-btn,.nl-btn,.btn{
+  font-family:var(--lx-sans) !important;
+  font-weight:600 !important;
+  letter-spacing:.02em !important;
+  text-transform:none !important;
+}
+
+/* ── Navigation ─────────────────────────────────────────────*/
+.nav-links a,.nav-programme-toggle{font-weight:500 !important;letter-spacing:0 !important}
