@@ -1154,11 +1154,99 @@
     }, 0.55);
   }
 
+
+  /* ── 23. Le hero : un contrat qu'on dépouille ──────────────
+     Le contenu est un vrai extrait de contrat professionnel,
+     sur un cabinet fictif. Les trois clauses surlignées sont
+     celles qu'un courtier cherche en priorité : la franchise,
+     une exclusion, le préavis. La synthèse dit ce qu'il en fait.
+
+     Rien n'est inventé sur Learndigi : ce sont des clauses
+     standard de multirisque professionnelle. Un prospect
+     courtier les reconnaîtra, et c'est tout l'intérêt.        */
+  var DOC = {
+    titre: 'Multirisque professionnelle',
+    ref: 'Réf. MRP-2024-118',
+    blocs: [
+      { art: 'Article 4 · Garanties accordées', barres: [86, 62] },
+      { cle: 'Franchise de <b>1 500 €</b> par sinistre, portée à 3 000 € sur les dommages électriques.' },
+      { art: 'Article 7 · Exclusions', barres: [78] },
+      { cle: 'Sont exclus les dommages résultant d\'un <b>défaut d\'entretien</b> caractérisé.' },
+      { art: 'Article 12 · Durée et reconduction', barres: [70, 54] },
+      { cle: 'Résiliation à échéance sous réserve d\'un <b>préavis de deux mois</b>.' }
+    ],
+    synthese: [
+      'La franchise a doublé depuis l\'avenant de mars, à signaler.',
+      'L\'exclusion pour défaut d\'entretien mérite un point avec le client.',
+      'Préavis de deux mois : la fenêtre se ferme le 31 octobre.'
+    ]
+  };
+
+  function heroDocument() {
+    var hero = document.querySelector('.hero');
+    var inner = hero && hero.querySelector('.hero-inner');
+    if (!hero || !inner || hero.dataset.lxHero) return;
+    hero.dataset.lxHero = '1';
+    hero.classList.add('lx-hero-clair');
+    // Le hero n'a plus d'image agrandie à contenir : la découpe
+    // posée pour la parallaxe n'a plus lieu d'être, et elle
+    // rognerait l'ombre portée de la feuille.
+    hero.classList.remove('lx-clip');
+
+    var d = document.createElement('div');
+    d.className = 'lx-doc';
+    d.setAttribute('role', 'img');
+    d.setAttribute('aria-label',
+      'Illustration animée : un contrat multirisque professionnelle dont trois clauses sont ' +
+      'repérées, franchise, exclusion et préavis, puis résumées en trois points à signaler au ' +
+      'client. Contrat fictif.');
+
+    var html = '<div class="lx-doc-papier">';
+    html += '<div class="lx-doc-tete"><b>' + DOC.titre + '</b><span>' + DOC.ref + '</span></div>';
+    DOC.blocs.forEach(function (b) {
+      if (b.art) {
+        html += '<div class="lx-doc-art">' + b.art + '</div>';
+        (b.barres || []).forEach(function (w) {
+          html += '<div class="lx-doc-ligne"><i style="width:' + w + '%"></i></div>';
+        });
+      } else {
+        html += '<span class="lx-doc-cle"><span>' + b.cle + '</span></span>';
+      }
+    });
+    html += '<div class="lx-doc-synth"><div><b>Trois points à signaler</b><ul>';
+    DOC.synthese.forEach(function (l) { html += '<li>' + l + '</li>'; });
+    html += '</ul></div></div>';
+    html += '</div><p class="lx-doc-note">Illustration animée, contrat fictif.</p>';
+    d.innerHTML = html;
+    inner.appendChild(d);
+
+    if (reduit) {
+      d.classList.add('lx-doc-on', 'lx-doc-synth-on');
+      tous('.lx-doc-cle', d).forEach(function (c) { c.classList.add('est-vu'); });
+      return;
+    }
+
+    // Le hero est visible au chargement : la séquence part d'une
+    // temporisation plutôt que d'un observateur, sinon elle
+    // démarre avant que la page ait fini de se poser.
+    setTimeout(function () {
+      d.classList.add('lx-doc-on');
+      var cles = tous('.lx-doc-cle', d);
+      cles.forEach(function (c, i) {
+        setTimeout(function () { c.classList.add('est-vu'); }, 700 + i * 620);
+      });
+      setTimeout(function () {
+        d.classList.add('lx-doc-synth-on');
+      }, 700 + cles.length * 620 + 260);
+    }, 420);
+  }
+
   /* ── Mise en route ────────────────────────────────────────── */
   function demarrer() {
     // Ces deux-là servent aussi sans animation : l'un remplace une
     // grille par une liste plus complète, l'autre rend la barre
     // lisible. Ils tournent donc dans tous les cas.
+    heroDocument();
     bandeauOutils();
     toucher();
     boutonsRipple();
@@ -1192,7 +1280,6 @@
 
     progression();
     navigation();
-    parallaxe();
     frise();
     visuels();
     phrasesAnimees([

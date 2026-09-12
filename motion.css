@@ -1199,3 +1199,170 @@ html.lenis,html.lenis body{height:auto}
    dans une carte qui en compte déjà beaucoup.                 */
 .lx-demo-av{display:none}
 .lx-demo-tete{gap:0}
+
+/* ============================================================
+   LE HERO, 12/09/2026
+   ------------------------------------------------------------
+   Le fond bleu nuit avec ses barres lumineuses et sa flèche
+   orange était le visuel « croissance corporate » le plus
+   répandu du web, et visiblement généré : les volumes n'ont pas
+   de géométrie cohérente et les reflets ne suivent aucune source
+   de lumière. Pour un organisme qui apprend aux courtiers à user
+   de l'IA honnêtement, ouvrir là-dessus était une contradiction.
+
+   À sa place : du clair, une grande typographie légère, et à
+   droite un contrat qu'on dépouille. C'est le geste que fait un
+   courtier tous les jours, et aucun générateur ne l'invente.
+   ============================================================ */
+
+.lx-hero-clair .hero-bg,
+.lx-hero-clair .hero-ov{display:none !important}
+.lx-hero-clair{
+  background:linear-gradient(180deg,#FCFBF8 0%,var(--lx-paper,#F2F4F8) 100%) !important;
+  min-height:auto !important;
+}
+.lx-hero-clair .hero-inner{
+  display:grid !important;
+  grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);
+  gap:clamp(36px,4.4vw,72px);
+  align-items:center;
+  padding-top:clamp(56px,6vw,92px) !important;
+  padding-bottom:clamp(56px,6vw,92px) !important;
+}
+.lx-hero-clair .hero-content{max-width:none}
+.lx-hero-clair .hero-title{color:var(--lx-navy) !important;text-shadow:none !important}
+.lx-hero-clair .hero-label{color:var(--lx-red) !important}
+.lx-hero-clair .hero-sub{color:#4A5163 !important}
+.lx-hero-clair .hero-list li{color:#4A5163 !important}
+.lx-hero-clair .hero-list li svg{stroke:var(--lx-gold)}
+.lx-hero-clair .hero-bar{background:var(--lx-gold) !important}
+.lx-hero-clair .hero-btn-link,
+.lx-hero-clair .hero-btn-link *{color:var(--lx-navy) !important}
+.lx-hero-clair .hero-scroll{display:none !important}
+@media (max-width:900px){
+  .lx-hero-clair .hero-inner{grid-template-columns:1fr}
+}
+
+/* ── La feuille ─────────────────────────────────────────────*/
+.lx-doc{position:relative;width:100%}
+.lx-doc-papier{
+  position:relative;background:#fff;
+  border:1px solid var(--lx-line);
+  box-shadow:0 34px 80px -40px rgba(10,14,36,.36);
+  padding:clamp(22px,2.4vw,30px) clamp(22px,2.6vw,34px) clamp(26px,2.8vw,34px);
+  clip-path:polygon(0 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 0 100%);
+  opacity:0;transform:translateY(14px);
+  transition:opacity .7s ease,transform .8s var(--lx-ease);
+}
+.lx-doc-on .lx-doc-papier{opacity:1;transform:none}
+
+.lx-doc-tete{
+  display:flex;align-items:baseline;justify-content:space-between;
+  gap:14px;padding-bottom:13px;margin-bottom:16px;
+  border-bottom:1px solid var(--lx-line);
+}
+.lx-doc-tete b{
+  font-size:13.5px;font-weight:600;color:var(--lx-navy);
+  letter-spacing:-.01em;line-height:1.35;
+}
+.lx-doc-tete span{
+  flex:none;font-size:10.5px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:#9AA0B0;font-variant-numeric:tabular-nums;
+}
+
+/* ── Les lignes du contrat ──────────────────────────────────
+   Les lignes secondaires sont des barres grises : lisibles comme
+   du texte sans en être, elles n'appellent pas la lecture et
+   laissent toute la place aux trois clauses qui comptent.     */
+.lx-doc-ligne{display:flex;align-items:center;gap:9px;padding:5px 0}
+.lx-doc-ligne i{
+  display:block;height:7px;border-radius:3px;
+  background:#E7EAF1;flex:none;
+}
+.lx-doc-art{
+  font-size:10.5px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:#B0B6C4;padding:11px 0 3px;
+}
+.lx-doc-cle{
+  position:relative;display:block;
+  margin:3px -8px;padding:7px 8px;border-radius:5px;
+  font-size:13px;line-height:1.5;color:#3A4152;
+}
+.lx-doc-cle::before{
+  content:'';position:absolute;inset:0;border-radius:5px;
+  background:rgba(232,146,26,.16);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .5s var(--lx-ease);
+}
+.lx-doc-cle.est-vu::before{transform:scaleX(1)}
+.lx-doc-cle span{position:relative;z-index:1}
+.lx-doc-cle b{font-weight:600;color:var(--lx-navy)}
+
+/* ── La synthèse ────────────────────────────────────────────*/
+.lx-doc-synth{
+  margin-top:18px;padding-top:16px;border-top:1px solid var(--lx-line);
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .7s var(--lx-ease);
+}
+.lx-doc-synth > div{overflow:hidden;min-height:0}
+.lx-doc-synth-on .lx-doc-synth{grid-template-rows:1fr}
+.lx-doc-synth b{
+  display:block;font-size:10.5px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--lx-gold);margin-bottom:11px;
+}
+.lx-doc-synth ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.lx-doc-synth li{
+  position:relative;padding-left:20px;
+  font-size:13px;line-height:1.5;color:#3A4152;
+  opacity:0;transform:translateY(5px);
+  transition:opacity .45s ease,transform .5s var(--lx-ease);
+}
+.lx-doc-synth li::before{
+  content:'';position:absolute;left:0;top:.62em;
+  width:11px;height:2px;background:var(--lx-gold);
+}
+.lx-doc-synth-on .lx-doc-synth li{opacity:1;transform:none}
+.lx-doc-synth-on .lx-doc-synth li:nth-child(2){transition-delay:.11s}
+.lx-doc-synth-on .lx-doc-synth li:nth-child(3){transition-delay:.22s}
+
+.lx-doc-note{
+  margin:12px 0 0;text-align:center;
+  font-size:11px;color:#9AA0B0;
+}
+
+/* ── Sur téléphone ──────────────────────────────────────────
+   En colonne unique, le texte et la feuille s'empilent : mesuré
+   à 375 px, le hero atteignait 1 286 px, soit un écran et demi
+   avant d'arriver à la suite du site. La feuille se resserre
+   donc partout où c'est indolore, marges, interlignes, hauteur
+   des barres, sans rien retirer de ce qui porte le propos, les
+   trois clauses et la synthèse.                                */
+@media (max-width:760px){
+  .lx-hero-clair .hero-inner{
+    padding-top:clamp(30px,6vw,52px) !important;
+    padding-bottom:clamp(30px,6vw,52px) !important;
+    gap:30px;
+  }
+  .lx-doc-papier{
+    padding:18px 18px 22px;
+    clip-path:polygon(0 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 0 100%);
+    box-shadow:0 22px 52px -32px rgba(10,14,36,.34);
+  }
+  .lx-doc-tete{padding-bottom:11px;margin-bottom:13px}
+  .lx-doc-art{padding:8px 0 2px;font-size:10px}
+  .lx-doc-ligne{padding:3px 0}
+  .lx-doc-ligne i{height:6px}
+  .lx-doc-cle{font-size:12.5px;padding:6px 8px;margin:2px -8px}
+  .lx-doc-synth{margin-top:14px;padding-top:13px}
+  .lx-doc-synth b{margin-bottom:9px}
+  .lx-doc-synth ul{gap:8px}
+  .lx-doc-synth li{font-size:12.5px}
+  .lx-doc-note{margin-top:10px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .lx-doc-papier{opacity:1;transform:none}
+  .lx-doc-cle::before{transform:scaleX(1)}
+  .lx-doc-synth{grid-template-rows:1fr}
+  .lx-doc-synth li{opacity:1;transform:none}
+}
