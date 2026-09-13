@@ -53,6 +53,8 @@ Outils travaillés : Claude, ChatGPT, Microsoft Copilot, Mistral AI, Microsoft 3
 - [Veille IA métier](https://learndigi.fr/veille-ia) : suivi ciblé des outils, des usages du courtage et du cadre réglementaire
 - [Claude Code et Codex](https://learndigi.fr/claude-code-codex) : accompagnement à la création d'outils internes sur mesure et de prototypes maîtrisés
 - [Newsletter « L'IA du courtier »](https://learndigi.fr/newsletter) : chaque lundi, réglementation, outils et un prompt à tester, pour les cabinets de courtage. Toutes les éditions y sont lisibles en ligne.
+- [Édition du 7 septembre 2026](https://learndigi.fr/newsletters/2026-09-07) : consultation ACPR, calendrier de l'AI Act, nouveautés des assistants IA et prompt métier pour les courtiers.
+- [Qualité et accessibilité](https://learndigi.fr/qualite-accessibilite) : accueil des personnes en situation de handicap, référent handicap, indicateurs de résultats et procédure de réclamation.
 
 ## Contact
 

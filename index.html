@@ -24,8 +24,8 @@
   <meta property="og:image" content="https://learndigi.fr/og-image.jpg"/>
   <meta property="og:image:secure_url" content="https://learndigi.fr/og-image.jpg"/>
   <meta property="og:image:type" content="image/jpeg"/>
-  <meta property="og:image:width" content="1672"/>
-  <meta property="og:image:height" content="941"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
   <meta property="og:image:alt" content="Learndigi, formation IA pour courtiers en assurance"/>
   <meta property="og:locale" content="fr_FR"/>
   <meta property="og:site_name" content="Learndigi"/>
@@ -193,6 +193,19 @@
         "description": "Formation, audit, veille et création d'outils IA pour les courtiers en assurance.",
         "inLanguage": "fr-FR",
         "publisher": { "@id": "https://learndigi.fr/#organization" }
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://learndigi.fr/#course-list",
+        "name": "Formations IA Learndigi pour courtiers en assurance",
+        "itemListOrder": "https://schema.org/ItemListOrderAscending",
+        "numberOfItems": 4,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "url": "https://learndigi.fr/programme" },
+          { "@type": "ListItem", "position": 2, "url": "https://learndigi.fr/formation-outil-ia" },
+          { "@type": "ListItem", "position": 3, "url": "https://learndigi.fr/prospection-ia" },
+          { "@type": "ListItem", "position": 4, "url": "https://learndigi.fr/formation-individuelle" }
+        ]
       },
       {
         "@type": ["WebPage", "FAQPage"],
@@ -951,6 +964,12 @@
       font-size:11px;color:rgba(255,255,255,.25);
       margin-top:12px;line-height:1.6;
     }
+    .newsletter-archive-link{
+      display:inline-block;margin-top:16px;
+      font-family:'Raleway',sans-serif;font-size:12px;font-weight:700;
+      color:var(--navy);text-decoration:none;
+    }
+    .newsletter-archive-link:hover{text-decoration:underline}
 
     /* ═══ FOOTER ═══════════════════════════════════════════════════ */
     footer{background:var(--navy-dark);padding:50px 130px 28px}
@@ -2424,6 +2443,8 @@
     <a href="https://cb6dd451.sibforms.com/serve/MUIFAJdt6Le4DiYo_VOKQB19tcawXtJEFgvbLlN2kHcUHCG10VYgoYKwFllwbR-7X4vUc0GUhp_GPQDpX0Cv2WnOMHBwExzlg7Ho0TtsmFfiFL6jX3PtnQZpRwR5mVUEQp265L6PsBg_2703qrFD6YR9WhlzpGynxWYYOfUn7AIUINHwE4_tsinLzjKU_kYp4kswIaEmgCyRPlB6rg==" target="_blank" rel="noopener" class="hero-btn-primary" style="display:inline-block;margin-top:8px;text-decoration:none;">
       S'inscrire à la newsletter
     </a>
+    <br/>
+    <a class="newsletter-archive-link" href="/newsletter">Lire les éditions précédentes →</a>
     <p class="nl-legal" style="margin-top:20px">Aucun spam · Désabonnement en un clic · Données traitées par Brevo (RGPD)</p>
   </div>
 </section>
@@ -2450,6 +2471,7 @@
     dans le Val-de-Marne, et intervenant partout en France.
   </p>
   <div class="flinks">
+    <a href="/newsletter">Newsletter</a>
     <a href="/qualite-accessibilite#handicap">Accessibilité &amp; handicap</a>
     <a href="/qualite-accessibilite#resultats">Indicateurs de résultats</a>
     <a href="/qualite-accessibilite#reclamations">Réclamations</a>
