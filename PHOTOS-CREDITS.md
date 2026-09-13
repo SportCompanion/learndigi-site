@@ -34,6 +34,21 @@ Deux photographies ont été retouchées avant mise en ligne :
   cours du bitcoin, a été écartée : les titres de une étaient lisibles et sans
   rapport avec le sujet.
 
+## Logos des outils
+
+Les logos nomment les outils sur lesquels porte la formation. Ils ne
+signalent pas un partenariat : seul Marvin Systems en est un.
+
+| Fichier | Origine | Traitement |
+|---|---|---|
+| `logo-gemini.svg` | Wikimedia Commons, `Google_Gemini_icon_2025.svg` | aucun, vectoriel tel quel |
+| `logo-chatgpt-app.png` | Wikimedia Commons, `ChatGPT_logo.svg` | symbole rendu depuis le vectoriel, recomposé en blanc sur le vert du site, à 58 % de l'icône |
+| `logo-apollo-app.png` | `logo-apollo.png` du dépôt | symbole extrait de son fond, recentré sur un aplat jaune, à 58 % de l'icône |
+
+Les deux icônes `-app` servent à la scène du hero, où elles remplissent toute
+la pastille. `logo-chatgpt.png` et `logo-apollo.png` restent en place pour le
+bandeau d'outils et les pages d'offre, qui les affichent sur fond blanc.
+
 ## Images générées, retirées du dépôt le 13/09/2026
 
 `hero-fond.jpg`, `formation-presentiel.jpg` et `courtier-bureau.jpg` étaient des

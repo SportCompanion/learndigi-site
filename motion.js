@@ -1174,17 +1174,23 @@
   // Les usages repris de la page : rien n'est promis ici qui ne
   // soit déjà écrit dans la section « Outils abordés ».
   var JETONS = [
-    { logo: 'logo-claude.png',  nom: 'Claude',  x: 16, y: 16, t: 19, z: 66, p: 1,  amp: 6,   v1: .72, v2: .55,
+    // Sept pastilles sur trois rangs : trois modèles en haut, deux
+    // au milieu, les deux outils partenaires en bas, plus petits.
+    // La composition est presque symétrique et laisse le centre
+    // libre : c'est de là que part la rosace de l'ouverture.
+    { logo: 'logo-claude.png',      nom: 'Claude',  x: 13, y: 18, t: 17, z: 66, p: 1, amp: 6,   v1: .72, v2: .55,
       use: 'Synthétiser un contrat, préparer un rendez-vous.' },
-    { logo: 'logo-chatgpt.png', nom: 'ChatGPT', x: 62, y: 15, t: 19, z: 55, p: 1,  amp: 5.5, v1: .61, v2: .78,
+    { logo: 'logo-chatgpt-app.png', nom: 'ChatGPT', x: 50, y: 12, t: 17, plein: true, p: 1, amp: 5.5, v1: .61, v2: .78,
       use: 'Rédiger, relancer, analyser un portefeuille.' },
-    { logo: 'logo-copilot.png', nom: 'Copilot', x: 86, y: 40, t: 19, z: 64, p: 1,  amp: 5.5, v1: .83, v2: .59,
-      use: 'L\'IA dans les outils Microsoft du cabinet.' },
-    { logo: 'logo-mistral.png', nom: 'Mistral', x: 44, y: 50, t: 19, z: 56, p: 1,  amp: 6.5, v1: .5,  v2: .67,
+    { logo: 'logo-gemini.svg',      nom: 'Gemini',  x: 87, y: 18, t: 17, z: 58, p: 1, amp: 5.5, v1: .69, v2: .81,
+      use: 'L\'IA dans Gmail, Docs et Sheets.' },
+    { logo: 'logo-mistral.png',     nom: 'Mistral', x: 33, y: 51, t: 17, z: 56, p: 1, amp: 6,   v1: .5,  v2: .67,
       use: 'Un modèle français, hébergé en Europe.' },
-    { logo: 'logo-marvin.png',  nom: 'Marvin',  x: 14, y: 68, t: 13.5, z: 64, p: .62, amp: 5, v1: .66, v2: .86,
+    { logo: 'logo-copilot.png',     nom: 'Copilot', x: 67, y: 51, t: 17, z: 64, p: 1, amp: 5.5, v1: .83, v2: .59,
+      use: 'L\'IA dans les outils Microsoft du cabinet.' },
+    { logo: 'logo-marvin.png',      nom: 'Marvin',  x: 17, y: 82, t: 12.5, z: 64, p: .62, amp: 5, v1: .66, v2: .86,
       use: 'Notre partenaire : anonymiser avant d\'analyser.' },
-    { logo: 'logo-apollo.png',  nom: 'Apollo',  x: 68, y: 76, t: 13.5, z: 56, p: .74, amp: 5, v1: .77, v2: .5,
+    { logo: 'logo-apollo-app.png',  nom: 'Apollo',  x: 83, y: 82, t: 12.5, plein: true, p: .74, amp: 5, v1: .77, v2: .5,
       use: 'Prospecter et enrichir vos fichiers.' }
   ];
 
@@ -1264,13 +1270,14 @@
       el.style.setProperty('--x', j.x + '%');
       el.style.setProperty('--y', j.y + '%');
       el.style.setProperty('--t', j.t + '%');
-      // Correction optique. Trois de ces logos portent leur propre
-      // fond plein, les trois autres sont dessinés sur du blanc.
-      // À taille égale, les premiers pèsent visiblement plus lourd
-      // et la rangée paraît irrégulière. On les rend donc plus
-      // petits dans leur pastille, jusqu'à ce que les six aient la
-      // même présence.
-      el.style.setProperty('--z', j.z + '%');
+      // Correction optique. Les logos dessinés sur du blanc n'ont
+      // pas tous la même masse : une étoile fine pèse moins qu'un
+      // M plein. Chacun reçoit sa propre échelle dans sa pastille,
+      // jusqu'à ce qu'ils aient tous la même présence.
+      // Les icônes à fond de couleur, elles, ne sont pas réduites :
+      // elles remplissent la pastille entière (voir .lx-jeton--plein).
+      if (j.plein) el.classList.add('lx-jeton--plein');
+      else el.style.setProperty('--z', j.z + '%');
       el.style.setProperty('--p', j.p);
       el.style.setProperty('--i', i);
 

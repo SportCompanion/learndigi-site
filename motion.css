@@ -1442,6 +1442,19 @@ html.lenis,html.lenis body{height:auto}
   object-fit:contain;border-radius:20%;
   user-select:none;-webkit-user-drag:none;
 }
+/* ── Les icônes pleines ────────────────────────────────────
+   ChatGPT et Apollo ont un fond de couleur. Posés au milieu
+   d'une pastille blanche, ils formaient un carré dans un carré,
+   avec une marge blanche inégale sur les quatre côtés : c'est
+   ce qui les faisait paraître mal cadrés. Leur icône a été
+   reconstruite en plein fond, symbole recentré, et elle occupe
+   maintenant toute la pastille, dont elle prend les coins
+   arrondis. L'icône devient la pastille.
+
+   Pas de bordure ni de fond blanc dessous : l'un comme l'autre
+   laisserait un liseré clair le long des courbes.            */
+.lx-jeton--plein .lx-jeton-c{overflow:hidden;border:0;background:transparent}
+.lx-jeton--plein img{width:100%;height:100%;border-radius:0;object-fit:cover}
 .lx-jeton-n{
   display:block;margin-top:10px;text-align:center;
   font-size:11px;font-weight:600;letter-spacing:.09em;
