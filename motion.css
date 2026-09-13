@@ -1135,8 +1135,21 @@ html.lenis,html.lenis body{height:auto}
    plus large et calage haut.                                  */
 .lx-photo img[src*="photo-echange-cabinet"]{object-position:50% 5% !important}
 .lx-photo img[src*="photo-session-travail"]{object-position:50% 62% !important}
+.lx-photo img[src*="photo-formation-salle"]{object-position:50% 40% !important}
+.lx-photo img[src*="photo-participants-notes"]{object-position:52% 46% !important}
 .lx-photo--moyenne{aspect-ratio:16/9}
 .lx-photo img[src*="photo-devis-echange"]{object-position:50% 12% !important}
+
+/* ── Les visuels des pages d'offre ──────────────────────────
+   Le cadre y est vertical, six cent cinquante pixels de haut
+   sur une demi page de large : une photo en 3/2 y est donc
+   rognée sur les côtés, et c'est la position horizontale qui
+   compte. Chaque page cale la sienne sur son sujet.          */
+.visual-cover[src*="photo-audit-documents"]{object-position:42% 50%}
+.visual-cover[src*="photo-prise-en-main"]{object-position:34% 50%}
+.visual-cover[src*="photo-veille-lecture"]{object-position:50% 42%}
+.visual-cover[src*="photo-prospection-donnees"]{object-position:50% 44%}
+.visual-cover[src*="photo-code-ecran"]{object-position:56% 50%}
 .lx-photo figcaption{
   padding:8px 14px;font-size:10.5px;letter-spacing:.16em;
   background:rgba(27,44,107,.92);
