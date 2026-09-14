@@ -488,41 +488,15 @@
   }
 
 
-  /* ── 13. Défilement satiné ──────────────────────────────────
-     Lenis est chargé en différé par les pages. S'il n'est pas là,
-     rien ne casse : le navigateur garde son défilement natif.
-     On ne l'active pas si le visiteur a demandé moins
-     d'animations, ni sur écran tactile, où le défilement à
-     inertie du système est déjà bon et où le remplacer donne une
-     sensation de flottement.                                   */
-  function defilementSatine() {
-    if (reduit) return;
-    if (window.matchMedia('(pointer: coarse)').matches) return;
-    if (typeof window.Lenis !== 'function') return;
-
-    var lenis = new window.Lenis({
-      duration: 1.05,
-      easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
-      smoothWheel: true,
-      wheelMultiplier: 0.95
-    });
-    function boucle(t) { lenis.raf(t); requestAnimationFrame(boucle); }
-    requestAnimationFrame(boucle);
-
-    // Les ancres internes doivent passer par Lenis, sinon le saut
-    // natif et l'inertie se disputent la position.
-    document.addEventListener('click', function (e) {
-      var a = e.target.closest('a[href^="#"]');
-      if (!a) return;
-      var id = a.getAttribute('href');
-      if (!id || id === '#') return;
-      var cible = document.querySelector(id);
-      if (!cible) return;
-      e.preventDefault();
-      lenis.scrollTo(cible, { offset: -80 });
-    });
-    window.__lxLenis = lenis;
-  }
+  /* ── 13. Défilement : celui du navigateur ───────────────────
+     Lenis a été retiré le 14/09/2026. Il réécrivait la position à
+     chaque image alors que la page déclarait scroll-behavior:
+     smooth, et les deux lissages se battaient : mesurée, une
+     rafale de défilement envoyait sa cible 4 459 px plus bas
+     pendant que la page n'avançait que de 173. Un formateur l'a
+     senti tout de suite : ça bloquait, puis ça filait tout en
+     bas. Le défilement natif est fluide partout, on n'y touche
+     plus.                                                      */
 
   /* ── 14. Chevauchement et phrase géante ────────────────────── */
   var REEL = [
@@ -1063,6 +1037,35 @@
       });
     });
 
+    // Même hauteur pour tous les textes. Une bande s'ouvre pendant
+    // qu'une autre se referme ; si leurs textes n'ont pas la même
+    // hauteur, la pile grandit ou rétrécit à chaque bascule et le
+    // contenu situé dessous saute sous les yeux de qui lit. Chaque
+    // paragraphe prend la hauteur du plus long, remesurée quand les
+    // polices arrivent et quand la largeur change, puisque les
+    // retours à la ligne changent avec elles. Inutile en mouvement
+    // réduit : toutes les bandes y restent ouvertes.
+    if (!reduit) {
+      var textes = tous('.lx-pile-corps p', pile);
+      var egaliser = function () {
+        if (!textes.length) return;
+        textes.forEach(function (p) { p.style.minHeight = ''; });
+        var cs = getComputedStyle(textes[0]);
+        var marge = cs.boxSizing === 'border-box' ? 0
+          : parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+        var max = 0;
+        textes.forEach(function (p) { max = Math.max(max, p.getBoundingClientRect().height); });
+        if (max) textes.forEach(function (p) { p.style.minHeight = Math.ceil(max - marge) + 'px'; });
+      };
+      egaliser();
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(egaliser);
+      var minuteurEgal;
+      window.addEventListener('resize', function () {
+        clearTimeout(minuteurEgal);
+        minuteurEgal = setTimeout(egaliser, 150);
+      }, { passive: true });
+    }
+
     if (reduit || !opts || !opts.auDefilement) return pile;
 
     // Le choix se calcule sur la position de la PILE, jamais sur
@@ -1502,7 +1505,6 @@
     faq();
     chiffresMontants();
     masques();
-    defilementSatine();
 
     if (reduit) {
       tous('.lx-w').forEach(function (m) { m.classList.add('lx-w-on'); });

@@ -173,14 +173,33 @@
 .lx-clip{overflow:hidden}
 
 /* ── Barre de navigation au défilement ──────────────────────
-   Elle se resserre et pose une ombre dès que la page bouge,
-   ce qui la détache du contenu qui passe dessous.             */
+   Elle pose une ombre dès que la page bouge, ce qui la détache
+   du contenu qui passe dessous.
+
+   Plus de flou d'arrière-plan. La barre est opaque à 98 %, le
+   flou ne se voyait donc pas, mais le navigateur le recalculait
+   à chaque image sur toute la largeur de l'écran.
+
+   Sa hauteur ne change plus (règle nav.scrolled d'index.html et
+   d'offres.css). Elle passait de 92 à 72 px au quarantième pixel
+   de défilement et remontait toute la page de 20 px. Le
+   navigateur compensait en reculant d'autant, et la page, mesurée
+   le 14/09/2026, repartait seule vers le bas : de 44 à 142 px en
+   une seconde et demie, sans que personne ne touche à rien.    */
 .lx-nav-shift{
-  transition:box-shadow .3s ease,backdrop-filter .3s ease,background-color .3s ease !important;
+  transition:box-shadow .3s ease,background-color .3s ease !important;
 }
 .lx-nav-shift.lx-nav-on{
   box-shadow:0 1px 0 var(--lx-line),0 10px 30px -18px rgba(10,14,36,.45);
-  backdrop-filter:saturate(1.4) blur(6px);
+}
+
+/* ── Ancres internes ────────────────────────────────────────
+   Le défilement est redevenu celui du navigateur. Une ancre
+   aligne sa cible en haut de l'écran, donc sous la barre : la
+   marge la fait s'arrêter juste en dessous.                  */
+[id]{scroll-margin-top:100px}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto !important}
 }
 
 /* ── Cartes qui se soulèvent ────────────────────────────────*/
@@ -582,15 +601,9 @@
    est la signature. On la casse à trois endroits.
    ============================================================ */
 
-/* ── 1. Défilement satiné ───────────────────────────────────
-   Lenis remplace le défilement par saccades du navigateur par
-   un mouvement à inertie. C'est le changement qu'on ne voit pas
-   mais qu'on sent : tout le reste des animations s'y accroche
-   et paraît soudain lié. Licence MIT, hébergé chez nous.      */
-html.lenis,html.lenis body{height:auto}
-.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
-.lenis.lenis-stopped{overflow:clip}
-.lenis.lenis-smooth iframe{pointer-events:none}
+/* ── 1. Défilement ──────────────────────────────────────────
+   Lenis a été retiré le 14/09/2026 (voir motion.js) : le
+   défilement est celui du navigateur.                        */
 
 /* ── 2. Sections qui se chevauchent ─────────────────────────
    Une section remonte sur celle qui la précède et arrondit ses
@@ -1153,7 +1166,6 @@ html.lenis,html.lenis body{height:auto}
 .lx-photo figcaption{
   padding:8px 14px;font-size:10.5px;letter-spacing:.16em;
   background:rgba(27,44,107,.92);
-  backdrop-filter:saturate(1.4) blur(3px);
 }
 
 /* ── 2. Les chiffres clés sans leurs cadres ─────────────────
