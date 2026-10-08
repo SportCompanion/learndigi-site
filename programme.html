@@ -56,6 +56,63 @@
         "publisher": { "@id": "https://learndigi.fr/#organization" }
       },
       {
+        "@type": "FAQPage",
+        "@id": "https://learndigi.fr/programme#faq",
+        "isPartOf": {
+          "@id": "https://learndigi.fr/programme#webpage"
+        },
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Faut-il déjà savoir se servir de ChatGPT ou de Claude ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Non. Le deuxième module part des bases et apprend à écrire une instruction qui donne un résultat exploitable. Les participants qui utilisent déjà un assistant y gagnent une méthode, ceux qui n'en ont jamais ouvert partent du bon pied."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Travaille-t-on sur nos propres dossiers ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui, c'est tout l'intérêt. Les exercices portent sur vos courriels, vos contrats et vos situations de courtage. Les règles d'anonymisation sont posées avant, et notre partenaire Marvin Systems permet de pseudonymiser les documents avant toute analyse."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Que deviennent les données de nos clients pendant la session ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "La règle posée en formation est simple : rien de nominatif n'entre dans un outil d'IA. Un module entier est consacré au RGPD, à l'AI Act et à la sécurité des données, avec ce qui peut être confié à une IA, ce qui ne doit jamais l'être, et comment poser des règles écrites dans le cabinet."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "La formation peut-elle se faire à distance ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui. Elle se donne en visioconférence ou dans vos locaux, en une journée ou en deux demi-journées. Le contenu est le même, seuls le rythme et les temps de pratique s'ajustent."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Peut-on ne suivre qu'une partie des modules ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Les huit modules forment un socle cohérent, de la prise en main jusqu'aux garde-fous de conformité. Le questionnaire préparatoire sert à répartir le temps : un cabinet très exposé aux sinistres passera plus de temps sur ce module, un autre sur le devoir de conseil."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Qu'est-ce qu'on a en main à la fin de la journée ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Une attestation de formation pour chaque participant, un plan d'action à trente jours propre au cabinet, et les instructions et modèles construits pendant la session, directement réutilisables."
+            }
+          }
+        ]
+      },
+      {
         "@type": "Course",
         "@id": "https://learndigi.fr/#course",
         "name": "L'intelligence artificielle au service du courtier en assurance",
@@ -204,6 +261,33 @@
     .partner-brand strong{display:block;margin-top:5px;font-size:18px;letter-spacing:0;text-transform:none;color:var(--navy)}
     .prog-partner-note p{font-size:13px;line-height:1.75;color:#535b6d}
     .partner-benefit{display:inline-flex;align-self:flex-start;margin-top:18px;padding:8px 11px;background:var(--navy);color:#fff;font-family:'Raleway',sans-serif;font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase}
+    /* SECTIONS D'INFORMATION ET FAQ */
+    .prog-info{max-width:1180px;margin:0 auto 76px;padding:0 4px}
+    .prog-info-head{max-width:780px;margin-bottom:34px}
+    .prog-info-head .eb{font-family:'Raleway',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);display:block;margin-bottom:14px}
+    .prog-info-head h2{font-family:'Raleway',sans-serif;font-size:clamp(28px,3.4vw,40px);font-weight:800;color:var(--navy);line-height:1.12;letter-spacing:-1.2px;margin-bottom:16px}
+    .prog-info-head p{font-size:15px;color:#5b6272;line-height:1.9}
+    .prog-info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;background:#dfe3ea;border:1px solid #dfe3ea}
+    .prog-info-grid article{background:var(--surface);padding:30px 28px}
+    .prog-info-grid h3{font-family:'Raleway',sans-serif;font-size:18px;font-weight:800;color:var(--navy);margin-bottom:10px;letter-spacing:-.3px}
+    .prog-info-grid p{font-size:14.5px;color:#5b6272;line-height:1.8}
+    .prog-objectifs{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px 38px}
+    .prog-objectifs li{position:relative;padding-left:26px;font-size:15px;color:#454b59;line-height:1.75}
+    .prog-objectifs li::before{content:'';position:absolute;left:0;top:12px;width:12px;height:2px;background:var(--gold)}
+    .prog-liens{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+    .prog-liens a{font-family:'Raleway',sans-serif;font-size:13px;font-weight:700;color:var(--navy);text-decoration:none;border:1px solid #dfe3ea;padding:10px 16px;transition:border-color .2s,color .2s}
+    .prog-liens a:hover{border-color:var(--navy);color:var(--red)}
+    .prog-faq{max-width:900px;margin:0 auto 76px;padding:0 4px}
+    .prog-faq h2{font-family:'Raleway',sans-serif;font-size:clamp(28px,3.4vw,40px);font-weight:800;color:var(--navy);margin-bottom:26px;letter-spacing:-1.2px}
+    .prog-faq details{border-top:1px solid #dfe3ea;padding:20px 0}
+    .prog-faq details:last-of-type{border-bottom:1px solid #dfe3ea}
+    .prog-faq summary{font-family:'Raleway',sans-serif;font-size:16.5px;font-weight:700;color:var(--navy);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+    .prog-faq summary::-webkit-details-marker{display:none}
+    .prog-faq summary::after{content:'+';color:var(--gold);font-weight:400;font-size:22px;line-height:1}
+    .prog-faq details[open] summary::after{content:'\2013'}
+    .prog-faq details p{margin-top:14px;font-size:15px;color:#5b6272;line-height:1.9;max-width:770px}
+    @media(max-width:860px){.prog-info,.prog-faq{margin-bottom:54px}}
+
     .prog-cta{position:relative;overflow:hidden;margin:96px -40px 0;padding:92px 40px 98px;display:flex;justify-content:center;text-align:center;background:var(--paper-soft);border-top:1px solid var(--line)}
     .prog-cta img,.prog-cta::after{display:none}
     .prog-cta-c{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:20px;max-width:650px}
@@ -324,8 +408,8 @@
   <div class="prog-banner">
     <div class="prog-banner-c">
       <span class="eb">Le programme détaillé</span>
-      <h1>Votre parcours IA, module par module</h1>
-      <p>7 heures, 8 modules, un parcours progressif et 100 % métier : on apprend d'abord à dialoguer avec l'IA, puis on l'applique à chaque temps fort du quotidien d'un cabinet, avant de poser les garde-fous de conformité.</p>
+      <h1>Formation IA pour courtiers en assurance</h1>
+      <p>Le parcours, module par module. 7 heures, 8 modules, un parcours progressif et 100 % métier : on apprend d'abord à dialoguer avec l'IA, puis on l'applique à chaque temps fort du quotidien d'un cabinet, avant de poser les garde-fous de conformité.</p>
     </div>
     <div class="prog-banner-visual" aria-label="Outils mobilisés pendant la formation">
       <span class="prog-visual-eb">Outils mobilisés selon vos besoins</span>
@@ -417,6 +501,89 @@
     <img src="photo-participants-notes.jpg" alt="Participants prenant des notes pendant une session de formation" loading="lazy" decoding="async" width="1400" height="933"/>
     <figcaption>Une journée, ou deux demi-journées</figcaption>
   </figure>
+
+
+  <section class="prog-info" aria-labelledby="prog-public">
+    <div class="prog-info-head">
+      <span class="eb">À qui s'adresse ce parcours</span>
+      <h2 id="prog-public">Pensé pour les cabinets de courtage, pas pour un public général</h2>
+      <p>La formation s'adresse aux courtiers en assurance et à leurs équipes : dirigeants, chargés de clientèle, gestionnaires, personnel administratif. Aucune compétence technique n'est demandée. Le contenu ne change pas de nature selon la taille du cabinet ; ce sont les priorités, les exercices et la méthode de déploiement qui évoluent.</p>
+    </div>
+    <div class="prog-info-grid">
+      <article><h3>Courtier indépendant</h3><p>Structurer ses usages personnels, gagner du temps sur les tâches répétitives et préserver la qualité de la relation client.</p></article>
+      <article><h3>Cabinet avec une équipe</h3><p>Partager des méthodes communes, choisir les bons cas d'usage et encadrer l'utilisation des outils par les collaborateurs.</p></article>
+      <article><h3>Organisation multi-équipe</h3><p>Définir un cadre d'adoption, faire monter les équipes en compétence et intégrer les exigences de conformité dès le départ.</p></article>
+    </div>
+  </section>
+
+  <section class="prog-info" aria-labelledby="prog-objectifs-t">
+    <div class="prog-info-head">
+      <span class="eb">Objectifs pédagogiques</span>
+      <h2 id="prog-objectifs-t">Ce que chaque participant sait faire à la fin</h2>
+      <p>Chaque module se termine par une production utilisable au cabinet dès le lendemain, et non par une démonstration.</p>
+    </div>
+    <ul class="prog-objectifs">
+      <li>Situer ce que l'IA générative change dans un cabinet de courtage, et ce qu'elle ne change pas.</li>
+      <li>Rédiger une instruction qui donne un résultat exploitable du premier coup, sur ses propres dossiers.</li>
+      <li>Travailler avec Claude dans Excel, Word, PowerPoint et Outlook, sans quitter son environnement habituel.</li>
+      <li>Préparer une revue de portefeuille et repérer les opportunités dormantes, après anonymisation des données.</li>
+      <li>Qualifier une déclaration de sinistre, suivre les pièces manquantes et traiter une réclamation dans les délais.</li>
+      <li>Produire une fiche exigences et besoins, puis la motivation écrite du conseil, à partir de ses notes d'entretien.</li>
+      <li>Distinguer ce qui peut être confié à une IA de ce qui ne doit jamais y entrer, au regard du RGPD et de l'AI Act.</li>
+      <li>Repartir avec un plan d'action à trente jours, propre au cabinet et non générique.</li>
+    </ul>
+  </section>
+
+  <section class="prog-info" aria-labelledby="prog-modalites">
+    <div class="prog-info-head">
+      <span class="eb">Déroulé et modalités</span>
+      <h2 id="prog-modalites">Comment se déroule la formation</h2>
+      <p>Sept heures, en une journée ou en deux demi-journées, en visioconférence ou dans vos locaux. Le tarif est établi sur devis après un premier échange de trente minutes, parce qu'il dépend du nombre de participants, du format retenu et des modules prioritaires.</p>
+    </div>
+    <div class="prog-info-grid">
+      <article><h3>Avant la session</h3><p>Un échange de trente minutes pour cadrer le besoin, puis un questionnaire d'auto-positionnement qui sert à calibrer les huit modules sur les priorités réelles de l'équipe.</p></article>
+      <article><h3>Pendant la session</h3><p>Une démonstration, puis un exercice guidé sur vos propres cas : courriels, synthèses, relances, analyse de portefeuille, sinistres et conseil. La pratique occupe l'essentiel du temps.</p></article>
+      <article><h3>Après la session</h3><p>Une attestation par participant, les modèles et instructions construits pendant la journée, et un plan d'action à trente jours pour transformer l'essai au cabinet.</p></article>
+      <article><h3>Qui anime</h3><p>Hugo Salembier et Matthieu Brubach préparent et animent la session. Ce sont vos interlocuteurs du premier échange jusqu'à la mise en pratique.</p></article>
+    </div>
+    <div class="prog-liens">
+      <a href="/audit-ia">Audit IA du cabinet</a>
+      <a href="/formation-outil-ia">Formation dédiée à un outil</a>
+      <a href="/formation-individuelle">Formation individuelle</a>
+      <a href="/prospection-ia">Prospection avec l'IA</a>
+      <a href="/veille-ia">Veille IA métier</a>
+      <a href="/claude-code-codex">Outil sur mesure</a>
+      <a href="/qualite-accessibilite">Accessibilité et handicap</a>
+    </div>
+  </section>
+
+  <section class="prog-faq" aria-labelledby="prog-faq-titre">
+    <h2 id="prog-faq-titre">Questions fréquentes sur le programme</h2>
+      <details>
+        <summary>Faut-il déjà savoir se servir de ChatGPT ou de Claude ?</summary>
+        <p>Non. Le deuxième module part des bases et apprend à écrire une instruction qui donne un résultat exploitable. Les participants qui utilisent déjà un assistant y gagnent une méthode, ceux qui n'en ont jamais ouvert partent du bon pied.</p>
+      </details>
+      <details>
+        <summary>Travaille-t-on sur nos propres dossiers ?</summary>
+        <p>Oui, c'est tout l'intérêt. Les exercices portent sur vos courriels, vos contrats et vos situations de courtage. Les règles d'anonymisation sont posées avant, et notre partenaire Marvin Systems permet de pseudonymiser les documents avant toute analyse.</p>
+      </details>
+      <details>
+        <summary>Que deviennent les données de nos clients pendant la session ?</summary>
+        <p>La règle posée en formation est simple : rien de nominatif n'entre dans un outil d'IA. Un module entier est consacré au RGPD, à l'AI Act et à la sécurité des données, avec ce qui peut être confié à une IA, ce qui ne doit jamais l'être, et comment poser des règles écrites dans le cabinet.</p>
+      </details>
+      <details>
+        <summary>La formation peut-elle se faire à distance ?</summary>
+        <p>Oui. Elle se donne en visioconférence ou dans vos locaux, en une journée ou en deux demi-journées. Le contenu est le même, seuls le rythme et les temps de pratique s'ajustent.</p>
+      </details>
+      <details>
+        <summary>Peut-on ne suivre qu'une partie des modules ?</summary>
+        <p>Les huit modules forment un socle cohérent, de la prise en main jusqu'aux garde-fous de conformité. Le questionnaire préparatoire sert à répartir le temps : un cabinet très exposé aux sinistres passera plus de temps sur ce module, un autre sur le devoir de conseil.</p>
+      </details>
+      <details>
+        <summary>Qu'est-ce qu'on a en main à la fin de la journée ?</summary>
+        <p>Une attestation de formation pour chaque participant, un plan d'action à trente jours propre au cabinet, et les instructions et modèles construits pendant la session, directement réutilisables.</p>
+      </details>
+  </section>
 
   <div class="prog-cta">
     <div class="prog-cta-c">
