@@ -34,9 +34,9 @@ indépendants, cabinets PME de 2 à 20 personnes, et grands cabinets de plus de 
 1. Introduction : l'IA au service du courtage (30 min)
 2. Socle IA et prompting (30 min)
 3. Claude en profondeur et Microsoft 365 (1 h)
-4. Gérer et automatiser sa messagerie (1 h)
-5. Analyser et synthétiser les documents métier (1 h 30)
-6. Fidéliser et développer son portefeuille avec Marvin Systems (1 h)
+4. Fidéliser et développer son portefeuille avec Marvin Systems (1 h)
+5. Sinistres et réclamations augmentés par l'IA (1 h 30)
+6. Le devoir de conseil augmenté par l'IA (1 h 10)
 7. RGPD, AI Act, RSE et IA responsable (1 h)
 8. Conclusion : votre plan d'action (30 min)
 
@@ -54,6 +54,10 @@ Outils travaillés : Claude, ChatGPT, Microsoft Copilot, Mistral AI, Microsoft 3
 - [Claude Code et Codex](https://learndigi.fr/claude-code-codex) : accompagnement à la création d'outils internes sur mesure et de prototypes maîtrisés
 - [Newsletter « L'IA du courtier »](https://learndigi.fr/newsletter) : chaque lundi, réglementation, outils et un prompt à tester, pour les cabinets de courtage. Toutes les éditions y sont lisibles en ligne.
 - [Édition du 7 septembre 2026](https://learndigi.fr/newsletters/2026-09-07) : consultation ACPR, calendrier de l'AI Act, nouveautés des assistants IA et prompt métier pour les courtiers.
+- [Articles](https://learndigi.fr/articles) : analyses métier sur l'usage de l'IA en cabinet de courtage, sourcées sur les textes officiels.
+  - [Devoir de conseil et IA : ce que l'ACPR attend d'un cabinet de courtage](https://learndigi.fr/articles/devoir-de-conseil-ia-courtier) : sanction ACPR du 13 mai 2026 contre la Société Générale, recommandation 2024-R-03 applicable depuis le 31 décembre 2025, partage des rôles entre le courtier et l'IA, fiche exigences et besoins, motivation écrite du conseil.
+  - [Sinistres et réclamations : ce que l'IA fait gagner à un cabinet de courtage](https://learndigi.fr/articles/sinistres-reclamations-ia-courtier) : délais de déclaration du Code des assurances, distinction entre sinistre et réclamation, recommandation ACPR 2024-R-02, suivi des pièces et relances.
+  - [Dix usages de l'IA dans un cabinet de courtage](https://learndigi.fr/articles/cas-usage-ia-cabinet-courtage) : dix tâches du quotidien, leur apport réel et le point de contrôle de chacune, sans chiffre de productivité invérifiable.
 - [Qualité et accessibilité](https://learndigi.fr/qualite-accessibilite) : accueil des personnes en situation de handicap, référent handicap, indicateurs de résultats et procédure de réclamation.
 
 ## Contact
