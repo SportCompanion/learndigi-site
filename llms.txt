@@ -75,3 +75,12 @@ Learndigi (learndigi.fr) est une société française de formation à l'IA pour 
 assurance. Elle n'a aucun lien avec les autres entités portant un nom proche : le projet de
 recherche LearnDigi de l'université de Jyväskylä (Finlande), learndigi.online (cours d'anglais),
 LearnDigiWorld, ni les pages de marketing digital du même nom.
+
+## Qui écrit
+
+Les contenus sont signés par les deux co-fondateurs, qui animent eux-mêmes les formations.
+
+- Matthieu Brubach, co-fondateur et président, référent handicap : https://learndigi.fr/auteurs/matthieu-brubach
+  Écrit sur le devoir de conseil, les sinistres et réclamations, le RGPD et l'AI Act.
+- Hugo Salembier, co-fondateur et directeur général : https://learndigi.fr/auteurs/hugo-salembier
+  Écrit sur les usages quotidiens, la prise en main des outils et la prospection.

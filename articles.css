@@ -38,3 +38,12 @@
 .art-carte p{font-size:15px;line-height:1.8;color:#5b6272;max-width:720px}
 .art-carte:hover h2{color:var(--red)}
 @media(max-width:700px){.art-hero{padding-top:62px}.art-corps h2{margin-top:40px}}
+
+.art-liste > h2{font-family:"Fraunces",Georgia,serif;font-size:clamp(22px,2.4vw,27px);font-weight:600;
+  letter-spacing:-.01em;color:#141821;margin:48px 0 14px;line-height:1.25}
+.art-liste > p,.art-liste > ul{font-size:16px;line-height:1.85;color:#444c59}
+.art-liste > ul{margin:0 0 8px;padding-left:20px}
+.art-liste > ul li{margin-bottom:12px}
+.art-liste > ul a{color:#141821;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.art-carte-sign{display:inline-block;margin-left:10px;font-size:12px;letter-spacing:.04em;
+  text-transform:uppercase;color:#8b93a1}

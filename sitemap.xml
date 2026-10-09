@@ -60,4 +60,16 @@
     <loc>https://learndigi.fr/articles/cas-usage-ia-cabinet-courtage</loc>
     <lastmod>2026-10-09</lastmod>
   </url>
+  <url>
+    <loc>https://learndigi.fr/auteurs/matthieu-brubach</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://learndigi.fr/auteurs/hugo-salembier</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>
