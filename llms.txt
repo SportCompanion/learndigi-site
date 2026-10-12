@@ -42,6 +42,22 @@ indépendants, cabinets PME de 2 à 20 personnes, et grands cabinets de plus de 
 
 Outils travaillés : Claude, ChatGPT, Microsoft Copilot, Mistral AI, Microsoft 365 (Excel, Word, PowerPoint, Outlook) et Marvin Systems.
 
+## Formation continue DDA
+
+Les 7 heures du parcours peuvent être comptabilisées au titre de l'obligation annuelle de formation continue
+des intermédiaires d'assurance : 15 heures par année civile, fixées par l'article R. 512-13-1 du Code des
+assurances, compétences éligibles listées par l'arrêté du 26 septembre 2018. Le parcours en mobilise cinq :
+évolutions technologiques et impacts sur la distribution d'assurances, outils digitaux de l'environnement de
+travail, prospection et développement de portefeuille dans le respect de la réglementation, traitement et
+exploitation des données clients, protection des données personnelles. Attestation nominative par participant.
+
+7 heures ne sont pas 15 : le parcours couvre une partie de l'obligation annuelle, pas sa totalité, et ne
+garantit à lui seul aucun renouvellement d'immatriculation à l'ORIAS.
+
+Learndigi n'est pas certifié Qualiopi à ce jour. La formation n'est donc pas éligible à un financement OPCO
+ou CPF, qui supposent cette certification. L'éligibilité DDA, elle, ne dépend pas de Qualiopi mais de la
+déclaration d'activité de l'organisme (numéro 11941448294) et du contenu de la formation.
+
 ## Pages
 
 - [Accueil](https://learndigi.fr/) : présentation de la formation, engagements, tarif, FAQ, prise de rendez-vous
