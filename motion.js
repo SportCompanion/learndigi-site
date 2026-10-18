@@ -1757,114 +1757,20 @@
      outils et sa part des 7 heures sur une barre proportionnelle.
      Le premier clic du visiteur arrête le défilement.         */
   function programmeModules() {
+    // Page /programme : tout est visible d'emblée, les blocs montent
+    // simplement à leur arrivée, un peu décalés dans une même grille.
     var r = document.querySelector('.pg');
     if (!r || r.dataset.lxPret) return;
     r.dataset.lxPret = '1';
-    var mods = tous('.pg-mod', r), scene = r.querySelector('.pg-scene');
-    var num = scene && scene.querySelector('.pg-scene-num'), dur = scene && scene.querySelector('.pg-scene-dur');
-    var outils = scene && scene.querySelector('.pg-scene-outils');
-    var titre = scene && scene.querySelector('.pg-scene-titre'), pts = scene && scene.querySelector('.pg-scene-pts');
-    var fen = scene && scene.querySelector('.pg-regle-fen'), piste = scene && scene.querySelector('.pg-regle-piste');
-    var actif = 0, auto = !reduit, visible = false, minuteur = null, DUREE = 6500;
-    // Où tombe chaque module dans la session : début et part, en %.
-    var total = 0, debuts = mods.map(function (m) { var d = total; total += +m.dataset.min; return d; });
-    mods.forEach(function (m, k) {
-      var g = debuts[k] / total * 100, l = m.dataset.min / total * 100;
-      m.dataset.g = g; m.dataset.l = l;
-      if (piste && k) { var b = document.createElement('b'); b.style.left = g + '%'; piste.appendChild(b); }
-      // sur mobile, le panneau disparaît : chaque module garde sa règle
-      var corps = m.querySelector('.pg-mod-in'), r2 = document.createElement('span');
-      r2.className = 'pg-mod-regle'; r2.setAttribute('aria-hidden', 'true');
-      r2.innerHTML = '<i style="left:' + g + '%;width:' + l + '%"></i>';
-      corps.insertBefore(r2, corps.firstChild);
+    if (reduit || !('IntersectionObserver' in window)) return;
+    var blocs = tous('.pg-fiche, .pg-tete, .pg-duo > *, .pg-partie, .pg-trois > li, .pg-quatre > li, .pg-anim, .pg-fin .pg-in', r);
+    blocs.forEach(function (b) {
+      b.classList.add('lx-revele');
+      var freres = b.parentNode.children, k = Array.prototype.indexOf.call(freres, b);
+      if (b.matches('.pg-trois > li, .pg-quatre > li, .pg-duo > *')) b.style.transitionDelay = (k * 0.08) + 's';
     });
-    function peindre(i) {
-      if (!scene) return;
-      scene.classList.add('est-change');
-      setTimeout(function () {
-        var m = mods[i];
-        num.textContent = m.dataset.num; dur.textContent = m.dataset.dur;
-        titre.textContent = m.querySelector('.pg-mod-t').textContent;
-        var src = m.querySelector('.pg-mod-outils'), lp = m.querySelector('.pg-pts');
-        outils.innerHTML = src ? src.innerHTML : '';
-        pts.innerHTML = lp ? lp.innerHTML : '';
-        fen.style.setProperty('--g', m.dataset.g + '%'); fen.style.setProperty('--l', m.dataset.l + '%');
-        scene.classList.remove('est-change');
-      }, reduit ? 0 : 220);
-    }
-    function ouvrir(i, parVisiteur) {
-      actif = i;
-      mods.forEach(function (m, k) {
-        m.classList.toggle('est-actif', k === i); m.classList.remove('est-cycle');
-        m.querySelector('button').setAttribute('aria-expanded', k === i ? 'true' : 'false');
-      });
-      peindre(i);
-      clearTimeout(minuteur);
-      if (parVisiteur) { auto = false; r.classList.add('est-manuel'); return; }
-      if (auto && visible) {
-        void mods[i].offsetWidth; mods[i].classList.add('est-cycle');
-        minuteur = setTimeout(function () { ouvrir((actif + 1) % mods.length, false); }, DUREE);
-      }
-    }
-    mods.forEach(function (m, k) { m.querySelector('button').addEventListener('click', function () { ouvrir(k, true); }); });
-    ouvrir(0, false);
-
-    // Le sommaire suit la lecture
-    var som = r.querySelector('.pg-som');
-    if (som) {
-      var liens = tous('ul a', som), av = som.querySelector('.pg-som-av');
-      var cibles = liens.map(function (a) { return document.querySelector(a.getAttribute('href')); });
-      var attente = false;
-      var suivre = function () {
-        attente = false;
-        var y = 200, ici = -1;
-        cibles.forEach(function (c, k) { if (c && c.getBoundingClientRect().top <= y) ici = k; });
-        liens.forEach(function (a, k) { a.classList.toggle('est-ici', k === ici); });
-        var deb = cibles[0].getBoundingClientRect().top + window.scrollY - y, fin = document.querySelector('.pg-fin');
-        var q = (window.scrollY - deb) / Math.max(1, fin.getBoundingClientRect().top + window.scrollY - window.innerHeight - deb);
-        av.style.setProperty('--av', Math.max(0, Math.min(1, q)).toFixed(4));
-        var l = liens[ici];
-        if (l && l.dataset.vu !== '1') {
-          liens.forEach(function (a) { a.dataset.vu = ''; }); l.dataset.vu = '1';
-          var ul = l.parentNode.parentNode; ul.scrollTo({ left: l.offsetLeft - 12, behavior: reduit ? 'auto' : 'smooth' });
-        }
-      };
-      window.addEventListener('scroll', function () { if (!attente) { attente = true; requestAnimationFrame(suivre); } }, { passive: true });
-      window.addEventListener('resize', suivre);
-      suivre();
-    }
-
-    var compte = tous('.pg-compte', r);
-    if (reduit || !('IntersectionObserver' in window)) {
-      r.classList.add('est-vu');
-      tous('.pg-bloc', r).forEach(function (b) { b.classList.add('est-la'); });
-      return;
-    }
-    r.classList.add('est-anime');
-    setTimeout(function () { r.classList.add('est-vu'); }, 60);
-    compte.forEach(function (c) {
-      var fin = +c.dataset.fin, d0 = null; c.textContent = '0';
-      setTimeout(function () {
-        (function pas(t) {
-          if (d0 === null) d0 = t;
-          var q = Math.min((t - d0) / 900, 1);
-          c.textContent = Math.round((1 - Math.pow(1 - q, 3)) * fin);
-          if (q < 1) requestAnimationFrame(pas);
-        })(performance.now());
-      }, 600);
-      setTimeout(function () { c.textContent = fin; }, 1800);
-    });
-    // les blocs du bas montent à leur arrivée
-    var blocs = tous('.pg-mods, .pg-bloc, .pg-fin', r);
-    blocs.forEach(function (b) { b.classList.add('lx-revele'); });
     auScroll(blocs, function (b) { b.classList.add('est-la'); }, 0.12);
-    setTimeout(function () { blocs.forEach(function (b) { if (b.getBoundingClientRect().top < window.innerHeight) b.classList.add('est-la'); }); }, 1500);
-    new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        visible = e.isIntersecting;
-        if (visible && auto) ouvrir(actif, false); else clearTimeout(minuteur);
-      });
-    }, { threshold: 0.3 }).observe(r.querySelector('.pg-mods-grille'));
+    setTimeout(function () { blocs.forEach(function (b) { if (b.getBoundingClientRect().top < window.innerHeight) b.classList.add('est-la'); }); }, 1200);
   }
 
   /* ── Mise en route ────────────────────────────────────────── */
