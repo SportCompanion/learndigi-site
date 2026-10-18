@@ -1668,58 +1668,27 @@
     } else { visible = true; ouvrir(); }
   }
 
-  /* ── 20. Le tarif ───────────────────────────────────────────
-     18/10/2026, troisième version, d'après les sources envoyées
-     par Hugo (Cuberto, fullenrich, moon-ia). Fond marine de la
-     scène du programme. Le titre monte ligne par ligne derrière
-     un masque. Trois panneaux, avant, pendant, après la session :
-     celui qu'on survole ou qu'on choisit au clavier s'élargit et
-     révèle son contenu ; sans survol, ils s'ouvrent l'un après
-     l'autre. Une lumière douce suit le curseur dans la scène.  */
-  function tarifPanneaux() {
+  /* ── 20. Le tarif : apparition unique des étapes de la session.
+     Le texte reste accessible sans script et sans interaction. */
+  function tarifParcours() {
     var r = document.querySelector('.lx-ta');
     if (!r || r.dataset.lxPret) return;
     r.dataset.lxPret = '1';
-    var pans = tous('.lx-ta-pan', r), actif = 0, auto = !reduit, visible = false, minuteur = null, DUREE = 5000;
-    function ouvrir(i, parVisiteur) {
-      actif = i;
-      pans.forEach(function (p, k) { p.classList.toggle('est-ouvert', k === i); p.classList.remove('est-cycle'); });
-      if (parVisiteur) { auto = false; r.classList.add('est-manuel'); clearTimeout(minuteur); return; }
-      relancer();
-    }
-    function relancer() {
-      clearTimeout(minuteur);
-      if (!auto || !visible) return;
-      void pans[actif].offsetWidth; pans[actif].classList.add('est-cycle');
-      minuteur = setTimeout(function () { ouvrir((actif + 1) % pans.length, false); }, DUREE);
-    }
-    var large = window.matchMedia('(min-width: 901px)');
-    pans.forEach(function (p, k) {
-      p.addEventListener('mouseenter', function () { if (large.matches) ouvrir(k, true); });
-      p.addEventListener('focus', function () { ouvrir(k, true); });
-      p.addEventListener('click', function () { ouvrir(k, true); });
+    if (reduit || !('IntersectionObserver' in window)) return;
+
+    var elements = tous('.lx-ta-intro, .lx-ta-un, .lx-ta-pan', r);
+    var large = window.matchMedia('(min-width: 761px)').matches;
+    elements.forEach(function (el, i) {
+      var delai = large ? (i < 2 ? i * 100 : (i - 2) * 100) : 0;
+      el.style.setProperty('--ta-delay', delai + 'ms');
+      el.classList.add('lx-ta-reveal');
     });
+    auScroll(elements, function (el) { el.classList.add('est-vu'); }, 0.12);
 
-    var lum = r.querySelector('.lx-ta-lumiere');
-    if (lum && !reduit) {
-      r.addEventListener('pointermove', function (ev) {
-        var b = r.getBoundingClientRect();
-        r.style.setProperty('--lx', (ev.clientX - b.left) + 'px');
-        r.style.setProperty('--ly', (ev.clientY - b.top) + 'px');
-        r.classList.add('est-eclaire');
-      }, { passive: true });
-      r.addEventListener('pointerleave', function () { r.classList.remove('est-eclaire'); }, { passive: true });
-    }
-
-    if (reduit || !('IntersectionObserver' in window)) { r.classList.add('est-vu'); return; }
-    r.classList.add('est-anime');
-    new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        visible = e.isIntersecting;
-        if (visible) { r.classList.add('est-vu'); setTimeout(relancer, 1200); }
-        else clearTimeout(minuteur);
-      });
-    }, { threshold: 0.25 }).observe(r);
+    // Un lien clavier ne doit jamais recevoir le focus dans un bloc masqué.
+    r.addEventListener('focusin', function () {
+      elements.forEach(function (el) { el.classList.add('est-vu'); });
+    });
   }
 
   /* ── Mise en route ────────────────────────────────────────── */
@@ -1743,7 +1712,7 @@
     sommaire();
     videoPresentation();
     configurateur();
-    tarifPanneaux();
+    tarifParcours();
 
     if (reduit) {
       tous('.lx-w').forEach(function (m) { m.classList.add('lx-w-on'); });
