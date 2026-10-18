@@ -1749,6 +1749,79 @@
     }, { threshold: 0.35 }).observe(chaine);
   }
 
+  /* ── 22. Page programme : les modules ───────────────────────
+     Inspiré de la méthodologie de moon-ia. À droite, la liste en
+     accordéon : le module en cours s'ouvre et une barre dorée se
+     remplit, puis le suivant prend la main. À gauche, le panneau
+     marine montre le module en grand : son numéro, sa durée, ses
+     outils et sa part des 7 heures sur une barre proportionnelle.
+     Le premier clic du visiteur arrête le défilement.         */
+  function programmeModules() {
+    var r = document.querySelector('.pg');
+    if (!r || r.dataset.lxPret) return;
+    r.dataset.lxPret = '1';
+    var mods = tous('.pg-mod', r), scene = r.querySelector('.pg-scene');
+    var num = scene && scene.querySelector('.pg-scene-num'), dur = scene && scene.querySelector('.pg-scene-dur');
+    var outils = scene && scene.querySelector('.pg-scene-outils'), segs = scene ? tous('.pg-scene-barre i', scene) : [];
+    var actif = 0, auto = !reduit, visible = false, minuteur = null, DUREE = 6500;
+    function peindre(i) {
+      if (!scene) return;
+      scene.classList.add('est-change');
+      setTimeout(function () {
+        var m = mods[i];
+        num.textContent = m.dataset.num; dur.textContent = m.dataset.dur;
+        var src = m.querySelector('.pg-mod-outils');
+        outils.innerHTML = src ? src.innerHTML : '';
+        segs.forEach(function (s, k) { s.classList.toggle('est-actif', k === i); s.classList.toggle('est-passe', k < i); });
+        scene.classList.remove('est-change');
+      }, reduit ? 0 : 220);
+    }
+    function ouvrir(i, parVisiteur) {
+      actif = i;
+      mods.forEach(function (m, k) {
+        m.classList.toggle('est-actif', k === i); m.classList.remove('est-cycle');
+        m.querySelector('button').setAttribute('aria-expanded', k === i ? 'true' : 'false');
+      });
+      peindre(i);
+      clearTimeout(minuteur);
+      if (parVisiteur) { auto = false; r.classList.add('est-manuel'); return; }
+      if (auto && visible) {
+        void mods[i].offsetWidth; mods[i].classList.add('est-cycle');
+        minuteur = setTimeout(function () { ouvrir((actif + 1) % mods.length, false); }, DUREE);
+      }
+    }
+    mods.forEach(function (m, k) { m.querySelector('button').addEventListener('click', function () { ouvrir(k, true); }); });
+    ouvrir(0, false);
+
+    var compte = tous('.pg-compte', r);
+    if (reduit || !('IntersectionObserver' in window)) { r.classList.add('est-vu'); return; }
+    r.classList.add('est-anime');
+    setTimeout(function () { r.classList.add('est-vu'); }, 60);
+    compte.forEach(function (c) {
+      var fin = +c.dataset.fin, d0 = null; c.textContent = '0';
+      setTimeout(function () {
+        (function pas(t) {
+          if (d0 === null) d0 = t;
+          var q = Math.min((t - d0) / 900, 1);
+          c.textContent = Math.round((1 - Math.pow(1 - q, 3)) * fin);
+          if (q < 1) requestAnimationFrame(pas);
+        })(performance.now());
+      }, 600);
+      setTimeout(function () { c.textContent = fin; }, 1800);
+    });
+    // les blocs du bas montent à leur arrivée
+    var blocs = tous('.pg-mods, .pg-bloc, .pg-fin', r);
+    blocs.forEach(function (b) { b.classList.add('lx-revele'); });
+    auScroll(blocs, function (b) { b.classList.add('est-la'); }, 0.12);
+    setTimeout(function () { blocs.forEach(function (b) { if (b.getBoundingClientRect().top < window.innerHeight) b.classList.add('est-la'); }); }, 1500);
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        visible = e.isIntersecting;
+        if (visible && auto) ouvrir(actif, false); else clearTimeout(minuteur);
+      });
+    }, { threshold: 0.3 }).observe(r.querySelector('.pg-mods-grille'));
+  }
+
   /* ── Mise en route ────────────────────────────────────────── */
   function demarrer() {
     // Ces deux-là servent aussi sans animation : l'un remplace une
@@ -1772,6 +1845,7 @@
     configurateur();
     tarifParcours();
     bibliothequeSkills();
+    programmeModules();
 
     if (reduit) {
       tous('.lx-w').forEach(function (m) { m.classList.add('lx-w-on'); });

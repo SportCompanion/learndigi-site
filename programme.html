@@ -253,6 +253,7 @@
   .prog-mention{margin:22px 0 0;font-size:13px;line-height:1.7;color:#7a8291;max-width:72ch}</style>
 <link rel="stylesheet" href="/type.css"/>
 <link rel="stylesheet" href="/motion.css"/>
+  <link rel="stylesheet" href="/programme.css"/>
 </head>
 <body>
 
@@ -300,222 +301,185 @@
 </nav>
 
 <!-- ── PROGRAMME ──────────────────────────────────────────────── -->
-<section class="programme">
-  <div class="prog-banner">
-    <div class="prog-banner-c">
-      <span class="eb">Le programme détaillé</span>
-      <h1>Formation IA pour courtiers en assurance</h1>
-      <p>Le parcours, module par module. 7 heures, 8 modules, un parcours progressif et 100 % métier : on apprend d'abord à dialoguer avec l'IA, puis on l'applique à chaque temps fort du quotidien d'un cabinet, avant de poser les garde-fous de conformité.</p>
+<main class="pg">
+  <section class="pg-hero">
+    <span class="eyebrow">Le programme détaillé</span>
+    <h1 class="pg-titre"><span class="pg-ligne"><span>Formation IA pour</span></span> <span class="pg-ligne"><span>courtiers en <span class="serif">assurance</span></span></span></h1>
+    <p class="pg-lead">Le parcours, module par module. 7 heures, 8 modules, un parcours progressif et 100 % métier : on apprend d'abord à dialoguer avec l'IA, puis on l'applique à chaque temps fort du quotidien d'un cabinet, avant de poser les garde-fous de conformité.</p>
+    <div class="pg-actions">
+      <a href="/#rdv" class="btn-duo"><span class="btn-plus">+</span><span class="btn-label">Réserver 30 minutes</span></a>
+      <a class="pg-lien" href="/plaquette.pdf" download="Learndigi-programme-formation-IA.pdf">Télécharger le programme (PDF) <span aria-hidden="true">↓</span></a>
     </div>
-    <div class="prog-banner-visual" aria-label="Outils mobilisés pendant la formation">
-      <span class="prog-visual-eb">Outils mobilisés selon vos besoins</span>
-      <div class="prog-tool-grid">
-        <div class="prog-tool"><img src="logo-claude.png" alt="Claude" width="220" height="220"/><span>Claude</span></div>
-        <div class="prog-tool"><img src="logo-chatgpt.png" alt="ChatGPT" width="220" height="220"/><span>ChatGPT</span></div>
-        <div class="prog-tool"><img src="logo-copilot.png" alt="Microsoft Copilot" width="220" height="220"/><span>Copilot</span></div>
-        <div class="prog-tool"><img src="logo-mistral.png" alt="Mistral AI" width="220" height="220"/><span>Mistral</span></div>
-        <div class="prog-tool"><img src="logo-marvin.png" alt="Marvin Systems" width="220" height="220"/><span>Marvin Systems</span></div>
+    <dl class="pg-faits">
+      <div><dt><span class="pg-compte" data-fin="7">7</span> h</dt><dd>de formation, en une journée ou deux demi-journées</dd></div>
+      <div><dt><span class="pg-compte" data-fin="8">8</span></dt><dd>modules métier, du premier prompt au plan d'action</dd></div>
+      <div><dt><span class="pg-compte" data-fin="7">7</span> h</dt><dd>comptabilisables au titre de la DDA</dd></div>
+      <div><dt>Visio</dt><dd>ou dans vos locaux, sur vos propres dossiers</dd></div>
+    </dl>
+  </section>
+
+  <div class="pg-outils" aria-label="Outils mobilisés selon vos besoins">
+    <span>Outils mobilisés selon vos besoins</span>
+    <ul><li><img src="/logo-claude.png" alt="" width="220" height="220" loading="lazy"/><span>Claude</span></li><li><img src="/logo-chatgpt.png" alt="" width="220" height="220" loading="lazy"/><span>ChatGPT</span></li><li><img src="/logo-copilot.png" alt="" width="220" height="220" loading="lazy"/><span>Copilot</span></li><li><img src="/logo-mistral.png" alt="" width="220" height="220" loading="lazy"/><span>Mistral</span></li><li><img src="/logo-marvin.png" alt="" width="220" height="220" loading="lazy"/><span>Marvin Systems</span></li></ul>
+  </div>
+
+  <section class="pg-mods" id="modules" aria-labelledby="pg-mods-t">
+    <div class="pg-mods-tete">
+      <span class="eyebrow">Le parcours, module par module</span>
+      <h2 id="pg-mods-t">Huit modules, du premier prompt au <span class="serif">plan d'action</span></h2>
+    </div>
+    <div class="pg-mods-grille">
+      <div class="pg-scene" aria-hidden="true">
+        <span class="pg-scene-num">01</span>
+        <span class="pg-scene-dur">30 min</span>
+        <div class="pg-scene-outils"></div>
+        <div class="pg-scene-temps"><span class="pg-scene-temps-l">Sa part des 7 heures</span><div class="pg-scene-barre"><i style="flex:30"></i><i style="flex:30"></i><i style="flex:60"></i><i style="flex:60"></i><i style="flex:90"></i><i style="flex:70"></i><i style="flex:60"></i><i style="flex:30"></i></div></div>
       </div>
+      <ol class="pg-liste">
+        <li class="pg-mod est-actif" data-i="0" data-min="30" data-num="01" data-dur="30 min">
+          <h3 class="pg-mod-h"><button type="button" aria-expanded="true" aria-controls="pg-m0"><span class="pg-mod-t">Introduction : l'IA au service du courtage</span><span class="pg-mod-d">30 min</span><span class="pg-mod-n">01</span></button></h3>
+          <div class="pg-mod-corps" id="pg-m0"><div class="pg-mod-in">
+            <p>Comprendre ce qu'est vraiment l'IA générative, ce qu'elle change pour le métier de courtier et pourquoi c'est le moment d'agir.</p>
+            <ul class="pg-pts"><li>Enjeux &amp; opportunités</li><li>Vocabulaire clé</li><li>Chiffres à retenir</li></ul>
+            <div class="pg-mod-outils"><img src="/logo-claude.png" alt="" width="220" height="220" loading="lazy"/><img src="/logo-chatgpt.png" alt="" width="220" height="220" loading="lazy"/><img src="/logo-mistral.png" alt="" width="220" height="220" loading="lazy"/><img src="/logo-copilot.png" alt="" width="220" height="220" loading="lazy"/><span>Comparer les principaux assistants</span></div>
+            </div>
+          </div>
+          <span class="pg-charge" aria-hidden="true"></span>
+        </li>
+        <li class="pg-mod" data-i="1" data-min="30" data-num="02" data-dur="30 min">
+          <h3 class="pg-mod-h"><button type="button" aria-expanded="false" aria-controls="pg-m1"><span class="pg-mod-t">Socle IA &amp; prompting</span><span class="pg-mod-d">30 min</span><span class="pg-mod-n">02</span></button></h3>
+          <div class="pg-mod-corps" id="pg-m1"><div class="pg-mod-in">
+            <p>Apprendre à piloter l'IA plutôt qu'à la subir, en maîtrisant l'art de rédiger des instructions efficaces sur des cas réels de courtage.</p>
+            <ul class="pg-pts"><li>La méthode du bon prompt</li><li>Bons &amp; mauvais usages</li><li>Le Projet Cabinet</li></ul>
+            <div class="pg-mod-outils"><img src="/logo-claude.png" alt="" width="220" height="220" loading="lazy"/><img src="/logo-chatgpt.png" alt="" width="220" height="220" loading="lazy"/><img src="/logo-mistral.png" alt="" width="220" height="220" loading="lazy"/><img src="/logo-copilot.png" alt="" width="220" height="220" loading="lazy"/><span>Pratiquer sur vos cas d'usage</span></div>
+            </div>
+          </div>
+          <span class="pg-charge" aria-hidden="true"></span>
+        </li>
+        <li class="pg-mod" data-i="2" data-min="60" data-num="03" data-dur="1 h">
+          <h3 class="pg-mod-h"><button type="button" aria-expanded="false" aria-controls="pg-m2"><span class="pg-mod-t">Claude en profondeur &amp; Microsoft 365</span><span class="pg-mod-d">1 h</span><span class="pg-mod-n">03</span></button></h3>
+          <div class="pg-mod-corps" id="pg-m2"><div class="pg-mod-in">
+            <p>Installer et prendre en main votre environnement de travail augmenté : Claude et ses espaces, intégrés à Excel, Word, PowerPoint et Outlook.</p>
+            <ul class="pg-pts"><li>Prise en main de Claude</li><li>Excel : analyse de portefeuille</li><li>Word, PowerPoint &amp; Outlook</li></ul>
+            <div class="pg-mod-outils"><img src="/logo-claude.png" alt="" width="220" height="220" loading="lazy"/><span>Claude et l'environnement Microsoft</span></div>
+            </div>
+          </div>
+          <span class="pg-charge" aria-hidden="true"></span>
+        </li>
+        <li class="pg-mod" data-i="3" data-min="60" data-num="04" data-dur="1 h">
+          <h3 class="pg-mod-h"><button type="button" aria-expanded="false" aria-controls="pg-m3"><span class="pg-mod-t">Fidéliser et développer son portefeuille avec Marvin Systems</span><span class="pg-mod-d">1 h</span><span class="pg-mod-n">04</span></button></h3>
+          <div class="pg-mod-corps" id="pg-m3"><div class="pg-mod-in">
+            <p>Découvrir Marvin Systems pour anonymiser les données avant analyse, puis travailler un cas concret métier avec Claude afin de structurer les revues annuelles et détecter les opportunités dormantes.</p>
+            <ul class="pg-pts"><li>Présentation de Marvin Systems</li><li>Cas concret métier avec Claude</li><li>Opportunités dormantes</li></ul>
+            <div class="pg-mod-outils"><img src="/logo-marvin.png" alt="" width="220" height="220" loading="lazy"/><img src="/logo-claude.png" alt="" width="220" height="220" loading="lazy"/><span>De l'anonymisation à l'analyse métier</span></div>
+            <p class="pg-partenaire"><b>Partenaire technologique · Marvin Systems.</b> Marvin Systems permet d'anonymiser et de pseudonymiser les documents avant leur analyse par l'IA. Grâce au partenariat, les clients Learndigi bénéficient de 10 % de réduction sur le prix HT de l'abonnement pendant leurs 12 premiers mois. Les modalités d'accès leur sont communiquées directement par notre équipe. <span>10 % pendant 12 mois · réservé aux clients Learndigi</span></p></div>
+          </div>
+          <span class="pg-charge" aria-hidden="true"></span>
+        </li>
+        <li class="pg-mod" data-i="4" data-min="90" data-num="05" data-dur="1 h 30">
+          <h3 class="pg-mod-h"><button type="button" aria-expanded="false" aria-controls="pg-m4"><span class="pg-mod-t">Sinistres et réclamations augmentés par l'IA</span><span class="pg-mod-d">1 h 30</span><span class="pg-mod-n">05</span></button></h3>
+          <div class="pg-mod-corps" id="pg-m4"><div class="pg-mod-in">
+            <p>Traiter les deux moments où le client juge son cabinet : l'IA structure la déclaration, suit les pièces et prépare les réponses ; le courtier vérifie les délais, conseille et décide.</p>
+            <ul class="pg-pts"><li>Qualifier et tenir les délais</li><li>Suivre le dossier sinistre</li><li>Traiter une réclamation</li></ul>
+            <div class="pg-mod-outils"><img src="/logo-claude.png" alt="" width="220" height="220" loading="lazy"/><img src="/logo-marvin.png" alt="" width="220" height="220" loading="lazy"/><span>Déclarations, suivi et réclamations</span></div>
+            </div>
+          </div>
+          <span class="pg-charge" aria-hidden="true"></span>
+        </li>
+        <li class="pg-mod" data-i="5" data-min="70" data-num="06" data-dur="1 h 10">
+          <h3 class="pg-mod-h"><button type="button" aria-expanded="false" aria-controls="pg-m5"><span class="pg-mod-t">Le devoir de conseil augmenté par l'IA</span><span class="pg-mod-d">1 h 10</span><span class="pg-mod-n">06</span></button></h3>
+          <div class="pg-mod-corps" id="pg-m5"><div class="pg-mod-in">
+            <p>Produire un conseil mieux tracé, de la trame d'entretien à la motivation écrite : l'IA structure, rédige et vérifie ; le courtier recueille, décide et signe.</p>
+            <ul class="pg-pts"><li>Fiche exigences et besoins</li><li>Motiver la recommandation</li><li>Contrôle avant l'ACPR</li></ul>
+            <div class="pg-mod-outils"><img src="/logo-claude.png" alt="" width="220" height="220" loading="lazy"/><img src="/logo-marvin.png" alt="" width="220" height="220" loading="lazy"/><span>Recueil, fiche et motivation écrite</span></div>
+            </div>
+          </div>
+          <span class="pg-charge" aria-hidden="true"></span>
+        </li>
+        <li class="pg-mod" data-i="6" data-min="60" data-num="07" data-dur="1 h">
+          <h3 class="pg-mod-h"><button type="button" aria-expanded="false" aria-controls="pg-m6"><span class="pg-mod-t">RGPD, AI Act, RSE &amp; IA responsable</span><span class="pg-mod-d">1 h</span><span class="pg-mod-n">07</span></button></h3>
+          <div class="pg-mod-corps" id="pg-m6"><div class="pg-mod-in">
+            <p>Utiliser l'IA en toute conformité et de façon responsable : protection des données clients, exigences du régulateur et usage sobre et transparent.</p>
+            <ul class="pg-pts"><li>RGPD &amp; données sensibles</li><li>Charte IA interne</li><li>AI Act &amp; sobriété numérique</li></ul>
+            <div class="pg-mod-outils"><span>Un cadre clair pour les données clients</span></div>
+            </div>
+          </div>
+          <span class="pg-charge" aria-hidden="true"></span>
+        </li>
+        <li class="pg-mod" data-i="7" data-min="30" data-num="08" data-dur="30 min">
+          <h3 class="pg-mod-h"><button type="button" aria-expanded="false" aria-controls="pg-m7"><span class="pg-mod-t">Conclusion : votre plan d'action</span><span class="pg-mod-d">30 min</span><span class="pg-mod-n">08</span></button></h3>
+          <div class="pg-mod-corps" id="pg-m7"><div class="pg-mod-in">
+            <p>Repartir avec un cap clair : les enseignements clés du parcours et votre plan d'action personnel des 30 prochains jours.</p>
+            <ul class="pg-pts"><li>Enseignements clés</li><li>Plan d'action 30 jours</li><li>Prochaines étapes</li></ul>
+            <div class="pg-mod-outils"><span>Une feuille de route concrète à l'issue de la session</span></div>
+            </div>
+          </div>
+          <span class="pg-charge" aria-hidden="true"></span>
+        </li>
+      </ol>
     </div>
-  </div>
+  </section>
 
-  <div class="prog-highlights">
-    <span class="prog-hl">Visio ou présentiel</span>
-    <span class="prog-hl">7 heures</span>
-    <span class="prog-hl">Programme sur mesure</span>
-    <span class="prog-hl">8 modules métier</span>
-  </div>
-
-  <div class="prog-modules">
-
-    <article class="prog-mod"><div class="prog-num">01</div><div class="prog-content">
-      <h3>Introduction : l'IA au service du courtage</h3>
-      <span class="prog-dur">30 min</span>
-      <p>Comprendre ce qu'est vraiment l'IA générative, ce qu'elle change pour le métier de courtier et pourquoi c'est le moment d'agir.</p>
-      <div class="prog-points"><span class="prog-pt">Enjeux &amp; opportunités</span><span class="prog-pt">Vocabulaire clé</span><span class="prog-pt">Chiffres à retenir</span></div>
-      <div class="prog-tools"><img src="logo-claude.png" alt="" width="220" height="220"/><img src="logo-chatgpt.png" alt="" width="220" height="220"/><img src="logo-mistral.png" alt="" width="220" height="220"/><img src="logo-copilot.png" alt="" width="220" height="220"/><span>Comparer les principaux assistants</span></div>
-    </div></article>
-    <article class="prog-mod"><div class="prog-num">02</div><div class="prog-content">
-      <h3>Socle IA &amp; prompting</h3>
-      <span class="prog-dur">30 min</span>
-      <p>Apprendre à piloter l'IA plutôt qu'à la subir, en maîtrisant l'art de rédiger des instructions efficaces sur des cas réels de courtage.</p>
-      <div class="prog-points"><span class="prog-pt">La méthode du bon prompt</span><span class="prog-pt">Bons &amp; mauvais usages</span><span class="prog-pt">Le Projet Cabinet</span></div>
-      <div class="prog-tools"><img src="logo-claude.png" alt="" width="220" height="220"/><img src="logo-chatgpt.png" alt="" width="220" height="220"/><img src="logo-mistral.png" alt="" width="220" height="220"/><img src="logo-copilot.png" alt="" width="220" height="220"/><span>Pratiquer sur vos cas d'usage</span></div>
-    </div></article>
-    <article class="prog-mod"><div class="prog-num">03</div><div class="prog-content">
-      <h3>Claude en profondeur &amp; Microsoft 365</h3>
-      <span class="prog-dur">1 h</span>
-      <p>Installer et prendre en main votre environnement de travail augmenté : Claude et ses espaces, intégrés à Excel, Word, PowerPoint et Outlook.</p>
-      <div class="prog-points"><span class="prog-pt">Prise en main de Claude</span><span class="prog-pt">Excel : analyse de portefeuille</span><span class="prog-pt">Word, PowerPoint &amp; Outlook</span></div>
-      <div class="prog-tools"><img src="logo-claude.png" alt="" width="220" height="220"/><span>Claude et l'environnement Microsoft</span></div>
-    </div></article>
-    <article class="prog-mod prog-mod--partner"><div class="prog-num">04</div><div class="prog-content">
-      <h3>Fidéliser et développer son portefeuille avec Marvin Systems</h3>
-      <span class="prog-dur">1 h</span>
-      <p>Découvrir Marvin Systems pour anonymiser les données avant analyse, puis travailler un cas concret métier avec Claude afin de structurer les revues annuelles et détecter les opportunités dormantes.</p>
-      <div class="prog-points"><span class="prog-pt">Présentation de Marvin Systems</span><span class="prog-pt">Cas concret métier avec Claude</span><span class="prog-pt">Opportunités dormantes</span></div>
-      <div class="prog-tools"><img src="logo-marvin.png" alt="" width="220" height="220"/><img src="logo-claude.png" alt="" width="220" height="220"/><span>De l'anonymisation à l'analyse métier</span></div>
-    </div>
-      <aside class="prog-partner-note">
-        <div class="partner-brand"><img src="logo-marvin.png" alt="Logo Marvin Systems" width="220" height="220"/><span>Partenaire technologique<strong>Marvin Systems</strong></span></div>
-        <p>Marvin Systems permet d'anonymiser et de pseudonymiser les documents avant leur analyse par l'IA. Grâce au partenariat, les clients Learndigi bénéficient de 10 % de réduction sur le prix HT de l'abonnement pendant leurs 12 premiers mois. Les modalités d'accès leur sont communiquées directement par notre équipe.</p>
-        <span class="partner-benefit">10 % pendant 12 mois · réservé aux clients Learndigi</span>
-      </aside>
-    </article>
-    <article class="prog-mod"><div class="prog-num">05</div><div class="prog-content">
-      <h3>Sinistres et réclamations augmentés par l'IA</h3>
-      <span class="prog-dur">1 h 30</span>
-      <p>Traiter les deux moments où le client juge son cabinet : l'IA structure la déclaration, suit les pièces et prépare les réponses ; le courtier vérifie les délais, conseille et décide.</p>
-      <div class="prog-points"><span class="prog-pt">Qualifier et tenir les délais</span><span class="prog-pt">Suivre le dossier sinistre</span><span class="prog-pt">Traiter une réclamation</span></div>
-      <div class="prog-tools"><img src="logo-claude.png" alt="" width="220" height="220"/><img src="logo-marvin.png" alt="" width="220" height="220"/><span>Déclarations, suivi et réclamations</span></div>
-    </div></article>
-    <article class="prog-mod"><div class="prog-num">06</div><div class="prog-content">
-      <h3>Le devoir de conseil augmenté par l'IA</h3>
-      <span class="prog-dur">1 h 10</span>
-      <p>Produire un conseil mieux tracé, de la trame d'entretien à la motivation écrite : l'IA structure, rédige et vérifie ; le courtier recueille, décide et signe.</p>
-      <div class="prog-points"><span class="prog-pt">Fiche exigences et besoins</span><span class="prog-pt">Motiver la recommandation</span><span class="prog-pt">Contrôle avant l'ACPR</span></div>
-      <div class="prog-tools"><img src="logo-claude.png" alt="" width="220" height="220"/><img src="logo-marvin.png" alt="" width="220" height="220"/><span>Recueil, fiche et motivation écrite</span></div>
-    </div></article>
-    <article class="prog-mod"><div class="prog-num">07</div><div class="prog-content">
-      <h3>RGPD, AI Act, RSE &amp; IA responsable</h3>
-      <span class="prog-dur">1 h</span>
-      <p>Utiliser l'IA en toute conformité et de façon responsable : protection des données clients, exigences du régulateur et usage sobre et transparent.</p>
-      <div class="prog-points"><span class="prog-pt">RGPD &amp; données sensibles</span><span class="prog-pt">Charte IA interne</span><span class="prog-pt">AI Act &amp; sobriété numérique</span></div>
-      <div class="prog-tools"><span>Un cadre clair pour les données clients</span></div>
-    </div></article>
-    <article class="prog-mod"><div class="prog-num">08</div><div class="prog-content">
-      <h3>Conclusion : votre plan d'action</h3>
-      <span class="prog-dur">30 min</span>
-      <p>Repartir avec un cap clair : les enseignements clés du parcours et votre plan d'action personnel des 30 prochains jours.</p>
-      <div class="prog-points"><span class="prog-pt">Enseignements clés</span><span class="prog-pt">Plan d'action 30 jours</span><span class="prog-pt">Prochaines étapes</span></div>
-      <div class="prog-tools"><span>Une feuille de route concrète à l'issue de la session</span></div>
-    </div></article>
-
-  </div>
-
-  <figure class="lx-photo lx-photo--large">
-    <img src="photo-participants-notes.jpg" alt="Participants prenant des notes pendant une session de formation" loading="lazy" decoding="async" width="1400" height="933"/>
-    <figcaption>Une journée, ou deux demi-journées</figcaption>
-  </figure>
-
-
-  <section class="prog-info" aria-labelledby="prog-public">
-    <div class="prog-info-head">
-      <span class="eb">À qui s'adresse ce parcours</span>
+  <section class="pg-bloc" aria-labelledby="prog-public">
+    <div class="pg-bloc-tete">
+      <span class="eyebrow">À qui s'adresse ce parcours</span>
       <h2 id="prog-public">Pensé pour les cabinets de courtage, pas pour un public général</h2>
       <p>La formation s'adresse aux courtiers en assurance et à leurs équipes : dirigeants, chargés de clientèle, gestionnaires, personnel administratif. Aucune compétence technique n'est demandée. Le contenu ne change pas de nature selon la taille du cabinet ; ce sont les priorités, les exercices et la méthode de déploiement qui évoluent.</p>
     </div>
-    <div class="prog-info-grid">
-      <article><h3>Courtier indépendant</h3><p>Structurer ses usages personnels, gagner du temps sur les tâches répétitives et préserver la qualité de la relation client.</p></article>
-      <article><h3>Cabinet avec une équipe</h3><p>Partager des méthodes communes, choisir les bons cas d'usage et encadrer l'utilisation des outils par les collaborateurs.</p></article>
-      <article><h3>Organisation multi-équipe</h3><p>Définir un cadre d'adoption, faire monter les équipes en compétence et intégrer les exigences de conformité dès le départ.</p></article>
-    </div>
+    <div class="pg-bloc-corps"><ul class="pg-rangs"><li><h3>Courtier indépendant</h3><p>Structurer ses usages personnels, gagner du temps sur les tâches répétitives et préserver la qualité de la relation client.</p></li><li><h3>Cabinet avec une équipe</h3><p>Partager des méthodes communes, choisir les bons cas d'usage et encadrer l'utilisation des outils par les collaborateurs.</p></li><li><h3>Organisation multi-équipe</h3><p>Définir un cadre d'adoption, faire monter les équipes en compétence et intégrer les exigences de conformité dès le départ.</p></li></ul></div>
   </section>
-
-  <section class="prog-info" aria-labelledby="prog-objectifs-t">
-    <div class="prog-info-head">
-      <span class="eb">Objectifs pédagogiques</span>
+  <section class="pg-bloc" aria-labelledby="prog-objectifs-t">
+    <div class="pg-bloc-tete">
+      <span class="eyebrow">Objectifs pédagogiques</span>
       <h2 id="prog-objectifs-t">Ce que chaque participant sait faire à la fin</h2>
       <p>Chaque module se termine par une production utilisable au cabinet dès le lendemain, et non par une démonstration.</p>
     </div>
-    <ul class="prog-objectifs">
-      <li>Situer ce que l'IA générative change dans un cabinet de courtage, et ce qu'elle ne change pas.</li>
-      <li>Rédiger une instruction qui donne un résultat exploitable du premier coup, sur ses propres dossiers.</li>
-      <li>Travailler avec Claude dans Excel, Word, PowerPoint et Outlook, sans quitter son environnement habituel.</li>
-      <li>Préparer une revue de portefeuille et repérer les opportunités dormantes, après anonymisation des données.</li>
-      <li>Qualifier une déclaration de sinistre, suivre les pièces manquantes et traiter une réclamation dans les délais.</li>
-      <li>Produire une fiche exigences et besoins, puis la motivation écrite du conseil, à partir de ses notes d'entretien.</li>
-      <li>Distinguer ce qui peut être confié à une IA de ce qui ne doit jamais y entrer, au regard du RGPD et de l'AI Act.</li>
-      <li>Repartir avec un plan d'action à trente jours, propre au cabinet et non générique.</li>
-    </ul>
+    <div class="pg-bloc-corps"><ul class="pg-objectifs"><li><span class="pg-coche" aria-hidden="true"></span>Situer ce que l'IA générative change dans un cabinet de courtage, et ce qu'elle ne change pas.</li><li><span class="pg-coche" aria-hidden="true"></span>Rédiger une instruction qui donne un résultat exploitable du premier coup, sur ses propres dossiers.</li><li><span class="pg-coche" aria-hidden="true"></span>Travailler avec Claude dans Excel, Word, PowerPoint et Outlook, sans quitter son environnement habituel.</li><li><span class="pg-coche" aria-hidden="true"></span>Préparer une revue de portefeuille et repérer les opportunités dormantes, après anonymisation des données.</li><li><span class="pg-coche" aria-hidden="true"></span>Qualifier une déclaration de sinistre, suivre les pièces manquantes et traiter une réclamation dans les délais.</li><li><span class="pg-coche" aria-hidden="true"></span>Produire une fiche exigences et besoins, puis la motivation écrite du conseil, à partir de ses notes d'entretien.</li><li><span class="pg-coche" aria-hidden="true"></span>Distinguer ce qui peut être confié à une IA de ce qui ne doit jamais y entrer, au regard du RGPD et de l'AI Act.</li><li><span class="pg-coche" aria-hidden="true"></span>Repartir avec un plan d'action à trente jours, propre au cabinet et non générique.</li></ul></div>
   </section>
-
-  <section class="prog-info" aria-labelledby="prog-modalites">
-    <div class="prog-info-head">
-      <span class="eb">Déroulé et modalités</span>
+  <section class="pg-bloc" aria-labelledby="prog-modalites">
+    <div class="pg-bloc-tete">
+      <span class="eyebrow">Déroulé et modalités</span>
       <h2 id="prog-modalites">Comment se déroule la formation</h2>
       <p>Sept heures, en une journée ou en deux demi-journées, en visioconférence ou dans vos locaux. Le tarif est établi sur devis après un premier échange de trente minutes, parce qu'il dépend du format retenu et des modules prioritaires. Il ne change pas avec le nombre de participants : un seul tarif par session.</p>
     </div>
-    <div class="prog-info-grid">
-      <article><h3>Avant la session</h3><p>Un échange de trente minutes pour cadrer le besoin, puis un questionnaire d'auto-positionnement qui sert à calibrer les huit modules sur les priorités réelles de l'équipe.</p></article>
-      <article><h3>Pendant la session</h3><p>Une démonstration, puis un exercice guidé sur vos propres cas : courriels, synthèses, relances, analyse de portefeuille, sinistres et conseil. La pratique occupe l'essentiel du temps.</p></article>
-      <article><h3>Après la session</h3><p>Une attestation par participant, les modèles et instructions construits pendant la journée, et un plan d'action à trente jours pour transformer l'essai au cabinet.</p></article>
-      <article><h3>Qui anime</h3><p>Hugo Salembier et Matthieu Brubach préparent et animent la session. Ce sont vos interlocuteurs du premier échange jusqu'à la mise en pratique.</p></article>
-    </div>
-    <div class="prog-liens">
-      <a href="/audit-ia">Audit IA du cabinet</a>
-      <a href="/formation-outil-ia">Formation dédiée à un outil</a>
-      <a href="/formation-individuelle">Formation individuelle</a>
-      <a href="/prospection-ia">Prospection avec l'IA</a>
-      <a href="/veille-ia">Veille IA métier</a>
-      <a href="/claude-code-codex">Outil sur mesure</a>
-      <a href="/qualite-accessibilite">Accessibilité et handicap</a>
-    </div>
+    <div class="pg-bloc-corps"><ul class="pg-rangs"><li><h3>Avant la session</h3><p>Un échange de trente minutes pour cadrer le besoin, puis un questionnaire d'auto-positionnement qui sert à calibrer les huit modules sur les priorités réelles de l'équipe.</p></li><li><h3>Pendant la session</h3><p>Une démonstration, puis un exercice guidé sur vos propres cas : courriels, synthèses, relances, analyse de portefeuille, sinistres et conseil. La pratique occupe l'essentiel du temps.</p></li><li><h3>Après la session</h3><p>Une attestation par participant, les modèles et instructions construits pendant la journée, et un plan d'action à trente jours pour transformer l'essai au cabinet.</p></li><li><h3>Qui anime</h3><p>Hugo Salembier et Matthieu Brubach préparent et animent la session. Ce sont vos interlocuteurs du premier échange jusqu'à la mise en pratique.</p></li></ul><p class="pg-liens"><a href="/audit-ia">Audit IA du cabinet<span aria-hidden="true">→</span></a><a href="/formation-outil-ia">Formation dédiée à un outil<span aria-hidden="true">→</span></a><a href="/formation-individuelle">Formation individuelle<span aria-hidden="true">→</span></a><a href="/prospection-ia">Prospection avec l'IA<span aria-hidden="true">→</span></a><a href="/veille-ia">Veille IA métier<span aria-hidden="true">→</span></a><a href="/claude-code-codex">Outil sur mesure<span aria-hidden="true">→</span></a><a href="/qualite-accessibilite">Accessibilité et handicap<span aria-hidden="true">→</span></a></p></div>
   </section>
-
-  <section class="prog-info" aria-labelledby="prog-dda">
-    <div class="prog-info-head">
-      <span class="eb">Formation continue</span>
+  <section class="pg-bloc pg-bloc--dda" aria-labelledby="prog-dda">
+    <div class="pg-bloc-tete">
+      <span class="eyebrow">Formation continue</span>
       <h2 id="prog-dda">Sept heures qui comptent pour votre obligation DDA</h2>
       <p>Tout intermédiaire immatriculé à l'ORIAS doit justifier de quinze heures de formation continue par année civile. Ce parcours peut en couvrir sept, parce que les compétences qu'il mobilise figurent parmi celles retenues par la réglementation.</p>
     </div>
-    <div class="prog-info-grid">
-      <article><h3>Ce que dit le texte</h3><p>L'article R. 512-13-1 du Code des assurances fixe la durée annuelle à quinze heures au minimum. L'arrêté du 26 septembre 2018 liste les compétences éligibles et impose que la formation soit dispensée par un organisme répondant aux conditions du droit français.</p></article>
-      <article><h3>Les compétences mobilisées</h3><p>Identifier les évolutions technologiques et leurs impacts sur la distribution d'assurances, maîtriser les outils digitaux de l'environnement de travail, prospecter et développer un portefeuille dans le respect de la réglementation, traiter et exploiter les données clients, appliquer les règles relatives à la protection des données personnelles.</p></article>
-      <article><h3>Ce que vous recevez</h3><p>Une attestation nominative par participant, mentionnant la date, la durée et les thèmes traités. C'est la pièce que vous conservez et que vous présentez en cas de contrôle de votre immatriculation.</p></article>
-      <article><h3>Ce que nous n'affirmons pas</h3><p>Sept heures ne sont pas quinze. Ce parcours couvre une partie de votre obligation annuelle, pas sa totalité, et il ne garantit à lui seul aucun renouvellement d'immatriculation à l'ORIAS.</p></article>
-    </div>
-    <p class="prog-mention">Learndigi Formation est enregistré sous le numéro de déclaration d'activité 11941448294 auprès du préfet de région d'Île-de-France. Cet enregistrement ne vaut pas agrément de l'État.</p>
+    <div class="pg-bloc-corps"><ul class="pg-rangs"><li><h3>Ce que dit le texte</h3><p>L'article R. 512-13-1 du Code des assurances fixe la durée annuelle à quinze heures au minimum. L'arrêté du 26 septembre 2018 liste les compétences éligibles et impose que la formation soit dispensée par un organisme répondant aux conditions du droit français.</p></li><li><h3>Les compétences mobilisées</h3><p>Identifier les évolutions technologiques et leurs impacts sur la distribution d'assurances, maîtriser les outils digitaux de l'environnement de travail, prospecter et développer un portefeuille dans le respect de la réglementation, traiter et exploiter les données clients, appliquer les règles relatives à la protection des données personnelles.</p></li><li><h3>Ce que vous recevez</h3><p>Une attestation nominative par participant, mentionnant la date, la durée et les thèmes traités. C'est la pièce que vous conservez et que vous présentez en cas de contrôle de votre immatriculation.</p></li><li><h3>Ce que nous n'affirmons pas</h3><p>Sept heures ne sont pas quinze. Ce parcours couvre une partie de votre obligation annuelle, pas sa totalité, et il ne garantit à lui seul aucun renouvellement d'immatriculation à l'ORIAS.</p></li></ul><p class="pg-mention">Learndigi Formation est enregistré sous le numéro de déclaration d'activité 11941448294 auprès du préfet de région d'Île-de-France. Cet enregistrement ne vaut pas agrément de l'État.</p></div>
   </section>
 
-  <section class="prog-faq" aria-labelledby="prog-faq-titre">
-    <h2 id="prog-faq-titre">Questions fréquentes sur le programme</h2>
-      <details>
-        <summary>Faut-il déjà savoir se servir de ChatGPT ou de Claude ?</summary>
-        <p>Non. Le deuxième module part des bases et apprend à écrire une instruction qui donne un résultat exploitable. Les participants qui utilisent déjà un assistant y gagnent une méthode, ceux qui n'en ont jamais ouvert partent du bon pied.</p>
-      </details>
-      <details>
-        <summary>Travaille-t-on sur nos propres dossiers ?</summary>
-        <p>Oui, c'est tout l'intérêt. Les exercices portent sur vos courriels, vos contrats et vos situations de courtage. Les règles d'anonymisation sont posées avant, et notre partenaire Marvin Systems permet de pseudonymiser les documents avant toute analyse.</p>
-      </details>
-      <details>
-        <summary>Que deviennent les données de nos clients pendant la session ?</summary>
-        <p>La règle posée en formation est simple : rien de nominatif n'entre dans un outil d'IA. Un module entier est consacré au RGPD, à l'AI Act et à la sécurité des données, avec ce qui peut être confié à une IA, ce qui ne doit jamais l'être, et comment poser des règles écrites dans le cabinet.</p>
-      </details>
-      <details>
-        <summary>La formation peut-elle se faire à distance ?</summary>
-        <p>Oui. Elle se donne en visioconférence ou dans vos locaux, en une journée ou en deux demi-journées. Le contenu est le même, seuls le rythme et les temps de pratique s'ajustent.</p>
-      </details>
-      <details>
-        <summary>Peut-on ne suivre qu'une partie des modules ?</summary>
-        <p>Les huit modules forment un socle cohérent, de la prise en main jusqu'aux garde-fous de conformité. Le questionnaire préparatoire sert à répartir le temps : un cabinet très exposé aux sinistres passera plus de temps sur ce module, un autre sur le devoir de conseil.</p>
-      </details>
-      <details>
-        <summary>Qu'est-ce qu'on a en main à la fin de la journée ?</summary>
-        <p>Une attestation de formation pour chaque participant, un plan d'action à trente jours propre au cabinet, et les instructions et modèles construits pendant la session, directement réutilisables.</p>
-      </details>
-      <details>
-        <summary>La formation compte-t-elle pour mon obligation de formation continue DDA ?</summary>
-        <p>Oui, pour sept des quinze heures exigées chaque année civile. L'article R. 512-13-1 du Code des assurances fixe ce minimum annuel, et l'arrêté du 26 septembre 2018 liste les compétences éligibles : notre parcours en mobilise cinq, dont l'identification des évolutions technologiques, la maîtrise des outils digitaux et la protection des données personnelles. Chaque participant repart avec une attestation nominative précisant la date, la durée et les thèmes traités.</p>
-      </details>
-      <details>
-        <summary>La formation est-elle finançable par un OPCO ou le CPF ?</summary>
-        <p>Non, et nous préférons le dire avant le devis. Ces financements supposent la certification Qualiopi, que nous n'avons pas à ce jour. La facturation est directe, le tarif est établi sur devis après le premier échange. L'éligibilité DDA, elle, ne dépend pas de Qualiopi mais de la déclaration d'activité de l'organisme et du contenu de la formation.</p>
-      </details>
+  <section class="pg-bloc pg-bloc--faq" aria-labelledby="prog-faq-titre">
+    <div class="pg-bloc-tete">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2 id="prog-faq-titre">Questions fréquentes sur le programme</h2>
+    </div>
+    <div class="pg-bloc-corps pg-faq">
+      <details><summary>Faut-il déjà savoir se servir de ChatGPT ou de Claude ?<span class="pg-plus" aria-hidden="true"></span></summary><p>Non. Le deuxième module part des bases et apprend à écrire une instruction qui donne un résultat exploitable. Les participants qui utilisent déjà un assistant y gagnent une méthode, ceux qui n'en ont jamais ouvert partent du bon pied.</p></details>
+      <details><summary>Travaille-t-on sur nos propres dossiers ?<span class="pg-plus" aria-hidden="true"></span></summary><p>Oui, c'est tout l'intérêt. Les exercices portent sur vos courriels, vos contrats et vos situations de courtage. Les règles d'anonymisation sont posées avant, et notre partenaire Marvin Systems permet de pseudonymiser les documents avant toute analyse.</p></details>
+      <details><summary>Que deviennent les données de nos clients pendant la session ?<span class="pg-plus" aria-hidden="true"></span></summary><p>La règle posée en formation est simple : rien de nominatif n'entre dans un outil d'IA. Un module entier est consacré au RGPD, à l'AI Act et à la sécurité des données, avec ce qui peut être confié à une IA, ce qui ne doit jamais l'être, et comment poser des règles écrites dans le cabinet.</p></details>
+      <details><summary>La formation peut-elle se faire à distance ?<span class="pg-plus" aria-hidden="true"></span></summary><p>Oui. Elle se donne en visioconférence ou dans vos locaux, en une journée ou en deux demi-journées. Le contenu est le même, seuls le rythme et les temps de pratique s'ajustent.</p></details>
+      <details><summary>Peut-on ne suivre qu'une partie des modules ?<span class="pg-plus" aria-hidden="true"></span></summary><p>Les huit modules forment un socle cohérent, de la prise en main jusqu'aux garde-fous de conformité. Le questionnaire préparatoire sert à répartir le temps : un cabinet très exposé aux sinistres passera plus de temps sur ce module, un autre sur le devoir de conseil.</p></details>
+      <details><summary>Qu'est-ce qu'on a en main à la fin de la journée ?<span class="pg-plus" aria-hidden="true"></span></summary><p>Une attestation de formation pour chaque participant, un plan d'action à trente jours propre au cabinet, et les instructions et modèles construits pendant la session, directement réutilisables.</p></details>
+      <details><summary>La formation compte-t-elle pour mon obligation de formation continue DDA ?<span class="pg-plus" aria-hidden="true"></span></summary><p>Oui, pour sept des quinze heures exigées chaque année civile. L'article R. 512-13-1 du Code des assurances fixe ce minimum annuel, et l'arrêté du 26 septembre 2018 liste les compétences éligibles : notre parcours en mobilise cinq, dont l'identification des évolutions technologiques, la maîtrise des outils digitaux et la protection des données personnelles. Chaque participant repart avec une attestation nominative précisant la date, la durée et les thèmes traités.</p></details>
+      <details><summary>La formation est-elle finançable par un OPCO ou le CPF ?<span class="pg-plus" aria-hidden="true"></span></summary><p>Non, et nous préférons le dire avant le devis. Ces financements supposent la certification Qualiopi, que nous n'avons pas à ce jour. La facturation est directe, le tarif est établi sur devis après le premier échange. L'éligibilité DDA, elle, ne dépend pas de Qualiopi mais de la déclaration d'activité de l'organisme et du contenu de la formation.</p></details>
+    </div>
   </section>
 
-  <div class="prog-cta">
-    <div class="prog-cta-c">
-      <span class="eb">Passez à l'action</span>
-      <h2>Prêt à intégrer l'IA à votre cabinet ?</h2>
-      <p>30 minutes en visioconférence pour découvrir le programme, cadrer le format adapté à votre structure (visio ou présentiel, une journée ou deux demi-journées) et recevoir votre devis.</p>
-      <a href="/#rdv" class="btn-duo">
-        <span class="btn-plus">+</span>
-        <span class="btn-label">Réserver un rendez-vous découverte</span>
-      </a>
+  <section class="pg-fin">
+    <span class="eyebrow">Passez à l'action</span>
+    <h2>Prêt à intégrer l'IA à votre cabinet ?</h2>
+    <p>30 minutes en visioconférence pour découvrir le programme, cadrer le format adapté à votre structure (visio ou présentiel, une journée ou deux demi-journées) et recevoir votre devis.</p>
+    <div class="pg-actions">
+      <a href="/#rdv" class="btn-duo"><span class="btn-plus">+</span><span class="btn-label">Réserver un rendez-vous découverte</span></a>
+      <a class="pg-lien pg-lien--clair" href="/plaquette.pdf" download="Learndigi-programme-formation-IA.pdf">Télécharger le programme (PDF) <span aria-hidden="true">↓</span></a>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
 <!-- ── FOOTER ─────────────────────────────────────────────────── -->
 <footer>
