@@ -1913,36 +1913,74 @@
 </section>
 
 <!-- ── TARIF & FINANCEMENT ─────────────────────────────────────── -->
-<section class="tarif-wrap" id="tarif">
-  <div class="tarif-card">
-    <div class="tarif-content">
-      <span class="tarif-kicker">Tarif &amp; financement</span>
+<section class="lx-dmd-sec" id="tarif">
+  <div class="lx-dmd">
+    <div class="lx-dmd-gauche">
+      <span class="section-kicker">Tarif &amp; financement</span>
       <h2>Un tarif construit <span class="serif">avec vous</span>, pas un prix catalogue</h2>
-      <div class="tarif-row">
-        <div class="tarif-line"></div>
-        <p>Chaque formation est bâtie sur mesure, le tarif l'est donc aussi. Nous vous transmettons une proposition chiffrée après un premier échange de 30 minutes, et nous regardons ensemble les solutions de financement adaptées à votre situation.</p>
+      <p class="lx-dmd-intro">Composez votre demande : la proposition chiffrée part de ces quatre réponses. Vous la recevez sous 48 heures, après un échange de 30 minutes.</p>
+
+      <div class="lx-dmd-q">
+        <p class="lx-dmd-label" id="dmd-l-n">Combien de personnes à former&nbsp;?</p>
+        <div class="lx-dmd-pas" role="group" aria-labelledby="dmd-l-n">
+          <button type="button" class="lx-dmd-moins" aria-label="Une personne de moins">−</button>
+          <output class="lx-dmd-n" aria-live="polite">6</output>
+          <button type="button" class="lx-dmd-plus" aria-label="Une personne de plus">+</button>
+          <span class="lx-dmd-foule" aria-hidden="true"></span>
+        </div>
       </div>
-      <div class="tarif-btn">
-        <a href="#rdv" class="btn-duo">
-          <span class="btn-plus">+</span>
-          <span class="btn-label">Demander un devis</span>
-        </a>
+      <div class="lx-dmd-q">
+        <p class="lx-dmd-label" id="dmd-l-lieu">Où&nbsp;?</p>
+        <div class="lx-dmd-seg" role="radiogroup" aria-labelledby="dmd-l-lieu" data-cle="lieu">
+          <button type="button" role="radio" aria-checked="false" data-v="En visioconférence">En visio</button>
+          <button type="button" role="radio" aria-checked="true" data-v="Dans vos locaux">Dans vos locaux</button>
+        </div>
+      </div>
+      <div class="lx-dmd-q">
+        <p class="lx-dmd-label" id="dmd-l-orga">En combien de temps&nbsp;?</p>
+        <div class="lx-dmd-seg" role="radiogroup" aria-labelledby="dmd-l-orga" data-cle="orga">
+          <button type="button" role="radio" aria-checked="false" data-v="Une journée">Une journée</button>
+          <button type="button" role="radio" aria-checked="true" data-v="Deux demi-journées">Deux demi-journées</button>
+        </div>
+      </div>
+      <div class="lx-dmd-q">
+        <p class="lx-dmd-label" id="dmd-l-mod">Sur quoi insister&nbsp;?</p>
+        <div class="lx-dmd-mods" role="group" aria-labelledby="dmd-l-mod">
+            <button type="button" aria-pressed="false" data-m="1"><i>01</i>Introduction</button>
+            <button type="button" aria-pressed="true" data-m="2"><i>02</i>Socle IA et prompting</button>
+            <button type="button" aria-pressed="false" data-m="3"><i>03</i>Claude et Microsoft 365</button>
+            <button type="button" aria-pressed="false" data-m="4"><i>04</i>Portefeuille avec Marvin</button>
+            <button type="button" aria-pressed="true" data-m="5"><i>05</i>Sinistres et réclamations</button>
+            <button type="button" aria-pressed="true" data-m="6"><i>06</i>Devoir de conseil</button>
+            <button type="button" aria-pressed="false" data-m="7"><i>07</i>RGPD, AI Act, RSE</button>
+            <button type="button" aria-pressed="false" data-m="8"><i>08</i>Plan d'action</button>
+        </div>
       </div>
     </div>
-    <div class="tarif-media">
-        <figure class="lx-photo lx-photo--moyenne">
-    <img src="photo-devis-echange.jpg" alt="Tablette en main pendant un entretien professionnel" loading="lazy" decoding="async" width="1400" height="931"/>
-  </figure>
-      <span class="tarif-panel-eb">Ce qui fait varier le devis</span>
-      <ul class="tarif-crit lx-liste">
-        <li>Le nombre de participants à former</li>
-        <li>La modalité retenue : visio ou présentiel dans vos locaux</li>
-        <li>L'organisation : une journée ou deux demi-journées</li>
-        <li>Les modules prioritaires pour votre cabinet</li>
-      </ul>
-      <div class="tarif-badge">
-        <span>Sur devis<small>Après un échange de 30 min</small></span>
-      </div>
+
+    <div class="lx-dmd-droite">
+      <article class="lx-dmd-doc">
+        <div class="lx-dmd-doc-tete">
+          <span class="lx-dmd-doc-eb">Demande de proposition</span>
+          <span class="lx-dmd-doc-ref">Brouillon · <time class="lx-dmd-date"></time></span>
+        </div>
+        <h3>Formation IA pour courtiers en assurance</h3>
+        <dl class="lx-dmd-lignes">
+          <div class="lx-dmd-ligne" data-cle="n"><dt>Participants</dt><dd>6 personnes</dd></div>
+          <div class="lx-dmd-ligne" data-cle="lieu"><dt>Modalité</dt><dd>Dans vos locaux</dd></div>
+          <div class="lx-dmd-ligne" data-cle="orga"><dt>Organisation</dt><dd>Deux demi-journées</dd></div>
+          <div class="lx-dmd-ligne" data-cle="duree"><dt>Durée</dt><dd>7 heures, dont 7 comptabilisables DDA</dd></div>
+          <div class="lx-dmd-ligne" data-cle="mods"><dt>Modules prioritaires</dt><dd>Socle IA et prompting, Sinistres et réclamations, Devoir de conseil</dd></div>
+        </dl>
+        <div class="lx-dmd-tampon" aria-hidden="true"><span>7 h</span><small>DDA</small></div>
+        <div class="lx-dmd-doc-pied">
+          <p><b>Proposition chiffrée sous 48 h</b>, après un échange de 30 minutes, sans engagement.</p>
+          <div class="lx-dmd-actions">
+            <button class="lx-dmd-envoyer" type="button">Envoyer cette demande <span aria-hidden="true">→</span></button>
+            <a class="lx-dmd-rdv" href="#rdv">ou réserver 30 minutes</a>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>

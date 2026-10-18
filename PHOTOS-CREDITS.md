@@ -12,7 +12,6 @@ Licence : https://unsplash.com/license
 | Fichier | Page | Source | Sujet |
 |---|---|---|---|
 | `photo-formation-salle.jpg` | image de partage (source de `og-image.jpg`), retirée de l'accueil le 18/10/2026 | photo-1669633760258-186e9dee81e7 | Session de travail devant un écran, en salle |
-| `photo-devis-echange.jpg` | accueil, bloc tarif | photo-1578574577315-3fbeb0cecdc2 | Tablette en main pendant un entretien |
 | `photo-participants-notes.jpg` | programme, fond du bloc d'appel des offres | photo-1503428593586-e225b39bddfe | Participants prenant des notes en session |
 | `photo-audit-documents.jpg` | audit-ia | photo-1695388474402-ed805a890d8d | Relecture de documents en réunion |
 | `photo-veille-lecture.jpg` | veille-ia | photo-1487724077104-5196c4e819fa | Lecture attentive d'un dossier |
@@ -35,6 +34,9 @@ Deux photographies ont été retouchées avant mise en ligne :
 
 `photo-session-travail.jpg` a été retirée le 18/10/2026 : la vidéo de présentation
 (`assets/video/learndigi-promo.mp4`) l'a remplacée sur l'accueil.
+
+`photo-devis-echange.jpg` a été retirée le 18/10/2026 avec l'ancien bloc tarif, remplacé par
+la demande de proposition interactive.
 
 ## Logos des outils
 
