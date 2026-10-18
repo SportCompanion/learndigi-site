@@ -22,25 +22,45 @@
 </nav>
 
 <main>
-  <article>
+  <article class="art-page">
+  <aside class="art-marge" aria-label="Navigation">
+    <div class="art-marge-colle">
+      <a class="art-retour" href="/articles"><span class="art-fleche" aria-hidden="true">←</span> Tous les articles</a>
+      <div class="art-sommaire" role="navigation" aria-label="Sommaire de l'article">
+        <p class="art-sommaire-titre">Sommaire</p>
+        <ol>
+          <li><a href="#le-fichier-que-vous-avez-le-plus-envie-de-faire-analyser">Le fichier que vous avez le plus envie de faire analyser</a></li>
+          <li><a href="#retirer-le-nom-ne-rend-pas-le-fichier-anonyme">Retirer le nom ne rend pas le fichier anonyme</a></li>
+          <li><a href="#ce-qu-il-faut-retirer-avant-toute-analyse">Ce qu'il faut retirer avant toute analyse</a></li>
+          <li><a href="#trois-lectures-qui-font-ressortir-du-chiffre-d-affaires">Trois lectures qui font ressortir du chiffre d'affaires</a></li>
+          <li><a href="#preparer-une-revue-annuelle">Préparer une revue annuelle</a></li>
+          <li><a href="#quand-la-pseudonymisation-outillee-devient-necessaire">Quand la pseudonymisation outillée devient nécessaire</a></li>
+          <li><a href="#le-point-de-controle">Le point de contrôle</a></li>
+        </ol>
+      </div>
+    </div>
+  </aside>
+
+  <div class="art-colonne">
   <div class="art-hero">
     <span class="eyebrow">Méthode · Portefeuille</span>
-    <h1>Analyser son portefeuille avec l'IA sans exposer ses clients</h1>
+    <h1>Analyser son portefeuille avec l'IA sans <span class="serif">exposer</span> ses clients</h1>
     <p class="art-chapo">Un export de portefeuille est le fichier qu'un courtier a le plus envie de faire analyser, et le plus sensible qu'il détienne. Voici ce qu'on retire avant, ce qu'on garde, et les trois lectures qui rapportent vraiment.</p>
-    <div class="art-meta"><span>Publié le 9 octobre 2026</span><span>Lecture : 8 minutes</span><span>Par <a href="/auteurs/hugo-salembier" rel="author">Hugo Salembier</a></span></div>
+    <div class="art-meta"><a class="art-auteur" href="/auteurs/hugo-salembier" rel="author"><img src="/assets/auteurs/hugo-salembier-112.jpg" alt="" width="112" height="112"/>Hugo Salembier</a><time datetime="2026-10-09">9 octobre 2026</time><span>8 min de lecture</span></div>
+    <p class="art-textes"><span class="art-textes-sig" aria-hidden="true">§</span><span class="sr">Textes cités : </span><span class="art-textes-item">RGPD, art. 4 et considérant 26</span><span class="art-textes-item">CNIL, 18 juillet 2024</span></p>
   </div>
 
   <div class="art-corps">
-    <h2>Le fichier que vous avez le plus envie de faire analyser</h2>
+    <h2 id="le-fichier-que-vous-avez-le-plus-envie-de-faire-analyser">Le fichier que vous avez le plus envie de faire analyser</h2>
     <p>C'est aussi le plus sensible que vous déteniez. Un export de portefeuille, c'est plusieurs centaines de personnes physiques, leurs contrats, parfois leur santé, et souvent une colonne de commentaires libres où un gestionnaire a écrit ce qu'il pensait d'un client un jour de fatigue.</p>
     <p>L'envie est légitime : une IA lit un tableau de huit cents lignes en quelques secondes et en sort des rapprochements qu'un humain ne fait pas à l'œil. Le problème n'est pas l'analyse, il est le trajet du fichier. Cet article porte sur le trajet.</p>
 
-    <h2>Retirer le nom ne rend pas le fichier anonyme</h2>
+    <h2 id="retirer-le-nom-ne-rend-pas-le-fichier-anonyme">Retirer le nom ne rend pas le fichier anonyme</h2>
     <p>C'est l'erreur la plus répandue, et elle est sincère. On supprime la colonne « nom », on se dit qu'on a fait le nécessaire, et on envoie.</p>
     <p>L'article 4 du RGPD distingue deux notions qui n'ont pas du tout les mêmes conséquences. La <strong>pseudonymisation</strong> est un traitement après lequel les données ne peuvent plus être attribuées à une personne sans information supplémentaire conservée séparément. L'<strong>anonymisation</strong>, elle, est irréversible : le considérant 26 du règlement précise que les données anonymes sortent du champ du RGPD, mais que les données pseudonymisées, elles, restent des données personnelles.</p>
     <p>Un export sans nom mais avec le numéro de contrat est pseudonymisé, pas anonyme. Vous retrouvez le client en trois secondes dans votre logiciel de gestion, donc l'information supplémentaire existe, donc le RGPD s'applique en entier. Même chose avec une immatriculation, une adresse de bien assuré ou une date de naissance exacte dans une commune de huit cents habitants.</p>
 
-    <h2>Ce qu'il faut retirer avant toute analyse</h2>
+    <h2 id="ce-qu-il-faut-retirer-avant-toute-analyse">Ce qu'il faut retirer avant toute analyse</h2>
     <p>La règle de tri est simple : vous gardez ce qui porte le raisonnement, vous retirez ce qui désigne la personne.</p>
     <ul>
       <li><strong>Nom et prénom</strong>, y compris dans les colonnes de commentaire.</li>
@@ -55,7 +75,7 @@
     </ul>
     <p>Vous conservez, sans difficulté : branche et produit, compagnie, prime annuelle, date d'effet et date d'échéance, ancienneté, nombre et coût des sinistres, mode de paiement, canal d'origine, tranche d'âge, zone géographique approximative. C'est avec ces colonnes-là que se font les analyses utiles.</p>
 
-    <h2>Trois lectures qui font ressortir du chiffre d'affaires</h2>
+    <h2 id="trois-lectures-qui-font-ressortir-du-chiffre-d-affaires">Trois lectures qui font ressortir du chiffre d'affaires</h2>
     <h3>Les échéances croisées avec le dernier contact</h3>
     <p>Une liste d'échéances, vous l'avez déjà dans votre logiciel. Ce que l'IA ajoute, c'est le croisement : les contrats qui arrivent à échéance dans les quatre-vingt-dix jours <em>et</em> dont le client n'a pas été contacté depuis plus d'un an. Ce sont ceux qui partent sans prévenir. La liste est toujours plus courte qu'on ne le craint, et elle est actionnable le jour même.</p>
     <h3>Les mono-équipés dont le profil en appelle un second</h3>
@@ -63,7 +83,7 @@
     <h3>La dérive de sinistralité par segment</h3>
     <p>Rapporter le coût des sinistres à la prime, par produit et par compagnie, puis comparer sur trois exercices. C'est un calcul que personne ne fait parce qu'il est fastidieux, et c'est celui qui vous prépare le mieux à une discussion de renouvellement avec un assureur.</p>
 
-    <h2>Préparer une revue annuelle</h2>
+    <h2 id="preparer-une-revue-annuelle">Préparer une revue annuelle</h2>
     <p>La méthode tient en quatre étapes, et la première est la seule qui demande de la rigueur.</p>
     <ol>
       <li><strong>Nettoyer l'export</strong> selon la liste ci-dessus, dans un classeur à part, jamais dans le fichier d'origine.</li>
@@ -73,35 +93,19 @@
     </ol>
     <p>Cette dernière étape est le cœur de la méthode : l'outil travaille sur des profils, vous travaillez sur des clients. Les deux ne se rencontrent que chez vous.</p>
 
-    <h2>Quand la pseudonymisation outillée devient nécessaire</h2>
+    <h2 id="quand-la-pseudonymisation-outillee-devient-necessaire">Quand la pseudonymisation outillée devient nécessaire</h2>
     <p>Le nettoyage à la main fonctionne jusqu'à quelques centaines de lignes et quelques colonnes. Au-delà, ou dès qu'il faut le refaire chaque mois, il devient le goulot d'étranglement, et un nettoyage fait vite est un nettoyage incomplet.</p>
     <p>C'est là qu'un dispositif de pseudonymisation prend le relais, en remplaçant automatiquement les identifiants avant la sortie du fichier et en rétablissant les valeurs réelles à l'arrivée. Nous travaillons avec <a href="https://marvin-systems.com/fr" rel="nofollow noopener" target="_blank">Marvin Systems</a> sur ce point, et c'est notre seul partenariat : nous le signalons pour que vous sachiez d'où nous parlons.</p>
     <p>Un dispositif de ce type ne résout pas tout, et il faut le dire. La table de correspondance reste chez vous, donc votre responsabilité aussi. Le traitement porte toujours sur des personnes réelles, donc il doit figurer dans votre registre. Et il ne dit rien de la qualité de l'analyse : un fichier parfaitement pseudonymisé peut produire une conclusion fausse.</p>
 
-    <h2>Le point de contrôle</h2>
+    <h2 id="le-point-de-controle">Le point de contrôle</h2>
     <p>L'IA ne choisit pas qui vous appelez. Elle propose un ordre, vous décidez s'il est juste. Une liste générée qui place en tête un client que vous savez en instance de départ, ou qui ignore celui dont vous attendez la succession, n'est pas une erreur de l'outil : c'est une information que vous ne lui avez pas donnée, et que vous ne lui donnerez pas, parce qu'elle n'a rien à faire dans un fichier.</p>
     <p>C'est le partage qui vaut pour tous les usages de l'IA dans un cabinet : <strong>elle prépare, vous vérifiez et vous engagez</strong>. Sur un portefeuille, l'enjeu est seulement plus visible, parce que le fichier contient tout ce que vos clients vous ont confié.</p>
   </div>
 
   <div class="art-encadre"><p>Un export sans nom mais avec le numéro de contrat n'est pas anonyme : vous retrouvez le client en trois secondes dans votre logiciel. Le RGPD s'applique donc en entier, et le fichier mérite le même soin qu'un dossier papier laissé sur un bureau.</p></div>
-
-  <div class="art-suite">
-    <a href="/articles/chatgpt-donnees-clients-courtier">
-      <small>Lire d'abord</small>
-      <strong>Puis-je mettre les données de mes clients dans ChatGPT ?</strong>
-      <span>Non sur un compte grand public, oui sous conditions sur une offre professionnelle. Ce que dit la CNIL, et la charte d'une page qui règle la question.</span>
-    </a>
-  </div>
-  <div class="art-suite">
-    <a href="/programme">
-      <small>Le parcours complet</small>
-      <strong>Formation IA pour courtiers en assurance</strong>
-      <span>Un module entier est consacré à l'exploitation du portefeuille, sur vos propres exports, avec la pseudonymisation Marvin Systems.</span>
-    </a>
-  </div>
-
   <div class="art-sources">
-    <h2>Sources</h2>
+    <h2>Textes cités</h2>
     <ol>
       <li>Règlement (UE) 2016/679 (RGPD), article 4 point 5 sur la pseudonymisation, article 9 sur les catégories particulières de données, et considérant 26 sur les données anonymes. <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32016R0679" rel="nofollow noopener" target="_blank">Texte sur EUR-Lex</a></li>
       <li>CNIL, questions-réponses sur l'utilisation d'un système d'IA générative, 18 juillet 2024. <a href="https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative" rel="nofollow noopener" target="_blank">Page de la CNIL</a></li>
@@ -109,7 +113,28 @@
     </ol>
     <p style="font-size:13px;color:#7a8291;line-height:1.75;margin-top:14px">Cet article décrit des pratiques professionnelles et ne constitue pas un conseil juridique. En cas de doute sur votre organisation ou sur votre registre des traitements, rapprochez-vous de votre conseil habituel.</p>
   </div>
-  </article>
+
+  <section class="art-ensuite" aria-labelledby="art-ensuite-titre">
+    <h2 class="art-ensuite-titre" id="art-ensuite-titre">Lire ensuite</h2>
+    <div class="art-ensuite-grille">
+    <div class="art-suite">
+    <a href="/articles/chatgpt-donnees-clients-courtier">
+      <small>Lire d'abord</small>
+      <strong><span class="art-lien">Puis-je mettre les données de mes clients dans ChatGPT ?</span></strong>
+      <span>Non sur un compte grand public, oui sous conditions sur une offre professionnelle. Ce que dit la CNIL, et la charte d'une page qui règle la question.</span>
+    </a>
+  </div>
+    <div class="art-suite art-suite--parcours">
+    <a href="/programme">
+      <small>Le parcours complet</small>
+      <strong><span class="art-lien">Formation IA pour courtiers en assurance</span></strong>
+      <span>Un module entier est consacré à l'exploitation du portefeuille, sur vos propres exports, avec la pseudonymisation Marvin Systems.</span>
+    </a>
+  </div>
+    </div>
+  </section>
+  </div>
+</article>
 </main>
 
 <footer><div class="finfo"><div class="fadr">88 rue de Champigny<br/>94430 Chennevières-sur-Marne<br/>France</div><div class="fcontact"><p>matthieu.brubach@learndigi.fr</p><p>hugo.salembier@learndigi.fr</p><p>06 67 99 63 79 · 06 33 63 96 05</p></div></div><div class="flinks"><a href="/articles">Articles</a><a href="/">Accueil</a><a href="/programme">Programme</a><a href="/qualite-accessibilite">Qualité &amp; accessibilité</a><a href="/qualite-accessibilite#reclamations">Réclamations</a><a href="/#contact">Contact</a></div><div class="fbot"><span class="fcopy">© 2026 – Learndigi. Tous droits réservés · Enregistré sous le numéro 11941448294. Cet enregistrement ne vaut pas agrément de l'État.</span><a href="#" class="fup" aria-label="Revenir en haut">∧</a></div></footer>

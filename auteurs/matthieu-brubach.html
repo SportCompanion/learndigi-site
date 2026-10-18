@@ -22,7 +22,14 @@
 </nav>
 
 <main>
-  <article>
+  <article class="art-page">
+  <aside class="art-marge" aria-label="Navigation">
+    <div class="art-marge-colle">
+      <a class="art-retour" href="/articles"><span class="art-fleche" aria-hidden="true">←</span> Tous les articles</a>
+    </div>
+  </aside>
+
+  <div class="art-colonne">
   <div class="art-hero">
     <span class="eyebrow">Auteur · Président</span>
     <h1>Matthieu Brubach</h1>
@@ -33,13 +40,13 @@
   <div class="art-corps">
     <p><img src="/matthieu.jpg" alt="Matthieu Brubach, co-fondateur et formateur IA chez Learndigi" width="320" height="320" loading="lazy" decoding="async" style="width:168px;height:168px;border-radius:50%;object-fit:cover;display:block"/></p>
 
-    <h2>Son rôle chez Learndigi</h2>
+    <h2 id="son-role-chez-learndigi">Son rôle chez Learndigi</h2>
     <p>Matthieu Brubach a fondé Learndigi avec Hugo Salembier en juin 2026. Il en est le président. Les deux associés conçoivent les contenus, préparent les sessions et les animent eux-mêmes : le courtier qui prend rendez-vous parle dès le premier échange à la personne qui le formera.</p>
 
-    <h2>Ce qu'il anime</h2>
+    <h2 id="ce-qu-il-anime">Ce qu'il anime</h2>
     <p>Il anime les modules du parcours consacrés au devoir de conseil, à la gestion des sinistres et des réclamations, et au cadre RGPD et AI Act. Il est également le référent handicap de l'organisme et l'interlocuteur des réclamations, deux fonctions identifiées et joignables directement.</p>
 
-    <h2>Ce sur quoi il écrit</h2>
+    <h2 id="ce-sur-quoi-il-ecrit">Ce sur quoi il écrit</h2>
     <p>Il écrit sur ce que la réglementation autorise et interdit à un cabinet qui se met à l'IA générative. Chaque article cite ses sources, décisions et recommandations de l'ACPR, articles du Code des assurances, et s'arrête là où commence le conseil juridique.</p>
     <ul>
       <li><a href="/articles/devoir-de-conseil-ia-courtier">Devoir de conseil et IA : ce que l'ACPR attend d'un cabinet de courtage</a></li>
@@ -47,14 +54,20 @@
       <li><a href="/articles/chatgpt-donnees-clients-courtier">Puis-je mettre les données de mes clients dans ChatGPT ?</a></li>
     </ul>
 
-    <h2>Le joindre</h2>
+    <h2 id="le-joindre">Le joindre</h2>
     <p>Une question sur une formation, un audit ou un projet d'outil : <a href="mailto:matthieu.brubach@learndigi.fr">matthieu.brubach@learndigi.fr</a>, sur <a href="https://www.linkedin.com/in/mathieu-brubach-7850a931a/" rel="me noopener" target="_blank">LinkedIn</a>, 06 67 99 63 79. Learndigi Formation, 88 rue de Champigny, 94430 Chennevières-sur-Marne. Déclaration d'activité enregistrée sous le numéro 11941448294 auprès du préfet de région d'Île-de-France, ce qui ne vaut pas agrément de l'État.</p>
   </div>
 
-    <div class="art-suite"><a href="/programme"><small>Voir aussi</small><strong>Formation IA pour courtiers en assurance</strong><span>Le parcours complet : huit modules, sur vos propres dossiers.</span></a></div>
-    <div class="art-suite"><a href="/qualite-accessibilite"><small>Voir aussi</small><strong>Accessibilité, handicap et réclamations</strong><span>Les modalités d'accueil et la procédure de réclamation, dont il est le référent.</span></a></div>
-    <div class="art-suite"><a href="/audit-ia"><small>Voir aussi</small><strong>Audit IA du cabinet</strong><span>Où agir en premier, avec quel cadre de sécurité.</span></a></div>
-  </article>
+  <section class="art-ensuite" aria-labelledby="art-ensuite-titre">
+    <h2 class="art-ensuite-titre" id="art-ensuite-titre">Voir aussi</h2>
+    <div class="art-ensuite-grille">
+    <div class="art-suite"><a href="/qualite-accessibilite"><small>Voir aussi</small><strong><span class="art-lien">Accessibilité, handicap et réclamations</span></strong><span>Les modalités d'accueil et la procédure de réclamation, dont il est le référent.</span></a></div>
+    <div class="art-suite"><a href="/audit-ia"><small>Voir aussi</small><strong><span class="art-lien">Audit IA du cabinet</span></strong><span>Où agir en premier, avec quel cadre de sécurité.</span></a></div>
+    <div class="art-suite art-suite--parcours"><a href="/programme"><small>Voir aussi</small><strong><span class="art-lien">Formation IA pour courtiers en assurance</span></strong><span>Le parcours complet : huit modules, sur vos propres dossiers.</span></a></div>
+    </div>
+  </section>
+  </div>
+</article>
 </main>
 
 <footer><div class="finfo"><div class="fadr">88 rue de Champigny<br/>94430 Chennevières-sur-Marne<br/>France</div><div class="fcontact"><p>matthieu.brubach@learndigi.fr</p><p>hugo.salembier@learndigi.fr</p><p>06 67 99 63 79 · 06 33 63 96 05</p></div></div><div class="flinks"><a href="/articles">Articles</a><a href="/">Accueil</a><a href="/programme">Programme</a><a href="/qualite-accessibilite">Qualité &amp; accessibilité</a><a href="/qualite-accessibilite#reclamations">Réclamations</a><a href="/#contact">Contact</a></div><div class="fbot"><span class="fcopy">© 2026 – Learndigi. Tous droits réservés · Enregistré sous le numéro 11941448294. Cet enregistrement ne vaut pas agrément de l'État.</span><a href="#" class="fup" aria-label="Revenir en haut">∧</a></div></footer>

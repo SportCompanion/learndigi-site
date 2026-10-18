@@ -1486,6 +1486,59 @@
     window.addEventListener('scroll', function () { if (marche) mesurer(); }, { passive: true });
   }
 
+  /* ── 17. Sommaire des articles ──────────────────────────────
+     Le sommaire est écrit dans la page : ses liens marchent sans
+     script, et un moteur le lit. Ici on indique seulement où en
+     est la lecture. La section courante est la dernière dont le
+     titre est passé sous le menu collant, et un repère doré glisse
+     jusqu'à son lien. Tourne aussi quand les animations sont
+     réduites : c'est de la navigation, pas un effet, et la
+     feuille coupe alors la transition du repère.               */
+  function sommaire() {
+    var boite = document.querySelector('.art-sommaire');
+    if (!boite) return;
+    var liens = tous('a[href^="#"]', boite);
+    var titres = liens.map(function (a) {
+      return document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
+    });
+    if (!liens.length || titres.some(function (t) { return !t; })) return;
+
+    var repere = document.createElement('span');
+    repere.className = 'art-sommaire-repere';
+    repere.setAttribute('aria-hidden', 'true');
+    boite.appendChild(repere);
+
+    var courant = null, attente = false;
+    function placer(i) {
+      if (i === courant) return;
+      courant = i;
+      liens.forEach(function (a, k) {
+        if (k === i) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      });
+      if (i < 0) { boite.classList.remove('est-actif'); return; }
+      repere.style.setProperty('--y', liens[i].offsetTop + 'px');
+      repere.style.height = liens[i].offsetHeight + 'px';
+      boite.classList.add('est-actif');
+    }
+    function maj() {
+      attente = false;
+      // 150 px : le menu collant fait 92 px, plus l'air au-dessus du titre
+      var i = -1;
+      for (var k = 0; k < titres.length; k++) {
+        if (titres[k].getBoundingClientRect().top <= 150) i = k; else break;
+      }
+      placer(i);
+    }
+    window.addEventListener('scroll', function () {
+      if (attente) return;
+      attente = true;
+      requestAnimationFrame(maj);
+    }, { passive: true });
+    window.addEventListener('resize', function () { courant = null; maj(); }, { passive: true });
+    maj();
+  }
+
   /* ── Mise en route ────────────────────────────────────────── */
   function demarrer() {
     // Ces deux-là servent aussi sans animation : l'un remplace une
@@ -1505,6 +1558,7 @@
     faq();
     chiffresMontants();
     masques();
+    sommaire();
 
     if (reduit) {
       tous('.lx-w').forEach(function (m) { m.classList.add('lx-w-on'); });
@@ -1531,7 +1585,9 @@
       '.team-proof-copy h2',
       '.outils-heading h2',
       '.offer-hero-copy h1',      // pages d'offre
-      '.prog-banner-c h1'         // programme
+      '.prog-banner-c h1',        // programme
+      '.art-liste h1',            // articles, le sommaire
+      '.art-hero h1'              // articles et auteurs
     ]);
     rails([
       '.vstat', '.eng-card', '.context-card', '.rdv-step', '.howto-step',
@@ -1542,7 +1598,8 @@
     // (offres.js et ses « reveal-target »). On n'y ajoute aucune
     // entrée décalée : deux mécanismes qui masquent le même bloc
     // finissent tôt ou tard par en laisser un invisible.
-    grillesDecalees(['.deliverable-list', '.hero-list', '.tarif-crit', '.prog-points']);
+    grillesDecalees(['.deliverable-list', '.hero-list', '.tarif-crit', '.prog-points',
+                     '.art-famille-liste', '.art-ensuite-grille']);
   }
 
   if (document.readyState === 'loading') {

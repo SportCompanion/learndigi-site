@@ -22,19 +22,38 @@
 </nav>
 
 <main>
-  <article>
+  <article class="art-page">
+  <aside class="art-marge" aria-label="Navigation">
+    <div class="art-marge-colle">
+      <a class="art-retour" href="/articles"><span class="art-fleche" aria-hidden="true">←</span> Tous les articles</a>
+      <div class="art-sommaire" role="navigation" aria-label="Sommaire de l'article">
+        <p class="art-sommaire-titre">Sommaire</p>
+        <ol>
+          <li><a href="#le-sinistre-est-le-moment-de-verite-du-cabinet">Le sinistre est le moment de vérité du cabinet</a></li>
+          <li><a href="#trois-delais-qu-il-ne-faut-jamais-faire-calculer-par">Trois délais qu'il ne faut jamais faire calculer par une IA</a></li>
+          <li><a href="#une-reclamation-n-est-pas-une-declaration-de-sinistre">Une réclamation n'est pas une déclaration de sinistre</a></li>
+          <li><a href="#ce-que-l-ia-fait-bien-dossier-par-dossier">Ce que l'IA fait bien, dossier par dossier</a></li>
+          <li><a href="#les-donnees-qu-on-ne-charge-pas">Les données qu'on ne charge pas</a></li>
+          <li><a href="#par-ou-commencer">Par où commencer</a></li>
+        </ol>
+      </div>
+    </div>
+  </aside>
+
+  <div class="art-colonne">
   <div class="art-hero">
     <span class="eyebrow">Gestion · Sinistres et réclamations</span>
-    <h1>Sinistres et réclamations : ce que l'IA fait gagner à un cabinet de courtage</h1>
+    <h1>Sinistres et réclamations : ce que l'IA fait <span class="serif">gagner</span> à un cabinet de courtage</h1>
     <p class="art-chapo">Un client qui a été bien accompagné sur un sinistre reste. Un client laissé sans nouvelles résilie, et peut désormais le faire en quelques clics. Entre les deux, il y a surtout du travail administratif : pièces à réclamer, relances, courriers, suivi. C'est exactement ce qu'une IA générative fait bien, à condition de lui interdire trois choses.</p>
-    <div class="art-meta"><span>Publié le 9 octobre 2026</span><span>Lecture : 6 minutes</span><span>Par <a href="/auteurs/matthieu-brubach" rel="author">Matthieu Brubach</a></span></div>
+    <div class="art-meta"><a class="art-auteur" href="/auteurs/matthieu-brubach" rel="author"><img src="/assets/auteurs/matthieu-brubach-112.jpg" alt="" width="112" height="112"/>Matthieu Brubach</a><time datetime="2026-10-09">9 octobre 2026</time><span>6 min de lecture</span></div>
+    <p class="art-textes"><span class="art-textes-sig" aria-hidden="true">§</span><span class="sr">Textes cités : </span><span class="art-textes-item">Code des assurances, art. L. 113-2 et L. 114-1</span><span class="art-textes-item">Recommandation ACPR 2024-R-02</span></p>
   </div>
 
   <div class="art-corps">
-    <h2>Le sinistre est le moment de vérité du cabinet</h2>
+    <h2 id="le-sinistre-est-le-moment-de-verite-du-cabinet">Le sinistre est le moment de vérité du cabinet</h2>
     <p>Tant qu'il ne se passe rien, un contrat est une ligne de dépense. Le jour du sinistre, le client découvre ce que vaut son courtier : la vitesse de transmission, la qualité du dossier, la clarté des explications. Le courtier n'est pas l'assureur et, sauf délégation de gestion, il ne décide ni de la prise en charge ni du montant. Il conseille, transmet vite et complet, suit le dossier et défend les intérêts de son client. Une transmission tardive ou incomplète, elle, peut engager sa responsabilité.</p>
 
-    <h2>Trois délais qu'il ne faut jamais faire calculer par une IA</h2>
+    <h2 id="trois-delais-qu-il-ne-faut-jamais-faire-calculer-par">Trois délais qu'il ne faut jamais faire calculer par une IA</h2>
     <p>C'est le point le plus important de tout l'article. Les délais se trouvent en ligne dans des versions contradictoires, et un modèle de langage entraîné sur ces pages se trompe avec aplomb.</p>
     <table class="art-tableau">
       <thead><tr><th>Situation</th><th>Délai de déclaration</th><th>Où le vérifier</th></tr></thead>
@@ -47,7 +66,7 @@
     <p>Beaucoup de pages mentionnent encore dix jours pour les catastrophes naturelles, car c'était le délai avant la loi de 2021. Une IA qui a lu ces pages répondra dix jours, sans hésiter et sans source. La règle de travail est donc simple : <strong>le délai se vérifie dans le contrat et dans le Code, jamais dans la réponse d'un assistant</strong>. On le lui interdit explicitement dans l'instruction, et on lui demande à la place de signaler les informations manquantes.</p>
     <p>Même chose pour la prescription : l'action dérivant d'un contrat d'assurance se prescrit par deux ans, avec des cas particuliers que l'on vérifie au texte plutôt qu'auprès d'un modèle.</p>
 
-    <h2>Une réclamation n'est pas une déclaration de sinistre</h2>
+    <h2 id="une-reclamation-n-est-pas-une-declaration-de-sinistre">Une réclamation n'est pas une déclaration de sinistre</h2>
     <p>La distinction est régulièrement manquée, et elle a des conséquences. Une déclaration de sinistre est une demande de prestation. Une réclamation est l'expression d'un mécontentement, orale ou écrite, venant d'un client, d'un ancien client ou d'un prospect. « Ça fait trois semaines que je n'ai pas de nouvelles de mon sinistre » en est une, même dite au téléphone.</p>
     <p>La recommandation ACPR 2024-R-02 du 2 juillet 2024, qui vise l'ensemble des distributeurs d'assurance, intermédiaires compris, fixe deux repères :</p>
     <ul>
@@ -56,7 +75,7 @@
     </ul>
     <p>Ce n'est pas une loi, c'est ce que le superviseur recommande et contrôle. Former les collaborateurs à reconnaître une réclamation fait partie de ses attentes : la plupart des dérapages viennent d'un mécontentement traité comme une relance ordinaire.</p>
 
-    <h2>Ce que l'IA fait bien, dossier par dossier</h2>
+    <h2 id="ce-que-l-ia-fait-bien-dossier-par-dossier">Ce que l'IA fait bien, dossier par dossier</h2>
     <h3>Transformer un récit en fiche de déclaration</h3>
     <p>Le client appelle, souvent stressé et dans le désordre. L'IA transforme ce récit en fiche structurée : dates de survenance, de connaissance et de déclaration, lieu, circonstances factuelles, biens endommagés, tiers impliqués, contrats potentiellement concernés, pièces à réunir, mesures conservatoires à conseiller. Un point de vigilance : <strong>le récit du client n'est pas un constat</strong>. Une IA a tendance à rendre les circonstances plus claires qu'elles ne le sont, et une fiche trop propre peut figer une version défavorable au client. Quand les faits sont incertains, on garde ses mots.</p>
     <h3>Tenir le suivi et préparer les relances</h3>
@@ -66,50 +85,54 @@
     <h3>Écrire au client, y compris pour annoncer un refus</h3>
     <p>C'est l'usage le plus sous-estimé. Un refus annoncé avec les bons mots, en expliquant ce qui a joué et ce qui reste possible, évite une réclamation. Un refus expédié en trois lignes en déclenche une.</p>
 
-    <h2>Les données qu'on ne charge pas</h2>
+    <h2 id="les-donnees-qu-on-ne-charge-pas">Les données qu'on ne charge pas</h2>
     <ul>
       <li><strong>Les données de santé</strong>, les dommages corporels, les arrêts de travail : hors périmètre. Ces dossiers se traitent sans IA générative.</li>
       <li><strong>Le tiers lésé est une personne</strong> lui aussi. On envoie un identifiant de suivi, jamais son nom, son adresse ou son téléphone.</li>
       <li><strong>Les photos transmises par le client</strong> peuvent contenir des visages, des plaques d'immatriculation ou des métadonnées de localisation. En pratique, la liste des photos suffit au suivi.</li>
     </ul>
 
-    <h2>Par où commencer</h2>
+    <h2 id="par-ou-commencer">Par où commencer</h2>
     <p>Le gain n'est pas dans l'outil, il est dans la méthode figée. Écrivez une fois la checklist des pièces par type de sinistre, la cadence de relance du cabinet, et la structure de votre fiche de déclaration. Une IA reproduit cette méthode à l'identique sur chaque dossier, ce qu'un gestionnaire pressé fait rarement. Et gardez pour vous les trois choses qui engagent : le délai, la prise en charge, les données sensibles.</p>
     <p>C'est l'objet du module sinistres et réclamations de notre parcours : une heure trente, sept cas pratiques, du premier appel du client jusqu'à la réclamation traitée dans les délais.</p>
   </div>
-
-  <div class="art-suite">
-    <a href="/programme">
-      <small>Le parcours complet</small>
-      <strong>Formation IA pour courtiers en assurance</strong>
-      <span>Sept heures, huit modules, sur vos propres dossiers. Les sinistres et réclamations, le devoir de conseil, et le cadre RGPD et AI Act.</span>
-    </a>
-  </div>
-
-  <div class="art-suite">
-    <a href="/articles/devoir-de-conseil-ia-courtier">
-      <small>Lire aussi</small>
-      <strong>Devoir de conseil et IA : ce que l'ACPR attend d'un cabinet de courtage</strong>
-      <span>Une sanction à vingt millions d'euros et une recommandation applicable depuis fin 2025 ont replacé la trace écrite du conseil au centre. Ce qu'une IA générative peut préparer, et ce qu'un courtier doit garder pour lui.</span>
-    </a>
-  </div>
-
-  <div class="art-suite">
-    <a href="/articles/chatgpt-donnees-clients-courtier">
-      <small>Lire aussi</small>
-      <strong>Puis-je mettre les données de mes clients dans ChatGPT ?</strong>
-      <span>Un dossier sinistre contient souvent des informations de santé. Ce que la CNIL autorise, et à quelles conditions.</span>
-    </a>
-  </div>
   <div class="art-sources">
-    <h2>Sources</h2>
+    <h2>Textes cités</h2>
     <ol>
       <li>Code des assurances, articles L. 113-2 (délais de déclaration), L. 114-1 (prescription) et L. 125-2 (catastrophes naturelles, modifié par la loi n° 2021-1837 du 28 décembre 2021).</li>
       <li>ACPR, recommandation 2024-R-02 du 2 juillet 2024 sur le traitement des réclamations. <a href="https://acpr.banque-france.fr/system/files/2024-12/20240702_Recommandation_2024-R-02.pdf" rel="nofollow noopener" target="_blank">Texte officiel</a></li>
     </ol>
     <p style="font-size:13px;color:#7a8291;line-height:1.75;margin-top:14px">Cet article décrit des pratiques professionnelles et ne constitue pas un conseil juridique. Les délais applicables se vérifient dans le contrat et dans les textes en vigueur.</p>
   </div>
-  </article>
+
+  <section class="art-ensuite" aria-labelledby="art-ensuite-titre">
+    <h2 class="art-ensuite-titre" id="art-ensuite-titre">Lire ensuite</h2>
+    <div class="art-ensuite-grille">
+    <div class="art-suite">
+    <a href="/articles/devoir-de-conseil-ia-courtier">
+      <small>Lire aussi</small>
+      <strong><span class="art-lien">Devoir de conseil et IA : ce que l'ACPR attend d'un cabinet de courtage</span></strong>
+      <span>Une sanction à vingt millions d'euros et une recommandation applicable depuis fin 2025 ont replacé la trace écrite du conseil au centre. Ce qu'une IA générative peut préparer, et ce qu'un courtier doit garder pour lui.</span>
+    </a>
+  </div>
+    <div class="art-suite">
+    <a href="/articles/chatgpt-donnees-clients-courtier">
+      <small>Lire aussi</small>
+      <strong><span class="art-lien">Puis-je mettre les données de mes clients dans ChatGPT ?</span></strong>
+      <span>Un dossier sinistre contient souvent des informations de santé. Ce que la CNIL autorise, et à quelles conditions.</span>
+    </a>
+  </div>
+    <div class="art-suite art-suite--parcours">
+    <a href="/programme">
+      <small>Le parcours complet</small>
+      <strong><span class="art-lien">Formation IA pour courtiers en assurance</span></strong>
+      <span>Sept heures, huit modules, sur vos propres dossiers. Les sinistres et réclamations, le devoir de conseil, et le cadre RGPD et AI Act.</span>
+    </a>
+  </div>
+    </div>
+  </section>
+  </div>
+</article>
 
 </main>
 
