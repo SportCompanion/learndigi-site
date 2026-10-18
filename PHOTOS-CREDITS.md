@@ -11,7 +11,6 @@ Licence : https://unsplash.com/license
 
 | Fichier | Page | Source | Sujet |
 |---|---|---|---|
-| `photo-session-travail.jpg` | accueil | photo-1517048676732-d65bc937f952 | Session de travail autour d'une table, prises de notes |
 | `photo-formation-salle.jpg` | accueil, image de partage | photo-1669633760258-186e9dee81e7 | Session de travail devant un écran, en salle |
 | `photo-devis-echange.jpg` | accueil, bloc tarif | photo-1578574577315-3fbeb0cecdc2 | Tablette en main pendant un entretien |
 | `photo-participants-notes.jpg` | programme, fond du bloc d'appel des offres | photo-1503428593586-e225b39bddfe | Participants prenant des notes en session |
@@ -33,6 +32,9 @@ Deux photographies ont été retouchées avant mise en ligne :
 - `photo-veille-presse.jpg`, un homme lisant un quotidien espagnol devant un
   cours du bitcoin, a été écartée : les titres de une étaient lisibles et sans
   rapport avec le sujet.
+
+`photo-session-travail.jpg` a été retirée le 18/10/2026 : la vidéo de présentation
+(`assets/video/learndigi-promo.mp4`) l'a remplacée sur l'accueil.
 
 ## Logos des outils
 

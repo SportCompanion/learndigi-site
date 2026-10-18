@@ -1147,7 +1147,6 @@
    et le bas de l'image ne montre qu'une chaussure, donc format
    plus large et calage haut.                                  */
 .lx-photo img[src*="photo-echange-cabinet"]{object-position:50% 5% !important}
-.lx-photo img[src*="photo-session-travail"]{object-position:50% 62% !important}
 .lx-photo img[src*="photo-formation-salle"]{object-position:50% 40% !important}
 .lx-photo img[src*="photo-participants-notes"]{object-position:52% 46% !important}
 .lx-photo--moyenne{aspect-ratio:16/9}
@@ -1548,3 +1547,15 @@
   .lx-scene::before{opacity:1}
   .lx-scene-legende{opacity:1;transform:none}
 }
+
+/* ── Vidéo de présentation, accueil ─────────────────────────
+   18/10/2026 : remplace la photo de la section « quatre
+   étapes ». La vidéo est verticale, en 9:16. Le bandeau de la
+   photo était en 3:1 et l'aurait rognée aux neuf dixièmes : elle
+   garde donc son format, centrée, dans un cadre arrondi.      */
+.lx-video{margin:64px auto 0;display:flex;flex-direction:column;align-items:center;gap:16px}
+.lx-video-cadre{width:min(340px,78vw);aspect-ratio:9/16;border-radius:22px;overflow:hidden;
+  background:#e8ecf6;box-shadow:0 34px 64px -34px rgba(16,29,75,.5),0 0 0 1px rgba(16,29,75,.06)}
+.lx-video video{display:block;width:100%;height:100%;object-fit:cover}
+.lx-video figcaption{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#666d7e}
+
