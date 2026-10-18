@@ -1540,21 +1540,31 @@
   }
 
   /* ── 18. Vidéo de présentation ──────────────────────────────
-     Rien n'est chargé tant que la vidéo n'approche pas de
-     l'écran (preload="none") : 6 Mo de moins pour qui ne descend
-     pas jusque-là. Elle démarre sans le son quand elle devient
-     visible et s'arrête quand on la quitte. Si le visiteur a
-     demandé moins d'animations, elle attend qu'on clique.     */
+     Rien n'est chargé avant le clic (preload="none"), soit 6 Mo
+     de moins pour qui ne la regarde pas. Le bouton lance la
+     lecture avec le son, ce que le navigateur n'autorise qu'après
+     un geste du visiteur ; les commandes natives prennent alors
+     le relais. Sans script, la vidéo garde ses commandes et reste
+     lisible. Elle se met en pause quand on la quitte.          */
   function videoPresentation() {
-    var v = document.querySelector('.lx-video video');
-    if (!v || reduit || !('IntersectionObserver' in window)) return;
-    var io = new IntersectionObserver(function (entrees) {
-      entrees.forEach(function (e) {
-        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
-        else if (!v.paused) { v.pause(); }
-      });
-    }, { threshold: 0.4 });
-    io.observe(v);
+    var f = document.querySelector('.lx-video');
+    if (!f) return;
+    var v = f.querySelector('video'), b = f.querySelector('.lx-video-lecture');
+    if (!v || !b) return;
+    v.controls = false;
+    b.addEventListener('click', function () {
+      f.classList.add('est-lue');
+      v.controls = true;
+      v.muted = false;
+      var p = v.play();
+      if (p && p.catch) p.catch(function () { v.controls = true; });
+    });
+    v.addEventListener('ended', function () { f.classList.remove('est-lue'); v.controls = false; });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (!e.isIntersecting && !v.paused) v.pause(); });
+      }, { threshold: 0.15 }).observe(v);
+    }
   }
 
   /* ── Mise en route ────────────────────────────────────────── */
