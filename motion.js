@@ -1668,122 +1668,90 @@
     } else { visible = true; ouvrir(); }
   }
 
-  /* ── 20. La demande de proposition ─────────────────────────
-     18/10/2026. Remplace le devis qui défilait seul. Le visiteur
-     compose sa demande, combien de personnes, où, en combien de
-     temps, sur quels modules insister, et la demande se rédige
-     en direct à côté, ligne par ligne. « Envoyer cette demande »
-     la recopie dans le formulaire de contact, qui l'envoie par
-     courriel aux deux associés. Aucun prix n'est affiché : la
-     page dit « sur devis », la scène aussi.                   */
-  function demandeProposition() {
-    var r = document.querySelector('.lx-dmd');
+  /* ── 20. Le tarif ───────────────────────────────────────────
+     18/10/2026, deuxième version. Hugo : même prix quel que soit
+     le nombre de participants, couleurs du site, et une section
+     qui informe au lieu de seulement faire choisir.
+
+     À gauche, l'information s'anime : une équipe qui grandit
+     point par point pendant que l'étiquette « 1 tarif » ne bouge
+     pas, puis ce que comprend le tarif, coché ligne par ligne.
+     À droite, la demande est une lettre à trous : on choisit dans
+     les phrases mêmes. « Envoyer cette demande » la recopie dans
+     le formulaire de contact. Aucun prix n'est affiché.        */
+  function tarifVivant() {
+    var r = document.querySelector('.lx-tf');
     if (!r || r.dataset.lxPret) return;
     r.dataset.lxPret = '1';
-    var etat = { n: 6, lieu: 'Dans vos locaux', orga: 'Deux demi-journées', mods: [] };
-    var sortie = r.querySelector('.lx-dmd-n'), foule = r.querySelector('.lx-dmd-foule');
-    var boutonsMods = tous('.lx-dmd-mods button', r);
-    var lignes = {};
-    tous('.lx-dmd-ligne', r).forEach(function (l) { lignes[l.dataset.cle] = l; });
-    var date = r.querySelector('.lx-dmd-date');
+    var date = r.querySelector('.lx-tf-date');
     if (date) { var d = new Date(); date.textContent = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }); date.dateTime = d.toISOString().slice(0, 10); }
 
-    function texteMods() {
-      var noms = boutonsMods.filter(function (b) { return b.getAttribute('aria-pressed') === 'true'; })
-        .map(function (b) { return b.textContent.replace(/^\d+/, '').trim(); });
-      return noms.length ? noms.join(', ') : 'À définir ensemble';
-    }
-    var minuteurs = {};
-    function ecrire(cle, texte, sansEffet) {
-      var l = lignes[cle]; if (!l) return;
-      var dd = l.querySelector('dd');
-      clearInterval(minuteurs[cle]);
-      if (reduit || sansEffet) { dd.textContent = texte; return; }
-      l.classList.remove('est-maj'); void l.offsetWidth; l.classList.add('est-maj');
-      var i = 0; dd.textContent = '';
-      minuteurs[cle] = setInterval(function () {
-        i += 2; dd.textContent = texte.slice(0, i);
-        if (i >= texte.length) { dd.textContent = texte; clearInterval(minuteurs[cle]); }
-      }, 16);
-    }
-    function dessinerFoule() {
-      if (!foule) return;
-      var deja = foule.children.length;
-      while (foule.children.length < etat.n) { var p = document.createElement('i'); if (foule.children.length >= deja) p.className = 'est-neuf'; foule.appendChild(p); }
-      while (foule.children.length > etat.n) foule.removeChild(foule.lastChild);
-      setTimeout(function () { tous('.est-neuf', foule).forEach(function (p) { p.classList.remove('est-neuf'); }); }, 30);
-    }
-    function majN(sansEffet) {
-      sortie.textContent = etat.n;
-      r.querySelector('.lx-dmd-moins').disabled = etat.n <= 1;
-      r.querySelector('.lx-dmd-plus').disabled = etat.n >= 30;
-      dessinerFoule();
-      ecrire('n', etat.n + (etat.n > 1 ? ' personnes' : ' personne'), sansEffet);
-    }
-    r.querySelector('.lx-dmd-moins').addEventListener('click', function () { if (etat.n > 1) { etat.n--; majN(); } });
-    r.querySelector('.lx-dmd-plus').addEventListener('click', function () { if (etat.n < 30) { etat.n++; majN(); } });
-
-    tous('.lx-dmd-seg', r).forEach(function (g) {
+    var etat = { lieu: 'dans nos locaux', orga: 'en deux demi-journées' };
+    var mods = tous('.lx-tf-mods button', r);
+    tous('.lx-tf-choix', r).forEach(function (g) {
       var bs = tous('button', g);
       bs.forEach(function (b) {
         b.addEventListener('click', function () {
           bs.forEach(function (x) { x.setAttribute('aria-checked', x === b ? 'true' : 'false'); });
           etat[g.dataset.cle] = b.dataset.v;
-          ecrire(g.dataset.cle, b.dataset.v);
+          g.classList.remove('est-maj'); void g.offsetWidth; g.classList.add('est-maj');
         });
       });
     });
-    boutonsMods.forEach(function (b) {
-      b.addEventListener('click', function () {
-        b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
-        ecrire('mods', texteMods());
-      });
+    mods.forEach(function (b) {
+      b.addEventListener('click', function () { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); });
     });
-
+    function texteMods() {
+      var n = mods.filter(function (b) { return b.getAttribute('aria-pressed') === 'true'; })
+        .map(function (b) { return b.textContent.replace(/^\d+/, '').trim(); });
+      return n.length ? n.join(', ') : 'à définir ensemble';
+    }
     var dernier = '';
-    r.querySelector('.lx-dmd-envoyer').addEventListener('click', function () {
-      var msg = "Bonjour, nous souhaitons recevoir une proposition pour la formation IA pour courtiers en assurance.\n\n" +
-        'Participants : ' + etat.n + '\n' +
-        'Modalité : ' + etat.lieu.charAt(0).toLowerCase() + etat.lieu.slice(1) + '\n' +
-        'Organisation : ' + etat.orga.charAt(0).toLowerCase() + etat.orga.slice(1) + '\n' +
-        'Modules sur lesquels insister : ' + texteMods() + '\n';
-      var zone = document.getElementById('cmessage');
-      var cible = document.getElementById('contact');
+    r.querySelector('.lx-tf-envoyer').addEventListener('click', function () {
+      var msg = 'Bonjour,\n\nNous souhaitons organiser la formation IA pour courtiers en assurance ' +
+        etat.lieu + ', ' + etat.orga + '.\nNous aimerions insister sur : ' + texteMods() +
+        '.\n\nMerci de nous adresser une proposition.\n';
+      var zone = document.getElementById('cmessage'), cible = document.getElementById('contact');
       if (zone) {
         if (!zone.value.trim() || zone.value === dernier) zone.value = msg;
         else zone.value = zone.value.replace(/\s+$/, '') + '\n\n' + msg;
         dernier = zone.value;
-        zone.classList.remove('lx-dmd-recu'); void zone.offsetWidth; zone.classList.add('lx-dmd-recu');
+        zone.classList.remove('lx-tf-recu'); void zone.offsetWidth; zone.classList.add('lx-tf-recu');
       }
       if (cible) cible.scrollIntoView({ behavior: reduit ? 'auto' : 'smooth', block: 'start' });
       var nom = document.getElementById('cnom');
       if (nom) setTimeout(function () { nom.focus({ preventScroll: true }); }, reduit ? 0 : 700);
     });
 
-    // état initial, posé sans effet
-    majN(true);
-    ecrire('mods', texteMods(), true);
+    // l'équipe qui grandit, le tarif qui ne bouge pas
+    var gens = r.querySelector('.lx-tf-gens'), MAX = 12, n = 1, sens = 1, boucle = null;
+    function dessiner() {
+      while (gens.children.length < n) { var p = document.createElement('i'); p.className = 'est-neuf'; gens.appendChild(p); }
+      while (gens.children.length > n) gens.removeChild(gens.lastChild);
+      setTimeout(function () { tous('.est-neuf', gens).forEach(function (p) { p.classList.remove('est-neuf'); }); }, 30);
+      var prix = r.querySelector('.lx-tf-prix');
+      prix.classList.remove('est-tape'); void prix.offsetWidth; prix.classList.add('est-tape');
+    }
+    if (gens) { n = reduit ? 6 : 1; dessiner(); }
 
+    function ouvrir() {
+      if (r.classList.contains('est-ouvert')) return;
+      r.classList.add('est-ouvert');
+      if (reduit || !gens) return;
+      boucle = setInterval(function () {
+        if (!document.body.contains(r)) return clearInterval(boucle);
+        n += sens;
+        if (n >= MAX) { n = MAX; sens = -1; }
+        else if (n <= 1) { n = 1; sens = 1; }
+        dessiner();
+      }, 420);
+    }
     if (reduit || !('IntersectionObserver' in window)) { r.classList.add('est-ouvert'); return; }
     r.classList.add('est-anime');
-    // un visiteur qui agit avant que l'animation parte voit tout de suite la section entière
-    r.addEventListener('pointerdown', function () { r.classList.add('est-ouvert'); }, { once: true });
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        io.disconnect();
-        r.classList.add('est-ouvert');
-        var ordre = ['n', 'lieu', 'orga', 'duree', 'mods'];
-        ordre.forEach(function (cle, k) {
-          var dd = lignes[cle] && lignes[cle].querySelector('dd');
-          if (!dd) return;
-          var t = dd.textContent; dd.textContent = '';
-          setTimeout(function () { ecrire(cle, t); }, 450 + k * 320);
-          setTimeout(function () { dd.textContent = t; }, 450 + k * 320 + 1600);   // filet de sécurité
-        });
-      });
-    }, { threshold: 0.3 });
-    io.observe(r);
+    r.addEventListener('pointerdown', ouvrir, { once: true });
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) ouvrir(); });
+    }, { threshold: 0.25 }).observe(r);
   }
 
   /* ── Mise en route ────────────────────────────────────────── */
@@ -1807,7 +1775,7 @@
     sommaire();
     videoPresentation();
     configurateur();
-    demandeProposition();
+    tarifVivant();
 
     if (reduit) {
       tous('.lx-w').forEach(function (m) { m.classList.add('lx-w-on'); });
