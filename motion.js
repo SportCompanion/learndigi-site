@@ -1567,6 +1567,105 @@
     }
   }
 
+  /* ── 19. Le programme, section « Une formation adaptée » ────
+     18/10/2026, demandé par Hugo : la section était figée. Le
+     mouvement y dit ce que dit le texte, rien de plus.
+
+     Les trois contextes deviennent trois stations sur une seule
+     ligne dorée : la même exigence, d'un bout à l'autre. Sous
+     chaque station, l'effectif en points, une personne, une
+     équipe, plusieurs équipes. La ligne se trace, puis les
+     points arrivent station après station.
+
+     Dans les faits, « 7 heures » se compte, et « 7 h sur 15 h »
+     reçoit une jauge de quinze segments dont sept se remplissent.
+
+     Les éléments sont construits dans tous les cas, pour que la
+     jauge et les effectifs existent aussi sans animation : seul
+     leur mouvement dépend du réglage du visiteur.           */
+  function formationsVivantes() {
+    var sec = document.querySelector('.formations');
+    if (!sec || sec.dataset.lxVivant) return;
+    sec.dataset.lxVivant = '1';
+
+    var faits = sec.querySelector('.lx-faits');
+    var compte = null;
+    if (faits) {
+      tous('li', faits).forEach(function (li, k) {
+        li.style.setProperty('--k', k);
+        var b = li.querySelector('b');
+        if (!b) return;
+        var j = b.textContent.match(/^(\d+)\s*h\s+sur\s+(\d+)\s*h$/);
+        if (j) {
+          var jauge = document.createElement('span');
+          jauge.className = 'lx-jauge';
+          jauge.setAttribute('aria-hidden', 'true');
+          for (var i = 0; i < +j[2]; i++) {
+            var seg = document.createElement('i');
+            if (i < +j[1]) seg.className = 'plein';
+            seg.style.setProperty('--i', i);
+            jauge.appendChild(seg);
+          }
+          b.parentNode.insertBefore(jauge, b.nextSibling);
+        }
+        if (/^\d+ heures$/.test(b.textContent)) compte = b;
+      });
+    }
+
+    var EFFECTIFS = [
+      { groupes: [1], libelle: 'Seul au cabinet' },
+      { groupes: [6], libelle: 'Une équipe' },
+      { groupes: [5, 5, 5], libelle: 'Plusieurs équipes' }
+    ];
+    var grille = sec.querySelector('.context-grid');
+    var n = 0;
+    tous('.context-card', sec).forEach(function (carte, k) {
+      var e = EFFECTIFS[k];
+      if (!e || carte.querySelector('.lx-effectif')) return;
+      var bloc = document.createElement('div');
+      bloc.className = 'lx-effectif';
+      bloc.setAttribute('aria-hidden', 'true');
+      var pts = document.createElement('div');
+      pts.className = 'lx-effectif-pts';
+      e.groupes.forEach(function (taille) {
+        var g = document.createElement('span');
+        g.className = 'lx-effectif-groupe';
+        for (var i = 0; i < taille; i++) {
+          var pt = document.createElement('i');
+          pt.style.setProperty('--d', (0.55 + k * 0.32 + (n++ % 20) * 0.03) + 's');
+          g.appendChild(pt);
+        }
+        pts.appendChild(g);
+      });
+      var lib = document.createElement('small');
+      lib.textContent = e.libelle;
+      bloc.appendChild(pts);
+      bloc.appendChild(lib);
+      carte.insertBefore(bloc, carte.firstChild);
+    });
+    if (grille) grille.classList.add('lx-ligne');
+
+    if (reduit) return;
+    sec.classList.add('lx-formations-anim');
+
+    if (faits) auScroll([faits], function (f) {
+      f.classList.add('lx-faits-on');
+      if (!compte) return;
+      var m = compte.textContent.match(/^(\d+)(.*)$/), fin = +m[1], reste = m[2], debut = null;
+      compte.textContent = '0' + reste;
+      function pas(t) {
+        if (debut === null) debut = t;
+        var q = Math.min((t - debut) / 800, 1);
+        compte.textContent = Math.round((1 - Math.pow(1 - q, 3)) * fin) + reste;
+        if (q < 1) requestAnimationFrame(pas);
+      }
+      setTimeout(function () { requestAnimationFrame(pas); }, 150);
+      // filet de sécurité : la valeur finale est posée quoi qu'il arrive à l'animation
+      setTimeout(function () { compte.textContent = fin + reste; }, 1200);
+    }, 0.35);
+    if (grille) auScroll([grille], function (g) { g.classList.add('lx-contextes-on'); }, 0.3);
+  }
+
   /* ── Mise en route ────────────────────────────────────────── */
   function demarrer() {
     // Ces deux-là servent aussi sans animation : l'un remplace une
@@ -1588,6 +1687,7 @@
     masques();
     sommaire();
     videoPresentation();
+    formationsVivantes();
 
     if (reduit) {
       tous('.lx-w').forEach(function (m) { m.classList.add('lx-w-on'); });
@@ -1619,7 +1719,7 @@
       '.art-hero h1'              // articles et auteurs
     ]);
     rails([
-      '.vstat', '.eng-card', '.context-card', '.rdv-step', '.howto-step',
+      '.vstat', '.eng-card', '.rdv-step', '.howto-step',
       '.prog-mod',
       '.experts-grid > *', '.deliverables-grid > *'
     ].join(','));
