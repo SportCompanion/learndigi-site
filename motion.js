@@ -1762,17 +1762,33 @@
     r.dataset.lxPret = '1';
     var mods = tous('.pg-mod', r), scene = r.querySelector('.pg-scene');
     var num = scene && scene.querySelector('.pg-scene-num'), dur = scene && scene.querySelector('.pg-scene-dur');
-    var outils = scene && scene.querySelector('.pg-scene-outils'), segs = scene ? tous('.pg-scene-barre i', scene) : [];
+    var outils = scene && scene.querySelector('.pg-scene-outils');
+    var titre = scene && scene.querySelector('.pg-scene-titre'), pts = scene && scene.querySelector('.pg-scene-pts');
+    var fen = scene && scene.querySelector('.pg-regle-fen'), piste = scene && scene.querySelector('.pg-regle-piste');
     var actif = 0, auto = !reduit, visible = false, minuteur = null, DUREE = 6500;
+    // Où tombe chaque module dans la session : début et part, en %.
+    var total = 0, debuts = mods.map(function (m) { var d = total; total += +m.dataset.min; return d; });
+    mods.forEach(function (m, k) {
+      var g = debuts[k] / total * 100, l = m.dataset.min / total * 100;
+      m.dataset.g = g; m.dataset.l = l;
+      if (piste && k) { var b = document.createElement('b'); b.style.left = g + '%'; piste.appendChild(b); }
+      // sur mobile, le panneau disparaît : chaque module garde sa règle
+      var corps = m.querySelector('.pg-mod-in'), r2 = document.createElement('span');
+      r2.className = 'pg-mod-regle'; r2.setAttribute('aria-hidden', 'true');
+      r2.innerHTML = '<i style="left:' + g + '%;width:' + l + '%"></i>';
+      corps.insertBefore(r2, corps.firstChild);
+    });
     function peindre(i) {
       if (!scene) return;
       scene.classList.add('est-change');
       setTimeout(function () {
         var m = mods[i];
         num.textContent = m.dataset.num; dur.textContent = m.dataset.dur;
-        var src = m.querySelector('.pg-mod-outils');
+        titre.textContent = m.querySelector('.pg-mod-t').textContent;
+        var src = m.querySelector('.pg-mod-outils'), lp = m.querySelector('.pg-pts');
         outils.innerHTML = src ? src.innerHTML : '';
-        segs.forEach(function (s, k) { s.classList.toggle('est-actif', k === i); s.classList.toggle('est-passe', k < i); });
+        pts.innerHTML = lp ? lp.innerHTML : '';
+        fen.style.setProperty('--g', m.dataset.g + '%'); fen.style.setProperty('--l', m.dataset.l + '%');
         scene.classList.remove('est-change');
       }, reduit ? 0 : 220);
     }
@@ -1793,8 +1809,37 @@
     mods.forEach(function (m, k) { m.querySelector('button').addEventListener('click', function () { ouvrir(k, true); }); });
     ouvrir(0, false);
 
+    // Le sommaire suit la lecture
+    var som = r.querySelector('.pg-som');
+    if (som) {
+      var liens = tous('ul a', som), av = som.querySelector('.pg-som-av');
+      var cibles = liens.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+      var attente = false;
+      var suivre = function () {
+        attente = false;
+        var y = 200, ici = -1;
+        cibles.forEach(function (c, k) { if (c && c.getBoundingClientRect().top <= y) ici = k; });
+        liens.forEach(function (a, k) { a.classList.toggle('est-ici', k === ici); });
+        var deb = cibles[0].getBoundingClientRect().top + window.scrollY - y, fin = document.querySelector('.pg-fin');
+        var q = (window.scrollY - deb) / Math.max(1, fin.getBoundingClientRect().top + window.scrollY - window.innerHeight - deb);
+        av.style.setProperty('--av', Math.max(0, Math.min(1, q)).toFixed(4));
+        var l = liens[ici];
+        if (l && l.dataset.vu !== '1') {
+          liens.forEach(function (a) { a.dataset.vu = ''; }); l.dataset.vu = '1';
+          var ul = l.parentNode.parentNode; ul.scrollTo({ left: l.offsetLeft - 12, behavior: reduit ? 'auto' : 'smooth' });
+        }
+      };
+      window.addEventListener('scroll', function () { if (!attente) { attente = true; requestAnimationFrame(suivre); } }, { passive: true });
+      window.addEventListener('resize', suivre);
+      suivre();
+    }
+
     var compte = tous('.pg-compte', r);
-    if (reduit || !('IntersectionObserver' in window)) { r.classList.add('est-vu'); return; }
+    if (reduit || !('IntersectionObserver' in window)) {
+      r.classList.add('est-vu');
+      tous('.pg-bloc', r).forEach(function (b) { b.classList.add('est-la'); });
+      return;
+    }
     r.classList.add('est-anime');
     setTimeout(function () { r.classList.add('est-vu'); }, 60);
     compte.forEach(function (c) {

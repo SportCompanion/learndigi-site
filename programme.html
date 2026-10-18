@@ -323,6 +323,21 @@
     <ul><li><img src="/logo-claude.png" alt="" width="220" height="220" loading="lazy"/><span>Claude</span></li><li><img src="/logo-chatgpt.png" alt="" width="220" height="220" loading="lazy"/><span>ChatGPT</span></li><li><img src="/logo-copilot.png" alt="" width="220" height="220" loading="lazy"/><span>Copilot</span></li><li><img src="/logo-mistral.png" alt="" width="220" height="220" loading="lazy"/><span>Mistral</span></li><li><img src="/logo-marvin.png" alt="" width="220" height="220" loading="lazy"/><span>Marvin Systems</span></li></ul>
   </div>
 
+  <div class="pg-som" role="navigation" aria-label="Sur cette page">
+    <div class="pg-som-in">
+      <ul>
+        <li><a href="#modules">Les 8 modules</a></li>
+        <li><a href="#public">Public</a></li>
+        <li><a href="#objectifs">Objectifs</a></li>
+        <li><a href="#modalites">Déroulé</a></li>
+        <li><a href="#dda">DDA</a></li>
+        <li><a href="#faq">Questions</a></li>
+      </ul>
+      <a class="pg-som-rdv" href="/#rdv">Réserver 30 min <span aria-hidden="true">→</span></a>
+    </div>
+    <span class="pg-som-av" aria-hidden="true"></span>
+  </div>
+
   <section class="pg-mods" id="modules" aria-labelledby="pg-mods-t">
     <div class="pg-mods-tete">
       <span class="eyebrow">Le parcours, module par module</span>
@@ -330,10 +345,11 @@
     </div>
     <div class="pg-mods-grille">
       <div class="pg-scene" aria-hidden="true">
-        <span class="pg-scene-num">01</span>
-        <span class="pg-scene-dur">30 min</span>
+        <div class="pg-scene-haut"><span class="pg-scene-num">01</span><span class="pg-scene-sur">sur 08</span><span class="pg-scene-dur">30 min</span></div>
+        <p class="pg-scene-titre">Introduction : l'IA au service du courtage</p>
+        <ul class="pg-scene-pts"></ul>
         <div class="pg-scene-outils"></div>
-        <div class="pg-scene-temps"><span class="pg-scene-temps-l">Sa part des 7 heures</span><div class="pg-scene-barre"><i style="flex:30"></i><i style="flex:30"></i><i style="flex:60"></i><i style="flex:60"></i><i style="flex:90"></i><i style="flex:70"></i><i style="flex:60"></i><i style="flex:30"></i></div></div>
+        <div class="pg-regle"><div class="pg-regle-piste"><span class="pg-regle-fen"></span></div><div class="pg-regle-l"><span>Début de la session</span><span>Fin</span></div></div>
       </div>
       <ol class="pg-liste">
         <li class="pg-mod est-actif" data-i="0" data-min="30" data-num="01" data-dur="30 min">
@@ -420,7 +436,7 @@
     </div>
   </section>
 
-  <section class="pg-bloc" aria-labelledby="prog-public">
+  <section class="pg-bloc" id="public" aria-labelledby="prog-public">
     <div class="pg-bloc-tete">
       <span class="eyebrow">À qui s'adresse ce parcours</span>
       <h2 id="prog-public">Pensé pour les cabinets de courtage, pas pour un public général</h2>
@@ -428,32 +444,35 @@
     </div>
     <div class="pg-bloc-corps"><ul class="pg-rangs"><li><h3>Courtier indépendant</h3><p>Structurer ses usages personnels, gagner du temps sur les tâches répétitives et préserver la qualité de la relation client.</p></li><li><h3>Cabinet avec une équipe</h3><p>Partager des méthodes communes, choisir les bons cas d'usage et encadrer l'utilisation des outils par les collaborateurs.</p></li><li><h3>Organisation multi-équipe</h3><p>Définir un cadre d'adoption, faire monter les équipes en compétence et intégrer les exigences de conformité dès le départ.</p></li></ul></div>
   </section>
-  <section class="pg-bloc" aria-labelledby="prog-objectifs-t">
+  <section class="pg-bloc" id="objectifs" aria-labelledby="prog-objectifs-t">
     <div class="pg-bloc-tete">
       <span class="eyebrow">Objectifs pédagogiques</span>
       <h2 id="prog-objectifs-t">Ce que chaque participant sait faire à la fin</h2>
-      <p>Chaque module se termine par une production utilisable au cabinet dès le lendemain, et non par une démonstration.</p>
+      <p>Chaque module se termine par une production utilisable au cabinet dès le lendemain, et non par une démonstration. Un objectif par module, dans l'ordre du parcours.</p>
     </div>
-    <div class="pg-bloc-corps"><ul class="pg-objectifs"><li><span class="pg-coche" aria-hidden="true"></span>Situer ce que l'IA générative change dans un cabinet de courtage, et ce qu'elle ne change pas.</li><li><span class="pg-coche" aria-hidden="true"></span>Rédiger une instruction qui donne un résultat exploitable du premier coup, sur ses propres dossiers.</li><li><span class="pg-coche" aria-hidden="true"></span>Travailler avec Claude dans Excel, Word, PowerPoint et Outlook, sans quitter son environnement habituel.</li><li><span class="pg-coche" aria-hidden="true"></span>Préparer une revue de portefeuille et repérer les opportunités dormantes, après anonymisation des données.</li><li><span class="pg-coche" aria-hidden="true"></span>Qualifier une déclaration de sinistre, suivre les pièces manquantes et traiter une réclamation dans les délais.</li><li><span class="pg-coche" aria-hidden="true"></span>Produire une fiche exigences et besoins, puis la motivation écrite du conseil, à partir de ses notes d'entretien.</li><li><span class="pg-coche" aria-hidden="true"></span>Distinguer ce qui peut être confié à une IA de ce qui ne doit jamais y entrer, au regard du RGPD et de l'AI Act.</li><li><span class="pg-coche" aria-hidden="true"></span>Repartir avec un plan d'action à trente jours, propre au cabinet et non générique.</li></ul></div>
+    <div class="pg-bloc-corps"><ul class="pg-objectifs"><li><span class="pg-obj-m">Module 01</span><span>Situer ce que l'IA générative change dans un cabinet de courtage, et ce qu'elle ne change pas.</span></li><li><span class="pg-obj-m">Module 02</span><span>Rédiger une instruction qui donne un résultat exploitable du premier coup, sur ses propres dossiers.</span></li><li><span class="pg-obj-m">Module 03</span><span>Travailler avec Claude dans Excel, Word, PowerPoint et Outlook, sans quitter son environnement habituel.</span></li><li><span class="pg-obj-m">Module 04</span><span>Préparer une revue de portefeuille et repérer les opportunités dormantes, après anonymisation des données.</span></li><li><span class="pg-obj-m">Module 05</span><span>Qualifier une déclaration de sinistre, suivre les pièces manquantes et traiter une réclamation dans les délais.</span></li><li><span class="pg-obj-m">Module 06</span><span>Produire une fiche exigences et besoins, puis la motivation écrite du conseil, à partir de ses notes d'entretien.</span></li><li><span class="pg-obj-m">Module 07</span><span>Distinguer ce qui peut être confié à une IA de ce qui ne doit jamais y entrer, au regard du RGPD et de l'AI Act.</span></li><li><span class="pg-obj-m">Module 08</span><span>Repartir avec un plan d'action à trente jours, propre au cabinet et non générique.</span></li></ul></div>
   </section>
-  <section class="pg-bloc" aria-labelledby="prog-modalites">
+  <section class="pg-bloc" id="modalites" aria-labelledby="prog-modalites">
     <div class="pg-bloc-tete">
       <span class="eyebrow">Déroulé et modalités</span>
       <h2 id="prog-modalites">Comment se déroule la formation</h2>
       <p>Sept heures, en une journée ou en deux demi-journées, en visioconférence ou dans vos locaux. Le tarif est établi sur devis après un premier échange de trente minutes, parce qu'il dépend du format retenu et des modules prioritaires. Il ne change pas avec le nombre de participants : un seul tarif par session.</p>
     </div>
-    <div class="pg-bloc-corps"><ul class="pg-rangs"><li><h3>Avant la session</h3><p>Un échange de trente minutes pour cadrer le besoin, puis un questionnaire d'auto-positionnement qui sert à calibrer les huit modules sur les priorités réelles de l'équipe.</p></li><li><h3>Pendant la session</h3><p>Une démonstration, puis un exercice guidé sur vos propres cas : courriels, synthèses, relances, analyse de portefeuille, sinistres et conseil. La pratique occupe l'essentiel du temps.</p></li><li><h3>Après la session</h3><p>Une attestation par participant, les modèles et instructions construits pendant la journée, et un plan d'action à trente jours pour transformer l'essai au cabinet.</p></li><li><h3>Qui anime</h3><p>Hugo Salembier et Matthieu Brubach préparent et animent la session. Ce sont vos interlocuteurs du premier échange jusqu'à la mise en pratique.</p></li></ul><p class="pg-liens"><a href="/audit-ia">Audit IA du cabinet<span aria-hidden="true">→</span></a><a href="/formation-outil-ia">Formation dédiée à un outil<span aria-hidden="true">→</span></a><a href="/formation-individuelle">Formation individuelle<span aria-hidden="true">→</span></a><a href="/prospection-ia">Prospection avec l'IA<span aria-hidden="true">→</span></a><a href="/veille-ia">Veille IA métier<span aria-hidden="true">→</span></a><a href="/claude-code-codex">Outil sur mesure<span aria-hidden="true">→</span></a><a href="/qualite-accessibilite">Accessibilité et handicap<span aria-hidden="true">→</span></a></p></div>
+    <div class="pg-bloc-corps"><ol class="pg-frise"><li><span class="pg-frise-q">Avant</span><h3>Avant la session</h3><p>Un échange de trente minutes pour cadrer le besoin, puis un questionnaire d'auto-positionnement qui sert à calibrer les huit modules sur les priorités réelles de l'équipe.</p></li><li><span class="pg-frise-q">Le jour J</span><h3>Pendant la session</h3><p>Une démonstration, puis un exercice guidé sur vos propres cas : courriels, synthèses, relances, analyse de portefeuille, sinistres et conseil. La pratique occupe l'essentiel du temps.</p></li><li><span class="pg-frise-q">Après</span><h3>Après la session</h3><p>Une attestation par participant, les modèles et instructions construits pendant la journée, et un plan d'action à trente jours pour transformer l'essai au cabinet.</p></li></ol>
+      <div class="pg-anim"><h3>Qui anime</h3><p>Hugo Salembier et Matthieu Brubach préparent et animent la session. Ce sont vos interlocuteurs du premier échange jusqu'à la mise en pratique.</p>
+        <div class="pg-anim-gens"><a href="/auteurs/hugo-salembier"><img src="/assets/auteurs/hugo-salembier-112.jpg" alt="" width="112" height="112" loading="lazy"/><span><b>Hugo Salembier</b>Cofondateur</span></a><a href="/auteurs/matthieu-brubach"><img src="/assets/auteurs/matthieu-brubach-112.jpg" alt="" width="112" height="112" loading="lazy"/><span><b>Matthieu Brubach</b>Cofondateur</span></a></div></div>
+      <p class="pg-liens"><a href="/audit-ia">Audit IA du cabinet<span aria-hidden="true">→</span></a><a href="/formation-outil-ia">Formation dédiée à un outil<span aria-hidden="true">→</span></a><a href="/formation-individuelle">Formation individuelle<span aria-hidden="true">→</span></a><a href="/prospection-ia">Prospection avec l'IA<span aria-hidden="true">→</span></a><a href="/veille-ia">Veille IA métier<span aria-hidden="true">→</span></a><a href="/claude-code-codex">Outil sur mesure<span aria-hidden="true">→</span></a><a href="/qualite-accessibilite">Accessibilité et handicap<span aria-hidden="true">→</span></a></p></div>
   </section>
-  <section class="pg-bloc pg-bloc--dda" aria-labelledby="prog-dda">
+  <section class="pg-bloc pg-bloc--dda" id="dda" aria-labelledby="prog-dda">
     <div class="pg-bloc-tete">
       <span class="eyebrow">Formation continue</span>
       <h2 id="prog-dda">Sept heures qui comptent pour votre obligation DDA</h2>
       <p>Tout intermédiaire immatriculé à l'ORIAS doit justifier de quinze heures de formation continue par année civile. Ce parcours peut en couvrir sept, parce que les compétences qu'il mobilise figurent parmi celles retenues par la réglementation.</p>
     </div>
-    <div class="pg-bloc-corps"><ul class="pg-rangs"><li><h3>Ce que dit le texte</h3><p>L'article R. 512-13-1 du Code des assurances fixe la durée annuelle à quinze heures au minimum. L'arrêté du 26 septembre 2018 liste les compétences éligibles et impose que la formation soit dispensée par un organisme répondant aux conditions du droit français.</p></li><li><h3>Les compétences mobilisées</h3><p>Identifier les évolutions technologiques et leurs impacts sur la distribution d'assurances, maîtriser les outils digitaux de l'environnement de travail, prospecter et développer un portefeuille dans le respect de la réglementation, traiter et exploiter les données clients, appliquer les règles relatives à la protection des données personnelles.</p></li><li><h3>Ce que vous recevez</h3><p>Une attestation nominative par participant, mentionnant la date, la durée et les thèmes traités. C'est la pièce que vous conservez et que vous présentez en cas de contrôle de votre immatriculation.</p></li><li><h3>Ce que nous n'affirmons pas</h3><p>Sept heures ne sont pas quinze. Ce parcours couvre une partie de votre obligation annuelle, pas sa totalité, et il ne garantit à lui seul aucun renouvellement d'immatriculation à l'ORIAS.</p></li></ul><p class="pg-mention">Learndigi Formation est enregistré sous le numéro de déclaration d'activité 11941448294 auprès du préfet de région d'Île-de-France. Cet enregistrement ne vaut pas agrément de l'État.</p></div>
+    <div class="pg-bloc-corps"><div class="pg-jauge" role="img" aria-label="Ce parcours couvre 7 des 15 heures exigées chaque année civile"><div class="pg-jauge-cases"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="pg-jauge-l"><span><b>7 h</b> avec ce parcours</span><span><b>15 h</b> exigées par année civile</span></div></div><ul class="pg-rangs"><li><h3>Ce que dit le texte</h3><p>L'article R. 512-13-1 du Code des assurances fixe la durée annuelle à quinze heures au minimum. L'arrêté du 26 septembre 2018 liste les compétences éligibles et impose que la formation soit dispensée par un organisme répondant aux conditions du droit français.</p></li><li><h3>Les compétences mobilisées</h3><p>Identifier les évolutions technologiques et leurs impacts sur la distribution d'assurances, maîtriser les outils digitaux de l'environnement de travail, prospecter et développer un portefeuille dans le respect de la réglementation, traiter et exploiter les données clients, appliquer les règles relatives à la protection des données personnelles.</p></li><li><h3>Ce que vous recevez</h3><p>Une attestation nominative par participant, mentionnant la date, la durée et les thèmes traités. C'est la pièce que vous conservez et que vous présentez en cas de contrôle de votre immatriculation.</p></li><li><h3>Ce que nous n'affirmons pas</h3><p>Sept heures ne sont pas quinze. Ce parcours couvre une partie de votre obligation annuelle, pas sa totalité, et il ne garantit à lui seul aucun renouvellement d'immatriculation à l'ORIAS.</p></li></ul><p class="pg-mention">Learndigi Formation est enregistré sous le numéro de déclaration d'activité 11941448294 auprès du préfet de région d'Île-de-France. Cet enregistrement ne vaut pas agrément de l'État.</p></div>
   </section>
 
-  <section class="pg-bloc pg-bloc--faq" aria-labelledby="prog-faq-titre">
+  <section class="pg-bloc pg-bloc--faq" id="faq" aria-labelledby="prog-faq-titre">
     <div class="pg-bloc-tete">
       <span class="eyebrow">Questions fréquentes</span>
       <h2 id="prog-faq-titre">Questions fréquentes sur le programme</h2>
@@ -471,7 +490,7 @@
   </section>
 
   <section class="pg-fin">
-    <span class="eyebrow">Passez à l'action</span>
+    <div class="pg-fin-gens" aria-hidden="true"><img src="/assets/auteurs/hugo-salembier-112.jpg" alt="" width="112" height="112" loading="lazy"/><img src="/assets/auteurs/matthieu-brubach-112.jpg" alt="" width="112" height="112" loading="lazy"/><span>Hugo ou Matthieu vous répond</span></div>
     <h2>Prêt à intégrer l'IA à votre cabinet ?</h2>
     <p>30 minutes en visioconférence pour découvrir le programme, cadrer le format adapté à votre structure (visio ou présentiel, une journée ou deux demi-journées) et recevoir votre devis.</p>
     <div class="pg-actions">
