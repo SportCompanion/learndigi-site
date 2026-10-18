@@ -1632,7 +1632,16 @@
     choisir(1, false);
 
     // ── l'orbite
-    var W, H, cx, cy, rx, ry, liste = false, ouvert = null, enMarche = false;
+    var W, H, cx, cy, rx, ry, rAnneau = 0, liste = false, ouvert = null, enMarche = false;
+    // un fil par module, de l'anneau à la pastille ; seuls ceux des modules mis en avant s'allument
+    var liens = cfg.querySelector('.lx-config-liens'), NS = 'http://www.w3.org/2000/svg';
+    var fils = items.map(function () {
+      if (!liens) return null;
+      var l = document.createElementNS(NS, 'line');
+      l.setAttribute('class', 'lx-config-fil');
+      liens.appendChild(l);
+      return l;
+    });
     var souris = { x: -1e4, y: -1e4 };
     var etats = items.map(function (li, k) {
       return { li: li, a0: -Math.PI / 2 + k * (2 * Math.PI / items.length), x: 0, y: 0, s: 1, o: 1, w: 0, h: 0 };
@@ -1642,6 +1651,13 @@
       scene.classList.toggle('est-liste', liste);
       var r = scene.getBoundingClientRect();
       W = r.width; H = r.height; cx = W / 2; cy = H / 2; rx = W * 0.39; ry = H * 0.4;
+      var ce = cfg.querySelector('.lx-config-centre');
+      rAnneau = ce ? ce.getBoundingClientRect().width / 2 * 0.96 : 0;
+      if (liens) {
+        liens.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+        var tr = liens.querySelector('.lx-config-trace');
+        tr.setAttribute('cx', cx); tr.setAttribute('cy', cy); tr.setAttribute('rx', rx); tr.setAttribute('ry', ry);
+      }
       etats.forEach(function (e) { e.w = e.li.offsetWidth; e.h = e.li.offsetHeight; });
     }
     function cible(e, k, t) {
@@ -1652,6 +1668,15 @@
       if (ouvert !== null) { ouv = Math.max(0, Math.min(1, (t - ouvert - k * 80) / 950)); ouv = 1 - Math.pow(1 - ouv, 3); }
       var flotte = reduit ? 0 : Math.sin(t * 0.0012 + k * 1.9) * 7;
       var x = cx + Math.cos(a) * rx * f * ouv, y = cy + Math.sin(a) * ry * f * ouv + flotte * ouv;
+      // jamais sur l'anneau : le bord le plus proche de la pastille reste hors du cercle
+      if (ouv > 0.6 && e.w) {
+        var nx = Math.max(x - e.w / 2, Math.min(cx, x + e.w / 2)), ny = Math.max(y - e.h / 2, Math.min(cy, y + e.h / 2));
+        var dc = Math.sqrt((nx - cx) * (nx - cx) + (ny - cy) * (ny - cy)), mini = rAnneau + 18;
+        if (dc < mini) {
+          var ux = x - cx, uy = y - cy, lu = Math.sqrt(ux * ux + uy * uy) || 1;
+          x += ux / lu * (mini - dc); y += uy / lu * (mini - dc);
+        }
+      }
       var dx = x - souris.x, dy = y - souris.y, dist = Math.sqrt(dx * dx + dy * dy);
       if (!reduit && dist < 130 && dist > 0.1) { var force = (130 - dist) / 130 * 46; x += dx / dist * force; y += dy / dist * force; }
       return { x: x, y: y, s: (prio ? 1.06 : 0.92) * (0.35 + 0.65 * ouv), o: (prio ? 1 : 0.4) * ouv };
@@ -1663,6 +1688,17 @@
         e.x += (c.x - e.x) * q; e.y += (c.y - e.y) * q; e.s += (c.s - e.s) * q; e.o += (c.o - e.o) * q;
         e.li.style.transform = 'translate(' + (e.x - e.w / 2).toFixed(1) + 'px,' + (e.y - e.h / 2).toFixed(1) + 'px) scale(' + e.s.toFixed(3) + ')';
         e.li.style.opacity = e.o.toFixed(3);
+        var f = fils[k];
+        if (f) {
+          var ux = e.x - cx, uy = e.y - cy, lu = Math.sqrt(ux * ux + uy * uy) || 1;
+          // départ au bord de l'anneau, arrivée au bord de la pastille
+          var demi = Math.min(e.w / 2 / Math.abs(ux / lu || 1e-6), e.h / 2 / Math.abs(uy / lu || 1e-6)) * e.s;
+          f.setAttribute('x1', (cx + ux / lu * (rAnneau + 6)).toFixed(1));
+          f.setAttribute('y1', (cy + uy / lu * (rAnneau + 6)).toFixed(1));
+          f.setAttribute('x2', (e.x - ux / lu * Math.min(demi + 4, lu)).toFixed(1));
+          f.setAttribute('y2', (e.y - uy / lu * Math.min(demi + 4, lu)).toFixed(1));
+          f.classList.toggle('est-allume', e.li.classList.contains('est-prio') && e.o > 0.5);
+        }
       });
     }
     function boucle(t) {
