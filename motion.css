@@ -1691,3 +1691,18 @@
   .lx-ta .lx-ta-reveal{opacity:1;transform:none}
   .lx-ta-pan.lx-ta-reveal .lx-ta-etape::after{transform:none}
 }
+
+/* ── Bouton « Échanger avec nous » du menu, 18/10/2026 ──────────
+   Remplace le bloc rendez-vous de l'accueil : il ouvre l'agenda
+   Calendly dans un nouvel onglet, sur toutes les pages. */
+nav .nav-links > li > a.nav-echange{display:inline-flex;align-items:center;height:44px;padding:0 22px;border-radius:999px;
+  background:#1b2c6b;color:#fff;font-size:14.5px;font-weight:600;white-space:nowrap;
+  box-shadow:0 2px 0 #0d173f,0 10px 22px -12px rgba(13,23,63,.6);transition:background .25s,transform .25s}
+nav .nav-links > li > a.nav-echange::after{display:none}
+nav .nav-links > li > a.nav-echange:hover{background:#24398a;color:#fff;transform:translateY(-1px)}
+nav .nav-links > li > a.nav-echange:focus-visible{outline:2px solid #e8921a;outline-offset:3px}
+@media (min-width:1101px) and (max-width:1420px){nav .nav-links{gap:32px !important}}
+@media (max-width:1100px){
+  nav .nav-links > li.nav-echange-li{padding:14px 22px 18px}
+  nav .nav-links > li > a.nav-echange{display:flex;justify-content:center;height:48px;padding:0 22px;font-size:15px}
+}

@@ -1629,59 +1629,6 @@
       .booking-detail:last-child{border-bottom:0}
     }
   .trainer-card h3 a{color:inherit;text-decoration:none}.trainer-card h3 a:hover{text-decoration:underline;text-underline-offset:3px}.team-proof-copy p a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
-    /* ── Rendez-vous, refait le 18/10/2026 sur le modèle d'Optigen :
-       une tête centrée, puis l'agenda intégré dans une seule carte.
-       Calendly ne se charge qu'au clic, voir agendaIntegre(). ── */
-    .rv{background:#f4f6fa;padding:112px 32px 104px;border-top:1px solid #e2e5ec}
-    .rv-in{max-width:1120px;margin:0 auto}
-    .rv-tete{max-width:860px;margin:0 auto 48px;text-align:center}
-    .rv-sur{display:block;margin-bottom:16px;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--navy)}
-    .rv-tete h2{margin:0;font-size:clamp(34px,4vw,52px);line-height:1.08;letter-spacing:-.02em;color:#0a0e24}
-    .rv-tete h2 .serif{font-weight:400}
-    .rv-tete p{margin:18px auto 0;max-width:560px;font-size:16.5px;line-height:1.65;color:#51596a}
-    .rv-pastilles{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:26px 0 0;padding:0;list-style:none}
-    .rv-pastilles li{display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:#fff;border:1px solid #e2e5ec;font-size:14px;font-weight:500;color:#0a0e24}
-    .rv-pastilles li::before{content:"";width:8px;height:4px;margin-top:-3px;border:solid var(--navy);border-width:0 0 1.6px 1.6px;transform:rotate(-45deg)}
-    .rv-carte{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);background:#fff;border:1px solid #e2e5ec;border-radius:20px;overflow:hidden;
-      box-shadow:0 1px 2px rgba(13,23,63,.04),0 30px 70px -40px rgba(13,23,63,.35)}
-    .rv-cote{padding:40px 40px 36px;border-right:1px solid #e2e5ec}
-    .rv-sur--doux{margin-bottom:14px;font-size:12px;color:#7a8291}
-    .rv-cote h3{margin:0 0 12px;font-size:23px;font-weight:600;line-height:1.25;letter-spacing:-.01em;color:#0a0e24}
-    .rv-intro{margin:0 0 26px;font-size:15px;line-height:1.65;color:#51596a}
-    .rv-etapes{margin:0 0 28px;padding:0;list-style:none;counter-reset:rv}
-    .rv-etapes li{position:relative;padding:14px 0 14px 40px;border-top:1px solid #eceef3;counter-increment:rv}
-    .rv-etapes li::before{content:counter(rv);position:absolute;left:0;top:14px;width:26px;height:26px;border-radius:50%;background:#eef1f7;color:var(--navy);
-      font-size:13px;font-weight:600;line-height:26px;text-align:center}
-    .rv-etapes b{display:block;margin-bottom:3px;font-size:15px;font-weight:600;color:#0a0e24}
-    .rv-etapes span{display:block;font-size:14px;line-height:1.55;color:#51596a}
-    .rv-hotes{display:flex;align-items:center;gap:14px;padding-top:22px;border-top:1px solid #eceef3}
-    .rv-photos{display:flex;flex:none}
-    .rv-photos img{width:44px;height:44px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff}
-    .rv-photos img:first-child{object-position:62% 18%}
-    .rv-photos img + img{margin-left:-10px}
-    .rv-hotes p{margin:0;font-size:13.5px;line-height:1.5;color:#7a8291}
-    .rv-hotes b{display:block;font-size:14px;font-weight:600;color:var(--navy)}
-    .rv-agenda{display:flex;flex-direction:column;min-height:640px}
-    .rv-agenda-barre{display:flex;align-items:center;gap:10px;padding:14px 22px;border-bottom:1px solid #e2e5ec;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--navy)}
-    .rv-point{width:8px;height:8px;border-radius:50%;background:#22a06b;box-shadow:0 0 0 4px rgba(34,160,107,.15)}
-    .rv-agenda-corps{position:relative;flex:1;display:flex}
-    .rv-attente{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:40px 28px;text-align:center;color:var(--navy);
-      background-image:radial-gradient(rgba(27,44,107,.07) 1px,transparent 1.2px);background-size:22px 22px}
-    .rv-attente b{margin-top:6px;font-size:18px;font-weight:600;color:#0a0e24}
-    .rv-attente p{margin:0 0 14px;font-size:14.5px;color:#7a8291}
-    .rv-attente .btn-duo{margin:0;border:0;cursor:pointer;font:inherit}
-    .rv-agenda-corps iframe{flex:1;width:100%;min-height:640px;border:0;display:block;position:relative;z-index:1}
-    .rv-charge{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:12px;margin:0;font-size:14.5px;color:#7a8291}
-    .rv-charge::before{content:"";width:18px;height:18px;border-radius:50%;border:2px solid #e2e5ec;border-top-color:var(--navy);animation:rv-tourne .8s linear infinite}
-    @keyframes rv-tourne{to{transform:rotate(360deg)}}
-    .rv-secours{margin:20px 0 0;text-align:center;font-size:14px;color:#7a8291}
-    .rv-secours a{color:var(--navy);text-underline-offset:3px}
-    @media (max-width:900px){
-      .rv{padding:72px 16px}
-      .rv-carte{grid-template-columns:minmax(0,1fr)}
-      .rv-cote{padding:28px 22px;border-right:0;border-bottom:1px solid #e2e5ec}
-      .rv-agenda{min-height:420px}
-      .rv-agenda-corps iframe{min-height:1000px}
     }
 </style>
 <link rel="stylesheet" href="/type.css"/>
@@ -1723,12 +1670,13 @@
         </div>
         <aside class="nav-programme-aside">
           <p>Learndigi accompagne les courtiers de la formation au déploiement d'usages et d'outils IA adaptés à leur cabinet.</p>
-          <a class="nav-programme-cta" href="#rdv"><span>Échangeons sur votre projet</span><span>→</span></a>
+          <a class="nav-programme-cta" href="https://calendly.com/matthieu-brubach-learndigi/30min" target="_blank" rel="noopener"><span>Échangeons sur votre projet</span><span>→</span></a>
         </aside>
       </div>
     </li>
     <li><a href="/articles" onclick="setNav(this)">Articles</a></li>
     <li><a href="#contact" onclick="setNav(this)">Contact</a></li>
+    <li class="nav-echange-li"><a class="nav-echange" href="https://calendly.com/matthieu-brubach-learndigi/30min" target="_blank" rel="noopener">Échanger avec nous</a></li>
   </ul>
 
   <button class="nav-burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" onclick="toggleMenu(this)">
@@ -1752,7 +1700,7 @@
         <li><svg viewBox="0 0 20 20"><path d="M11.45 5L17 10M17 10H2M17 10l-5.55 5"/></svg>Un cadre clair pour protéger les données clients</li>
       </ul>
       <div class="hero-cta">
-        <a href="#rdv" class="hero-btn-primary">Échanger avec nous</a>
+        <a href="https://calendly.com/matthieu-brubach-learndigi/30min" class="hero-btn-primary" target="_blank" rel="noopener">Échanger avec nous</a>
         <a href="/programme" class="hero-btn-link">
           Voir le parcours de formation
           <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -1979,7 +1927,7 @@
         <span class="lx-ta-un-label">Pour votre équipe</span>
         <p class="lx-ta-un-ligne"><span class="lx-ta-chiffre">1</span><span><strong>tarif par session</strong><span class="lx-ta-un-detail">quel que soit le nombre<br/> de participants.</span></span></p>
         <p class="lx-ta-devis">Un échange de 30 minutes.<br/>Votre proposition chiffrée sous <strong>48 heures.</strong></p>
-        <a href="#rdv" class="lx-ta-cta"><span>Demander un devis</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="https://calendly.com/matthieu-brubach-learndigi/30min" class="lx-ta-cta" target="_blank" rel="noopener"><span>Demander un devis</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
     <div class="lx-ta-legende"><p class="lx-ta-label">Ce que comprend votre session</p><span>Avant, pendant et après.</span></div>
@@ -2053,7 +2001,7 @@
           <span class="btn-plus">+</span>
           <span class="btn-label">Télécharger le programme (PDF)</span>
         </a>
-        <a href="#rdv" class="video-link">Prendre RDV →</a>
+        <a href="https://calendly.com/matthieu-brubach-learndigi/30min" class="video-link" target="_blank" rel="noopener">Prendre RDV →</a>
       </div>
     </div>
 
@@ -2150,48 +2098,6 @@
       </div>
     </div>
 
-  </div>
-</section>
-
-<!-- ── RDV TEAMS ───────────────────────────────────────────────── -->
-<section class="rv" id="rdv" aria-labelledby="rv-titre">
-  <div class="rv-in">
-    <div class="rv-tete">
-      <span class="rv-sur">Premier échange · 30 minutes</span>
-      <h2 id="rv-titre">Prenez rendez-vous avec <span class="serif">nous</span></h2>
-      <p>Un échange de 30 minutes en visioconférence Teams pour présenter votre besoin, découvrir l'accompagnement adapté et cadrer la suite avec nous.</p>
-      <ul class="rv-pastilles"><li>30 minutes</li><li>Visio Microsoft Teams</li><li>Gratuit, sans engagement</li></ul>
-    </div>
-
-    <div class="rv-carte">
-      <div class="rv-cote">
-        <span class="rv-sur rv-sur--doux">Rendez-vous découverte</span>
-        <h3>Parlons de votre cabinet, pas d'une offre standard.</h3>
-        <p class="rv-intro">Nous partons de votre organisation, de vos outils et du résultat que vous cherchez à obtenir, sans vous orienter vers une offre standard.</p>
-        <ol class="rv-etapes">
-          <li><b>Choisissez un créneau</b><span>Sélectionnez le jour et l'heure qui vous convient parmi nos disponibilités.</span></li>
-          <li><b>Recevez le lien Teams</b><span>Un e-mail de confirmation avec le lien de réunion Microsoft Teams vous est envoyé immédiatement.</span></li>
-          <li><b>On se retrouve en ligne</b><span>30 minutes pour comprendre votre besoin, répondre à vos questions et définir la prochaine étape.</span></li>
-        </ol>
-        <div class="rv-hotes">
-          <div class="rv-photos" aria-hidden="true"><img src="hugo-portrait.jpg" alt="" loading="lazy" decoding="async" width="1254" height="1254"/><img src="matthieu.jpg" alt="" loading="lazy" decoding="async" width="886" height="886"/></div>
-          <p><b>Un échange avec l'équipe Learndigi</b>Vos besoins sont cadrés avec ceux qui conçoivent et réalisent les accompagnements.</p>
-        </div>
-      </div>
-
-      <div class="rv-agenda">
-        <div class="rv-agenda-barre"><span class="rv-point" aria-hidden="true"></span>Agenda de réservation</div>
-        <div class="rv-agenda-corps" data-calendly="https://calendly.com/matthieu-brubach-learndigi/30min">
-          <div class="rv-attente">
-            <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
-            <b>Choisissez votre créneau</b>
-            <p>Les disponibilités s'affichent ici, sans quitter la page.</p>
-            <button type="button" class="btn-duo rv-afficher"><span class="btn-plus">+</span><span class="btn-label">Voir les créneaux disponibles</span></button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p class="rv-secours">Le calendrier ne s'affiche pas ? <a href="https://calendly.com/matthieu-brubach-learndigi/30min" target="_blank" rel="noopener">Ouvrir l'agenda dans un nouvel onglet</a></p>
   </div>
 </section>
 
@@ -2423,20 +2329,6 @@
     banner.classList.remove('visible');
     setTimeout(()=>banner.style.display='none', 400);
   }
-
-  // ── Agenda : Calendly se charge dans la carte, au clic seulement ──
-  (function agendaIntegre(){
-    var corps=document.querySelector('.rv-agenda-corps');
-    if(!corps) return;
-    var bouton=corps.querySelector('.rv-afficher');
-    bouton.addEventListener('click',function(){
-      var f=document.createElement('iframe');
-      f.title='Choisir un créneau de rendez-vous';
-      f.src=corps.dataset.calendly+'?embed_domain=learndigi.fr&embed_type=Inline&hide_gdpr_banner=1&hide_event_type_details=1&primary_color=1b2c6b';
-      corps.innerHTML='<p class="rv-charge" role="status">Chargement des créneaux…</p>'; corps.appendChild(f);
-      f.focus();
-    });
-  })();
 
   // ── Prise de rendez-vous : Calendly s'ouvre uniquement à la demande ──
   function openCalendly(event){
