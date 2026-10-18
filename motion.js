@@ -1567,103 +1567,147 @@
     }
   }
 
-  /* ── 19. Le programme, section « Une formation adaptée » ────
-     18/10/2026, demandé par Hugo : la section était figée. Le
-     mouvement y dit ce que dit le texte, rien de plus.
+  /* ── 19. Le programme : la scène interactive ────────────────
+     18/10/2026, deuxième version, à la demande de Hugo qui
+     voulait une section vivante dans l'esprit du hero, sans
+     cartes ni photo.
 
-     Les trois contextes deviennent trois stations sur une seule
-     ligne dorée : la même exigence, d'un bout à l'autre. Sous
-     chaque station, l'effectif en points, une personne, une
-     équipe, plusieurs équipes. La ligne se trace, puis les
-     points arrivent station après station.
+     Au centre, l'anneau des 7 heures, dont l'arc doré couvre 7
+     des 15 heures annuelles de la DDA. Autour, les huit modules
+     tournent lentement et s'écartent du curseur, comme les logos
+     du hero. À gauche, trois profils de cabinet : en choisir un
+     rapproche du centre les modules sur lesquels on insiste pour
+     lui et efface les autres. Sans clic, la scène passe d'un
+     profil à l'autre ; le premier clic arrête ce défilement.
 
-     Dans les faits, « 7 heures » se compte, et « 7 h sur 15 h »
-     reçoit une jauge de quinze segments dont sept se remplissent.
+     À l'arrivée sur la section : l'anneau se trace, le 7 se
+     compte, les modules sortent du centre un à un. Sous 900 px,
+     les modules se rangent en liste sous l'anneau. En mouvement
+     réduit, rien ne tourne, mais le choix du profil fonctionne :
+     c'est de l'interaction, pas un effet.                    */
+  function configurateur() {
+    var cfg = document.querySelector('.lx-config');
+    if (!cfg || cfg.dataset.lxPret) return;
+    cfg.dataset.lxPret = '1';
+    var onglets = tous('.lx-config-onglet', cfg);
+    var panneaux = tous('.lx-config-panneau', cfg);
+    var scene = cfg.querySelector('.lx-config-scene');
+    var items = tous('.lx-config-modules li', cfg);
+    var compteur = cfg.querySelector('.lx-config-h');
+    if (!onglets.length || !scene || !items.length) return;
 
-     Les éléments sont construits dans tous les cas, pour que la
-     jauge et les effectifs existent aussi sans animation : seul
-     leur mouvement dépend du réglage du visiteur.           */
-  function formationsVivantes() {
-    var sec = document.querySelector('.formations');
-    if (!sec || sec.dataset.lxVivant) return;
-    sec.dataset.lxVivant = '1';
+    var DUREE = 5600, actif = 1, auto = !reduit, visible = false, minuteur = null;
 
-    var faits = sec.querySelector('.lx-faits');
-    var compte = null;
-    if (faits) {
-      tous('li', faits).forEach(function (li, k) {
-        li.style.setProperty('--k', k);
-        var b = li.querySelector('b');
-        if (!b) return;
-        var j = b.textContent.match(/^(\d+)\s*h\s+sur\s+(\d+)\s*h$/);
-        if (j) {
-          var jauge = document.createElement('span');
-          jauge.className = 'lx-jauge';
-          jauge.setAttribute('aria-hidden', 'true');
-          for (var i = 0; i < +j[2]; i++) {
-            var seg = document.createElement('i');
-            if (i < +j[1]) seg.className = 'plein';
-            seg.style.setProperty('--i', i);
-            jauge.appendChild(seg);
-          }
-          b.parentNode.insertBefore(jauge, b.nextSibling);
-        }
-        if (/^\d+ heures$/.test(b.textContent)) compte = b;
+    function choisir(i, parVisiteur) {
+      actif = i;
+      cfg.dataset.actif = i;
+      onglets.forEach(function (o, k) {
+        o.setAttribute('aria-selected', k === i ? 'true' : 'false');
+        o.tabIndex = k === i ? 0 : -1;
+        o.classList.remove('est-cycle');
+      });
+      panneaux.forEach(function (p, k) { p.hidden = k !== i; });
+      var prio = onglets[i].dataset.prio.split(',').map(Number);
+      items.forEach(function (li) { li.classList.toggle('est-prio', prio.indexOf(+li.dataset.m) >= 0); });
+      if (parVisiteur) { auto = false; cfg.classList.add('est-manuel'); clearTimeout(minuteur); return; }
+      relancer();
+    }
+    function relancer() {
+      clearTimeout(minuteur);
+      if (!auto || !visible) return;
+      void onglets[actif].offsetWidth;
+      onglets[actif].classList.add('est-cycle');
+      minuteur = setTimeout(function () { choisir((actif + 1) % onglets.length, false); }, DUREE);
+    }
+    onglets.forEach(function (o, k) {
+      o.addEventListener('click', function () { choisir(k, true); });
+      o.addEventListener('keydown', function (ev) {
+        var d = ev.key === 'ArrowDown' || ev.key === 'ArrowRight' ? 1 : ev.key === 'ArrowUp' || ev.key === 'ArrowLeft' ? -1 : 0;
+        if (!d) return;
+        ev.preventDefault();
+        var n = (actif + d + onglets.length) % onglets.length;
+        choisir(n, true); onglets[n].focus();
+      });
+    });
+    choisir(1, false);
+
+    // ── l'orbite
+    var W, H, cx, cy, rx, ry, liste = false, ouvert = null, enMarche = false;
+    var souris = { x: -1e4, y: -1e4 };
+    var etats = items.map(function (li, k) {
+      return { li: li, a0: -Math.PI / 2 + k * (2 * Math.PI / items.length), x: 0, y: 0, s: 1, o: 1, w: 0, h: 0 };
+    });
+    function mesurer() {
+      liste = window.matchMedia('(max-width: 900px)').matches;
+      scene.classList.toggle('est-liste', liste);
+      var r = scene.getBoundingClientRect();
+      W = r.width; H = r.height; cx = W / 2; cy = H / 2; rx = W * 0.39; ry = H * 0.4;
+      etats.forEach(function (e) { e.w = e.li.offsetWidth; e.h = e.li.offsetHeight; });
+    }
+    function cible(e, k, t) {
+      var prio = e.li.classList.contains('est-prio');
+      var a = e.a0 + (reduit ? 0 : t * 0.00004);
+      var f = prio ? 0.82 : 1.02;
+      var ouv = 1;
+      if (ouvert !== null) { ouv = Math.max(0, Math.min(1, (t - ouvert - k * 80) / 950)); ouv = 1 - Math.pow(1 - ouv, 3); }
+      var flotte = reduit ? 0 : Math.sin(t * 0.0012 + k * 1.9) * 7;
+      var x = cx + Math.cos(a) * rx * f * ouv, y = cy + Math.sin(a) * ry * f * ouv + flotte * ouv;
+      var dx = x - souris.x, dy = y - souris.y, dist = Math.sqrt(dx * dx + dy * dy);
+      if (!reduit && dist < 130 && dist > 0.1) { var force = (130 - dist) / 130 * 46; x += dx / dist * force; y += dy / dist * force; }
+      return { x: x, y: y, s: (prio ? 1.06 : 0.92) * (0.35 + 0.65 * ouv), o: (prio ? 1 : 0.4) * ouv };
+    }
+    function poser(lisser, t) {
+      etats.forEach(function (e, k) {
+        var c = cible(e, k, t);
+        var q = lisser ? 0.14 : 1;
+        e.x += (c.x - e.x) * q; e.y += (c.y - e.y) * q; e.s += (c.s - e.s) * q; e.o += (c.o - e.o) * q;
+        e.li.style.transform = 'translate(' + (e.x - e.w / 2).toFixed(1) + 'px,' + (e.y - e.h / 2).toFixed(1) + 'px) scale(' + e.s.toFixed(3) + ')';
+        e.li.style.opacity = e.o.toFixed(3);
       });
     }
+    function boucle(t) {
+      if (!visible || liste) { enMarche = false; return; }
+      poser(true, t);
+      requestAnimationFrame(boucle);
+    }
+    function demarrer() { if (!enMarche && !liste) { enMarche = true; requestAnimationFrame(boucle); } }
 
-    var EFFECTIFS = [
-      { groupes: [1], libelle: 'Seul au cabinet' },
-      { groupes: [6], libelle: 'Une équipe' },
-      { groupes: [5, 5, 5], libelle: 'Plusieurs équipes' }
-    ];
-    var grille = sec.querySelector('.context-grid');
-    var n = 0;
-    tous('.context-card', sec).forEach(function (carte, k) {
-      var e = EFFECTIFS[k];
-      if (!e || carte.querySelector('.lx-effectif')) return;
-      var bloc = document.createElement('div');
-      bloc.className = 'lx-effectif';
-      bloc.setAttribute('aria-hidden', 'true');
-      var pts = document.createElement('div');
-      pts.className = 'lx-effectif-pts';
-      e.groupes.forEach(function (taille) {
-        var g = document.createElement('span');
-        g.className = 'lx-effectif-groupe';
-        for (var i = 0; i < taille; i++) {
-          var pt = document.createElement('i');
-          pt.style.setProperty('--d', (0.55 + k * 0.32 + (n++ % 20) * 0.03) + 's');
-          g.appendChild(pt);
+    mesurer();
+    if (!liste) poser(false, 0);   // placées tout de suite, même si le navigateur ne rend pas d'image
+    window.addEventListener('resize', function () { mesurer(); if (liste) items.forEach(function (li) { li.style.transform = ''; li.style.opacity = ''; }); else { poser(false, performance.now()); demarrer(); } }, { passive: true });
+    scene.addEventListener('pointermove', function (ev) { var r = scene.getBoundingClientRect(); souris.x = ev.clientX - r.left; souris.y = ev.clientY - r.top; }, { passive: true });
+    scene.addEventListener('pointerleave', function () { souris.x = souris.y = -1e4; }, { passive: true });
+
+    function ouvrir() {
+      if (cfg.classList.contains('est-ouvert')) return;
+      cfg.classList.add('est-ouvert');
+      if (!reduit) {
+        ouvert = performance.now();
+        etats.forEach(function (e) { e.x = cx; e.y = cy; e.s = 0.3; e.o = 0; });
+        if (compteur) {
+          var fin = +compteur.textContent, debut = null;
+          compteur.textContent = '0';
+          var pas = function (t) {
+            if (debut === null) debut = t;
+            var q = Math.min((t - debut) / 900, 1);
+            compteur.textContent = Math.round((1 - Math.pow(1 - q, 3)) * fin);
+            if (q < 1) requestAnimationFrame(pas);
+          };
+          setTimeout(function () { requestAnimationFrame(pas); }, 350);
+          setTimeout(function () { compteur.textContent = fin; }, 1500);
         }
-        pts.appendChild(g);
-      });
-      var lib = document.createElement('small');
-      lib.textContent = e.libelle;
-      bloc.appendChild(pts);
-      bloc.appendChild(lib);
-      carte.insertBefore(bloc, carte.firstChild);
-    });
-    if (grille) grille.classList.add('lx-ligne');
-
-    if (reduit) return;
-    sec.classList.add('lx-formations-anim');
-
-    if (faits) auScroll([faits], function (f) {
-      f.classList.add('lx-faits-on');
-      if (!compte) return;
-      var m = compte.textContent.match(/^(\d+)(.*)$/), fin = +m[1], reste = m[2], debut = null;
-      compte.textContent = '0' + reste;
-      function pas(t) {
-        if (debut === null) debut = t;
-        var q = Math.min((t - debut) / 800, 1);
-        compte.textContent = Math.round((1 - Math.pow(1 - q, 3)) * fin) + reste;
-        if (q < 1) requestAnimationFrame(pas);
       }
-      setTimeout(function () { requestAnimationFrame(pas); }, 150);
-      // filet de sécurité : la valeur finale est posée quoi qu'il arrive à l'animation
-      setTimeout(function () { compte.textContent = fin + reste; }, 1200);
-    }, 0.35);
-    if (grille) auScroll([grille], function (g) { g.classList.add('lx-contextes-on'); }, 0.3);
+    }
+    if (!reduit) cfg.classList.add('est-anime');
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          visible = e.isIntersecting;
+          if (visible) { ouvrir(); demarrer(); relancer(); }
+          else clearTimeout(minuteur);
+        });
+      }, { threshold: 0.25 }).observe(cfg);
+    } else { visible = true; ouvrir(); }
   }
 
   /* ── Mise en route ────────────────────────────────────────── */
@@ -1687,7 +1731,7 @@
     masques();
     sommaire();
     videoPresentation();
-    formationsVivantes();
+    configurateur();
 
     if (reduit) {
       tous('.lx-w').forEach(function (m) { m.classList.add('lx-w-on'); });

@@ -11,7 +11,7 @@ Licence : https://unsplash.com/license
 
 | Fichier | Page | Source | Sujet |
 |---|---|---|---|
-| `photo-formation-salle.jpg` | accueil, image de partage | photo-1669633760258-186e9dee81e7 | Session de travail devant un écran, en salle |
+| `photo-formation-salle.jpg` | image de partage (source de `og-image.jpg`), retirée de l'accueil le 18/10/2026 | photo-1669633760258-186e9dee81e7 | Session de travail devant un écran, en salle |
 | `photo-devis-echange.jpg` | accueil, bloc tarif | photo-1578574577315-3fbeb0cecdc2 | Tablette en main pendant un entretien |
 | `photo-participants-notes.jpg` | programme, fond du bloc d'appel des offres | photo-1503428593586-e225b39bddfe | Participants prenant des notes en session |
 | `photo-audit-documents.jpg` | audit-ia | photo-1695388474402-ed805a890d8d | Relecture de documents en réunion |

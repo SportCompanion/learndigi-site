@@ -1772,36 +1772,69 @@
     Huit modules forment un socle commun. Le questionnaire préparatoire permet ensuite d'ajuster les exercices, les outils et le niveau de détail à votre organisation.
   </p>
 
-  <ul class="lx-faits">
-    <li><b>7 heures</b><span>Huit modules progressifs</span></li>
-    <li><b>Visio ou présentiel</b><span>Dans vos locaux, au choix</span></li>
-    <li><b>Une journée</b><span>Ou deux demi-journées, au rythme du cabinet</span></li>
-    <li><b>7 h sur 15 h</b><span>Comptabilisables au titre de la DDA</span></li>
-    <li><b>Sur devis</b><span>Après un échange de 30 minutes</span></li>
-  </ul>
-
-  <figure class="lx-photo lx-photo--large">
-    <img src="photo-formation-salle.jpg" alt="Session de formation en salle, participants devant un écran de travail" loading="lazy" decoding="async" width="1400" height="933"/>
-    <figcaption>Le contenu s'ajuste à votre cabinet</figcaption>
-  </figure>
-
-  <div class="contexts-heading">
-    <span>La même exigence, trois contextes</span>
-    <p>Le contenu ne change pas de nature selon la taille du cabinet. Ce sont les priorités, les exercices et la méthode de déploiement qui évoluent.</p>
-  </div>
-  <div class="context-grid">
-    <article class="context-card">
-      <h3>Courtier indépendant</h3>
-      <p>Structurer ses usages personnels, gagner du temps sur les tâches récurrentes et préserver la qualité de la relation client.</p>
-    </article>
-    <article class="context-card">
-      <h3>Cabinet avec une équipe</h3>
-      <p>Partager des méthodes communes, choisir les bons cas d'usage et encadrer l'utilisation des outils par les collaborateurs.</p>
-    </article>
-    <article class="context-card">
-      <h3>Organisation multi-équipe</h3>
-      <p>Définir un cadre d'adoption, faire monter les équipes en compétence et intégrer les exigences de conformité dès le départ.</p>
-    </article>
+  <div class="lx-config" data-actif="1">
+    <div class="lx-config-cote">
+      <p class="lx-config-question">Votre cabinet, c'est plutôt…</p>
+      <div class="lx-config-choix" role="tablist" aria-label="Taille du cabinet">
+        <button class="lx-config-onglet" type="button" role="tab" id="cfg-t0" aria-controls="cfg-p0" aria-selected="false" data-i="0" data-prio="2,3,4">
+          <span class="lx-config-pts" aria-hidden="true"><i></i></span>
+          <span class="lx-config-lib">Seul au cabinet</span>
+          <span class="lx-config-barre" aria-hidden="true"></span>
+        </button>
+        <button class="lx-config-onglet" type="button" role="tab" id="cfg-t1" aria-controls="cfg-p1" aria-selected="true" data-i="1" data-prio="2,5,7">
+          <span class="lx-config-pts" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="lx-config-lib">Une équipe</span>
+          <span class="lx-config-barre" aria-hidden="true"></span>
+        </button>
+        <button class="lx-config-onglet" type="button" role="tab" id="cfg-t2" aria-controls="cfg-p2" aria-selected="false" data-i="2" data-prio="6,7,8">
+          <span class="lx-config-pts" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="lx-config-lib">Plusieurs équipes</span>
+          <span class="lx-config-barre" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="lx-config-panneaux">
+        <div class="lx-config-panneau" role="tabpanel" id="cfg-p0" aria-labelledby="cfg-t0" hidden>
+          <h3>Courtier indépendant</h3>
+          <p>Structurer ses usages personnels, gagner du temps sur les tâches récurrentes et préserver la qualité de la relation client.</p>
+          <p class="lx-config-accent">On y insiste sur <b>socle IA et prompting</b>, <b>Claude et Microsoft 365</b> et <b>portefeuille avec Marvin</b>.</p>
+        </div>
+        <div class="lx-config-panneau" role="tabpanel" id="cfg-p1" aria-labelledby="cfg-t1">
+          <h3>Cabinet avec une équipe</h3>
+          <p>Partager des méthodes communes, choisir les bons cas d'usage et encadrer l'utilisation des outils par les collaborateurs.</p>
+          <p class="lx-config-accent">On y insiste sur <b>socle IA et prompting</b>, <b>sinistres et réclamations</b> et <b>RGPD, AI Act, RSE</b>.</p>
+        </div>
+        <div class="lx-config-panneau" role="tabpanel" id="cfg-p2" aria-labelledby="cfg-t2" hidden>
+          <h3>Organisation multi-équipe</h3>
+          <p>Définir un cadre d'adoption, faire monter les équipes en compétence et intégrer les exigences de conformité dès le départ.</p>
+          <p class="lx-config-accent">On y insiste sur <b>devoir de conseil</b>, <b>RGPD, AI Act, RSE</b> et <b>plan d'action</b>.</p>
+        </div>
+      </div>
+      <ul class="lx-config-faits">
+        <li>Visio ou présentiel</li>
+        <li>Une journée ou deux demi-journées</li>
+        <li>Sur devis, après 30 minutes</li>
+      </ul>
+    </div>
+    <div class="lx-config-scene" aria-hidden="true">
+      <div class="lx-config-centre">
+        <svg class="lx-config-anneau" viewBox="0 0 200 200">
+          <circle class="lx-anneau-piste" cx="100" cy="100" r="78" pathLength="1"/>
+          <circle class="lx-anneau-dda" cx="100" cy="100" r="78" pathLength="15"/>
+          <g class="lx-anneau-ticks"><line x1="100" y1="10" x2="100" y2="16" transform="rotate(0 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(24 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(48 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(72 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(96 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(120 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(144 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(168 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(192 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(216 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(240 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(264 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(288 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(312 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(336 100 100)"/></g>
+        </svg>
+        <div class="lx-config-coeur"><b><span class="lx-config-h">7</span> h</b><small>dont 7 sur 15 h DDA</small></div>
+      </div>
+      <ul class="lx-config-modules">
+        <li data-m="1"><i>01</i>Introduction</li>
+        <li data-m="2"><i>02</i>Socle IA et prompting</li>
+        <li data-m="3"><i>03</i>Claude et Microsoft 365</li>
+        <li data-m="4"><i>04</i>Portefeuille avec Marvin</li>
+        <li data-m="5"><i>05</i>Sinistres et réclamations</li>
+        <li data-m="6"><i>06</i>Devoir de conseil</li>
+        <li data-m="7"><i>07</i>RGPD, AI Act, RSE</li>
+        <li data-m="8"><i>08</i>Plan d'action</li>
+      </ul>
+    </div>
   </div>
 
   <!-- CTA central -->
