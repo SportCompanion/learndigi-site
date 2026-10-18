@@ -1691,6 +1691,64 @@
     });
   }
 
+  /* ── 21. Bibliothèque de skills ─────────────────────────────
+     La chaîne du devoir de conseil : un dossier passe d'étape en
+     étape, le fil doré avance derrière lui, et le détail de
+     l'étape s'affiche dessous. Sans clic, il parcourt les cinq
+     étapes ; le premier clic arrête ce parcours. Le filtre range
+     les fiches du quotidien par module.                       */
+  function bibliothequeSkills() {
+    var r = document.querySelector('.sk');
+    if (!r || r.dataset.lxPret) return;
+    r.dataset.lxPret = '1';
+    var etapes = tous('.sk-etapes li', r), details = tous('.sk-etape-detail', r);
+    var ol = r.querySelector('.sk-etapes'), dossier = r.querySelector('.sk-dossier'), chaine = r.querySelector('.sk-chaine');
+    var actif = 0, auto = !reduit, visible = false, minuteur = null;
+    function placer() {
+      if (!dossier || !etapes.length) return;
+      var c = chaine.getBoundingClientRect(), b = etapes[actif].querySelector('.sk-pt').getBoundingClientRect();
+      dossier.style.setProperty('--sk-x', (b.left - c.left + b.width / 2 - 10) + 'px');
+      dossier.style.top = (b.top - c.top + b.height / 2 - 34) + 'px';
+      ol.style.setProperty('--sk-p', etapes.length > 1 ? actif / (etapes.length - 1) : 0);
+    }
+    function choisir(i, parVisiteur) {
+      actif = i;
+      etapes.forEach(function (li, k) {
+        li.querySelector('button').setAttribute('aria-pressed', k === i ? 'true' : 'false');
+        li.classList.toggle('est-fait', k < i);
+      });
+      details.forEach(function (d, k) { d.hidden = k !== i; });
+      placer();
+      clearTimeout(minuteur);
+      if (parVisiteur) { auto = false; return; }
+      if (auto && visible) minuteur = setTimeout(function () { choisir((actif + 1) % etapes.length, false); }, 4200);
+    }
+    etapes.forEach(function (li, k) { li.querySelector('button').addEventListener('click', function () { choisir(k, true); }); });
+    window.addEventListener('resize', placer, { passive: true });
+    choisir(0, true); auto = !reduit;
+
+    tous('.sk-filtres button', r).forEach(function (b, _, liste) {
+      b.addEventListener('click', function () {
+        liste.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        tous('.sk-fiche[data-famille]', r).forEach(function (f) {
+          f.classList.toggle('est-cache', b.dataset.f !== 'tous' && f.dataset.famille !== b.dataset.f);
+        });
+      });
+    });
+
+    if (reduit || !('IntersectionObserver' in window)) { r.classList.add('est-vu'); return; }
+    r.classList.add('est-anime');
+    requestAnimationFrame(function () { r.classList.add('est-vu'); });
+    setTimeout(function () { r.classList.add('est-vu'); }, 60);
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        visible = e.isIntersecting;
+        clearTimeout(minuteur);
+        if (visible && auto) minuteur = setTimeout(function () { choisir((actif + 1) % etapes.length, false); }, 2600);
+      });
+    }, { threshold: 0.35 }).observe(chaine);
+  }
+
   /* ── Mise en route ────────────────────────────────────────── */
   function demarrer() {
     // Ces deux-là servent aussi sans animation : l'un remplace une
@@ -1713,6 +1771,7 @@
     videoPresentation();
     configurateur();
     tarifParcours();
+    bibliothequeSkills();
 
     if (reduit) {
       tous('.lx-w').forEach(function (m) { m.classList.add('lx-w-on'); });
