@@ -1669,89 +1669,39 @@
   }
 
   /* ── 20. Le tarif ───────────────────────────────────────────
-     18/10/2026, deuxième version. Hugo : même prix quel que soit
-     le nombre de participants, couleurs du site, et une section
-     qui informe au lieu de seulement faire choisir.
-
-     À gauche, l'information s'anime : une équipe qui grandit
-     point par point pendant que l'étiquette « 1 tarif » ne bouge
-     pas, puis ce que comprend le tarif, coché ligne par ligne.
-     À droite, la demande est une lettre à trous : on choisit dans
-     les phrases mêmes. « Envoyer cette demande » la recopie dans
-     le formulaire de contact. Aucun prix n'est affiché.        */
-  function tarifVivant() {
-    var r = document.querySelector('.lx-tf');
+     18/10/2026, version sobre. Un seul mouvement porte la
+     section : le fil de « ce que comprend le tarif » se dessine
+     au rythme du défilement, et chaque étape s'allume quand il
+     l'atteint. Le mouvement suit le visiteur au lieu de tourner
+     seul. À côté, la rangée de points qui se remplit sous le
+     « 1 » dit que le tarif ne change pas avec l'équipe.       */
+  function tarifSobre() {
+    var r = document.querySelector('.lx-tp');
     if (!r || r.dataset.lxPret) return;
     r.dataset.lxPret = '1';
-    var date = r.querySelector('.lx-tf-date');
-    if (date) { var d = new Date(); date.textContent = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }); date.dateTime = d.toISOString().slice(0, 10); }
-
-    var etat = { lieu: 'dans nos locaux', orga: 'en deux demi-journées' };
-    var mods = tous('.lx-tf-mods button', r);
-    tous('.lx-tf-choix', r).forEach(function (g) {
-      var bs = tous('button', g);
-      bs.forEach(function (b) {
-        b.addEventListener('click', function () {
-          bs.forEach(function (x) { x.setAttribute('aria-checked', x === b ? 'true' : 'false'); });
-          etat[g.dataset.cle] = b.dataset.v;
-          g.classList.remove('est-maj'); void g.offsetWidth; g.classList.add('est-maj');
-        });
-      });
-    });
-    mods.forEach(function (b) {
-      b.addEventListener('click', function () { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); });
-    });
-    function texteMods() {
-      var n = mods.filter(function (b) { return b.getAttribute('aria-pressed') === 'true'; })
-        .map(function (b) { return b.textContent.replace(/^\d+/, '').trim(); });
-      return n.length ? n.join(', ') : 'à définir ensemble';
-    }
-    var dernier = '';
-    r.querySelector('.lx-tf-envoyer').addEventListener('click', function () {
-      var msg = 'Bonjour,\n\nNous souhaitons organiser la formation IA pour courtiers en assurance ' +
-        etat.lieu + ', ' + etat.orga + '.\nNous aimerions insister sur : ' + texteMods() +
-        '.\n\nMerci de nous adresser une proposition.\n';
-      var zone = document.getElementById('cmessage'), cible = document.getElementById('contact');
-      if (zone) {
-        if (!zone.value.trim() || zone.value === dernier) zone.value = msg;
-        else zone.value = zone.value.replace(/\s+$/, '') + '\n\n' + msg;
-        dernier = zone.value;
-        zone.classList.remove('lx-tf-recu'); void zone.offsetWidth; zone.classList.add('lx-tf-recu');
-      }
-      if (cible) cible.scrollIntoView({ behavior: reduit ? 'auto' : 'smooth', block: 'start' });
-      var nom = document.getElementById('cnom');
-      if (nom) setTimeout(function () { nom.focus({ preventScroll: true }); }, reduit ? 0 : 700);
-    });
-
-    // l'équipe qui grandit, le tarif qui ne bouge pas
-    var gens = r.querySelector('.lx-tf-gens'), MAX = 12, n = 1, sens = 1, boucle = null;
-    function dessiner() {
-      while (gens.children.length < n) { var p = document.createElement('i'); p.className = 'est-neuf'; gens.appendChild(p); }
-      while (gens.children.length > n) gens.removeChild(gens.lastChild);
-      setTimeout(function () { tous('.est-neuf', gens).forEach(function (p) { p.classList.remove('est-neuf'); }); }, 30);
-      var prix = r.querySelector('.lx-tf-prix');
-      prix.classList.remove('est-tape'); void prix.offsetWidth; prix.classList.add('est-tape');
-    }
-    if (gens) { n = reduit ? 6 : 1; dessiner(); }
-
-    function ouvrir() {
-      if (r.classList.contains('est-ouvert')) return;
-      r.classList.add('est-ouvert');
-      if (reduit || !gens) return;
-      boucle = setInterval(function () {
-        if (!document.body.contains(r)) return clearInterval(boucle);
-        n += sens;
-        if (n >= MAX) { n = MAX; sens = -1; }
-        else if (n <= 1) { n = 1; sens = 1; }
-        dessiner();
-      }, 420);
-    }
-    if (reduit || !('IntersectionObserver' in window)) { r.classList.add('est-ouvert'); return; }
+    var fil = r.querySelector('.lx-tp-fil');
+    var etapes = tous('.lx-tp-fil > li', r);
+    if (reduit || !fil) { r.classList.add('est-ouvert'); etapes.forEach(function (e) { e.classList.add('est-atteint'); }); if (fil) fil.style.setProperty('--p', 1); return; }
     r.classList.add('est-anime');
-    r.addEventListener('pointerdown', ouvrir, { once: true });
-    new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) ouvrir(); });
-    }, { threshold: 0.25 }).observe(r);
+    auScroll([r], function () { r.classList.add('est-ouvert'); }, 0.2);
+
+    var attente = false;
+    function maj() {
+      attente = false;
+      var b = fil.getBoundingClientRect(), vh = window.innerHeight;
+      // la pointe du fil se tient aux trois quarts de la hauteur de l'écran
+      var p = (vh * 0.75 - b.top) / b.height;
+      p = Math.max(0, Math.min(1, p));
+      fil.style.setProperty('--p', p.toFixed(4));
+      var lim = b.top + p * b.height;
+      etapes.forEach(function (e) {
+        var t = e.getBoundingClientRect();
+        e.classList.toggle('est-atteint', t.top + 12 <= lim);
+      });
+    }
+    window.addEventListener('scroll', function () { if (!attente) { attente = true; requestAnimationFrame(maj); } }, { passive: true });
+    window.addEventListener('resize', maj, { passive: true });
+    maj();
   }
 
   /* ── Mise en route ────────────────────────────────────────── */
@@ -1775,7 +1725,7 @@
     sommaire();
     videoPresentation();
     configurateur();
-    tarifVivant();
+    tarifSobre();
 
     if (reduit) {
       tous('.lx-w').forEach(function (m) { m.classList.add('lx-w-on'); });
