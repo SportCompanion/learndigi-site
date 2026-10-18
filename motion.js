@@ -1669,39 +1669,57 @@
   }
 
   /* ── 20. Le tarif ───────────────────────────────────────────
-     18/10/2026, version sobre. Un seul mouvement porte la
-     section : le fil de « ce que comprend le tarif » se dessine
-     au rythme du défilement, et chaque étape s'allume quand il
-     l'atteint. Le mouvement suit le visiteur au lieu de tourner
-     seul. À côté, la rangée de points qui se remplit sous le
-     « 1 » dit que le tarif ne change pas avec l'équipe.       */
-  function tarifSobre() {
-    var r = document.querySelector('.lx-tp');
+     18/10/2026, troisième version, d'après les sources envoyées
+     par Hugo (Cuberto, fullenrich, moon-ia). Fond marine de la
+     scène du programme. Le titre monte ligne par ligne derrière
+     un masque. Trois panneaux, avant, pendant, après la session :
+     celui qu'on survole ou qu'on choisit au clavier s'élargit et
+     révèle son contenu ; sans survol, ils s'ouvrent l'un après
+     l'autre. Une lumière douce suit le curseur dans la scène.  */
+  function tarifPanneaux() {
+    var r = document.querySelector('.lx-ta');
     if (!r || r.dataset.lxPret) return;
     r.dataset.lxPret = '1';
-    var fil = r.querySelector('.lx-tp-fil');
-    var etapes = tous('.lx-tp-fil > li', r);
-    if (reduit || !fil) { r.classList.add('est-ouvert'); etapes.forEach(function (e) { e.classList.add('est-atteint'); }); if (fil) fil.style.setProperty('--p', 1); return; }
-    r.classList.add('est-anime');
-    auScroll([r], function () { r.classList.add('est-ouvert'); }, 0.2);
-
-    var attente = false;
-    function maj() {
-      attente = false;
-      var b = fil.getBoundingClientRect(), vh = window.innerHeight;
-      // la pointe du fil se tient aux trois quarts de la hauteur de l'écran
-      var p = (vh * 0.75 - b.top) / b.height;
-      p = Math.max(0, Math.min(1, p));
-      fil.style.setProperty('--p', p.toFixed(4));
-      var lim = b.top + p * b.height;
-      etapes.forEach(function (e) {
-        var t = e.getBoundingClientRect();
-        e.classList.toggle('est-atteint', t.top + 12 <= lim);
-      });
+    var pans = tous('.lx-ta-pan', r), actif = 0, auto = !reduit, visible = false, minuteur = null, DUREE = 5000;
+    function ouvrir(i, parVisiteur) {
+      actif = i;
+      pans.forEach(function (p, k) { p.classList.toggle('est-ouvert', k === i); p.classList.remove('est-cycle'); });
+      if (parVisiteur) { auto = false; r.classList.add('est-manuel'); clearTimeout(minuteur); return; }
+      relancer();
     }
-    window.addEventListener('scroll', function () { if (!attente) { attente = true; requestAnimationFrame(maj); } }, { passive: true });
-    window.addEventListener('resize', maj, { passive: true });
-    maj();
+    function relancer() {
+      clearTimeout(minuteur);
+      if (!auto || !visible) return;
+      void pans[actif].offsetWidth; pans[actif].classList.add('est-cycle');
+      minuteur = setTimeout(function () { ouvrir((actif + 1) % pans.length, false); }, DUREE);
+    }
+    var large = window.matchMedia('(min-width: 901px)');
+    pans.forEach(function (p, k) {
+      p.addEventListener('mouseenter', function () { if (large.matches) ouvrir(k, true); });
+      p.addEventListener('focus', function () { ouvrir(k, true); });
+      p.addEventListener('click', function () { ouvrir(k, true); });
+    });
+
+    var lum = r.querySelector('.lx-ta-lumiere');
+    if (lum && !reduit) {
+      r.addEventListener('pointermove', function (ev) {
+        var b = r.getBoundingClientRect();
+        r.style.setProperty('--lx', (ev.clientX - b.left) + 'px');
+        r.style.setProperty('--ly', (ev.clientY - b.top) + 'px');
+        r.classList.add('est-eclaire');
+      }, { passive: true });
+      r.addEventListener('pointerleave', function () { r.classList.remove('est-eclaire'); }, { passive: true });
+    }
+
+    if (reduit || !('IntersectionObserver' in window)) { r.classList.add('est-vu'); return; }
+    r.classList.add('est-anime');
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        visible = e.isIntersecting;
+        if (visible) { r.classList.add('est-vu'); setTimeout(relancer, 1200); }
+        else clearTimeout(minuteur);
+      });
+    }, { threshold: 0.25 }).observe(r);
   }
 
   /* ── Mise en route ────────────────────────────────────────── */
@@ -1725,7 +1743,7 @@
     sommaire();
     videoPresentation();
     configurateur();
-    tarifSobre();
+    tarifPanneaux();
 
     if (reduit) {
       tous('.lx-w').forEach(function (m) { m.classList.add('lx-w-on'); });
