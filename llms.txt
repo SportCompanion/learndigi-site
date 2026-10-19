@@ -72,7 +72,7 @@ déclaration d'activité de l'organisme (numéro 11941448294) et du contenu de l
 - [Édition du 7 septembre 2026](https://learndigi.fr/newsletters/2026-09-07) : consultation ACPR, calendrier de l'AI Act, nouveautés des assistants IA et prompt métier pour les courtiers.
 - [Bibliothèque de skills](https://learndigi.fr/bibliotheque-skills) : dix skills métier installés dans Claude (mode Cowork) et réglés pendant la formation. Chaîne du devoir de conseil en cinq skills (trame de recueil des besoins, fiche exigences et besoins, motivation du conseil, explication du contrat, autocontrôle des dossiers), kit sinistre, tournée sinistres, réclamation, challenge concurrentiel en fidélisation, et pseudonymisation Marvin Systems. L'IA prépare, le courtier vérifie et décide.
 - [Articles](https://learndigi.fr/articles) : analyses métier sur l'usage de l'IA en cabinet de courtage, sourcées sur les textes officiels.
-  - [Puis-je mettre les données de mes clients dans ChatGPT ?](https://learndigi.fr/articles/chatgpt-donnees-clients-courtier) : non sur un compte grand public, oui sous conditions sur une offre professionnelle. Questions-réponses de la CNIL du 18 juillet 2024, données personnelles et données de santé dans un dossier de courtage, contrat de sous-traitance de l'article 28 du RGPD, article 4 du règlement (UE) 2024/1689 sur la maîtrise de l'IA applicable depuis le 2 février 2025, transparence de l'article 50 depuis le 2 août 2026, report des obligations haut risque de l'annexe III au 2 décembre 2027 par le règlement (UE) 2026/1744, modèle de charte interne d'une page. Par Matthieu Brubach.
+  - [Puis-je mettre les données de mes clients dans ChatGPT ?](https://learndigi.fr/articles/chatgpt-donnees-clients-courtier) : non sur un compte grand public, oui sous conditions sur une offre professionnelle. Questions-réponses de la CNIL du 18 juillet 2024, données personnelles et données de santé dans un dossier de courtage, contrat de sous-traitance de l'article 28 du RGPD, article 4 du règlement (UE) 2024/1689 sur la maîtrise de l'IA applicable depuis le 2 février 2025, transparence de l'article 50 depuis le 2 août 2026, report des obligations haut risque de l'annexe III au 2 décembre 2027 par le règlement (UE) 2026/1744, modèle de charte interne d'une page. Par Mathieu Brubach.
   - [Analyser son portefeuille avec l'IA sans exposer ses clients](https://learndigi.fr/articles/analyser-portefeuille-courtage-ia) : différence entre pseudonymisation et anonymisation (article 4 point 5 et considérant 26 du RGPD), colonnes à retirer d'un export, échéances croisées avec le dernier contact, clients mono-équipés, dérive de sinistralité, méthode de revue annuelle en quatre étapes. Par Hugo Salembier.
   - [Devoir de conseil et IA : ce que l'ACPR attend d'un cabinet de courtage](https://learndigi.fr/articles/devoir-de-conseil-ia-courtier) : sanction ACPR du 13 mai 2026 contre la Société Générale, recommandation 2024-R-03 applicable depuis le 31 décembre 2025, partage des rôles entre le courtier et l'IA, fiche exigences et besoins, motivation écrite du conseil.
   - [Sinistres et réclamations : ce que l'IA fait gagner à un cabinet de courtage](https://learndigi.fr/articles/sinistres-reclamations-ia-courtier) : délais de déclaration du Code des assurances, distinction entre sinistre et réclamation, recommandation ACPR 2024-R-02, suivi des pièces et relances.
@@ -83,7 +83,7 @@ déclaration d'activité de l'organisme (numéro 11941448294) et du contenu de l
 
 - Site : https://learndigi.fr
 - LinkedIn : https://www.linkedin.com/company/110659807
-- Matthieu Brubach, co-fondateur. matthieu.brubach@learndigi.fr, 06 67 99 63 79
+- Mathieu Brubach, co-fondateur. matthieu.brubach@learndigi.fr, 06 67 99 63 79
 - Hugo Salembier, co-fondateur. hugo.salembier@learndigi.fr, 06 33 63 96 05
 - Adresse : 88 rue de Champigny, 94430 Chennevières-sur-Marne, France
 - Prise de rendez-vous (30 min, gratuit) : https://calendly.com/matthieu-brubach-learndigi/30min
@@ -91,7 +91,7 @@ déclaration d'activité de l'organisme (numéro 11941448294) et du contenu de l
 ## À ne pas confondre
 
 Fiche officielle au registre des entreprises : https://annuaire-entreprises.data.gouv.fr/entreprise/106496862
-(LEARNDIGI FORMATION, SIREN 106496862, organisme de formation déclaré, dirigeants Matthieu Brubach et Hugo Salembier).
+(LEARNDIGI FORMATION, SIREN 106496862, organisme de formation déclaré, dirigeants Mathieu Brubach et Hugo Salembier).
 
 Learndigi (learndigi.fr) est une société française de formation à l'IA pour les courtiers en
 assurance. Elle n'a aucun lien avec les autres entités portant un nom proche : le projet de
@@ -102,7 +102,7 @@ LearnDigiWorld, ni les pages de marketing digital du même nom.
 
 Les contenus sont signés par les deux co-fondateurs, qui animent eux-mêmes les formations.
 
-- Matthieu Brubach, co-fondateur et président, référent handicap : https://learndigi.fr/auteurs/matthieu-brubach
+- Mathieu Brubach, co-fondateur et président, référent handicap : https://learndigi.fr/auteurs/mathieu-brubach
   Écrit sur le devoir de conseil, les sinistres et réclamations, le RGPD et l'AI Act.
 - Hugo Salembier, co-fondateur et directeur général : https://learndigi.fr/auteurs/hugo-salembier
   Écrit sur les usages quotidiens, la prise en main des outils et la prospection.
