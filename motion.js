@@ -1668,15 +1668,56 @@
     } else { visible = true; ouvrir(); }
   }
 
-  /* ── 20. Le tarif : apparition unique des étapes de la session.
-     Le texte reste accessible sans script et sans interaction. */
+  /* ── 20. Le tarif : détails natifs, ouverture à la demande.
+     Aucun défilement automatique. Sans script, les volets fonctionnent. */
   function tarifParcours() {
     var r = document.querySelector('.lx-ta');
     if (!r || r.dataset.lxPret) return;
     r.dataset.lxPret = '1';
+    var volets = tous('.lx-ta-pan', r);
+    var animations = new Map();
+    function ouvrir(volet, ouvert) {
+      var hauteur = volet.getBoundingClientRect().height;
+      var precedente = animations.get(volet);
+      if (precedente) precedente.cancel();
+      volet.dataset.ouvert = String(ouvert);
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !volet.animate) {
+        volet.open = ouvert;
+        volet.classList.remove('is-animating');
+        animations.delete(volet);
+        return;
+      }
+      // Mesurer le contenu déplié avant d'animer la hauteur, y compris
+      // lorsque l'utilisateur inverse une animation encore en cours.
+      volet.open = true;
+      var cible = ouvert ? volet.getBoundingClientRect().height : volet.querySelector('summary').getBoundingClientRect().height;
+      var style = getComputedStyle(volet);
+      if (!ouvert) cible += parseFloat(style.borderTopWidth) + parseFloat(style.borderBottomWidth);
+      volet.classList.add('is-animating');
+      var animation = volet.animate([{ height: hauteur + 'px' }, { height: cible + 'px' }], {
+        duration: 320, easing: 'cubic-bezier(.25,.8,.25,1)'
+      });
+      animations.set(volet, animation);
+      animation.onfinish = function () {
+        volet.open = ouvert;
+        volet.classList.remove('is-animating');
+        animations.delete(volet);
+      };
+    }
+    volets.forEach(function (volet) {
+      volet.dataset.ouvert = String(volet.open);
+      volet.querySelector('summary').addEventListener('click', function (event) {
+        event.preventDefault();
+        var ouvert = volet.dataset.ouvert !== 'true';
+        if (ouvert) volets.forEach(function (autre) {
+          if (autre !== volet && autre.dataset.ouvert === 'true') ouvrir(autre, false);
+        });
+        ouvrir(volet, ouvert);
+      });
+    });
     if (reduit || !('IntersectionObserver' in window)) return;
 
-    var elements = tous('.lx-ta-intro, .lx-ta-un, .lx-ta-pan', r);
+    var elements = tous('.lx-ta-intro, .lx-ta-un, .lx-ta-photo, .lx-ta-pans', r);
     var large = window.matchMedia('(min-width: 761px)').matches;
     elements.forEach(function (el, i) {
       var delai = large ? (i < 2 ? i * 100 : (i - 2) * 100) : 0;

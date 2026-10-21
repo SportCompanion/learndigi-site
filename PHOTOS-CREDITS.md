@@ -17,7 +17,7 @@ Licence : https://unsplash.com/license
 | `photo-veille-lecture.jpg` | veille-ia | photo-1487724077104-5196c4e819fa | Lecture attentive d'un dossier |
 | `photo-code-ecran.jpg` | claude-code-codex | photo-1515879218367-8466d910aaa4 | Écran affichant du code source |
 | `photo-prospection-donnees.jpg` | prospection-ia | photo-1542744173-05336fcc7ad4 | Analyse de données sur un ordinateur portable |
-| `photo-prise-en-main.jpg` | formation-outil-ia | photo-1562564055-71e051d33c19 | Prise en main d'un outil à deux, documents et notes |
+| `photo-prise-en-main.jpg` | formation-outil-ia, bloc tarif de l'accueil | photo-1562564055-71e051d33c19 | Prise en main d'un outil à deux, documents et notes |
 | `photo-echange-cabinet.jpg` | libre | photo-1577415124269-fc1140a69e91 | Deux professionnels en échange dans un bureau |
 
 `og-image.jpg` est fabriquée à partir de `photo-formation-salle.jpg` : c'est
