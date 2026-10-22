@@ -1159,6 +1159,10 @@
 
     var zone = document.createElement('div');
     zone.className = 'lx-scene-zone';
+    var entete = document.createElement('p');
+    entete.className = 'lx-scene-entete';
+    entete.textContent = 'Les outils, en pratique';
+    zone.appendChild(entete);
 
     var scene = document.createElement('div');
     scene.className = 'lx-scene';
@@ -1267,8 +1271,8 @@
       haloFil.classList.add('lx-sillage-halo');
       fils.appendChild(haloFil);
       fils.appendChild(fil);
-      return { el: el, j: j, x: 0, y: 0, ph: i * 1.7, amp: j.amp * 8, v1: j.v1 * .7, v2: j.v2 * .7,
-        fil: fil, haloFil: haloFil, gradient: gradient, angle: i * 1.7 };
+      return { el: el, j: j, x: 0, y: 0, ph: i * 1.7, amp: j.amp * 2.5, v1: j.v1 * .7, v2: j.v2 * .7,
+        fil: fil, haloFil: haloFil, gradient: gradient, angle: -.18 };
     });
 
     zone.appendChild(scene);
@@ -1311,7 +1315,7 @@
       var mesures = voyageurs.map(function (v) {
         return { origine: v.e.el.querySelector('.lx-jeton-c').getBoundingClientRect(), cible: v.place.getBoundingClientRect() };
       });
-      dock.classList.toggle('est-visible', progression > 0 && !termine);
+      dock.classList.toggle('est-visible', progression > .095 && !termine);
       voyageurs.forEach(function (v, i) {
         var p = Math.max(0, Math.min(1, progression * 8 - i));
         v.e.el.style.visibility = p > 0 ? 'hidden' : '';
@@ -1356,7 +1360,7 @@
       // sa voisine.
       cadre.e = Math.max(.4, Math.min(1.15, r.width / 440));
       fils.setAttribute('viewBox', '0 0 ' + r.width + ' ' + r.height);
-      if (change) etats.forEach(function (e) { e.angle = e.ph; });
+      if (change) etats.forEach(function (e) { e.angle = -.18; });
     }
 
     var RAYON = 200, FORCE = 34;
@@ -1365,11 +1369,8 @@
     // Un sillage complet dès la première image, orienté sur la vitesse.
     // Une courbe courte évite de reconstruire 70 points à chaque image.
     function sillage(e, vx, vy) {
-      if (Math.abs(vx) + Math.abs(vy) > .02) {
-        var cible = Math.atan2(vy, vx);
-        var ecart = Math.atan2(Math.sin(cible - e.angle), Math.cos(cible - e.angle));
-        e.angle += ecart * .09;
-      }
+      // Un sillage stable : aucune boucle ni rotation brusque au demi-tour.
+      e.angle = -.18 + Math.sin(e.x / 60) * .07;
       var x = cadre.w * e.j.x / 100 + e.x;
       var y = cadre.h * e.j.y / 100 + e.y;
       var longueur = 112 * cadre.e;
