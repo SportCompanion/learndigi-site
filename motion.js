@@ -1267,7 +1267,7 @@
       haloFil.classList.add('lx-sillage-halo');
       fils.appendChild(haloFil);
       fils.appendChild(fil);
-      return { el: el, j: j, x: 0, y: 0, ph: i * 1.7, amp: j.amp * 5, v1: j.v1 * .7, v2: j.v2 * .7,
+      return { el: el, j: j, x: 0, y: 0, ph: i * 1.7, amp: j.amp * 8, v1: j.v1 * .7, v2: j.v2 * .7,
         fil: fil, haloFil: haloFil, gradient: gradient, trace: [], dernier: 0 };
     });
 
@@ -1279,6 +1279,58 @@
       scene.classList.add('lx-scene-on', 'lx-scene-posee');
       return;
     }
+
+    // Au défilement, les outils rejoignent un rail commun. Les copies
+    // sont purement décoratives ; les noms restent dans la scène d'origine.
+    var dock = document.createElement('div');
+    dock.className = 'lx-outils-dock';
+    dock.setAttribute('aria-hidden', 'true');
+    var dockLabel = document.createElement('span');
+    dockLabel.textContent = 'Vos outils';
+    dock.appendChild(dockLabel);
+    var voyageurs = etats.map(function (e) {
+      var place = document.createElement('span');
+      place.className = 'lx-dock-place';
+      dock.appendChild(place);
+      var copie = e.el.querySelector('.lx-jeton-c').cloneNode(true);
+      copie.className = 'lx-outil-voyage' + (e.j.plein ? ' lx-outil-voyage-plein' : '');
+      copie.style.setProperty('--z', (e.j.z || 62) + '%');
+      copie.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(copie);
+      return { place: place, copie: copie, e: e };
+    });
+    document.body.appendChild(dock);
+    var dockFrame = 0;
+    function rangerOutils() {
+      dockFrame = 0;
+      var sr = scene.getBoundingClientRect();
+      var debut = Math.max(0, sr.top + window.scrollY + sr.height * .2 - innerHeight * .4);
+      var progression = Math.max(0, Math.min(1, (window.scrollY - debut) / Math.min(550, innerHeight * .8)));
+      var destination = document.querySelector('.outils');
+      var termine = destination && destination.getBoundingClientRect().top < innerHeight * .75;
+      dock.classList.toggle('est-visible', progression > 0 && !termine);
+      voyageurs.forEach(function (v, i) {
+        var p = Math.max(0, Math.min(1, progression * 8 - i));
+        v.e.el.style.visibility = p > 0 ? 'hidden' : '';
+        v.e.fil.style.opacity = String(1 - p);
+        v.e.haloFil.style.opacity = String((1 - p) * .5);
+        v.copie.style.visibility = p > 0 && !termine ? 'visible' : 'hidden';
+        if (!p || termine) return;
+        var origine = v.e.el.querySelector('.lx-jeton-c').getBoundingClientRect();
+        var cible = v.place.getBoundingClientRect();
+        var u = p * p * (3 - 2 * p);
+        var taille = origine.width + (cible.width - origine.width) * u;
+        var x = origine.left + (cible.left - origine.left) * u + Math.sin(p * Math.PI) * (i % 2 ? 36 : -36);
+        var y = origine.top + (cible.top - origine.top) * u;
+        v.copie.style.width = taille + 'px';
+        v.copie.style.height = taille + 'px';
+        v.copie.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0) rotate(' + (Math.sin(p * Math.PI) * 10) + 'deg)';
+      });
+    }
+    function demanderRangement() { if (!dockFrame) dockFrame = requestAnimationFrame(rangerOutils); }
+    window.addEventListener('scroll', demanderRangement, { passive: true });
+    window.addEventListener('resize', demanderRangement, { passive: true });
+    rangerOutils();
 
     // L'entrée part d'une temporisation et non d'un observateur :
     // le hero est déjà visible au chargement, et il faut laisser
@@ -1292,15 +1344,16 @@
     var cadre = { l: 0, t: 0, w: 0, h: 0, e: 1 };
     function mesurer() {
       var r = scene.getBoundingClientRect();
+      var change = cadre.w !== r.width || cadre.h !== r.height;
       cadre.l = r.left; cadre.t = r.top; cadre.w = r.width; cadre.h = r.height;
       // Amplitudes et distances sont écrites en pixels pour une
       // scène de 440 : sur un écran étroit elles doivent suivre,
       // sinon la même dérive de dix pixels, qui se remarque à
       // peine en grand, fait passer une pastille sur le nom de
       // sa voisine.
-      cadre.e = Math.max(.68, Math.min(1.15, r.width / 440));
+      cadre.e = Math.max(.4, Math.min(1.15, r.width / 440));
       fils.setAttribute('viewBox', '0 0 ' + r.width + ' ' + r.height);
-      etats.forEach(function (e) { e.trace = []; e.fil.removeAttribute('d'); e.haloFil.removeAttribute('d'); });
+      if (change) etats.forEach(function (e) { e.trace = []; e.fil.removeAttribute('d'); e.haloFil.removeAttribute('d'); });
     }
 
     var RAYON = 200, FORCE = 34;
@@ -1369,7 +1422,7 @@
         }
 
         var dx = Math.sin(t * e.v1 + e.ph) * e.amp * k;
-        var dy = Math.cos(t * e.v2 + e.ph * 1.37) * e.amp * .8 * k;
+        var dy = Math.cos(t * e.v2 + e.ph * 1.37) * e.amp * .45 * k;
 
         if (souris.actif && cadre.w) {
           var ex = cadre.w * j.x / 100 - souris.x;
