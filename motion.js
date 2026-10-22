@@ -1268,7 +1268,7 @@
       fils.appendChild(haloFil);
       fils.appendChild(fil);
       return { el: el, j: j, x: 0, y: 0, ph: i * 1.7, amp: j.amp * 8, v1: j.v1 * .7, v2: j.v2 * .7,
-        fil: fil, haloFil: haloFil, gradient: gradient, trace: [], dernier: 0 };
+        fil: fil, haloFil: haloFil, gradient: gradient, angle: i * 1.7 };
     });
 
     zone.appendChild(scene);
@@ -1308,6 +1308,9 @@
       var progression = Math.max(0, Math.min(1, (window.scrollY - debut) / Math.min(550, innerHeight * .8)));
       var destination = document.querySelector('.outils');
       var termine = destination && destination.getBoundingClientRect().top < innerHeight * .75;
+      var mesures = voyageurs.map(function (v) {
+        return { origine: v.e.el.querySelector('.lx-jeton-c').getBoundingClientRect(), cible: v.place.getBoundingClientRect() };
+      });
       dock.classList.toggle('est-visible', progression > 0 && !termine);
       voyageurs.forEach(function (v, i) {
         var p = Math.max(0, Math.min(1, progression * 8 - i));
@@ -1316,8 +1319,8 @@
         v.e.haloFil.style.opacity = String((1 - p) * .5);
         v.copie.style.visibility = p > 0 && !termine ? 'visible' : 'hidden';
         if (!p || termine) return;
-        var origine = v.e.el.querySelector('.lx-jeton-c').getBoundingClientRect();
-        var cible = v.place.getBoundingClientRect();
+        var origine = mesures[i].origine;
+        var cible = mesures[i].cible;
         var u = p * p * (3 - 2 * p);
         var taille = origine.width + (cible.width - origine.width) * u;
         var x = origine.left + (cible.left - origine.left) * u + Math.sin(p * Math.PI) * (i % 2 ? 36 : -36);
@@ -1335,7 +1338,7 @@
     // L'entrée part d'une temporisation et non d'un observateur :
     // le hero est déjà visible au chargement, et il faut laisser
     // la page se poser avant de lancer la cascade.
-    setTimeout(function () { scene.classList.add('lx-scene-on'); }, 240);
+    scene.classList.add('lx-scene-on', 'lx-scene-posee');
 
     // Le cadre est mesuré et gardé : la boucle a besoin de la
     // taille de la scène à chaque image, et la relire soixante
@@ -1353,73 +1356,40 @@
       // sa voisine.
       cadre.e = Math.max(.4, Math.min(1.15, r.width / 440));
       fils.setAttribute('viewBox', '0 0 ' + r.width + ' ' + r.height);
-      if (change) etats.forEach(function (e) { e.trace = []; e.fil.removeAttribute('d'); e.haloFil.removeAttribute('d'); });
+      if (change) etats.forEach(function (e) { e.angle = e.ph; });
     }
 
     var RAYON = 200, FORCE = 34;
     var souris = { x: 0, y: 0, actif: false };
     var rid = 0, marche = false, t0 = 0;
-
-    /* ── L'ouverture ──────────────────────────────────────────
-       Les six pastilles se rassemblent d'abord en rosace au
-       centre, puis s'ouvrent vers leur place en tournant d'un
-       cinquième de tour.
-
-       Le mouvement est calculé en coordonnées polaires et non en
-       x et y : on interpole le rayon et l'angle séparément, ce
-       qui fait décrire à chaque pastille un arc plutôt qu'une
-       ligne droite. C'est toute la différence entre des vignettes
-       qui glissent et un jeu de cartes qu'on étale.            */
-    var OUV = { attente: 420, duree: 950, pas: 45, rot: 1.6, r0: .13 };
-    var depart = 0, posee = false;
-
-    // Deux progressions, et c'est ce qui fait lire la scène en
-    // deux temps. L'angle part tout de suite et vite : la rosace
-    // tourne sur elle même pendant que le rayon, lui, attend. Le
-    // rayon s'ouvre ensuite, lentement au départ comme à
-    // l'arrivée, ce qui donne une ouverture qu'on suit de l'œil.
-    function rotation(u) { return u * (2 - u); }
-    function ouvre(u) {
-      return u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2;
-    }
-    function borne(u) { return u < 0 ? 0 : (u > 1 ? 1 : u); }
-
-    function placer(e, i, ec) {
-      var j = e.j;
-      var ua = rotation(borne(ec / (OUV.attente + OUV.duree)));
-      var ur = ouvre(borne((ec - OUV.attente) / OUV.duree));
-      // Place définitive, comptée depuis le centre de la scène.
-      var fx = cadre.w * (j.x - 50) / 100;
-      var fy = cadre.h * (j.y - 50) / 100;
-      var R = Math.sqrt(fx * fx + fy * fy);
-      var A = Math.atan2(fy, fx);
-      var r0 = cadre.w * OUV.r0;
-      var r = r0 + (R - r0) * ur;
-      var an = A - OUV.rot * (1 - ua);
-      e.x = Math.cos(an) * r - fx;
-      e.y = Math.sin(an) * r - fy;
-      e.el.style.transform = 'translate3d(' + e.x.toFixed(2) + 'px,' + e.y.toFixed(2) + 'px,0)';
+    // Un sillage complet dès la première image, orienté sur la vitesse.
+    // Une courbe courte évite de reconstruire 70 points à chaque image.
+    function sillage(e, vx, vy) {
+      if (Math.abs(vx) + Math.abs(vy) > .02) {
+        var cible = Math.atan2(vy, vx);
+        var ecart = Math.atan2(Math.sin(cible - e.angle), Math.cos(cible - e.angle));
+        e.angle += ecart * .09;
+      }
+      var x = cadre.w * e.j.x / 100 + e.x;
+      var y = cadre.h * e.j.y / 100 + e.y;
+      var longueur = 112 * cadre.e;
+      var ux = Math.cos(e.angle), uy = Math.sin(e.angle);
+      var sx = x - ux * longueur, sy = y - uy * longueur;
+      var cx = x - ux * longueur * .45 - uy * 18 * cadre.e;
+      var cy = y - uy * longueur * .45 + ux * 18 * cadre.e;
+      var dessin = 'M' + sx.toFixed(1) + ',' + sy.toFixed(1) + ' Q' + cx.toFixed(1) + ',' + cy.toFixed(1) + ' ' + x.toFixed(1) + ',' + y.toFixed(1);
+      e.fil.setAttribute('d', dessin);
+      e.haloFil.setAttribute('d', dessin);
+      e.gradient.setAttribute('x1', sx); e.gradient.setAttribute('y1', sy);
+      e.gradient.setAttribute('x2', x); e.gradient.setAttribute('y2', y);
     }
 
     function image(ts) {
       if (!t0) t0 = ts;
       var t = (ts - t0) / 1000;
 
-      if (!posee) {
-        if (!depart) depart = ts;
-        if (ts - depart > OUV.attente + OUV.duree + (etats.length - 1) * OUV.pas) {
-          posee = true;
-          scene.classList.add('lx-scene-posee');
-        }
-      }
-
       for (var i = 0; i < etats.length; i++) {
         var e = etats[i], j = e.j, k = cadre.e;
-
-        if (!posee) {
-          placer(e, i, ts - depart - i * OUV.pas);
-          continue;
-        }
 
         var dx = Math.sin(t * e.v1 + e.ph) * e.amp * k;
         var dy = Math.cos(t * e.v2 + e.ph * 1.37) * e.amp * .45 * k;
@@ -1439,23 +1409,11 @@
           }
         }
 
+        var avantX = e.x, avantY = e.y;
         e.x += (dx - e.x) * .085;
         e.y += (dy - e.y) * .085;
         e.el.style.transform = 'translate3d(' + e.x.toFixed(2) + 'px,' + e.y.toFixed(2) + 'px,0)';
-        if (ts - e.dernier > 90) {
-          e.dernier = ts;
-          e.trace.push([cadre.w * j.x / 100 + e.x, cadre.h * j.y / 100 + e.y]);
-          if (e.trace.length > 70) e.trace.shift();
-        }
-        if (e.trace.length > 1) {
-          var debut = e.trace[0];
-          var fin = [cadre.w * j.x / 100 + e.x, cadre.h * j.y / 100 + e.y];
-          var dessin = 'M' + e.trace.map(function (pt) { return pt[0].toFixed(1) + ',' + pt[1].toFixed(1); }).join(' L') + ' L' + fin.join(',');
-          e.fil.setAttribute('d', dessin);
-          e.haloFil.setAttribute('d', dessin);
-          e.gradient.setAttribute('x1', debut[0]); e.gradient.setAttribute('y1', debut[1]);
-          e.gradient.setAttribute('x2', fin[0]); e.gradient.setAttribute('y2', fin[1]);
-        }
+        sillage(e, e.x - avantX, e.y - avantY);
       }
       rid = requestAnimationFrame(image);
     }
@@ -1466,7 +1424,6 @@
       // Si le hero est ressorti de l'écran avant la fin de
       // l'ouverture, elle repart de zéro au retour : mieux vaut la
       // rejouer entière que la retrouver déjà terminée.
-      if (!posee) depart = 0;
       rid = requestAnimationFrame(image);
     }
     function arreter() {
@@ -1481,7 +1438,12 @@
     // transparentes à cet instant, mais sur une machine chargée
     // le saut finirait par se voir.
     mesurer();
-    etats.forEach(function (e, i) { placer(e, i, 0); });
+    etats.forEach(function (e) {
+      e.x = Math.sin(e.ph) * e.amp * cadre.e;
+      e.y = Math.cos(e.ph * 1.37) * e.amp * .45 * cadre.e;
+      e.el.style.transform = 'translate3d(' + e.x + 'px,' + e.y + 'px,0)';
+      sillage(e, 0, 0);
+    });
 
     // Rien ne tourne pendant qu'on lit le reste de la page.
     if ('IntersectionObserver' in window) {

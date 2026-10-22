@@ -1351,7 +1351,7 @@
    deux écritures s'annuleraient l'une l'autre.               */
 .lx-scene-fils{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 .lx-scene-fils path{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
-.lx-scene-fils path.lx-sillage-halo{stroke-width:20;opacity:.5;filter:blur(5px)}
+.lx-scene-fils path.lx-sillage-halo{stroke-width:12;opacity:.18}
 .lx-outils-dock{position:fixed;z-index:90;bottom:22px;left:50%;transform:translate(-50%,18px);display:flex;align-items:center;gap:12px;padding:12px 18px;background:rgba(255,255,255,.94);border:1px solid #d4deef;border-radius:20px;box-shadow:0 12px 40px rgba(27,44,107,.16);backdrop-filter:blur(16px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s,transform .35s,visibility .25s}
 .lx-outils-dock{transform:translate(-50%,0);transition:opacity .25s,visibility .25s}
 .lx-outils-dock.est-visible{opacity:1;visibility:visible}
@@ -1370,13 +1370,13 @@
   background:#fff;
   border:1px solid rgba(91,122,183,.18);
   box-shadow:0 20px 32px -19px rgba(27,44,107,.42),0 3px 7px rgba(27,44,107,.07),inset 0 0 0 4px rgba(255,255,255,.8);
-  opacity:0;transform:scale(.78) translateY(20px);
+  opacity:1;transform:none;
   transition:opacity .6s ease,transform .8s var(--lx-ease),box-shadow .45s ease;
   cursor:default;
 }
 .lx-scene-on .lx-jeton-c{
   opacity:1;transform:none;
-  transition-delay:calc(var(--i) * 45ms);
+  transition-delay:0ms;
 }
 /* La taille du logo dans sa pastille est réglée logo par logo,
    par --z, pour compenser leurs fonds : voir le commentaire de
@@ -1403,7 +1403,7 @@
   display:block;margin-top:10px;text-align:center;
   font-size:12px;font-weight:600;letter-spacing:.025em;
   text-transform:none;color:#516184;white-space:nowrap;
-  opacity:0;transform:translateY(6px);
+  opacity:1;transform:none;
   transition:opacity .5s ease,transform .55s var(--lx-ease),color .3s ease;
 }
 /* Les noms attendent que les pastilles aient trouvé leur place :
@@ -1411,7 +1411,7 @@
    tourne avec elles ne se lit pas.                            */
 .lx-scene-posee .lx-jeton-n{
   opacity:1;transform:none;
-  transition-delay:calc(var(--i) * 60ms);
+  transition-delay:0ms;
 }
 
 /* ── Au survol ──────────────────────────────────────────────
