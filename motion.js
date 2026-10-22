@@ -1364,25 +1364,6 @@
     var rid = 0, marche = false, t0 = 0;
     // Un sillage complet dès la première image, orienté sur la vitesse.
     // Une courbe courte évite de reconstruire 70 points à chaque image.
-    function sillage(e, vx, vy) {
-      if (Math.abs(vx) + Math.abs(vy) > .02) {
-        var cible = Math.atan2(vy, vx);
-        var ecart = Math.atan2(Math.sin(cible - e.angle), Math.cos(cible - e.angle));
-        e.angle += ecart * .09;
-      }
-      var x = cadre.w * e.j.x / 100 + e.x;
-      var y = cadre.h * e.j.y / 100 + e.y;
-      var longueur = 112 * cadre.e;
-      var ux = Math.cos(e.angle), uy = Math.sin(e.angle);
-      var sx = x - ux * longueur, sy = y - uy * longueur;
-      var cx = x - ux * longueur * .45 - uy * 18 * cadre.e;
-      var cy = y - uy * longueur * .45 + ux * 18 * cadre.e;
-      var dessin = 'M' + sx.toFixed(1) + ',' + sy.toFixed(1) + ' Q' + cx.toFixed(1) + ',' + cy.toFixed(1) + ' ' + x.toFixed(1) + ',' + y.toFixed(1);
-      e.fil.setAttribute('d', dessin);
-      e.haloFil.setAttribute('d', dessin);
-      e.gradient.setAttribute('x1', sx); e.gradient.setAttribute('y1', sy);
-      e.gradient.setAttribute('x2', x); e.gradient.setAttribute('y2', y);
-    }
 
     function image(ts) {
       if (!t0) t0 = ts;
@@ -1409,11 +1390,9 @@
           }
         }
 
-        var avantX = e.x, avantY = e.y;
         e.x += (dx - e.x) * .085;
         e.y += (dy - e.y) * .085;
         e.el.style.transform = 'translate3d(' + e.x.toFixed(2) + 'px,' + e.y.toFixed(2) + 'px,0)';
-        sillage(e, e.x - avantX, e.y - avantY);
       }
       rid = requestAnimationFrame(image);
     }
@@ -1442,7 +1421,6 @@
       e.x = Math.sin(e.ph) * e.amp * cadre.e;
       e.y = Math.cos(e.ph * 1.37) * e.amp * .45 * cadre.e;
       e.el.style.transform = 'translate3d(' + e.x + 'px,' + e.y + 'px,0)';
-      sillage(e, 0, 0);
     });
 
     // Rien ne tourne pendant qu'on lit le reste de la page.

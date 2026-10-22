@@ -1349,7 +1349,10 @@
    de .lx-jeton pour la dérive, le CSS garde celui de la
    pastille pour l'entrée et le survol. Une seule couche et les
    deux écritures s'annuleraient l'une l'autre.               */
-.lx-scene-fils{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.lx-scene-fils{display:none}
+.lx-jeton::before{content:'';position:absolute;z-index:-1;pointer-events:none;left:-68%;top:18%;width:135%;height:58%;border-radius:50%;background:linear-gradient(90deg,transparent,rgba(96,128,194,.14));transform:rotate(-12deg);filter:blur(9px)}
+.lx-jeton:first-of-type::before{background:linear-gradient(90deg,transparent,rgba(218,154,101,.13))}
+@media(prefers-reduced-motion:reduce){.lx-jeton::before{display:none}}
 .lx-scene-fils path{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
 .lx-scene-fils path.lx-sillage-halo{stroke-width:12;opacity:.18}
 .lx-outils-dock{position:fixed;z-index:90;bottom:22px;left:50%;transform:translate(-50%,18px);display:flex;align-items:center;gap:12px;padding:12px 18px;background:rgba(255,255,255,.94);border:1px solid #d4deef;border-radius:20px;box-shadow:0 12px 40px rgba(27,44,107,.16);backdrop-filter:blur(16px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s,transform .35s,visibility .25s}
