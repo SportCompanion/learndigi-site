@@ -1347,13 +1347,15 @@
    de .lx-jeton pour la dérive, le CSS garde celui de la
    pastille pour l'entrée et le survol. Une seule couche et les
    deux écritures s'annuleraient l'une l'autre.               */
+.lx-scene-fils{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.lx-scene-fils path{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .lx-jeton-c{
   position:relative;display:grid;place-items:center;
   width:100%;aspect-ratio:1;
-  border-radius:26%;
+  border-radius:21%;
   background:#fff;
   border:1px solid rgba(20,30,60,.07);
-  box-shadow:0 18px 34px -22px rgba(10,14,36,.4),0 2px 5px rgba(10,14,36,.05);
+  box-shadow:0 10px 24px -14px rgba(27,44,107,.22),0 1px 3px rgba(27,44,107,.04);
   opacity:0;transform:scale(.78) translateY(20px);
   transition:opacity .6s ease,transform .8s var(--lx-ease),box-shadow .45s ease;
   cursor:default;

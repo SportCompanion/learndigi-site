@@ -1170,6 +1170,16 @@
       'Les outils pris en main pendant la formation : ' +
       JETONS.map(function (j) { return j.nom; }).join(', ') + '.');
 
+    // Des fils dessinés à partir des positions réellement parcourues.
+    // Le dégradé efface la partie ancienne de chaque trajectoire.
+    var ns = 'http://www.w3.org/2000/svg';
+    var fils = document.createElementNS(ns, 'svg');
+    fils.classList.add('lx-scene-fils');
+    fils.setAttribute('aria-hidden', 'true');
+    var defs = document.createElementNS(ns, 'defs');
+    fils.appendChild(defs);
+    scene.appendChild(fils);
+
     // La légende dit l'usage de l'outil survolé, et retrouve sa
     // phrase d'accueil quand on s'en éloigne. C'est ce qui fait la
     // différence entre une décoration et une information : on
@@ -1239,7 +1249,22 @@
         dire(LEGENDE);
       });
 
-      return { el: el, j: j, x: 0, y: 0, ph: i * 1.7, amp: j.amp, v1: j.v1, v2: j.v2 };
+      var gradient = document.createElementNS(ns, 'linearGradient');
+      gradient.id = 'lx-sillage-' + i;
+      gradient.setAttribute('gradientUnits', 'userSpaceOnUse');
+      ['0', '1'].forEach(function (offset) {
+        var stop = document.createElementNS(ns, 'stop');
+        stop.setAttribute('offset', offset);
+        stop.setAttribute('stop-color', i === 0 ? '#ca9670' : '#728bb1');
+        stop.setAttribute('stop-opacity', offset === '0' ? '0' : '.48');
+        gradient.appendChild(stop);
+      });
+      defs.appendChild(gradient);
+      var fil = document.createElementNS(ns, 'path');
+      fil.setAttribute('stroke', 'url(#lx-sillage-' + i + ')');
+      fils.appendChild(fil);
+      return { el: el, j: j, x: 0, y: 0, ph: i * 1.7, amp: j.amp * 5, v1: j.v1 * .7, v2: j.v2 * .7,
+        fil: fil, gradient: gradient, trace: [], dernier: 0 };
     });
 
     zone.appendChild(scene);
@@ -1270,6 +1295,8 @@
       // peine en grand, fait passer une pastille sur le nom de
       // sa voisine.
       cadre.e = Math.max(.68, Math.min(1.15, r.width / 440));
+      fils.setAttribute('viewBox', '0 0 ' + r.width + ' ' + r.height);
+      etats.forEach(function (e) { e.trace = []; e.fil.removeAttribute('d'); });
     }
 
     var RAYON = 200, FORCE = 34;
@@ -1358,6 +1385,18 @@
         e.x += (dx - e.x) * .085;
         e.y += (dy - e.y) * .085;
         e.el.style.transform = 'translate3d(' + e.x.toFixed(2) + 'px,' + e.y.toFixed(2) + 'px,0)';
+        if (ts - e.dernier > 90) {
+          e.dernier = ts;
+          e.trace.push([cadre.w * j.x / 100 + e.x, cadre.h * j.y / 100 + e.y]);
+          if (e.trace.length > 70) e.trace.shift();
+        }
+        if (e.trace.length > 1) {
+          var debut = e.trace[0];
+          var fin = [cadre.w * j.x / 100 + e.x, cadre.h * j.y / 100 + e.y];
+          e.fil.setAttribute('d', 'M' + e.trace.map(function (pt) { return pt[0].toFixed(1) + ',' + pt[1].toFixed(1); }).join(' L') + ' L' + fin.join(','));
+          e.gradient.setAttribute('x1', debut[0]); e.gradient.setAttribute('y1', debut[1]);
+          e.gradient.setAttribute('x2', fin[0]); e.gradient.setAttribute('y2', fin[1]);
+        }
       }
       rid = requestAnimationFrame(image);
     }
