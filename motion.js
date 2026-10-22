@@ -1204,7 +1204,7 @@
       el.className = 'lx-jeton';
       el.style.setProperty('--x', j.x + '%');
       el.style.setProperty('--y', j.y + '%');
-      el.style.setProperty('--t', j.t + '%');
+      el.style.setProperty('--t', (j.t * 1.08) + '%');
       // Correction optique. Les logos dessinés sur du blanc n'ont
       // pas tous la même masse : une étoile fine pèse moins qu'un
       // M plein. Chacun reçoit sa propre échelle dans sa pastille,
@@ -1255,16 +1255,20 @@
       ['0', '1'].forEach(function (offset) {
         var stop = document.createElementNS(ns, 'stop');
         stop.setAttribute('offset', offset);
-        stop.setAttribute('stop-color', i === 0 ? '#ca9670' : '#728bb1');
-        stop.setAttribute('stop-opacity', offset === '0' ? '0' : '.48');
+        stop.setAttribute('stop-color', ['#d87551', '#2c9d86', '#567ae6', '#ec9b22', '#7b68db', '#7396e7', '#98a32e'][i]);
+        stop.setAttribute('stop-opacity', offset === '0' ? '0' : '.85');
         gradient.appendChild(stop);
       });
       defs.appendChild(gradient);
       var fil = document.createElementNS(ns, 'path');
       fil.setAttribute('stroke', 'url(#lx-sillage-' + i + ')');
+      var haloFil = document.createElementNS(ns, 'path');
+      haloFil.setAttribute('stroke', 'url(#lx-sillage-' + i + ')');
+      haloFil.classList.add('lx-sillage-halo');
+      fils.appendChild(haloFil);
       fils.appendChild(fil);
       return { el: el, j: j, x: 0, y: 0, ph: i * 1.7, amp: j.amp * 5, v1: j.v1 * .7, v2: j.v2 * .7,
-        fil: fil, gradient: gradient, trace: [], dernier: 0 };
+        fil: fil, haloFil: haloFil, gradient: gradient, trace: [], dernier: 0 };
     });
 
     zone.appendChild(scene);
@@ -1296,7 +1300,7 @@
       // sa voisine.
       cadre.e = Math.max(.68, Math.min(1.15, r.width / 440));
       fils.setAttribute('viewBox', '0 0 ' + r.width + ' ' + r.height);
-      etats.forEach(function (e) { e.trace = []; e.fil.removeAttribute('d'); });
+      etats.forEach(function (e) { e.trace = []; e.fil.removeAttribute('d'); e.haloFil.removeAttribute('d'); });
     }
 
     var RAYON = 200, FORCE = 34;
@@ -1393,7 +1397,9 @@
         if (e.trace.length > 1) {
           var debut = e.trace[0];
           var fin = [cadre.w * j.x / 100 + e.x, cadre.h * j.y / 100 + e.y];
-          e.fil.setAttribute('d', 'M' + e.trace.map(function (pt) { return pt[0].toFixed(1) + ',' + pt[1].toFixed(1); }).join(' L') + ' L' + fin.join(','));
+          var dessin = 'M' + e.trace.map(function (pt) { return pt[0].toFixed(1) + ',' + pt[1].toFixed(1); }).join(' L') + ' L' + fin.join(',');
+          e.fil.setAttribute('d', dessin);
+          e.haloFil.setAttribute('d', dessin);
           e.gradient.setAttribute('x1', debut[0]); e.gradient.setAttribute('y1', debut[1]);
           e.gradient.setAttribute('x2', fin[0]); e.gradient.setAttribute('y2', fin[1]);
         }
