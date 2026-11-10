@@ -46,10 +46,15 @@ Outils travaillés : Claude, ChatGPT, Microsoft Copilot, Mistral AI, Microsoft 3
 
 Les 7 heures du parcours peuvent être comptabilisées au titre de l'obligation annuelle de formation continue
 des intermédiaires d'assurance : 15 heures par année civile, fixées par l'article R. 512-13-1 du Code des
-assurances, compétences éligibles listées par l'arrêté du 26 septembre 2018. Le parcours en mobilise cinq :
-évolutions technologiques et impacts sur la distribution d'assurances, outils digitaux de l'environnement de
-travail, prospection et développement de portefeuille dans le respect de la réglementation, traitement et
-exploitation des données clients, protection des données personnelles. Attestation nominative par participant.
+assurances, compétences éligibles listées par l'arrêté du 26 septembre 2018. Le parcours en mobilise six :
+- Identifier les évolutions technologiques et leurs impacts sur la distribution d'assurances
+- Maîtriser les outils digitaux de l'environnement de travail
+- Analyser les besoins du client et formaliser le conseil (devoir de conseil)
+- Appliquer les règles de traitement des réclamations
+- Traiter et exploiter les données clients pour développer son portefeuille
+- Appliquer les règles relatives à la protection des données personnelles
+
+Attestation nominative par participant.
 
 7 heures ne sont pas 15 : le parcours couvre une partie de l'obligation annuelle, pas sa totalité, et ne
 garantit à lui seul aucun renouvellement d'immatriculation à l'ORIAS.
