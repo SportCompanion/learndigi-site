@@ -1552,8 +1552,8 @@
      c'est de l'interaction, pas un effet.                    */
   function configurateur() {
     // La scène du programme : l'anneau est la journée, un arc par
-    // module à proportion de sa durée. Le profil choisi dore ses
-    // modules prioritaires et le centre dit le temps qu'ils pèsent.
+    // module à proportion de sa durée. La journée se lit en trois
+    // temps : l'étape choisie dore ses modules et le centre dit sa durée.
     var cfg = document.querySelector('.lx-config');
     if (!cfg || cfg.dataset.lxPret) return;
     cfg.dataset.lxPret = '1';
@@ -1564,7 +1564,7 @@
     var coeur = cfg.querySelector('.lx-config-coeur'), grand = cfg.querySelector('.lx-config-grand'), sous = cfg.querySelector('.lx-config-sous');
     if (!onglets.length || !items.length || !gArcs || !coeur) return;
 
-    var DUREE = 5600, actif = 1, auto = !reduit, visible = false, minuteur = null;
+    var DUREE = 5600, actif = 0, auto = !reduit, visible = false, minuteur = null;
     var NS = 'http://www.w3.org/2000/svg', ECART = 4;
     var mins = items.map(function (li) { return +li.dataset.min; });
     var total = mins.reduce(function (a, b) { return a + b; }, 0);
@@ -1609,7 +1609,7 @@
     function centreProfil() {
       var prio = onglets[actif].dataset.prio.split(',').map(Number);
       var m = prio.reduce(function (a, n) { return a + mins[n - 1]; }, 0);
-      ecrire('7<span class="lx-config-u">h</span>', 'dont <b>' + duree(m) + '</b> sur vos priorités');
+      ecrire('7<span class="lx-config-u">h</span>', 'dont <b>' + duree(m) + '</b> pour cette étape');
     }
 
     function choisir(i, parVisiteur) {
@@ -1673,7 +1673,7 @@
       arcs[k].addEventListener('pointerleave', function () { voir(-1); });
     });
 
-    choisir(1, false);
+    choisir(0, false);
 
     function ouvrir() {
       if (cfg.classList.contains('est-ouvert')) return;
