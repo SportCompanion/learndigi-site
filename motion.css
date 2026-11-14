@@ -1554,67 +1554,95 @@
 .lx-config-faits li{padding:7px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.13);
   background:rgba(255,255,255,.06);font-size:13.5px;color:rgba(255,255,255,.84)}
 
-.lx-config-scene{display:flex;flex-direction:column;align-items:center;gap:34px;padding:14px 0 0}
-/* L'anneau est la journée : un arc par module, à proportion de sa durée.
-   Refait le 15/11/2026, les pastilles en orbite se chevauchaient. */
-.lx-config-centre{position:relative;width:min(290px,70%);aspect-ratio:1;margin:18px 0 10px}
-.lx-config-centre::before{content:"";position:absolute;inset:-24%;border-radius:50%;z-index:-1;
-  background:radial-gradient(circle,rgba(232,146,26,.16),rgba(86,124,255,.14) 45%,transparent 70%)}
-.lx-config-anneau{display:block;width:100%;height:100%;overflow:visible;transform:rotate(-90deg)}
-.lx-anneau-piste{fill:none;stroke:rgba(255,255,255,.08);stroke-width:1}
-.lx-anneau-orbite{fill:none;stroke:rgba(255,255,255,.2);stroke-width:1;stroke-dasharray:1.5 5;
-  transform-origin:100px 100px;animation:lx-tourne 60s linear infinite}
-@keyframes lx-tourne{to{transform:rotate(360deg)}}
-.lx-arc{fill:none;stroke:rgba(255,255,255,.26);stroke-width:7;stroke-linecap:butt;stroke-dasharray:var(--len) 430;
-  transition:stroke .5s ease,stroke-width .5s var(--lx-ease),transform .6s var(--lx-ease),stroke-dasharray 1s var(--lx-ease),filter .5s ease}
-.lx-arc.est-prio{stroke:var(--lx-gold);stroke-width:11;transform:translate(calc(var(--dx)*3px),calc(var(--dy)*3px));
-  filter:drop-shadow(0 0 6px rgba(232,146,26,.55))}
-.lx-arc.est-vu{stroke:#fff;stroke-width:12;transform:translate(calc(var(--dx)*5px),calc(var(--dy)*5px));filter:drop-shadow(0 0 8px rgba(255,255,255,.5))}
-.lx-config.a-survol .lx-arc:not(.est-vu){opacity:.55}
-.lx-config-reperes{position:absolute;inset:0;pointer-events:none}
-.lx-config-reperes span{position:absolute;transform:translate(-50%,-50%);font-size:11.5px;font-weight:600;letter-spacing:.04em;
-  color:rgba(255,255,255,.42);font-variant-numeric:tabular-nums;transition:color .4s ease,transform .5s var(--lx-ease)}
-.lx-config-reperes span.est-prio{color:var(--lx-gold)}
-.lx-config-reperes span.est-vu{color:#fff;transform:translate(-50%,-50%) scale(1.25)}
-.lx-config-coeur{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 22%}
-.lx-config-grand{display:flex;align-items:baseline;gap:.08em;font-size:clamp(44px,4.6vw,64px);font-weight:500;line-height:1;letter-spacing:-.03em;color:#fff;
-  font-variant-numeric:tabular-nums;white-space:nowrap}
-.lx-config-u{font-size:.46em;font-weight:500;color:rgba(255,255,255,.72);letter-spacing:0}
-.lx-config-sous{margin-top:9px;font-size:12.5px;line-height:1.4;color:rgba(255,255,255,.7)}
-.lx-config-sous b{font-weight:600;color:var(--lx-gold)}
-.lx-config-coeur.est-change .lx-config-grand,.lx-config-coeur.est-change .lx-config-sous{opacity:0;transform:translateY(5px)}
-.lx-config-grand,.lx-config-sous{transition:opacity .22s ease,transform .3s var(--lx-ease)}
+.lx-config-scene{display:grid;place-items:center;padding:26px 0}
+/* L'univers IA, 15/11/2026 : un cœur, trois orbites qui tournent en
+   continu (deux de logos, une de modules), des étoiles. Tout est en
+   animations CSS : un bras tourne, sa tuile tourne à l'envers pour
+   rester droite. L'étape choisie illumine ses outils et ses modules. */
+.lx-uni{position:relative;width:min(100%,520px);aspect-ratio:1;container-type:inline-size;--t:clamp(26px,10.5cqw,54px)}
+.lx-uni-etoiles{position:absolute;inset:-14%;pointer-events:none}
+.lx-uni-etoiles i{position:absolute;border-radius:50%;background:#fff;box-shadow:0 0 6px rgba(255,255,255,.8);opacity:.15;
+  animation:lx-scintille var(--v,4s) ease-in-out infinite;animation-delay:var(--r,0s)}
+@keyframes lx-scintille{50%{opacity:.95;transform:scale(1.5)}}
+.lx-uni-orbite{position:absolute;inset:0;margin:auto;padding:0;list-style:none;border-radius:50%;border:1px solid rgba(255,255,255,.13);
+  transition:border-color .6s ease,box-shadow .6s ease}
+.lx-uni-orbite--a{width:50%;height:50%;--d:34s}
+.lx-uni-orbite--b{width:78%;height:78%;--d:52s;--sens:reverse}
+.lx-uni-orbite--c{width:100%;height:100%;--d:90s;border-style:dashed;border-color:rgba(255,255,255,.16)}
+.lx-uni-comete{position:absolute;inset:-1.5px;border-radius:50%;pointer-events:none;
+  background:conic-gradient(from 0deg,transparent 0 72%,rgba(140,170,255,.25) 86%,#fff 99%,transparent 100%);
+  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2.5px));
+  mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2.5px));
+  animation:lx-orb 9s linear infinite;filter:drop-shadow(0 0 4px rgba(160,190,255,.9))}
+.lx-uni-orbite--b .lx-uni-comete{animation-duration:14s;animation-direction:reverse;
+  background:conic-gradient(from 0deg,transparent 0 1%,#fff 2%,rgba(232,146,26,.3) 14%,transparent 28%)}
+@keyframes lx-orb{to{transform:rotate(360deg)}}
+@keyframes lx-orb-inv{to{transform:rotate(-360deg)}}
+.lx-uni-bras{position:absolute;inset:0;pointer-events:none;rotate:calc(var(--a)*1turn);
+  animation:lx-orb var(--d) linear infinite;animation-direction:var(--sens,normal)}
+.lx-uni-tuile,.lx-uni-perle{position:absolute;left:50%;top:0;pointer-events:auto;rotate:calc(var(--a)*-1turn);
+  animation:lx-orb-inv var(--d) linear infinite;animation-direction:var(--sens,normal)}
+.lx-uni-tuile{width:var(--t);height:var(--t);margin:calc(var(--t)/-2) 0 0 calc(var(--t)/-2);display:grid;place-items:center;border-radius:28%;
+  background:#fff;box-shadow:0 10px 26px -10px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.4);
+  transition:scale .6s var(--lx-ease),opacity .6s ease,box-shadow .6s ease}
+.lx-uni-tuile img{width:62%;height:62%;object-fit:contain}
+.lx-uni-tuile b{position:absolute;left:50%;top:calc(100% + 7px);translate:-50% 0;padding:4px 9px;border-radius:999px;background:rgba(13,23,63,.92);
+  border:1px solid rgba(255,255,255,.2);font-size:11.5px;font-weight:600;color:#fff;white-space:nowrap;opacity:0;transition:opacity .25s ease;pointer-events:none}
+.lx-uni-tuile:hover b{opacity:1}
+.lx-uni-rayon{position:absolute;left:50%;top:0;width:2px;height:50%;margin-left:-1px;opacity:0;transition:opacity .6s ease;
+  background:repeating-linear-gradient(to bottom,var(--lx-gold) 0 5px,transparent 5px 12px);background-size:2px 12px;animation:lx-rayon .7s linear infinite;
+  -webkit-mask:linear-gradient(to bottom,transparent 0,#000 18%,#000 60%,transparent 92%);mask:linear-gradient(to bottom,transparent 0,#000 18%,#000 60%,transparent 92%)}
+@keyframes lx-rayon{to{background-position:0 -12px}}
+.lx-uni-bras.est-actif .lx-uni-rayon{opacity:.9}
+.lx-uni-bras.est-actif .lx-uni-tuile{scale:1.1;box-shadow:0 0 0 3px var(--lx-gold),0 0 26px 4px rgba(232,146,26,.6),0 10px 26px -10px rgba(0,0,0,.7)}
+.lx-uni-bras.est-eteint .lx-uni-tuile{scale:.86;opacity:.42}
+.lx-config[data-actif="2"] .lx-uni-bras.est-eteint .lx-uni-tuile{scale:.94;opacity:.85}
+.lx-uni-perle{--p:clamp(22px,5.6cqw,30px);width:var(--p);height:var(--p);margin:calc(var(--p)/-2) 0 0 calc(var(--p)/-2);display:grid;place-items:center;border-radius:50%;
+  background:#16235f;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.7);cursor:default;
+  transition:background .5s ease,border-color .5s ease,color .5s ease,box-shadow .5s ease,scale .5s var(--lx-ease)}
+.lx-uni-perle i{font-style:normal;font-size:clamp(9.5px,2.2cqw,11.5px);font-weight:600;font-variant-numeric:tabular-nums}
+.lx-uni-perle span,.lx-uni-perle em{display:none}
+.lx-config-modules li.est-prio .lx-uni-perle{background:var(--lx-gold);border-color:var(--lx-gold);color:#0d173f;scale:1.18;box-shadow:0 0 18px 2px rgba(232,146,26,.65)}
+.lx-config-modules li.est-vu .lx-uni-perle{background:#fff;border-color:#fff;color:#0d173f;scale:1.3;box-shadow:0 0 20px 3px rgba(255,255,255,.6)}
+.lx-uni:hover .lx-uni-bras,.lx-uni:hover .lx-uni-tuile,.lx-uni:hover .lx-uni-perle{animation-play-state:paused}
 
-.lx-config-modules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%;margin:0;padding:0;list-style:none}
-.lx-config-modules li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;padding:10px 14px;
-  border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);font-size:14px;font-weight:500;
-  color:rgba(255,255,255,.6);cursor:default;
-  transition:background-color .45s ease,color .45s ease,border-color .45s ease,box-shadow .45s ease,transform .45s var(--lx-ease)}
-.lx-config-modules li i{font-style:normal;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.45);font-variant-numeric:tabular-nums;transition:color .45s ease}
-.lx-config-modules li span{line-height:1.25}
-.lx-config-modules li em{font-style:normal;font-size:12px;font-weight:500;color:rgba(255,255,255,.45);white-space:nowrap;transition:color .45s ease}
-.lx-config-modules li.est-prio{background:#fff;color:#0d173f;border-color:#fff;box-shadow:0 12px 28px -14px rgba(0,0,0,.6)}
-.lx-config-modules li.est-prio i{color:#b06a0c}
-.lx-config-modules li.est-prio em{color:#51596a}
-.lx-config-modules li.est-vu{border-color:rgba(255,255,255,.7);color:#fff;transform:translateY(-2px)}
-.lx-config-modules li.est-prio.est-vu{color:#0d173f;border-color:var(--lx-gold);box-shadow:0 0 0 3px rgba(232,146,26,.3),0 12px 28px -14px rgba(0,0,0,.6)}
+.lx-uni-halo{position:absolute;inset:-7%;border-radius:50%;pointer-events:none;opacity:0;scale:.9;
+  border:1.5px solid var(--lx-gold);box-shadow:0 0 30px 2px rgba(232,146,26,.45),inset 0 0 40px rgba(232,146,26,.18);
+  transition:opacity .8s ease,scale 1s var(--lx-ease)}
+.lx-config[data-actif="2"] .lx-uni-halo{opacity:1;scale:1;animation:lx-halo 3.2s ease-in-out infinite}
+@keyframes lx-halo{50%{box-shadow:0 0 46px 6px rgba(232,146,26,.6),inset 0 0 54px rgba(232,146,26,.26)}}
+
+.lx-uni-coeur{position:absolute;inset:0;margin:auto;width:31%;height:31%;border-radius:50%;isolation:isolate;
+  background:radial-gradient(circle at 35% 28%,#3f5fd0,#1d2f86 55%,#131f5c);
+  box-shadow:0 0 0 1px rgba(255,255,255,.22),0 0 60px 10px rgba(96,134,255,.5),0 0 120px 30px rgba(232,146,26,.14),inset 0 0 30px rgba(255,255,255,.14);
+  animation:lx-coeur 4.5s ease-in-out infinite}
+@keyframes lx-coeur{50%{box-shadow:0 0 0 1px rgba(255,255,255,.3),0 0 80px 18px rgba(96,134,255,.62),0 0 140px 40px rgba(232,146,26,.2),inset 0 0 36px rgba(255,255,255,.2)}}
+.lx-uni-eclat{position:absolute;inset:0;border-radius:50%;z-index:-1;overflow:hidden}
+.lx-uni-eclat::before{content:"";position:absolute;inset:-20%;background:conic-gradient(from 0deg,transparent 0 60%,rgba(255,255,255,.35) 75%,transparent 90%);animation:lx-orb 7s linear infinite}
+.lx-config-coeur{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 9%}
+.lx-config-grand{display:flex;align-items:baseline;gap:.08em;font-size:clamp(26px,9.4cqw,50px);font-weight:500;line-height:1;letter-spacing:-.03em;color:#fff;
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.lx-config-u{font-size:.46em;font-weight:500;color:rgba(255,255,255,.75);letter-spacing:0}
+.lx-config-sous{margin-top:.5em;font-size:clamp(9.5px,2.35cqw,12.5px);line-height:1.3;color:rgba(255,255,255,.8)}
+.lx-config-sous b{font-weight:600;color:#ffc46b}
+.lx-config-grand,.lx-config-sous{transition:opacity .22s ease,transform .3s var(--lx-ease)}
+.lx-config-coeur.est-change .lx-config-grand,.lx-config-coeur.est-change .lx-config-sous{opacity:0;transform:translateY(5px)}
 
 /* L'ouverture */
-.lx-config.est-anime .lx-arc{stroke-dasharray:0 430}
-.lx-config.est-anime .lx-config-reperes span{opacity:0;transition:opacity .5s ease,color .4s ease,transform .5s var(--lx-ease)}
-.lx-config.est-anime .lx-config-coeur{opacity:0;transform:scale(.9);transition:opacity .7s ease .2s,transform .9s var(--lx-ease) .2s}
-.lx-config.est-anime .lx-config-modules li{opacity:0;translate:0 12px;transition:opacity .5s ease,translate .6s var(--lx-ease),background-color .45s ease,color .45s ease,border-color .45s ease,box-shadow .45s ease,transform .45s var(--lx-ease)}
+.lx-config.est-anime .lx-uni-orbite,.lx-config.est-anime .lx-uni-coeur,.lx-config.est-anime .lx-uni-etoiles{opacity:0;scale:.55;transition:opacity .9s ease,scale 1.3s var(--lx-ease),border-color .6s ease}
+.lx-config.est-anime .lx-uni-etoiles{scale:1;transition:opacity 1.6s ease .6s}
+.lx-config.est-anime .lx-uni-orbite--a{transition-delay:.25s}
+.lx-config.est-anime .lx-uni-orbite--b{transition-delay:.4s}
+.lx-config.est-anime .lx-uni-orbite--c{transition-delay:.55s}
+.lx-config.est-ouvert .lx-uni-orbite,.lx-config.est-ouvert .lx-uni-coeur,.lx-config.est-ouvert .lx-uni-etoiles{opacity:1;scale:1}
 .lx-config.est-anime .lx-config-cote > *{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .7s var(--lx-ease)}
 .lx-config.est-anime .lx-config-cote > :nth-child(2){transition-delay:.12s}
 .lx-config.est-anime .lx-config-cote > :nth-child(3){transition-delay:.24s}
 .lx-config.est-anime .lx-config-cote > :nth-child(4){transition-delay:.36s}
-.lx-config.est-ouvert .lx-arc{stroke-dasharray:var(--len) 430;transition-delay:0s,0s,0s,calc(var(--k)*.09s + .25s),0s}
-.lx-config.est-pose .lx-arc{transition-delay:0s}
-.lx-config.est-ouvert .lx-config-reperes span{opacity:1;transition-delay:calc(var(--k)*.09s + .5s),0s,0s}
-.lx-config.est-ouvert .lx-config-coeur{opacity:1;transform:none}
-.lx-config.est-ouvert .lx-config-modules li{opacity:1;translate:0 0;transition-delay:calc(var(--k)*.06s + .5s),calc(var(--k)*.06s + .5s),0s,0s,0s,0s,0s}
-.lx-config.est-pose .lx-config-modules li,.lx-config.est-pose .lx-config-reperes span{transition-delay:0s}
 .lx-config.est-ouvert .lx-config-cote > *{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .lx-uni *,.lx-uni-coeur{animation:none !important}
+}
 
 /* Trame de fond, puces des faits, points des onglets */
 .lx-config::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
@@ -1629,15 +1657,13 @@
 
 @media (max-width:900px){
   .lx-config{grid-template-columns:minmax(0,1fr);padding:30px 20px 32px;border-radius:22px;gap:30px}
-  .lx-config-centre{width:min(250px,68vw)}
+  .lx-config-scene{padding:34px 2% 30px}
   .lx-config-onglet{font-size:16px;padding:13px 15px}
   .lx-config::before{-webkit-mask-image:radial-gradient(80% 50% at 50% 70%,#000 10%,transparent 75%);mask-image:radial-gradient(80% 50% at 50% 70%,#000 10%,transparent 75%)}
 }
-@media (max-width:520px){.lx-config-modules{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion:reduce){
-  .lx-config-onglet,.lx-config-modules li,.lx-arc{transition:none}
+  .lx-config-onglet{transition:none}
   .lx-config-panneau:not([hidden]){animation:none}
-  .lx-anneau-orbite{animation:none}
 }
 
 /* ── Tarif : photographie et volets, dans la continuité du site.

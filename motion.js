@@ -1551,51 +1551,35 @@
      réduit, rien ne tourne, mais le choix du profil fonctionne :
      c'est de l'interaction, pas un effet.                    */
   function configurateur() {
-    // La scène du programme : l'anneau est la journée, un arc par
-    // module à proportion de sa durée. La journée se lit en trois
-    // temps : l'étape choisie dore ses modules et le centre dit sa durée.
+    // La scène du programme : un univers IA. Un cœur, deux orbites
+    // de logos et une orbite de huit modules, animés en CSS. La
+    // journée se lit en trois temps : l'étape choisie illumine ses
+    // outils et ses modules, et le cœur donne sa durée.
     var cfg = document.querySelector('.lx-config');
     if (!cfg || cfg.dataset.lxPret) return;
     cfg.dataset.lxPret = '1';
     var onglets = tous('.lx-config-onglet', cfg);
     var panneaux = tous('.lx-config-panneau', cfg);
     var items = tous('.lx-config-modules li', cfg);
-    var gArcs = cfg.querySelector('.lx-anneau-arcs'), reperes = cfg.querySelector('.lx-config-reperes');
+    var outils = tous('.lx-uni-bras[data-etapes]', cfg);
     var coeur = cfg.querySelector('.lx-config-coeur'), grand = cfg.querySelector('.lx-config-grand'), sous = cfg.querySelector('.lx-config-sous');
-    if (!onglets.length || !items.length || !gArcs || !coeur) return;
+    if (!onglets.length || !items.length || !coeur) return;
 
-    var DUREE = 5600, actif = 0, auto = !reduit, visible = false, minuteur = null;
-    var NS = 'http://www.w3.org/2000/svg', ECART = 4;
+    var DUREE = 5600, actif = 0, auto = !reduit, visible = false, minuteur = null, survol = -1;
     var mins = items.map(function (li) { return +li.dataset.min; });
-    var total = mins.reduce(function (a, b) { return a + b; }, 0);
 
-    // Les arcs et leurs repères, construits depuis les durées
-    var debut = 0;
-    var arcs = items.map(function (li, k) {
-      var c = document.createElementNS(NS, 'circle');
-      var milieu = (debut + mins[k] / 2) / total * 2 * Math.PI;
-      c.setAttribute('class', 'lx-arc'); c.setAttribute('cx', 100); c.setAttribute('cy', 100); c.setAttribute('r', 78);
-      c.setAttribute('pathLength', total);
-      c.style.setProperty('--len', mins[k] - ECART);
-      c.style.setProperty('--k', k);
-      c.style.setProperty('--dx', Math.cos(milieu).toFixed(3));
-      c.style.setProperty('--dy', Math.sin(milieu).toFixed(3));
-      c.style.strokeDashoffset = -(debut + ECART / 2);
-      c.style.pointerEvents = 'stroke';
-      gArcs.appendChild(c);
-      if (reperes) {
-        var r = document.createElement('span');
-        r.textContent = li.querySelector('i').textContent;
-        r.style.left = (50 + Math.sin(milieu) * 54).toFixed(2) + '%';
-        r.style.top = (50 - Math.cos(milieu) * 54).toFixed(2) + '%';
-        r.style.setProperty('--k', k);
-        reperes.appendChild(r);
+    // Le ciel : des étoiles semées toujours aux mêmes endroits
+    var ciel = cfg.querySelector('.lx-uni-etoiles');
+    if (ciel) {
+      var graine = 7;
+      var alea = function () { graine = (graine * 16807) % 2147483647; return graine / 2147483647; };
+      for (var n = 0; n < 46; n++) {
+        var e = document.createElement('i'), taille = (1 + alea() * 2).toFixed(1);
+        e.style.cssText = 'left:' + (alea() * 100).toFixed(1) + '%;top:' + (alea() * 100).toFixed(1) + '%;width:' + taille + 'px;height:' + taille +
+          'px;--v:' + (2.6 + alea() * 4).toFixed(1) + 's;--r:-' + (alea() * 6).toFixed(1) + 's';
+        ciel.appendChild(e);
       }
-      li.style.setProperty('--k', k);
-      debut += mins[k];
-      return c;
-    });
-    var marques = reperes ? tous('span', reperes) : [];
+    }
 
     function duree(m) {
       var h = Math.floor(m / 60), r = m % 60;
@@ -1606,10 +1590,10 @@
       coeur.classList.add('est-change');
       setTimeout(function () { grand.innerHTML = grandHtml; sous.innerHTML = sousHtml; coeur.classList.remove('est-change'); }, 200);
     }
-    function centreProfil() {
+    function centreEtape() {
       var prio = onglets[actif].dataset.prio.split(',').map(Number);
       var m = prio.reduce(function (a, n) { return a + mins[n - 1]; }, 0);
-      ecrire('7<span class="lx-config-u">h</span>', 'dont <b>' + duree(m) + '</b> pour cette étape');
+      ecrire('7<span class="lx-config-u">h</span>', 'dont <b>' + duree(m) + '</b><br/>pour cette étape');
     }
 
     function choisir(i, parVisiteur) {
@@ -1622,13 +1606,13 @@
       });
       panneaux.forEach(function (p, k) { p.hidden = k !== i; });
       var prio = onglets[i].dataset.prio.split(',').map(Number);
-      items.forEach(function (li, k) {
-        var oui = prio.indexOf(+li.dataset.m) >= 0;
-        li.classList.toggle('est-prio', oui);
-        arcs[k].classList.toggle('est-prio', oui);
-        if (marques[k]) marques[k].classList.toggle('est-prio', oui);
+      items.forEach(function (li) { li.classList.toggle('est-prio', prio.indexOf(+li.dataset.m) >= 0); });
+      outils.forEach(function (b) {
+        var oui = b.dataset.etapes.split(',').indexOf(String(i)) >= 0;
+        b.classList.toggle('est-actif', oui);
+        b.classList.toggle('est-eteint', !oui);
       });
-      if (survol < 0) centreProfil();
+      if (survol < 0) centreEtape();
       if (parVisiteur) { auto = false; cfg.classList.add('est-manuel'); clearTimeout(minuteur); return; }
       relancer();
     }
@@ -1650,39 +1634,26 @@
       });
     });
 
-    // Survol d'un module ou de son arc : il s'allume, le centre donne sa durée
-    var survol = -1;
+    // Survol d'une perle : le cœur donne le module et sa durée
     function voir(k) {
       if (k === survol) return;
       survol = k;
-      cfg.classList.toggle('a-survol', k >= 0);
-      items.forEach(function (li, n) {
-        li.classList.toggle('est-vu', n === k);
-        arcs[n].classList.toggle('est-vu', n === k);
-        if (marques[n]) marques[n].classList.toggle('est-vu', n === k);
-      });
-      if (k < 0) { centreProfil(); return; }
+      items.forEach(function (li, n) { li.classList.toggle('est-vu', n === k); });
+      if (k < 0) { centreEtape(); return; }
       var m = mins[k], h = Math.floor(m / 60), r = m % 60;
       var g = h ? h + '<span class="lx-config-u">h</span>' + (r ? (r < 10 ? '0' : '') + r : '') : r + '<span class="lx-config-u">min</span>';
-      ecrire(g, items[k].querySelector('span').textContent);
+      ecrire(g, items[k].querySelector('.lx-uni-perle span').textContent);
     }
     items.forEach(function (li, k) {
-      li.addEventListener('pointerenter', function () { voir(k); });
-      li.addEventListener('pointerleave', function () { voir(-1); });
-      arcs[k].addEventListener('pointerenter', function () { voir(k); });
-      arcs[k].addEventListener('pointerleave', function () { voir(-1); });
+      var perle = li.querySelector('.lx-uni-perle');
+      perle.addEventListener('pointerenter', function () { voir(k); });
+      perle.addEventListener('pointerleave', function () { voir(-1); });
     });
 
     choisir(0, false);
 
-    function ouvrir() {
-      if (cfg.classList.contains('est-ouvert')) return;
-      cfg.classList.add('est-ouvert');
-      // une fois l'ouverture jouée, plus aucun retard sur les transitions
-      setTimeout(function () { cfg.classList.add('est-pose'); }, 2200);
-    }
+    function ouvrir() { cfg.classList.add('est-ouvert'); }
     if (!reduit) cfg.classList.add('est-anime');
-    else arcs.forEach(function (c, k) { c.style.strokeDasharray = (mins[k] - ECART) + ' ' + total; });
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) {
         es.forEach(function (e) {

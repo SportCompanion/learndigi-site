@@ -1817,25 +1817,33 @@
       </ul>
     </div>
     <div class="lx-config-scene" aria-hidden="true">
-      <div class="lx-config-centre">
-        <svg class="lx-config-anneau" viewBox="0 0 200 200">
-          <circle class="lx-anneau-piste" cx="100" cy="100" r="78" pathLength="1"/>
-          <circle class="lx-anneau-orbite" cx="100" cy="100" r="96"/>
-          <g class="lx-anneau-arcs"></g>
-        </svg>
-        <div class="lx-config-reperes"></div>
-        <div class="lx-config-coeur"><b class="lx-config-grand">7<span class="lx-config-u">h</span></b><small class="lx-config-sous">la journée, module par module</small></div>
+      <div class="lx-uni">
+        <div class="lx-uni-etoiles"></div>
+        <div class="lx-uni-halo"></div>
+        <ul class="lx-config-modules lx-uni-orbite lx-uni-orbite--c">
+          <li class="lx-uni-bras" style="--a:0.0" data-m="1" data-min="30"><span class="lx-uni-perle"><i>01</i><span>Introduction</span><em>30 min</em></span></li>
+          <li class="lx-uni-bras" style="--a:0.125" data-m="2" data-min="30"><span class="lx-uni-perle"><i>02</i><span>Socle IA et prompting</span><em>30 min</em></span></li>
+          <li class="lx-uni-bras" style="--a:0.25" data-m="3" data-min="60"><span class="lx-uni-perle"><i>03</i><span>Claude et Microsoft 365</span><em>1 h</em></span></li>
+          <li class="lx-uni-bras" style="--a:0.375" data-m="4" data-min="60"><span class="lx-uni-perle"><i>04</i><span>Portefeuille avec Marvin</span><em>1 h</em></span></li>
+          <li class="lx-uni-bras" style="--a:0.5" data-m="5" data-min="90"><span class="lx-uni-perle"><i>05</i><span>Sinistres et réclamations</span><em>1 h 30</em></span></li>
+          <li class="lx-uni-bras" style="--a:0.625" data-m="6" data-min="70"><span class="lx-uni-perle"><i>06</i><span>Devoir de conseil</span><em>1 h 10</em></span></li>
+          <li class="lx-uni-bras" style="--a:0.75" data-m="7" data-min="60"><span class="lx-uni-perle"><i>07</i><span>RGPD, AI Act, RSE</span><em>1 h</em></span></li>
+          <li class="lx-uni-bras" style="--a:0.875" data-m="8" data-min="30"><span class="lx-uni-perle"><i>08</i><span>Plan d'action</span><em>30 min</em></span></li>
+        </ul>
+        <div class="lx-uni-orbite lx-uni-orbite--b"><span class="lx-uni-comete"></span>
+          <div class="lx-uni-bras" style="--a:0" data-etapes="0"><i class="lx-uni-rayon"></i><span class="lx-uni-tuile"><img src="logo-chatgpt.png" alt="" width="220" height="220" loading="lazy" decoding="async"/><b>ChatGPT</b></span></div>
+          <div class="lx-uni-bras" style="--a:0.25" data-etapes="0"><i class="lx-uni-rayon"></i><span class="lx-uni-tuile"><img src="logo-gemini.svg" alt="" width="64" height="64" loading="lazy" decoding="async"/><b>Gemini</b></span></div>
+          <div class="lx-uni-bras" style="--a:0.5" data-etapes="0"><i class="lx-uni-rayon"></i><span class="lx-uni-tuile"><img src="logo-mistral.png" alt="" width="220" height="220" loading="lazy" decoding="async"/><b>Mistral</b></span></div>
+          <div class="lx-uni-bras" style="--a:0.75" data-etapes="0"><i class="lx-uni-rayon"></i><span class="lx-uni-tuile"><img src="logo-copilot.png" alt="" width="220" height="220" loading="lazy" decoding="async"/><b>Copilot</b></span></div>
+        </div>
+        <div class="lx-uni-orbite lx-uni-orbite--a"><span class="lx-uni-comete"></span>
+          <div class="lx-uni-bras" style="--a:0" data-etapes="0,1"><i class="lx-uni-rayon"></i><span class="lx-uni-tuile"><img src="logo-claude.png" alt="" width="220" height="220" loading="lazy" decoding="async"/><b>Claude</b></span></div>
+          <div class="lx-uni-bras" style="--a:0.5" data-etapes="1"><i class="lx-uni-rayon"></i><span class="lx-uni-tuile"><img src="logo-marvin.png" alt="" width="220" height="220" loading="lazy" decoding="async"/><b>Marvin Systems</b></span></div>
+        </div>
+        <div class="lx-uni-coeur"><span class="lx-uni-eclat"></span>
+          <div class="lx-config-coeur"><b class="lx-config-grand">7<span class="lx-config-u">h</span></b><small class="lx-config-sous">la journée, module par module</small></div>
+        </div>
       </div>
-      <ul class="lx-config-modules">
-        <li data-m="1" data-min="30"><i>01</i><span>Introduction</span><em>30 min</em></li>
-        <li data-m="2" data-min="30"><i>02</i><span>Socle IA et prompting</span><em>30 min</em></li>
-        <li data-m="3" data-min="60"><i>03</i><span>Claude et Microsoft 365</span><em>1 h</em></li>
-        <li data-m="4" data-min="60"><i>04</i><span>Portefeuille avec Marvin</span><em>1 h</em></li>
-        <li data-m="5" data-min="90"><i>05</i><span>Sinistres et réclamations</span><em>1 h 30</em></li>
-        <li data-m="6" data-min="70"><i>06</i><span>Devoir de conseil</span><em>1 h 10</em></li>
-        <li data-m="7" data-min="60"><i>07</i><span>RGPD, AI Act, RSE</span><em>1 h</em></li>
-        <li data-m="8" data-min="30"><i>08</i><span>Plan d'action</span><em>30 min</em></li>
-      </ul>
     </div>
   </div>
 
