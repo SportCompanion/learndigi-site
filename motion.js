@@ -1054,6 +1054,11 @@
      forme : « J+1 » garde son plus, « 48 h » son unité. Le
      texte d'origine est remis à la fin, jamais reconstruit.   */
   function chiffresMontants() {
+    // Désactivé le 14/11/2026 : un audit a vu « 0h » et « 0 » sur
+    // l'accueil. Quand l'animation ne tourne pas (onglet en arrière-
+    // plan, défilement figé), le chiffre reste bloqué à zéro. Les
+    // chiffres clés restent donc écrits en dur, sans animation.
+    return;
     if (reduit) return;
     var cibles = tous('.vstat strong, .kpi').filter(function (el) {
       return !el.querySelector('.cu') && /\d/.test(el.textContent);

@@ -94,6 +94,10 @@
 .pg-trois > li,.pg-quatre > li{padding:28px}
 .pg-trois h3,.pg-quatre h3{margin-bottom:10px}
 .pg-trois p,.pg-quatre p{margin:0;font-size:15.5px;line-height:1.65;color:var(--pg-texte)}
+.pg-modal{margin:16px 0 0}
+.pg-modal > div{padding:24px 28px}
+.pg-modal dt{margin:0 0 8px}
+.pg-modal dd{margin:0;font-size:15.5px;line-height:1.6;color:var(--pg-ink)}
 .pg-anim{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:center;margin-top:16px;padding:28px}
 .pg-anim h3{margin-bottom:8px}
 .pg-anim p{margin:0;max-width:60ch;font-size:15.5px;line-height:1.65;color:var(--pg-texte)}
