@@ -1813,27 +1813,28 @@
         <li>Visio ou présentiel</li>
         <li>Une journée ou deux demi-journées</li>
         <li>Sur devis, après 30 minutes</li>
+        <li>7 h comptées au titre de la DDA</li>
       </ul>
     </div>
     <div class="lx-config-scene" aria-hidden="true">
-      <svg class="lx-config-liens"><ellipse class="lx-config-trace"/></svg>
       <div class="lx-config-centre">
         <svg class="lx-config-anneau" viewBox="0 0 200 200">
           <circle class="lx-anneau-piste" cx="100" cy="100" r="78" pathLength="1"/>
-          <circle class="lx-anneau-dda" cx="100" cy="100" r="78" pathLength="15"/>
-          <circle class="lx-anneau-orbite" cx="100" cy="100" r="96"/><g class="lx-anneau-ticks"><line x1="100" y1="10" x2="100" y2="16" transform="rotate(0 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(24 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(48 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(72 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(96 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(120 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(144 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(168 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(192 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(216 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(240 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(264 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(288 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(312 100 100)"/><line x1="100" y1="10" x2="100" y2="16" transform="rotate(336 100 100)"/></g>
+          <circle class="lx-anneau-orbite" cx="100" cy="100" r="96"/>
+          <g class="lx-anneau-arcs"></g>
         </svg>
-        <div class="lx-config-coeur"><b><span class="lx-config-h">7</span><span class="lx-config-u">h</span></b><small>dont 7 sur 15 h DDA</small></div>
+        <div class="lx-config-reperes"></div>
+        <div class="lx-config-coeur"><b class="lx-config-grand">7<span class="lx-config-u">h</span></b><small class="lx-config-sous">la journée, module par module</small></div>
       </div>
       <ul class="lx-config-modules">
-        <li data-m="1"><i>01</i>Introduction</li>
-        <li data-m="2"><i>02</i>Socle IA et prompting</li>
-        <li data-m="3"><i>03</i>Claude et Microsoft 365</li>
-        <li data-m="4"><i>04</i>Portefeuille avec Marvin</li>
-        <li data-m="5"><i>05</i>Sinistres et réclamations</li>
-        <li data-m="6"><i>06</i>Devoir de conseil</li>
-        <li data-m="7"><i>07</i>RGPD, AI Act, RSE</li>
-        <li data-m="8"><i>08</i>Plan d'action</li>
+        <li data-m="1" data-min="30"><i>01</i><span>Introduction</span><em>30 min</em></li>
+        <li data-m="2" data-min="30"><i>02</i><span>Socle IA et prompting</span><em>30 min</em></li>
+        <li data-m="3" data-min="60"><i>03</i><span>Claude et Microsoft 365</span><em>1 h</em></li>
+        <li data-m="4" data-min="60"><i>04</i><span>Portefeuille avec Marvin</span><em>1 h</em></li>
+        <li data-m="5" data-min="90"><i>05</i><span>Sinistres et réclamations</span><em>1 h 30</em></li>
+        <li data-m="6" data-min="70"><i>06</i><span>Devoir de conseil</span><em>1 h 10</em></li>
+        <li data-m="7" data-min="60"><i>07</i><span>RGPD, AI Act, RSE</span><em>1 h</em></li>
+        <li data-m="8" data-min="30"><i>08</i><span>Plan d'action</span><em>30 min</em></li>
       </ul>
     </div>
   </div>

@@ -1551,17 +1551,66 @@
      réduit, rien ne tourne, mais le choix du profil fonctionne :
      c'est de l'interaction, pas un effet.                    */
   function configurateur() {
+    // La scène du programme : l'anneau est la journée, un arc par
+    // module à proportion de sa durée. Le profil choisi dore ses
+    // modules prioritaires et le centre dit le temps qu'ils pèsent.
     var cfg = document.querySelector('.lx-config');
     if (!cfg || cfg.dataset.lxPret) return;
     cfg.dataset.lxPret = '1';
     var onglets = tous('.lx-config-onglet', cfg);
     var panneaux = tous('.lx-config-panneau', cfg);
-    var scene = cfg.querySelector('.lx-config-scene');
     var items = tous('.lx-config-modules li', cfg);
-    var compteur = cfg.querySelector('.lx-config-h');
-    if (!onglets.length || !scene || !items.length) return;
+    var gArcs = cfg.querySelector('.lx-anneau-arcs'), reperes = cfg.querySelector('.lx-config-reperes');
+    var coeur = cfg.querySelector('.lx-config-coeur'), grand = cfg.querySelector('.lx-config-grand'), sous = cfg.querySelector('.lx-config-sous');
+    if (!onglets.length || !items.length || !gArcs || !coeur) return;
 
     var DUREE = 5600, actif = 1, auto = !reduit, visible = false, minuteur = null;
+    var NS = 'http://www.w3.org/2000/svg', ECART = 4;
+    var mins = items.map(function (li) { return +li.dataset.min; });
+    var total = mins.reduce(function (a, b) { return a + b; }, 0);
+
+    // Les arcs et leurs repères, construits depuis les durées
+    var debut = 0;
+    var arcs = items.map(function (li, k) {
+      var c = document.createElementNS(NS, 'circle');
+      var milieu = (debut + mins[k] / 2) / total * 2 * Math.PI;
+      c.setAttribute('class', 'lx-arc'); c.setAttribute('cx', 100); c.setAttribute('cy', 100); c.setAttribute('r', 78);
+      c.setAttribute('pathLength', total);
+      c.style.setProperty('--len', mins[k] - ECART);
+      c.style.setProperty('--k', k);
+      c.style.setProperty('--dx', Math.cos(milieu).toFixed(3));
+      c.style.setProperty('--dy', Math.sin(milieu).toFixed(3));
+      c.style.strokeDashoffset = -(debut + ECART / 2);
+      c.style.pointerEvents = 'stroke';
+      gArcs.appendChild(c);
+      if (reperes) {
+        var r = document.createElement('span');
+        r.textContent = li.querySelector('i').textContent;
+        r.style.left = (50 + Math.sin(milieu) * 54).toFixed(2) + '%';
+        r.style.top = (50 - Math.cos(milieu) * 54).toFixed(2) + '%';
+        r.style.setProperty('--k', k);
+        reperes.appendChild(r);
+      }
+      li.style.setProperty('--k', k);
+      debut += mins[k];
+      return c;
+    });
+    var marques = reperes ? tous('span', reperes) : [];
+
+    function duree(m) {
+      var h = Math.floor(m / 60), r = m % 60;
+      return (h ? h + ' h' : '') + (h && r ? ' ' : '') + (r ? (r < 10 && h ? '0' : '') + r + (h ? '' : ' min') : '');
+    }
+    function ecrire(grandHtml, sousHtml) {
+      if (reduit) { grand.innerHTML = grandHtml; sous.innerHTML = sousHtml; return; }
+      coeur.classList.add('est-change');
+      setTimeout(function () { grand.innerHTML = grandHtml; sous.innerHTML = sousHtml; coeur.classList.remove('est-change'); }, 200);
+    }
+    function centreProfil() {
+      var prio = onglets[actif].dataset.prio.split(',').map(Number);
+      var m = prio.reduce(function (a, n) { return a + mins[n - 1]; }, 0);
+      ecrire('7<span class="lx-config-u">h</span>', 'dont <b>' + duree(m) + '</b> sur vos priorités');
+    }
 
     function choisir(i, parVisiteur) {
       actif = i;
@@ -1573,7 +1622,13 @@
       });
       panneaux.forEach(function (p, k) { p.hidden = k !== i; });
       var prio = onglets[i].dataset.prio.split(',').map(Number);
-      items.forEach(function (li) { li.classList.toggle('est-prio', prio.indexOf(+li.dataset.m) >= 0); });
+      items.forEach(function (li, k) {
+        var oui = prio.indexOf(+li.dataset.m) >= 0;
+        li.classList.toggle('est-prio', oui);
+        arcs[k].classList.toggle('est-prio', oui);
+        if (marques[k]) marques[k].classList.toggle('est-prio', oui);
+      });
+      if (survol < 0) centreProfil();
       if (parVisiteur) { auto = false; cfg.classList.add('est-manuel'); clearTimeout(minuteur); return; }
       relancer();
     }
@@ -1594,117 +1649,45 @@
         choisir(n, true); onglets[n].focus();
       });
     });
-    choisir(1, false);
 
-    // ── l'orbite
-    var W, H, cx, cy, rx, ry, rAnneau = 0, liste = false, ouvert = null, enMarche = false;
-    // un fil par module, de l'anneau à la pastille ; seuls ceux des modules mis en avant s'allument
-    var liens = cfg.querySelector('.lx-config-liens'), NS = 'http://www.w3.org/2000/svg';
-    var fils = items.map(function () {
-      if (!liens) return null;
-      var l = document.createElementNS(NS, 'line');
-      l.setAttribute('class', 'lx-config-fil');
-      liens.appendChild(l);
-      return l;
-    });
-    var souris = { x: -1e4, y: -1e4 };
-    var etats = items.map(function (li, k) {
-      return { li: li, a0: -Math.PI / 2 + k * (2 * Math.PI / items.length), x: 0, y: 0, s: 1, o: 1, w: 0, h: 0 };
-    });
-    function mesurer() {
-      liste = window.matchMedia('(max-width: 900px)').matches;
-      scene.classList.toggle('est-liste', liste);
-      var r = scene.getBoundingClientRect();
-      W = r.width; H = r.height; cx = W / 2; cy = H / 2; rx = W * 0.39; ry = H * 0.4;
-      var ce = cfg.querySelector('.lx-config-centre');
-      rAnneau = ce ? ce.getBoundingClientRect().width / 2 * 0.96 : 0;
-      if (liens) {
-        liens.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-        var tr = liens.querySelector('.lx-config-trace');
-        tr.setAttribute('cx', cx); tr.setAttribute('cy', cy); tr.setAttribute('rx', rx); tr.setAttribute('ry', ry);
-      }
-      etats.forEach(function (e) { e.w = e.li.offsetWidth; e.h = e.li.offsetHeight; });
-    }
-    function cible(e, k, t) {
-      var prio = e.li.classList.contains('est-prio');
-      var a = e.a0 + (reduit ? 0 : t * 0.00004);
-      var f = prio ? 0.82 : 1.02;
-      var ouv = 1;
-      if (ouvert !== null) { ouv = Math.max(0, Math.min(1, (t - ouvert - k * 80) / 950)); ouv = 1 - Math.pow(1 - ouv, 3); }
-      var flotte = reduit ? 0 : Math.sin(t * 0.0012 + k * 1.9) * 7;
-      var x = cx + Math.cos(a) * rx * f * ouv, y = cy + Math.sin(a) * ry * f * ouv + flotte * ouv;
-      // jamais sur l'anneau : le bord le plus proche de la pastille reste hors du cercle
-      if (ouv > 0.6 && e.w) {
-        var nx = Math.max(x - e.w / 2, Math.min(cx, x + e.w / 2)), ny = Math.max(y - e.h / 2, Math.min(cy, y + e.h / 2));
-        var dc = Math.sqrt((nx - cx) * (nx - cx) + (ny - cy) * (ny - cy)), mini = rAnneau + 18;
-        if (dc < mini) {
-          var ux = x - cx, uy = y - cy, lu = Math.sqrt(ux * ux + uy * uy) || 1;
-          x += ux / lu * (mini - dc); y += uy / lu * (mini - dc);
-        }
-      }
-      var dx = x - souris.x, dy = y - souris.y, dist = Math.sqrt(dx * dx + dy * dy);
-      if (!reduit && dist < 130 && dist > 0.1) { var force = (130 - dist) / 130 * 46; x += dx / dist * force; y += dy / dist * force; }
-      return { x: x, y: y, s: (prio ? 1.06 : 0.92) * (0.35 + 0.65 * ouv), o: (prio ? 1 : 0.4) * ouv };
-    }
-    function poser(lisser, t) {
-      etats.forEach(function (e, k) {
-        var c = cible(e, k, t);
-        var q = lisser ? 0.14 : 1;
-        e.x += (c.x - e.x) * q; e.y += (c.y - e.y) * q; e.s += (c.s - e.s) * q; e.o += (c.o - e.o) * q;
-        e.li.style.transform = 'translate(' + (e.x - e.w / 2).toFixed(1) + 'px,' + (e.y - e.h / 2).toFixed(1) + 'px) scale(' + e.s.toFixed(3) + ')';
-        e.li.style.opacity = e.o.toFixed(3);
-        var f = fils[k];
-        if (f) {
-          var ux = e.x - cx, uy = e.y - cy, lu = Math.sqrt(ux * ux + uy * uy) || 1;
-          // départ au bord de l'anneau, arrivée au bord de la pastille
-          var demi = Math.min(e.w / 2 / Math.abs(ux / lu || 1e-6), e.h / 2 / Math.abs(uy / lu || 1e-6)) * e.s;
-          f.setAttribute('x1', (cx + ux / lu * (rAnneau + 6)).toFixed(1));
-          f.setAttribute('y1', (cy + uy / lu * (rAnneau + 6)).toFixed(1));
-          f.setAttribute('x2', (e.x - ux / lu * Math.min(demi + 4, lu)).toFixed(1));
-          f.setAttribute('y2', (e.y - uy / lu * Math.min(demi + 4, lu)).toFixed(1));
-          f.classList.toggle('est-allume', e.li.classList.contains('est-prio') && e.o > 0.5);
-        }
+    // Survol d'un module ou de son arc : il s'allume, le centre donne sa durée
+    var survol = -1;
+    function voir(k) {
+      if (k === survol) return;
+      survol = k;
+      cfg.classList.toggle('a-survol', k >= 0);
+      items.forEach(function (li, n) {
+        li.classList.toggle('est-vu', n === k);
+        arcs[n].classList.toggle('est-vu', n === k);
+        if (marques[n]) marques[n].classList.toggle('est-vu', n === k);
       });
+      if (k < 0) { centreProfil(); return; }
+      var m = mins[k], h = Math.floor(m / 60), r = m % 60;
+      var g = h ? h + '<span class="lx-config-u">h</span>' + (r ? (r < 10 ? '0' : '') + r : '') : r + '<span class="lx-config-u">min</span>';
+      ecrire(g, items[k].querySelector('span').textContent);
     }
-    function boucle(t) {
-      if (!visible || liste) { enMarche = false; return; }
-      poser(true, t);
-      requestAnimationFrame(boucle);
-    }
-    function demarrer() { if (!enMarche && !liste) { enMarche = true; requestAnimationFrame(boucle); } }
+    items.forEach(function (li, k) {
+      li.addEventListener('pointerenter', function () { voir(k); });
+      li.addEventListener('pointerleave', function () { voir(-1); });
+      arcs[k].addEventListener('pointerenter', function () { voir(k); });
+      arcs[k].addEventListener('pointerleave', function () { voir(-1); });
+    });
 
-    mesurer();
-    if (!liste) poser(false, 0);   // placées tout de suite, même si le navigateur ne rend pas d'image
-    window.addEventListener('resize', function () { mesurer(); if (liste) items.forEach(function (li) { li.style.transform = ''; li.style.opacity = ''; }); else { poser(false, performance.now()); demarrer(); } }, { passive: true });
-    scene.addEventListener('pointermove', function (ev) { var r = scene.getBoundingClientRect(); souris.x = ev.clientX - r.left; souris.y = ev.clientY - r.top; }, { passive: true });
-    scene.addEventListener('pointerleave', function () { souris.x = souris.y = -1e4; }, { passive: true });
+    choisir(1, false);
 
     function ouvrir() {
       if (cfg.classList.contains('est-ouvert')) return;
       cfg.classList.add('est-ouvert');
-      if (!reduit) {
-        ouvert = performance.now();
-        etats.forEach(function (e) { e.x = cx; e.y = cy; e.s = 0.3; e.o = 0; });
-        if (compteur) {
-          var fin = +compteur.textContent, debut = null;
-          compteur.textContent = '0';
-          var pas = function (t) {
-            if (debut === null) debut = t;
-            var q = Math.min((t - debut) / 900, 1);
-            compteur.textContent = Math.round((1 - Math.pow(1 - q, 3)) * fin);
-            if (q < 1) requestAnimationFrame(pas);
-          };
-          setTimeout(function () { requestAnimationFrame(pas); }, 350);
-          setTimeout(function () { compteur.textContent = fin; }, 1500);
-        }
-      }
+      // une fois l'ouverture jouée, plus aucun retard sur les transitions
+      setTimeout(function () { cfg.classList.add('est-pose'); }, 2200);
     }
     if (!reduit) cfg.classList.add('est-anime');
+    else arcs.forEach(function (c, k) { c.style.strokeDasharray = (mins[k] - ECART) + ' ' + total; });
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) {
         es.forEach(function (e) {
           visible = e.isIntersecting;
-          if (visible) { ouvrir(); demarrer(); relancer(); }
+          if (visible) { ouvrir(); relancer(); }
           else clearTimeout(minuteur);
         });
       }, { threshold: 0.25 }).observe(cfg);
