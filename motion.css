@@ -1757,3 +1757,31 @@ nav .nav-links > li > a.nav-echange:focus-visible{outline:2px solid #e8921a;outl
   nav .nav-links > li.nav-echange-li{padding:14px 22px 18px}
   nav .nav-links > li > a.nav-echange{display:flex;justify-content:center;height:48px;padding:0 22px;font-size:15px}
 }
+
+/* ── Accueil : deux formations, deux métiers (19/11/2026) ───
+   Courtiers et agents généraux ont chacun leur formation. Deux
+   cartes calmes, de même poids, juste sous le hero.          */
+.lx-duo{padding:clamp(64px,7vw,96px) 24px;background:#fff;border-top:1px solid var(--lx-line)}
+.lx-duo-in{max-width:1180px;margin:0 auto}
+.lx-duo-tete{max-width:720px;margin-bottom:40px}
+.lx-duo-tete h2{margin:12px 0 0;font-size:clamp(30px,3.4vw,44px);line-height:1.1;letter-spacing:-.02em;color:var(--lx-navy)}
+.lx-duo-grille{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.lx-duo-carte{position:relative;display:flex;flex-direction:column;padding:34px 34px 30px;border-radius:20px;background:#fff;border:1px solid #e2e5ec;
+  box-shadow:0 1px 2px rgba(13,23,63,.04),0 24px 48px -34px rgba(13,23,63,.35);color:inherit;text-decoration:none;overflow:hidden;
+  transition:transform .45s var(--lx-ease),box-shadow .45s ease,border-color .3s ease}
+.lx-duo-carte::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:var(--lx-gold);transform:scaleX(0);transform-origin:left;transition:transform .55s var(--lx-ease)}
+.lx-duo-carte:hover{transform:translateY(-4px);border-color:#cfd5e2;box-shadow:0 1px 2px rgba(13,23,63,.04),0 34px 60px -34px rgba(13,23,63,.45)}
+.lx-duo-carte:hover::before{transform:scaleX(1)}
+.lx-duo-carte:focus-visible{outline:2px solid var(--lx-gold);outline-offset:3px}
+.lx-duo-pour{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--lx-gold)}
+.lx-duo-carte h3{margin:12px 0 10px;font-size:clamp(22px,2.1vw,27px);line-height:1.2;color:var(--lx-navy)}
+.lx-duo-carte p{margin:0 0 20px;font-size:15.5px;line-height:1.65;color:#51596a}
+.lx-duo-carte ul{margin:0 0 26px;padding:16px 0 0;list-style:none;border-top:1px solid #eceef3}
+.lx-duo-carte li{position:relative;padding-left:20px;font-size:15px;line-height:1.55;color:#0a0e24}
+.lx-duo-carte li + li{margin-top:8px}
+.lx-duo-carte li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:2px;background:var(--lx-navy);opacity:.75}
+.lx-duo-lien{margin-top:auto;font-size:15px;font-weight:600;color:var(--lx-navy)}
+.lx-duo-lien span{display:inline-block;transition:transform .3s var(--lx-ease)}
+.lx-duo-carte:hover .lx-duo-lien span{transform:translateX(5px)}
+@media (max-width:820px){.lx-duo-grille{grid-template-columns:minmax(0,1fr)}.lx-duo-carte{padding:26px 22px 24px}}
+@media (prefers-reduced-motion:reduce){.lx-duo-carte,.lx-duo-carte::before{transition:none}}

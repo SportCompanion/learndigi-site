@@ -1,9 +1,10 @@
 # Learndigi
 
 > Learndigi est une société française de formation, basée à Chennevières-sur-Marne (Val-de-Marne),
-> qui forme les courtiers en assurance à l'usage professionnel de l'intelligence artificielle.
-> Le parcours de formation classique dure 7 heures, se déroule en visioconférence ou en présentiel dans les locaux du
-> cabinet, et son programme est personnalisé selon les enjeux de chaque structure.
+> qui forme les courtiers en assurance et les agents généraux d'assurance à l'usage professionnel de
+> l'intelligence artificielle. Elle propose deux formations de 7 heures distinctes : l'une pour les cabinets
+> de courtage (https://learndigi.fr/programme), l'autre pour les agences générales
+> (https://learndigi.fr/agents-generaux). Toutes deux se déroulent en visioconférence ou en présentiel.
 
 ## Ce que fait Learndigi
 
@@ -17,10 +18,26 @@ avec l'IA et Apollo animée par Hugo Salembier, des formations individuelles, de
 métier et un accompagnement à la création d'outils internes sur mesure avec Claude Code et Codex. Ces
 prestations sont cadrées selon les processus, les outils et le niveau de maturité du cabinet.
 
-La formation s'adresse exclusivement aux professionnels de la distribution d'assurance : courtiers
-indépendants, cabinets PME de 2 à 20 personnes, et grands cabinets de plus de 20 personnes.
+Les formations s'adressent exclusivement aux professionnels de la distribution d'assurance : cabinets de
+courtage d'une part, agents généraux d'assurance et leurs collaborateurs d'agence d'autre part.
 
-## Format du parcours de formation classique
+## Formation pour les agents généraux d'assurance
+
+« Les bases de l'IA pour toute l'agence » : https://learndigi.fr/agents-generaux
+
+- Public : agents généraux et collaborateurs d'agence, tous services et tous niveaux, de 1 à 10 participants
+- Durée et format : 7 heures, en une journée ou deux demi-journées, en agence ou en classe virtuelle
+- Programme en 7 séquences : accueil et attentes (15 min), comprendre l'IA générative (45 min), prise en main
+  de l'outil (1 h), la méthode Learndigi pour bien demander (1 h 30), 10 usages du quotidien en agence (1 h 30),
+  sécurité, confidentialité et cadre réglementaire (45 min), plan d'action, évaluation et clôture (1 h 15),
+  puis suivi à 30 jours inclus
+- Principes : 70 % de pratique, exercices en trois niveaux, zéro donnée compagnie ni donnée client
+- Évaluation : questionnaire de positionnement, QCM final (validation à 70 %), satisfaction, suivi à 30 jours
+- Cadre : contribue à la maîtrise de l'IA du personnel au sens de l'article 4 de l'AI Act
+- Tarif : 1 500 € HT la journée de formation, 1 200 € HT par journée à partir de deux journées
+- Plaquette : https://learndigi.fr/plaquette-agents-generaux.pdf
+
+## Formation pour les cabinets de courtage : format
 
 - Durée : 7 heures
 - Modalité : visioconférence ou présentiel, au choix du cabinet
@@ -74,7 +91,8 @@ déclaration d'activité de l'organisme (numéro 11941448294) et du contenu de l
 ## Pages
 
 - [Accueil](https://learndigi.fr/) : présentation de la formation, engagements, tarif, FAQ, prise de rendez-vous
-- [Programme détaillé](https://learndigi.fr/programme) : les 8 modules et leur contenu
+- [Formation courtiers](https://learndigi.fr/programme) : les 8 modules de la formation pour les cabinets de courtage
+- [Formation agents généraux](https://learndigi.fr/agents-generaux) : les 7 séquences de « Les bases de l'IA pour toute l'agence »
 - [Formation dédiée à un outil IA](https://learndigi.fr/formation-outil-ia) : 7 heures consacrées à Claude, ChatGPT, Mistral AI ou Microsoft Copilot
 - [Prospection améliorée avec l'IA](https://learndigi.fr/prospection-ia) : formation à durée sur mesure sur le ciblage, les messages, les séquences et le suivi dans Apollo, animée par Hugo Salembier. Durée, nombre de séances et rythme définis selon vos objectifs et votre niveau
 - [Formation individuelle](https://learndigi.fr/formation-individuelle) : accompagnement personnalisé selon le niveau, les outils et un objectif métier précis
