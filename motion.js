@@ -1551,49 +1551,36 @@
      réduit, rien ne tourne, mais le choix du profil fonctionne :
      c'est de l'interaction, pas un effet.                    */
   function configurateur() {
-    // La scène du programme : un univers IA. Un cœur, deux orbites
-    // de logos et une orbite de huit modules, animés en CSS. La
-    // journée se lit en trois temps : l'étape choisie illumine ses
-    // outils et ses modules, et le cœur donne sa durée.
+    // La scène du programme : le plan de la journée. Une barre de
+    // temps proportionnelle aux durées et les huit modules. L'étape
+    // choisie allume ses modules et l'en-tête donne sa durée.
     var cfg = document.querySelector('.lx-config');
     if (!cfg || cfg.dataset.lxPret) return;
     cfg.dataset.lxPret = '1';
     var onglets = tous('.lx-config-onglet', cfg);
     var panneaux = tous('.lx-config-panneau', cfg);
     var items = tous('.lx-config-modules li', cfg);
-    var outils = tous('.lx-uni-bras[data-etapes]', cfg);
-    var coeur = cfg.querySelector('.lx-config-coeur'), grand = cfg.querySelector('.lx-config-grand'), sous = cfg.querySelector('.lx-config-sous');
-    if (!onglets.length || !items.length || !coeur) return;
+    var segs = tous('.lx-plan-barre i', cfg);
+    var sous = cfg.querySelector('.lx-config-sous');
+    if (!onglets.length || !items.length || !sous) return;
 
     var DUREE = 5600, actif = 0, auto = !reduit, visible = false, minuteur = null, survol = -1;
     var mins = items.map(function (li) { return +li.dataset.min; });
-
-    // Le ciel : des étoiles semées toujours aux mêmes endroits
-    var ciel = cfg.querySelector('.lx-uni-etoiles');
-    if (ciel) {
-      var graine = 7;
-      var alea = function () { graine = (graine * 16807) % 2147483647; return graine / 2147483647; };
-      for (var n = 0; n < 46; n++) {
-        var e = document.createElement('i'), taille = (1 + alea() * 2).toFixed(1);
-        e.style.cssText = 'left:' + (alea() * 100).toFixed(1) + '%;top:' + (alea() * 100).toFixed(1) + '%;width:' + taille + 'px;height:' + taille +
-          'px;--v:' + (2.6 + alea() * 4).toFixed(1) + 's;--r:-' + (alea() * 6).toFixed(1) + 's';
-        ciel.appendChild(e);
-      }
-    }
+    items.forEach(function (li, k) { li.style.setProperty('--k', k); });
 
     function duree(m) {
       var h = Math.floor(m / 60), r = m % 60;
       return (h ? h + ' h' : '') + (h && r ? ' ' : '') + (r ? (r < 10 && h ? '0' : '') + r + (h ? '' : ' min') : '');
     }
-    function ecrire(grandHtml, sousHtml) {
-      if (reduit) { grand.innerHTML = grandHtml; sous.innerHTML = sousHtml; return; }
-      coeur.classList.add('est-change');
-      setTimeout(function () { grand.innerHTML = grandHtml; sous.innerHTML = sousHtml; coeur.classList.remove('est-change'); }, 200);
+    function ecrire(html) {
+      if (reduit) { sous.innerHTML = html; return; }
+      sous.style.opacity = 0;
+      setTimeout(function () { sous.innerHTML = html; sous.style.opacity = ''; }, 180);
     }
-    function centreEtape() {
+    function enteteEtape() {
       var prio = onglets[actif].dataset.prio.split(',').map(Number);
       var m = prio.reduce(function (a, n) { return a + mins[n - 1]; }, 0);
-      ecrire('7<span class="lx-config-u">h</span>', 'dont <b>' + duree(m) + '</b><br/>pour cette étape');
+      ecrire('dont <b>' + duree(m) + '</b> pour cette étape');
     }
 
     function choisir(i, parVisiteur) {
@@ -1606,13 +1593,12 @@
       });
       panneaux.forEach(function (p, k) { p.hidden = k !== i; });
       var prio = onglets[i].dataset.prio.split(',').map(Number);
-      items.forEach(function (li) { li.classList.toggle('est-prio', prio.indexOf(+li.dataset.m) >= 0); });
-      outils.forEach(function (b) {
-        var oui = b.dataset.etapes.split(',').indexOf(String(i)) >= 0;
-        b.classList.toggle('est-actif', oui);
-        b.classList.toggle('est-eteint', !oui);
+      items.forEach(function (li, k) {
+        var oui = prio.indexOf(+li.dataset.m) >= 0;
+        li.classList.toggle('est-prio', oui);
+        if (segs[k]) segs[k].classList.toggle('est-prio', oui);
       });
-      if (survol < 0) centreEtape();
+      if (survol < 0) enteteEtape();
       if (parVisiteur) { auto = false; cfg.classList.add('est-manuel'); clearTimeout(minuteur); return; }
       relancer();
     }
@@ -1634,25 +1620,29 @@
       });
     });
 
-    // Survol d'une perle : le cœur donne le module et sa durée
+    // Survol d'un module : il se détache et l'en-tête donne sa durée
     function voir(k) {
       if (k === survol) return;
       survol = k;
-      items.forEach(function (li, n) { li.classList.toggle('est-vu', n === k); });
-      if (k < 0) { centreEtape(); return; }
-      var m = mins[k], h = Math.floor(m / 60), r = m % 60;
-      var g = h ? h + '<span class="lx-config-u">h</span>' + (r ? (r < 10 ? '0' : '') + r : '') : r + '<span class="lx-config-u">min</span>';
-      ecrire(g, items[k].querySelector('.lx-uni-perle span').textContent);
+      items.forEach(function (li, n) {
+        li.classList.toggle('est-vu', n === k);
+        if (segs[n]) segs[n].classList.toggle('est-vu', n === k);
+      });
+      if (k < 0) { enteteEtape(); return; }
+      ecrire(items[k].querySelector('span').textContent + ' · <b>' + duree(mins[k]) + '</b>');
     }
     items.forEach(function (li, k) {
-      var perle = li.querySelector('.lx-uni-perle');
-      perle.addEventListener('pointerenter', function () { voir(k); });
-      perle.addEventListener('pointerleave', function () { voir(-1); });
+      li.addEventListener('pointerenter', function () { voir(k); });
+      li.addEventListener('pointerleave', function () { voir(-1); });
     });
 
     choisir(0, false);
 
-    function ouvrir() { cfg.classList.add('est-ouvert'); }
+    function ouvrir() {
+      if (cfg.classList.contains('est-ouvert')) return;
+      cfg.classList.add('est-ouvert');
+      setTimeout(function () { cfg.classList.add('est-pose'); }, 1400);
+    }
     if (!reduit) cfg.classList.add('est-anime');
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) {
@@ -1663,6 +1653,8 @@
         });
       }, { threshold: 0.25 }).observe(cfg);
     } else { visible = true; ouvrir(); }
+    // filet de sécurité : rien ne reste caché si l'observateur ne se déclenche pas
+    setTimeout(function () { if (!cfg.classList.contains('est-ouvert') && cfg.getBoundingClientRect().top < innerHeight) ouvrir(); }, 2500);
   }
 
   /* ── 20. Le tarif : détails natifs, ouverture à la demande.
